@@ -1,3 +1,5 @@
+require 'ProjectEuler'
+
 class Problem_3
   # The prime factors of 13195 are 5, 7, 13 and 29.
   #
@@ -8,11 +10,18 @@ class Problem_3
     f = n
     i = 2
 
+    # Divide by prime numbers.  Stop when n has gotten too small to divide by
+    # the latest prime (all smaller primes will have already been used).
     while i <= n / i do
+
       while n % i == 0 do
+        # If the current prime is a factor, keep factoring it out as long as
+        # possible.  Non-prime multiples of previous factors won't get here.     
         f = i
         n /= i
       end
+
+      # Advance to the next candidate. 
       i += 1
     end
 
@@ -20,5 +29,6 @@ class Problem_3
   end
 end
 
-Problem_3.solve
- 
+ProjectEuler.time do
+  Problem_3.solve
+end
