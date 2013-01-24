@@ -6,13 +6,13 @@ class Problem_1
   #
   # Find the sum of all the multiples of 3 or 5 below 1000.
 
-  def self.solve
-    # important that multiples of BOTH 3 and 5 not be double-counted
-    puts (0...1000).select {|x| x % 3 == 0 || x % 5 == 0}.inject(:+)
+  def self.solve( n, a, b )
+    # Important that multiples of BOTH a and b not be double-counted.
+    puts( (0...n).select {|x| 0 == x % a || 0 == x % b}.inject(:+) )
   end
 end
 
 ProjectEuler.time do
-  Problem_1.solve
+  Problem_1.solve( 1000, 3, 5 )
 end
 

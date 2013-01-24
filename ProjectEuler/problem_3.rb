@@ -5,8 +5,7 @@ class Problem_3
   #
   # What is the largest prime factor of the number 600851475143?
 
-  def self.solve
-    n = 600851475143
+  def self.solve( n )
     f = n
     i = 2
 
@@ -30,5 +29,5 @@ class Problem_3
 end
 
 ProjectEuler.time do
-  Problem_3.solve
+  Problem_3.solve( 600851475143 )
 end

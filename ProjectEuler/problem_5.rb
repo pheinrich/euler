@@ -7,11 +7,11 @@ class Problem_5
   # What is the smallest positive number that is evenly divisible by all of
   # the numbers from 1 to 20?
   
-  def self.solve
+  def self.solve( n )
     puts "?"
   end
 end
 
 ProjectEuler.time do
-  Problem_5.solve
+  Problem_5.solve( 20 )
 end
