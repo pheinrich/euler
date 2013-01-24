@@ -11,7 +11,7 @@ class Problem_3
 
     # Divide by prime numbers.  Stop when n has gotten too small to divide by
     # the latest prime (all smaller primes will have already been used).
-    while i <= n / i do
+    while i <= n do
 
       while n % i == 0 do
         # If the current prime is a factor, keep factoring it out as long as
