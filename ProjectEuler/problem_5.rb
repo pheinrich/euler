@@ -8,7 +8,27 @@ class Problem_5
   # the numbers from 1 to 20?
   
   def self.solve( n )
-    puts "?"
+    arr = []
+
+    # Collect the prime factors of all values up to n.
+    (2..n).each do |x|
+      tmp = Array.new( arr )
+      ProjectEuler.prime_factors( x ).each do |f|
+        
+        # If our prime factor collection has at least as many copies of the
+        # current factor as are needed by the current value, we're good.
+        # Otherwise, we need to add more to our collection.
+        i = tmp.index( f )
+        if i
+          tmp.delete_at( i )
+        else
+          arr << f
+        end
+      end
+    end
+
+    # Multiply all the factors together.
+    puts arr.inject( :* )
   end
 end
 
