@@ -1,6 +1,7 @@
 require 'projectEuler'
 
-class Problem_4
+# Largest palindrome product
+class Problem_0004
   # A palindromic number reads the same both ways. The largest palindrome made
   # from the product of two 2-digit numbers is 9009 = 91 99.
   #
@@ -26,5 +27,5 @@ class Problem_4
 end
 
 ProjectEuler.time do
-  Problem_4.solve( 3 )
+  Problem_0004.solve( 3 )
 end

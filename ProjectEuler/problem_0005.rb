@@ -1,6 +1,7 @@
 require 'projectEuler'
 
-class Problem_5
+# Smallest multiple
+class Problem_0005
   # 2520 is the smallest number that can be divided by each of the numbers
   # from 1 to 10 without any remainder.
   #
@@ -33,5 +34,5 @@ class Problem_5
 end
 
 ProjectEuler.time do
-  Problem_5.solve( 20 )
+  Problem_0005.solve( 20 )
 end

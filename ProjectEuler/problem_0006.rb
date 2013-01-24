@@ -1,6 +1,7 @@
 require 'projectEuler'
 
-class Problem_6
+# Sum square difference
+class Problem_0006
   # The sum of the squares of the first ten natural numbers is,
   #
   #      1^2 + 2^2 + ... + 10^2 = 385
@@ -24,5 +25,5 @@ class Problem_6
 end
 
 ProjectEuler.time do
-  Problem_6.solve( 100 )
+  Problem_0006.solve( 100 )
 end
