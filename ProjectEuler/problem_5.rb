@@ -1,4 +1,4 @@
-require 'ProjectEuler'
+require 'projectEuler'
 
 class Problem_5
   # 2520 is the smallest number that can be divided by each of the numbers
