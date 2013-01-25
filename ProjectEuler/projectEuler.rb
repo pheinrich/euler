@@ -20,9 +20,27 @@ module ProjectEuler
       end
 
       # Advance to the next candidate. 
-      i += 1
+      i = 1 if 2 == i
+      i += 2
     end
 
     arr
+  end
+
+  def self.prime?( n )
+    return true if 2 == n
+    return false if 2 > n || 0 == n % 2
+
+    i = 3
+    max = Math.sqrt( n ).to_i
+
+    # Since we've already eliminated even numbers, we only have to check for
+    # odd factors (since any odd non-prime will have at least one).
+    while i <= max
+      return false if 0 == n % i
+      i += 2
+    end
+    
+    true
   end
 end
