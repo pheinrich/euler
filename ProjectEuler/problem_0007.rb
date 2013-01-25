@@ -24,5 +24,6 @@ class Problem_0007
 end
 
 ProjectEuler.time do
+  # 25164150
   Problem_0007.solve( 10001 )
 end
