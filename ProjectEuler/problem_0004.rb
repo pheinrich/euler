@@ -27,5 +27,6 @@ class Problem_0004
 end
 
 ProjectEuler.time do
+  # 913 x 993 = 906609
   Problem_0004.solve( 3 )
 end
