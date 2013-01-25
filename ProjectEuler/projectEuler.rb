@@ -25,4 +25,9 @@ module ProjectEuler
 
     arr
   end
+
+  # Perform exponentiation over a modulus, returning (b^e) % m.
+  def self.modular_power( b, e, m )
+    (1..e).inject( 1 ) {|c| (c * b) % m}
+  end
 end
