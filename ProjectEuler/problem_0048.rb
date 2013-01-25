@@ -7,8 +7,8 @@ class Problem_0048
   # Find the last ten digits of the series, 1^1 + 2^2 + 3^3 + ... + 1000^1000.
 
   def self.solve( n, d )
-    d = 10**d
-    puts (1..n).inject {|s, x| s + ProjectEuler.modular_power( x, x, d )}.to_s[-10, 10]
+    m = 10**d
+    puts (1..n).inject {|s, x| s + ProjectEuler.modular_power( x, x, m )}.to_s[-d, d]
   end
 end
 
