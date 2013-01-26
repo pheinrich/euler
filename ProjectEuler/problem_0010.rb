@@ -7,10 +7,12 @@ class Problem_0010
   # Find the sum of all the primes below two million.
 
   def self.solve( n )
-    puts "?"
+    # Super slow
+    puts( (2...n).select {|x| ProjectEuler.prime?( x )}.inject( :+ ) )
   end
 end
 
 ProjectEuler.time do
-  Problem_0010.solve( 0 )
+  # 142913828922
+  Problem_0010.solve( 2000000 )
 end
