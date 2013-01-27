@@ -44,6 +44,23 @@ module ProjectEuler
     true
   end
 
+  # Use the Sieve of Eratosthenes to initialize an array prime numbers.
+  def self.eratosthenes( n )
+    s = Array.new( n ) {|i| i}
+    s[0] = s[1] = nil
+
+    max = Math.sqrt( n )
+    i = 2
+
+    while i < max
+      (2*i...n).step( i ) {|j| s[j] = nil}
+      i += 1
+      i += 1 while i < max && !s[i]
+    end
+    
+    s.compact!
+  end
+
   # Perform exponentiation over a modulus, returning (b^e) % m.
   def self.modular_power( b, e, m )
     (1..e).inject( 1 ) {|c| (c * b) % m}
