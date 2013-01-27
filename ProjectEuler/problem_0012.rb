@@ -28,10 +28,19 @@ class Problem_0012
   # divisors?
 
   def self.solve( n )
-    puts "?"
+    i = t = f = 0
+
+    until f > n
+      i += 1
+      t += i
+      f = ProjectEuler.factors( t ).count
+    end
+
+    puts t
   end
 end
 
 ProjectEuler.time do
+  # 76576500
   Problem_0012.solve( 500 )
 end
