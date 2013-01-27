@@ -5,6 +5,14 @@ module ProjectEuler
     puts "%.10f%s" % [Time.now.to_f - start, 's']
   end
   
+  def self.factors( n )
+    arr = [1]
+    max = Math.sqrt( n ).to_i
+    
+    arr += (2..max).select {|x| 0 == n % x}
+    arr |= arr.map {|x| n / x}
+  end
+
   def self.prime_factors( n )
     arr = []
     i = 2
