@@ -73,4 +73,24 @@ module ProjectEuler
   def self.modular_power( b, e, m )
     (1..e).inject( 1 ) {|c| (c * b) % m}
   end
+
+  def self.collatz( n )
+    arr = [n]
+    while 1 != n
+      n = (1 == n & 1) ? 3*n + 1 : n >> 1
+      arr << n
+    end
+    
+    arr
+  end
+
+  def self.collatz_length( n )
+    l = 1
+    while 1 != n
+      n = (1 == n & 1) ? 3*n + 1 : n >> 1
+      l += 1
+    end
+    
+    l
+  end
 end
