@@ -22,10 +22,22 @@ class Problem_0014
   # NOTE: Once the chain starts the terms are allowed to go above one million.
 
   def self.solve( n )
-    puts "?"
+    m = 1
+    max = 1
+
+    (1...n).each do |i|
+      l = ProjectEuler.collatz_length( i )
+      if l > max
+        m = i
+        max = l
+      end
+    end
+
+    puts m
   end
 end
 
 ProjectEuler.time do
+  # 837799
   Problem_0014.solve( 1000000 )
 end
