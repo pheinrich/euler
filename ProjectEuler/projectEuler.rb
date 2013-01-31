@@ -1,3 +1,10 @@
+class Integer
+  # Add a unary factorial (!) function to all integers.
+  def fact
+    (1..self).reduce(:*)
+  end
+end
+
 module ProjectEuler
   def self.time
     start = Time.now.to_f
