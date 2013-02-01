@@ -29,5 +29,6 @@ class Problem_0015
 end
 
 ProjectEuler.time do
+  # 137846528820
   Problem_0015.solve( 20 )
 end
