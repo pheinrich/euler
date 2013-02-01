@@ -41,6 +41,13 @@ describe Integer do
     end
   end
 
+  describe "#sum_digits" do
+    it "adds the decimal digits representing a number" do
+      0.sum_digits.should be( 0 )
+      987654.sum_digits.should be( 39 )
+    end
+  end
+
   describe "#collatz" do
     it "returns an array of the Collatz sequence starting at n" do
       0.collatz.should be_nil

@@ -56,7 +56,12 @@ class Integer
   def fact
     (1..self).reduce( :* ) || 0
   end
-    
+
+  # Compute the sum of the decimal digits in this number.
+  def sum_digits
+    self.to_s.split( "" ).inject( 0 ) {|sum, n| sum + n.to_i}
+  end
+
   # Return the Collatz sequence for the specified number.
   def collatz
     return nil if self < 1
