@@ -26,7 +26,7 @@ class Problem_0014
     max = 1
 
     (1...n).each do |i|
-      l = ProjectEuler.collatz_length( i )
+      l = i.collatz_length
       if l > max
         m = i
         max = l

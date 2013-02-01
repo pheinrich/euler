@@ -12,7 +12,7 @@ class Problem_0007
     p = 2
 
     while 1 < n
-      if ProjectEuler.prime?( i )
+      if i.prime?
         p = i
         n -= 1
       end

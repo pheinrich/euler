@@ -14,7 +14,7 @@ class Problem_0005
     # Collect the prime factors of all values up to n.
     (2..n).each do |x|
       tmp = Array.new( arr )
-      ProjectEuler.prime_factors( x ).each do |f|
+      x.prime_factors.each do |f|
         
         # If our prime factor collection has at least as many copies of the
         # current factor as are needed by the current value, we're good.

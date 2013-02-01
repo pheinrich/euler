@@ -33,7 +33,7 @@ class Problem_0012
     until f > n
       i += 1
       t += i
-      f = ProjectEuler.factors( t ).count
+      f = t.factors.count
     end
 
     puts t

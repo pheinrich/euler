@@ -7,7 +7,7 @@ class Problem_0003
   # What is the largest prime factor of the number 600851475143?
 
   def self.solve( n )
-    puts ProjectEuler.prime_factors( n )[-1]
+    puts n.prime_factors[-1]
   end
 end
 
