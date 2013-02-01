@@ -37,7 +37,11 @@ describe Integer do
     it "computes the product of all integers up to n" do
       0.fact.should be( 0 )
       -5.fact.should be( 0 )
-      14.fact.should be( 87178291200 )
+      12.fact.should be( 479001600 )  # largest result that will fit in 32 bits
+
+      # These results generate objects (Bignum), so we must use eq(). 
+      21.fact.should eq( 51090942171709440000 )
+      30.fact.should eq( 265252859812191058636308480000000 )
     end
   end
 
@@ -45,6 +49,10 @@ describe Integer do
     it "adds the decimal digits representing a number" do
       0.sum_digits.should be( 0 )
       987654.sum_digits.should be( 39 )
+
+      # Check some other bases.
+      66272.sum_digits( 8 ).should be( 10 )
+      99182267.sum_digits( 4 ).should be( 26 )
     end
   end
 
