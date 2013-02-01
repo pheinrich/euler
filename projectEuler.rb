@@ -58,8 +58,8 @@ class Integer
   end
 
   # Compute the sum of the decimal digits in this number.
-  def sum_digits
-    self.to_s.split( "" ).inject( 0 ) {|sum, n| sum + n.to_i}
+  def sum_digits( base = 10 )
+    self.to_s( base ).split( "" ).inject( 0 ) {|sum, n| sum + n.to_i}
   end
 
   # Return the Collatz sequence for the specified number.
