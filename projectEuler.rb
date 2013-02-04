@@ -143,4 +143,24 @@ module ProjectEuler
       return "%s-%s" % [OVER_20[tens], UNDER_20[ones - 1]]
     end
   end
+
+  THOUSANDS = %w(thousand million billion trillion quadrillion quintillion )
+  def self.niw( n, depth = 0 )
+    return "too big" if 0xffffffffffffffff < n
+  
+    if 999 < n
+      s = "%s %s" % [niw( n / 1000, 1 + depth ), THOUSANDS[depth]]
+      n %= 1000
+    end
+ 
+    if 99 < n
+      hundreds, tens = (n / 100) - 1, n % 100
+      return "#{UNDER_20[hundreds]} hundred" if 0 == tens
+      return "%s hundred and %s" % [UNDER_20[hundreds], number_in_words( tens )]
+    else
+      tens, ones = (n / 10) - 2, n % 10
+      return OVER_20[tens] if 0 == ones
+      return "%s-%s" % [OVER_20[tens], UNDER_20[ones - 1]]
+    end
+  end
 end
