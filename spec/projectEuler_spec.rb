@@ -105,4 +105,15 @@ describe ProjectEuler do
       ProjectEuler.modular_power( 1234, 567, 890 ).should be( 304 )
     end
   end
+
+  describe ".number_in_words" do
+    it "expresses a number less than 1000 in English words" do
+      ProjectEuler.number_in_words( 0 ).should eq( 'zero' )
+      ProjectEuler.number_in_words( 12 ).should eq( 'twelve' )
+      ProjectEuler.number_in_words( 79 ).should eq( 'seventy-nine' )
+      ProjectEuler.number_in_words( 200 ).should eq( 'two hundred' )
+      ProjectEuler.number_in_words( 893 ).should eq( 'eight hundred and ninety-three' )
+      ProjectEuler.number_in_words( 1004 ).should eq( 'too big' )
+    end
+  end
 end

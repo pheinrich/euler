@@ -1,4 +1,4 @@
-class Integer
+  class Integer
   # Return a sorted array of divisors.
   def factors
     arr = [1]
@@ -121,5 +121,26 @@ module ProjectEuler
   # Perform exponentiation over a modulus, returning (b^e) % m.
   def self.modular_power( b, e, m )
     (1..e).inject( 1 ) {|c| (c * b) % m}
+  end
+
+  UNDER_20  = %w(one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen)
+  OVER_20   = %w(twenty thirty forty fifty sixty seventy eighty ninety)
+
+  # Express a number in English words.
+  def self.number_in_words( n )
+    return "zero" if 0 == n
+    return UNDER_20[n - 1] if 20 > n
+
+    if 999 < n
+      return "too big"
+    elsif 99 < n
+      hundreds, tens = (n / 100) - 1, n % 100
+      return "#{UNDER_20[hundreds]} hundred" if 0 == tens
+      return "%s hundred and %s" % [UNDER_20[hundreds], number_in_words( tens )]
+    else
+      tens, ones = (n / 10) - 2, n % 10
+      return OVER_20[tens] if 0 == ones
+      return "%s-%s" % [OVER_20[tens], UNDER_20[ones - 1]]
+    end
   end
 end
