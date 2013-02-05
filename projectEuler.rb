@@ -142,4 +142,15 @@ module ProjectEuler
   def self.modular_power( b, e, m )
     (1..e).inject( 1 ) {|c| (c * b) % m}
   end
+
+  def self.tree_sum( t, rows )
+    from = t[rows*(rows - 1)/2, rows]
+
+    (rows - 1).downto( 1 ) do |i|
+      to = i*(i - 1)/2
+      i.times {|j| from[j] = t[to + j] + from[j, 2].max}
+    end
+
+    from[0]
+  end
 end

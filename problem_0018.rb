@@ -36,13 +36,7 @@ class Problem_0018
   # and requires a clever method! ;o)
 
   def self.solve( n )
-    from = N[n*(n - 1)/2, n]
-    (n-1).downto( 1 ) do |i|
-      to = i*(i - 1)/2
-      i.times {|j| from[j] = N[to + j] + from[j, 2].max}
-    end
-    
-    puts from[0]
+    puts ProjectEuler.tree_sum( N, n )
   end
 end
 
