@@ -113,7 +113,9 @@ describe ProjectEuler do
       ProjectEuler.number_in_words( 79 ).should eq( 'seventy-nine' )
       ProjectEuler.number_in_words( 200 ).should eq( 'two hundred' )
       ProjectEuler.number_in_words( 893 ).should eq( 'eight hundred and ninety-three' )
-      ProjectEuler.number_in_words( 1004 ).should eq( 'too big' )
+      ProjectEuler.number_in_words( 1004 ).should eq( 'one thousand four' )
+      ProjectEuler.number_in_words( 8890 ).should eq( 'eight thousand eight hundred and ninety' )
+      ProjectEuler.number_in_words( 2300754 ).should eq( 'two million three hundred thousand seven hundred and fifty-four' )
     end
   end
 end

@@ -1,4 +1,4 @@
-  class Integer
+class Integer
   # Return a sorted array of divisors.
   def factors
     arr = [1]
@@ -123,44 +123,28 @@ module ProjectEuler
     (1..e).inject( 1 ) {|c| (c * b) % m}
   end
 
-  UNDER_20  = %w(one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen)
-  OVER_20   = %w(twenty thirty forty fifty sixty seventy eighty ninety)
+  NIW_SML = %w(zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen)
+  NIW_MED = %w(twenty thirty forty fifty sixty seventy eighty ninety)
+  NIW_LRG = %w(thousand million billion trillion quadrillion quintillion)
 
   # Express a number in English words.
-  def self.number_in_words( n )
-    return "zero" if 0 == n
-    return UNDER_20[n - 1] if 20 > n
-
+  def self.number_in_words( n, depth = 0 )
     if 999 < n
-      return "too big"
+      q, r = n/1000, n%1000
+      s = "#{number_in_words( q, 1 + depth )} #{NIW_LRG[depth]}"
+      s += " #{number_in_words( r, depth )}" if 0 != r
     elsif 99 < n
-      hundreds, tens = (n / 100) - 1, n % 100
-      return "#{UNDER_20[hundreds]} hundred" if 0 == tens
-      return "%s hundred and %s" % [UNDER_20[hundreds], number_in_words( tens )]
+      q, r = n/100, n%100
+      s = "#{number_in_words( q, 1 + depth )} hundred"
+      s += " and #{number_in_words( r, depth )}" if 0 != r
+    elsif 19 < n
+      q, r = n/10 - 2, n%10
+      s = "#{NIW_MED[q]}"
+      s += "-#{NIW_SML[r]}" if 0 != r
     else
-      tens, ones = (n / 10) - 2, n % 10
-      return OVER_20[tens] if 0 == ones
-      return "%s-%s" % [OVER_20[tens], UNDER_20[ones - 1]]
+      s = NIW_SML[n]
     end
-  end
 
-  THOUSANDS = %w(thousand million billion trillion quadrillion quintillion )
-  def self.niw( n, depth = 0 )
-    return "too big" if 0xffffffffffffffff < n
-  
-    if 999 < n
-      s = "%s %s" % [niw( n / 1000, 1 + depth ), THOUSANDS[depth]]
-      n %= 1000
-    end
- 
-    if 99 < n
-      hundreds, tens = (n / 100) - 1, n % 100
-      return "#{UNDER_20[hundreds]} hundred" if 0 == tens
-      return "%s hundred and %s" % [UNDER_20[hundreds], number_in_words( tens )]
-    else
-      tens, ones = (n / 10) - 2, n % 10
-      return OVER_20[tens] if 0 == ones
-      return "%s-%s" % [OVER_20[tens], UNDER_20[ones - 1]]
-    end
+    return s
   end
 end
