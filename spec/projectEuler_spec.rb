@@ -73,6 +73,19 @@ describe Integer do
       772283.collatz_length.should be( 194 )
     end
   end
+
+  describe "#in_words" do
+    it "expresses a number less than 1000 in English words" do
+      0.in_words.should eq( 'zero' )
+      12.in_words.should eq( 'twelve' )
+      79.in_words.should eq( 'seventy-nine' )
+      200.in_words.should eq( 'two hundred' )
+      893.in_words.should eq( 'eight hundred and ninety-three' )
+      1004.in_words.should eq( 'one thousand four' )
+      8890.in_words.should eq( 'eight thousand eight hundred and ninety' )
+      2300754.in_words.should eq( 'two million three hundred thousand seven hundred and fifty-four' )
+    end
+  end
 end
 
 describe ProjectEuler do
@@ -103,19 +116,6 @@ describe ProjectEuler do
   describe ".modular_power" do
     it "performs exponentiation over a modulus" do
       ProjectEuler.modular_power( 1234, 567, 890 ).should be( 304 )
-    end
-  end
-
-  describe ".number_in_words" do
-    it "expresses a number less than 1000 in English words" do
-      ProjectEuler.number_in_words( 0 ).should eq( 'zero' )
-      ProjectEuler.number_in_words( 12 ).should eq( 'twelve' )
-      ProjectEuler.number_in_words( 79 ).should eq( 'seventy-nine' )
-      ProjectEuler.number_in_words( 200 ).should eq( 'two hundred' )
-      ProjectEuler.number_in_words( 893 ).should eq( 'eight hundred and ninety-three' )
-      ProjectEuler.number_in_words( 1004 ).should eq( 'one thousand four' )
-      ProjectEuler.number_in_words( 8890 ).should eq( 'eight thousand eight hundred and ninety' )
-      ProjectEuler.number_in_words( 2300754 ).should eq( 'two million three hundred thousand seven hundred and fifty-four' )
     end
   end
 end

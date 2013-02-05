@@ -91,6 +91,26 @@ class Integer
     
     len
   end
+  
+  NIW_SML = %w(zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen)
+  NIW_MED = %w(twenty thirty forty fifty sixty seventy eighty ninety)
+  NIW_LRG = %w(thousand million billion trillion quadrillion quintillion)
+
+  # Express a number in English words.
+  def in_words( depth = 0 )
+    if 999 < self
+      q, r = self / 1000, self % 1000
+      "#{q.in_words( 1 + depth )} #{NIW_LRG[depth]}%s" % (0 != r ? " #{r.in_words( depth )}" : "")
+    elsif 99 < self
+      q, r = self / 100, self % 100
+      "#{q.in_words( 1 + depth )} hundred%s" % (0 != r ? " and #{r.in_words( depth )}" : "")
+    elsif 19 < self
+      q, r = self / 10 - 2, self % 10
+      "#{NIW_MED[q]}%s" % (0 != r ? "-#{NIW_SML[r]}" : "")
+    else
+      NIW_SML[self]
+    end
+  end
 end
 
 module ProjectEuler
@@ -121,30 +141,5 @@ module ProjectEuler
   # Perform exponentiation over a modulus, returning (b^e) % m.
   def self.modular_power( b, e, m )
     (1..e).inject( 1 ) {|c| (c * b) % m}
-  end
-
-  NIW_SML = %w(zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen)
-  NIW_MED = %w(twenty thirty forty fifty sixty seventy eighty ninety)
-  NIW_LRG = %w(thousand million billion trillion quadrillion quintillion)
-
-  # Express a number in English words.
-  def self.number_in_words( n, depth = 0 )
-    if 999 < n
-      q, r = n/1000, n%1000
-      s = "#{number_in_words( q, 1 + depth )} #{NIW_LRG[depth]}"
-      s += " #{number_in_words( r, depth )}" if 0 != r
-    elsif 99 < n
-      q, r = n/100, n%100
-      s = "#{number_in_words( q, 1 + depth )} hundred"
-      s += " and #{number_in_words( r, depth )}" if 0 != r
-    elsif 19 < n
-      q, r = n/10 - 2, n%10
-      s = "#{NIW_MED[q]}"
-      s += "-#{NIW_SML[r]}" if 0 != r
-    else
-      s = NIW_SML[n]
-    end
-
-    return s
   end
 end

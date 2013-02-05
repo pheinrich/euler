@@ -14,7 +14,7 @@ class Problem_0017
   # with British usage.
 
   def self.solve( n )
-    puts( (1..n).inject( 0 ) {|sum, i| sum + ProjectEuler.number_in_words( i ).delete(' -').length} )
+    puts( (1..n).inject( 0 ) {|sum, i| sum + i.in_words.delete(' -').length} )
   end
 end
 
