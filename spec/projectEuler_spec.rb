@@ -7,6 +7,7 @@ describe Integer do
 
   describe "#factors" do
     it "returns a sorted array of divisors" do
+      0.factors.should eq( [0] )
       240.factors.should eq( [1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 16, 20, 24, 30, 40, 48, 60, 80, 120, 240] )
       10784.factors.should eq( [1, 2, 4, 8, 16, 32, 337, 674, 1348, 2696, 5392, 10784] )
       10099.factors.should eq( [1, 10099] )
@@ -71,6 +72,19 @@ describe Integer do
       1.collatz_length.should be( 1 )
       198.collatz_length.should be( 27 )
       772283.collatz_length.should be( 194 )
+    end
+  end
+
+  describe "#amicable?" do
+    it "returns true if n forms part of an amicable pair" do
+      220.should be_amicable
+      5564.should be_amicable
+      88730.should be_amicable
+      503056.should be_amicable
+
+      0.should_not be_amicable
+      1.should_not be_amicable
+      6.should_not be_amicable
     end
   end
 

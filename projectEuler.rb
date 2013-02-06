@@ -1,6 +1,8 @@
 class Integer
   # Return a sorted array of divisors.
   def factors
+    return [0] if 0 == self
+
     arr = [1]
     max = Math.sqrt( self ).to_i
     
@@ -94,8 +96,9 @@ class Integer
 
   # Returns true if a number forms part of an amicable pair.
   def amicable?
-    p = self.factors.reduce(:+) - self
-    0 < p && p != self && p.factors.reduce(:+) - p == self
+    return false if 0 == self
+    p = self.factors.reduce( :+ ) - self
+    p != self && p.factors.reduce( :+ ) - p == self
   end
 
   NIW_SML = %w(zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen)
