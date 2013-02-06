@@ -91,7 +91,13 @@ class Integer
     
     len
   end
-  
+
+  # Returns true if a number forms part of an amicable pair.
+  def amicable?
+    p = self.factors.reduce(:+) - self
+    0 < p && p != self && p.factors.reduce(:+) - p == self
+  end
+
   NIW_SML = %w(zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen)
   NIW_MED = %w(twenty thirty forty fifty sixty seventy eighty ninety)
   NIW_LRG = %w(thousand million billion trillion quadrillion quintillion)
