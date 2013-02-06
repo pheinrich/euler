@@ -143,6 +143,7 @@ module ProjectEuler
     (1..e).inject( 1 ) {|c| (c * b) % m}
   end
 
+  # Aggregate tree node weights from the bottom up.
   def self.tree_sum( t, rows )
     from = t[rows*(rows - 1)/2, rows]
 
