@@ -88,6 +88,30 @@ describe Integer do
     end
   end
 
+  describe "#perfect?" do
+    it "returns true if a number's divisors sum to the number" do
+      6.should be_perfect
+      28.should be_perfect
+      8128.should be_perfect
+    end
+  end
+
+  describe "#abundant?" do
+    it "returns true if a number's divisors sum to less than the number" do
+      12.should be_abundant
+      714.should be_abundant
+      109944.should be_abundant
+    end
+  end
+
+  describe "#deficient?" do
+    it "returns true if a number's divisors sum to more than the number" do
+      22.should be_deficient
+      615.should be_deficient
+      5512371.should be_deficient
+    end
+  end
+
   describe "#in_words" do
     it "expresses a number less than 1000 in English words" do
       0.in_words.should eq( 'zero' )

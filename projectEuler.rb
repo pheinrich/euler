@@ -101,6 +101,21 @@ class Integer
     p != self && p.factors.reduce( :+ ) - p == self
   end
 
+  # Returns true if the sum of a number's divisors equals the number.
+  def perfect?
+    self.factors.reduce( :+ ) == self << 1
+  end
+
+  # Returns true if the sum of a number's divisors is greater than the number.
+  def abundant?
+    self.factors.reduce( :+ ) > self << 1
+  end
+
+  # Returns true if the sum of a number's divisiors is less than the number.
+  def deficient?
+    self.factors.reduce( :+ ) < self << 1
+  end
+
   NIW_SML = %w(zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen)
   NIW_MED = %w(twenty thirty forty fifty sixty seventy eighty ninety)
   NIW_LRG = %w(thousand million billion trillion quadrillion quintillion)
