@@ -22,7 +22,7 @@ class Problem_0067
   # efficient algorithm to solve it. ;o)
 
   def self.solve( n )
-    t = IO.read( 'triangle.txt' ).split.map(&:to_i)
+    t = IO.read( 'resources/triangle.txt' ).split.map(&:to_i)
     puts ProjectEuler.tree_sum( t, n )
   end
 end

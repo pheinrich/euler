@@ -15,7 +15,7 @@ class Problem_0022
 
   def self.solve
     # Strip quotes and split comma-separated values into a sorted array.
-    names = IO.read( 'names.txt' ).delete( '\"' ).split( ',' ).sort
+    names = IO.read( 'resources/names.txt' ).delete( '\"' ).split( ',' ).sort
 
     # Add all character values together, then account for offset value of 'A'.
     names.map! {|n| n.bytes.inject( :+ ) - (n.length << 6)}
