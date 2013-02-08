@@ -22,11 +22,30 @@ class Problem_0023
   # sum of two abundant numbers.
 
   def self.solve( n )
-    arr = (0..n).select {|i| i.abundant?}
+    # Precompute the abundant numbers below the max.
+    abn = (0..n).select {|i| i.abundant?}
+    notsum = Array.new( n ) {|i| i}
+
+    # Pairwise-add all abundant numbers.
+    abn.each_with_index do |x, i|
+      (i..abn.length).each do |j|
+        sum = x + abn[j]
+        
+        # If it's a number outside the range, we don't have to do any numbers
+        # above this one.
+        break if sum > n
+
+        # Clear the sum's contribution to the final total.
+        notsum[sum] = 0
+      end
+    end
+
+    # Add up all the numbers not identified as sums.
+    puts notsum.reduce( :+ )
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 4179871
   Problem_0023.solve( 28123 )
 end
