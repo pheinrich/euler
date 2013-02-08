@@ -18,5 +18,5 @@ end
 
 ProjectEuler.time do
   # 
-  Problem_0024.solve( 100000 )
+  Problem_0024.solve( 1000000 )
 end
