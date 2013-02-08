@@ -4,7 +4,7 @@ require 'projectEuler'
 class Problem_0025
   # The Fibonacci sequence is defined by the recurrence relation:
   #
-  # F[n] = F[n - 1] + F[n - 2], where F[1] = 1 and F[2][ = 1.
+  # F[n] = F[n - 1] + F[n - 2], where F[1] = 1 and F[2] = 1.
   #
   # Hence the first 12 terms will be:
   #
@@ -26,10 +26,21 @@ class Problem_0025
   # What is the first term in the Fibonacci sequence to contain 1000 digits?
 
   def self.solve( n )
+    term = 1
+    curr = 0
+    succ = 1
+
+    # Sum/count terms until one is 
+    while succ < 10**(n - 1)
+      term += 1
+      curr, succ = succ, curr + succ
+    end
+
+    puts term
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 4782
   Problem_0025.solve( 1000 )
 end
