@@ -17,10 +17,19 @@ class Problem_0030
   # powers of their digits.
 
   def self.solve( n )
+    p = (0..9).map {|i| i**n}
+
+    # Determine the largest number of digits possible with the powers given.
+    lim = 0
+    lim += 1 while 10**lim - 1 <= p[9] * lim
+    lim = 10**lim - 1
+
+    # Brute force every number with that many digits or fewer.
+    puts (2..lim).select {|i| i == i.to_s.chars.inject( 0 ) {|a, x| a + p[x.to_i]}}.reduce( :+ )
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 443839
   Problem_0030.solve( 5 )
 end
