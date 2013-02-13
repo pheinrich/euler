@@ -17,10 +17,35 @@ class Problem_0028
   # formed in the same way?
 
   def self.solve( n )
+    # For each enclosing rectangle, index 0 < i < (n - 1)/2, the corner values
+    # are given by:
+    #
+    #     lr[0] = ll[0] = ul[0] = ur[0] = 1, and
+    #
+    #     lr[i+1] = lr[i] + 8*i + 2
+    #     ll[i+i] = ll[i] + 8*i + 4 = lr[i] + 10*i + 4
+    #     ul[i+1] = ul[i] + 8*i + 6 = lr[i] + 12*i + 6
+    #     ur[i+i] = ur[i] + 8*i + 8 = lr[i] + 14*i + 8
+    #
+    # The sum of the corners of rectangle i for 0 < i is then given by
+    #
+    #     sum[i+1] = lr[i+1] + ll[i+1] + ul[i+1] + ur[i+1] = 4*lr[i] + 44*i + 20
+    #     sum[i+1] = sum[i] + 32*i + 20
+
+    sum = 4
+    total = 0
+
+    0.upto( n >> 1 ) do |i|
+      total += sum
+      sum += ((i << 3) + 5) << 2
+    end
+
+    # The center 1 was counted four times, so adjust.
+    puts total - 3
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 669171001
   Problem_0028.solve( 1001 )
 end
