@@ -18,10 +18,15 @@ class Problem_0029
   # 2 <= a <= 100 and 2 <= b <= 100?
 
   def self.solve( n )
+    # Brute force.
+    arr = []
+    2.upto( n ) {|a| 2.upto( n ) {|b| arr << a**b}}
+
+    puts arr.uniq!.length
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 9183
   Problem_0029.solve( 100 )
 end
