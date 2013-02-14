@@ -16,10 +16,21 @@ class Problem_0032
   # only include it once in your sum.
 
   def self.solve()
+    perms = (1..9).to_a.permutation.map {|p| p.join}
+    prods = []
+
+    perms.each do |p|
+      (1..2).each do |len|
+        a, b, c = p[0, len].to_i, p[len..4].to_i, p[5, 4].to_i
+        prods << c if a * b == c
+      end
+    end
+    
+    puts prods.uniq.reduce( :+ )
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 45228
   Problem_0032.solve()
 end
