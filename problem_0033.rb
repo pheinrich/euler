@@ -16,10 +16,40 @@ class Problem_0033
   # terms, find the value of the denominator.
 
   def self.solve()
+    prod = 1
+
+    # Don't include 10 since there's no non-trivial solution that includes it.
+    11.upto( 98 ) do |n|
+      na = n.to_s.chars.to_a
+
+      # Only check values greater than the numerator, since we know n/d < 1.
+      (n+1).upto( 99 ) do |d|
+        nd = Rational( n, d )
+        da = d.to_s.chars.to_a
+
+        # Do nothing if numerator and denominator share no digits, or if the
+        # only shared digit is 0.
+        shared = (na & da)
+        unless shared.empty? || (na | da).include?( "0" )
+          # Remove the shared digit from both values.  If the digit is doubled
+          # (e.g. 11, 22, 33, etc.) adjust the result after removal ("") to
+          # cancel only one instance of the digit. 
+          u, v = (na - da)[0].to_i, (da - na)[0].to_i
+          u = shared[0].to_i if 0 == u
+          v = shared[0].to_i if 0 == v
+
+          # Include the resulting fraction in the result if appropriate.
+          r = Rational( u, v )
+          prod *= r if nd == r
+        end
+      end
+    end
+
+    puts prod.denominator
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 100
   Problem_0033.solve()
 end
