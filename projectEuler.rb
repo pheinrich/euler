@@ -56,7 +56,8 @@ class Integer
 
   # Add a unary factorial (!) function to all integers.
   def fact
-    (1..self).reduce( :* ) || 0
+    raise Math::DomainError, 'Factorial non-extendable to negative integers' if 0 > self
+    (1..self).reduce( :* ) || 1
   end
 
   # Compute the sum of the decimal digits in this number.

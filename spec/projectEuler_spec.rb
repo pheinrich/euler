@@ -36,8 +36,8 @@ describe Integer do
 
   describe "#fact" do
     it "computes the product of all integers up to n" do
-      0.fact.should be( 0 )
-      -5.fact.should be( 0 )
+      expect { -5.fact }.to raise_error( Math::DomainError )
+      0.fact.should be( 1 )
       12.fact.should be( 479001600 )  # largest result that will fit in 32 bits
 
       # These results generate objects (Bignum), so we must use eq(). 
