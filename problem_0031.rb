@@ -15,7 +15,7 @@ class Problem_0031
 
   def self.fit( n, denoms, sum = 0, index = 0, total = 0 )
     if index < denoms.length
-      0.step( n - sum, denoms[index]) do |x|
+      0.step( n - sum, denoms[index] ) do |x|
         total = fit( n, denoms, x + sum, 1 + index, total )
       end
     elsif sum == n
