@@ -138,6 +138,12 @@ class Integer
   end
 end
 
+class String
+  def palindromic?
+    reverse.start_with?( self[0, length >> 1] )
+  end
+end
+
 module ProjectEuler
   def self.time
     start = Time.now.to_f

@@ -113,7 +113,7 @@ describe Integer do
   end
 
   describe "#in_words" do
-    it "expresses a number less than 1000 in English words" do
+    it "expresses an integer number in English words" do
       0.in_words.should eq( 'zero' )
       12.in_words.should eq( 'twelve' )
       79.in_words.should eq( 'seventy-nine' )
@@ -122,6 +122,23 @@ describe Integer do
       1004.in_words.should eq( 'one thousand four' )
       8890.in_words.should eq( 'eight thousand eight hundred and ninety' )
       2300754.in_words.should eq( 'two million three hundred thousand seven hundred and fifty-four' )
+    end
+  end
+end
+
+describe String do
+  it "provides some additional string utilities" do
+  end
+
+  describe "#palindromic?" do
+    it "returns true if a string reads the same backwards and forwards" do
+      "A".should be_palindromic
+
+      "ABA".should be_palindromic
+      "ABC".should_not be_palindromic
+
+      "ABBA".should be_palindromic
+      "ABCD".should_not be_palindromic
     end
   end
 end
