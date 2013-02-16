@@ -12,10 +12,11 @@ class Problem_0036
   # leading zeros.)
 
   def self.solve( n )
+    puts( (0...n).select {|i| i.to_s.palindromic? && i.to_s(2).palindromic?}.reduce( :+ ) )
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 872187
   Problem_0036.solve( 1000000 )
 end
