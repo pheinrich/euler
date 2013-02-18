@@ -9,10 +9,19 @@ class Problem_0041
   # What is the largest n-digit pandigital prime that exists?
 
   def self.solve()
+    max = nil
+
+    # Start with the longest possible and work down.    
+    9.downto( 1 ) do |i|
+      max = Array.new( i ) {|j| 1 + j}.permutation.to_a.map! {|j| j.join.to_i}.select {|j| j.prime? }.max
+      break if max
+    end
+    
+    puts max
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 7652413
   Problem_0041.solve()
 end
