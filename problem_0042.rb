@@ -16,10 +16,23 @@ class Problem_0042
   # English words, how many are triangle words?
 
   def self.solve()
+    # Strip quotes and split comma-separated values into a sorted array.
+    words = IO.read( 'resources/words.txt' ).delete( '\"' ).split( ',' )
+
+    # Add all character values together, then account for offset value of 'A'.
+    words.map! {|i| i.bytes.inject( :+ ) - (i.length << 6)}
+
+    # Create an array of triangle numbers using the max word score as starting
+    # length.  This will far bigger than necessary, but still reasonably small
+    # and cheap computationally.
+    t = Array.new( words.max ) {|i| i*(i + 1) / 2}
+
+    # Count the number of words whose length corresponds to a triangle number.
+    puts words.count {|i| t.include?( i )}
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 162
   Problem_0042.solve()
 end
