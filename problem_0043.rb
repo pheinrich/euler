@@ -20,6 +20,12 @@ class Problem_0043
   # Find the sum of all 0 to 9 pandigital numbers with this property.
 
   def self.solve()
+    # Initialize some lists of 3-digit numbers divisible by the first few
+    # primes.  That is, 2|all values in p[0]; 3|all values in p[1], etc.
+    p = [2, 3, 5, 7, 11, 13, 17]
+    d = p.map {|i| (100..999).select {|j| 0 == j % i}}
+
+    
   end
 end
 
