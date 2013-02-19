@@ -13,10 +13,22 @@ class Problem_0037
   # NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 
   def self.solve()
+    p = ProjectEuler.eratosthenes( 1000000 ).map( &:to_s ).select {|s| s =~ /^[25]?[1379]*$/ }
+    sum = 0
+
+    for s in p
+      next if 1 == s.length
+      next if true == (1...s.length).each {|i| break true if !s[i..-1].to_i.prime?}
+      next if true == (1..s.length).each {|i| break true if !s[0..-i].to_i.prime?}
+
+      sum += s.to_i
+    end
+
+    puts sum
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 748317
   Problem_0037.solve()
 end
