@@ -9,55 +9,51 @@ class Problem_0043
   # Let d[1] be the 1st digit, d[2] be the 2nd digit, and so on. In this way,
   # we note the following:
   #
-  #     d[2]d[3]d[4]  = 406 is divisible by 2  d[1] = j
-  #     d[3]d[4]d[5]  = 063 is divisible by 3  d[2] = k
-  #     d[4]d[5]d[6]  = 635 is divisible by 5  d[3] = l
-  #     d[5]d[6]d[7]  = 357 is divisible by 7  d[4] = m
-  #     d[6]d[7]d[8]  = 572 is divisible by 11 d[5] = n
-  #     d[7]d[8]d[9]  = 728 is divisible by 13 d[6] = o
-  #     d[8]d[9]d[10] = 289 is divisible by 17 d[7] = p
+  #     d[2]d[3]d[4]  = 406 is divisible by 2
+  #     d[3]d[4]d[5]  = 063 is divisible by 3
+  #     d[4]d[5]d[6]  = 635 is divisible by 5
+  #     d[5]d[6]d[7]  = 357 is divisible by 7
+  #     d[6]d[7]d[8]  = 572 is divisible by 11
+  #     d[7]d[8]d[9]  = 728 is divisible by 13
+  #     d[8]d[9]d[10] = 289 is divisible by 17
   #
   # Find the sum of all 0 to 9 pandigital numbers with this property.
 
-  def self.solve()
-    # Initialize some lists of 3-digit numbers divisible by the first few
-    # primes.  That is, 2|all values in p[0]; 3|all values in p[1], etc.
-    p = [1, 2, 3, 5, 7, 11, 13, 17]
-    d = p.map {|i| (12..987).reject {|j| 0 != j % i || "%03d" % j =~ /([0-9]).*\1/}.map {|k| "%03d" % k}}
-    sum = 0
+  def self.chain( maps, candidate = "", index = 0, sum = 0 )
+    if index < maps.length
+      maps[index].each do |a|
+        # If this is the first pass, the string will start with all three
+        # digits from the current divisor list.  Grab the first two here; the
+        # last will be added as we descend to the next level.
+        candidate = a[0, 2] if 0 == index
 
-    # Pretty much the ugliest implementation yet.
-    d[0].each do |i|
-      d[1].each do |j|
-        next if !j.start_with?( i[1, 2] )
-        d[2].each do |k|
-          next if !k.start_with?( j[1, 2] )
-          d[3].each do |l|
-            next if !l.start_with?( k[1, 2] )
-            d[4].each do |m|
-              next if !m.start_with?( l[1, 2] )
-              d[5].each do |n|
-                next if !n.start_with?( m[1, 2] )
-                d[6].each do |o|
-                  next if !o.start_with?( n[1, 2] )
-                  d[7].each do |p|
-                    next if !p.start_with?( o[1, 2] )
-                    s = i[0] + j + m + p
-                    sum += s.to_i unless s =~ /(.).*\1/
-                  end
-                end
-              end
-            end
-          end
-        end
+        # As we look at each divisor, skip the ones that don't start with the
+        # last two digits from the last level.
+        next if !a.start_with?( candidate[ -2, 2 ] )
+
+        # This divisor and the last overlap two digits, so descend to the next
+        # level and try to keep the chain going.
+        sum = chain( maps, candidate + a[-1], 1 + index, sum )
       end
+    else
+      # Add the current candidate to the total, as long as it doesn't repeat
+      # any digits.
+      sum += candidate.to_i unless candidate =~ /(.).*\1/
     end
 
-    puts sum
+    sum
+  end
+
+  def self.solve( divisors )
+    # Create an array of divisor lists.  Each list will contain all 3-digit
+    # values divisible by the corresponding entry from the divisors array, not
+    # including those with duplicated digits.
+    maps = divisors.map {|i| (12..987).reject {|j| 0 != j % i || "%03d" % j =~ /([0-9]).*\1/}.map {|k| "%03d" % k}}
+    puts chain( maps )
   end
 end
 
 ProjectEuler.time do
   # 16695334890
-  Problem_0043.solve()
+  Problem_0043.solve( [1, 2, 3, 5, 7, 11, 13, 17] )
 end
