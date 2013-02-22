@@ -21,13 +21,13 @@ class Problem_0067
   # would take over twenty billion years to check them all. There is an
   # efficient algorithm to solve it. ;o)
 
-  def self.solve( n )
+  def self.solve()
     t = IO.read( 'resources/triangle.txt' ).split.map(&:to_i)
-    puts ProjectEuler.tree_sum( t, n )
+    puts ProjectEuler.tree_sum( t )
   end
 end
 
 ProjectEuler.time do
   # 7273
-  Problem_0067.solve( 100 )
+  Problem_0067.solve()
 end

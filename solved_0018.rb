@@ -35,12 +35,12 @@ class Problem_0018
   # triangle containing one-hundred rows; it cannot be solved by brute force,
   # and requires a clever method! ;o)
 
-  def self.solve( n )
-    puts ProjectEuler.tree_sum( N, n )
+  def self.solve()
+    puts ProjectEuler.tree_sum( N )
   end
 end
 
 ProjectEuler.time do
   # 1074
-  Problem_0018.solve( 15 )
+  Problem_0018.solve()
 end

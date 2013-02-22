@@ -176,7 +176,8 @@ describe ProjectEuler do
 
   describe ".tree_sum" do
     it "adds rows from the bottom up of a triangle of numbers" do
-      ProjectEuler.tree_sum( [3, 7, 4, 2, 4, 6, 8, 5, 9, 3], 4 ).should be( 23 )
+      expect { ProjectEuler.tree_sum( [1, 2, 3, 4, 5 ] ) }.to raise_error( ArgumentError )
+      ProjectEuler.tree_sum( [3, 7, 4, 2, 4, 6, 8, 5, 9, 3] ).should be( 23 )
     end
   end
 end

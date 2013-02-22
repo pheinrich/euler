@@ -175,7 +175,11 @@ module ProjectEuler
   end
 
   # Aggregate tree node weights from the bottom up.
-  def self.tree_sum( t, rows )
+  def self.tree_sum( t )
+    d = Math.sqrt( 1 + (t.length << 3) )
+    raise ArgumentError, 'Array length not triangular' if d != d.to_i
+
+    rows = (d.to_i - 1) >> 1
     from = t[rows*(rows - 1)/2, rows]
 
     (rows - 1).downto( 1 ) do |i|
