@@ -34,6 +34,17 @@ describe Integer do
     end
   end
 
+  describe "#coprime?" do
+    it "returns true if a number is coprime with another" do
+      5.should be_coprime( 2 )
+      123.should be_coprime( 89 )
+      552638.should be_coprime( 66523 )
+
+      12.should_not be_coprime( 4 )
+      100.should_not be_coprime( 250 )
+    end
+  end
+
   describe "#fact" do
     it "computes the product of all integers up to n" do
       expect { -5.fact }.to raise_error( Math::DomainError )

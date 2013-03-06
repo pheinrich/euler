@@ -54,6 +54,11 @@ class Integer
     true
   end
 
+  # Determine if this number is coprime with another.
+  def coprime?( number )
+    return 1 == gcd( number )
+  end
+
   # Add a unary factorial (!) function to all integers.
   def fact
     raise Math::DomainError, 'Factorial non-extendable to negative integers' if 0 > self
