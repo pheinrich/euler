@@ -15,10 +15,43 @@ class Problem_0044
   # the value of D?
 
   def self.solve()
+    # Assume a large D to start.
+    min = 2 << (0.size << 3) - 1
+    j, dj = 5, 4
+
+    # Advance pentagonal numbers by adding a delta (which accelerates).  Stop
+    # when the delta gets bigger than our current minimum, since the next
+    # number's nearest neighbor will be too far away to generate a smaller D.
+    while dj < min
+      # Step backwards through the numbers less than the current one.
+      k, dk = j - dj, dj
+
+      # Stop looking backwards when the pair is too far apart to result in a
+      # smaller minimum.
+      while 1 < dk && j - k < min
+        d = (24*(j - k) + 1)**0.5
+        
+        # Check for pentagonality of difference.
+        if d == d.to_i && 5 == d % 6
+          s = (24*(j + k) + 1)**0.5
+          
+          # Check for pentagonality of sum.
+          min = j - k if s == s.to_i && 5 == s % 6
+        end
+      
+        dk -= 3
+        k -= dk
+      end
+
+      dj += 3
+      j += dj
+    end
+
+    puts min
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 5482660
   Problem_0044.solve()
 end
