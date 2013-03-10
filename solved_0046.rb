@@ -18,10 +18,26 @@ class Problem_0046
   # prime and twice a square?
 
   def self.solve()
+    n = 33
+    while true
+      begin
+        n += 2
+      end while n.prime?
+
+      s, ds = 2, 6
+      while s < n && !(n - s).prime?
+        s += ds
+        ds += 4
+      end
+
+      break if s >= n
+    end
+    
+    puts n
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 5777
   Problem_0046.solve()
 end
