@@ -18,10 +18,23 @@ class Problem_0047
   # factors. What is the first of these numbers?
 
   def self.solve( n )
+    cur = 2
+    arr = Array.new( n, 1 )
+
+    while arr[0] != arr[-1] - n + 1
+      begin
+        cur += 1
+      end while n != cur.prime_factors.uniq.length
+      
+      arr << cur
+      arr.shift
+    end
+
+    puts arr[0]
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 134043
   Problem_0047.solve( 4 )
 end
