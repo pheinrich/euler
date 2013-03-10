@@ -15,23 +15,24 @@ class Integer
   # duplicated (e.g. 234 = 2 x 3 x 3 x 13).
   def prime_factors
     arr = []
-    val = self
+    val, lim = self, self**0.5
     i = 2
   
     # Divide by prime numbers.  Stop when n has gotten too small to divide by
     # the latest prime (all smaller primes will have already been used).
-    while i <= val do
-      while val % i == 0 do
+    while i <= lim do
+      while 0 == val % i
         # If the current prime is a factor, keep factoring it out as long as
         # possible.  Non-prime multiples of previous factors won't get here.     
         arr << i
         val /= i
       end
   
-      # Advance to the next candidate. 
-      i = 1 if 2 == i
+      # Advance to the next candidate.
+      i = 1 if i == 2 
       i += 2
     end
+    arr << val if 1 < val
   
     arr
   end
