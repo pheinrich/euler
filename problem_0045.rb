@@ -13,11 +13,29 @@ class Problem_0045
   #
   # Find the next triangle number that is also pentagonal and hexagonal.
 
-  def self.solve( n )
+  def self.solve( t, p, h )
+    # Every hexagonal number is also triangular, so just look for numbers
+    # that are also pentagonal.
+    dp, dh = 3*p + 1, 4*h + 1
+    p = h = 2*h*h - h
+
+    begin
+      # Advance to the next hexagonal number.
+      h += dh
+      dh += 4
+
+      # Advance pentagonal numbers until we reach the current hexagonal one.
+      while p < h
+        p += dp
+        dp += 3
+      end
+    end while p != h
+
+    puts p
   end
 end
 
 ProjectEuler.time do
-  # 
-  Problem_0045.solve( 40755 )
+  # 1533776805
+  Problem_0045.solve( 285, 165, 143 )
 end
