@@ -13,12 +13,30 @@ class Problem_0049
   #
   # What 12-digit number do you form by concatenating the three terms in this
   # sequence?
-
+  P = ProjectEuler.eratosthenes( 10000 ).reject {|i| 1000 > i}.map {|i| [i, i.to_s.chars.sort.join]}
+  
   def self.solve()
+    P.each do |p|
+      m = P.select {|q| q[1] == p[1]}.map {|q| q[0]}
+      next if 3 > m.length || "1478" == p[1]
+
+      0.upto( m.length - 1 ).each do |j|
+        arr = []
+        0.upto( m.length - 1 ).each do |k|
+          d = (m[k] - m[j]).abs
+
+          if arr.include?( d )
+            puts "%d%d%d" % [m[k] - 2*d, m[k] - d, m[k]]
+            return
+          end
+          arr << d
+        end
+      end
+    end
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 296962999629
   Problem_0049.solve()
 end
