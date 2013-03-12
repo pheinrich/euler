@@ -16,10 +16,27 @@ class Problem_0050
   # consecutive primes?
 
   def self.solve( n )
+    h = Hash.new
+    ProjectEuler.eratosthenes( n ).each {|i| h[i] = true}
+
+    p = h.keys
+    max = run = 1
+
+    0.upto( p.length - 2 ) do |u|
+      s = p[u]
+      (u+1).upto( p.length - 1 ) do |v|
+        s += p[v]
+
+        break if s >= n
+        max, run = s, v - u if v - u > run && h[s]
+      end
+    end
+
+    puts "%d (%d primes)" % [max, 1 + run]
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 997651 (543 primes)
   Problem_0050.solve( 1000000 )
 end
