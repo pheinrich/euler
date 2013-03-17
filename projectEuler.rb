@@ -150,6 +150,68 @@ class String
   end
 end
 
+class PokerHand
+  include Comparable
+
+  RANK = "0123456789TJQKA"
+
+  def initialize( cards )
+    @cards = cards.sort {|x, y| RANK.index( y[0] ) <=> RANK.index( x[0]) }
+    @suits = @cards.map {|card| card[1]}.join
+    @cards = @cards.map {|card| card[0]}.join
+  end
+
+  def <=>( other )
+    self.rank <=> other.rank
+  end
+
+  def straight?
+    4 == RANK.index( @cards[0] ) - RANK.index( @cards[-1] )
+  end
+
+  def flush?
+    @suits =~ /(.)\1\1\1\1/
+  end
+
+  def rank
+    r = h = 0
+
+    case @cards
+    when /(.)\1\1\1/
+      # Four of a kind
+      r = 7
+      h = RANK.index( $1 )
+    when /(.)\1(.)\2\2|(.)\3\3(.)\4/
+      # Full house
+      r = 6
+      a, b = RANK.index( $1 ), RANK.index( $2 ) if $1
+      a, b = RANK.index( $3 ), RANK.index( $4 ) if $3
+      h = a > b ? (a << 4) | b : (b << 4) | a
+    when /(.)\1\1/
+      # Three of a kind
+      r = 3
+      h = RANK.index( $1 )
+    when /(.)\1.*(.)\2/
+      # Two pairs
+      r = 2
+      a, b = RANK.index( $1 ), RANK.index( $2 )
+      h = a > b ? (a << 4) | b : (b << 4) | a
+    when /(.)\1/
+      # Pair
+      r = 1
+      h = RANK.index( $1 )
+    else
+      if flush?
+        r = straight? ? 8 : 5
+      elsif straight?
+        r = 4
+      end
+    end
+
+    @cards.chars.reduce( (r << 8) | h ) {|a, c| (a << 4) | RANK.index( c )}
+  end
+end
+
 module ProjectEuler
   def self.time
     start = Time.now.to_f

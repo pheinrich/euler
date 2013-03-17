@@ -154,6 +154,46 @@ describe String do
   end
 end
 
+describe PokerHand do
+  it "represents a set of five playing cards" do
+  end
+
+  describe "#new" do
+    hand = PokerHand.new( ["AS", "2H", "AD", "2C", "JC"] )
+    it "takes an array of two-character card names and returns a PokerHand object" do
+      hand.should be_an_instance_of( PokerHand )
+    end
+  end
+
+  describe ".<=>" do
+    it "compares the numerical ranks of two collections of cards" do
+      PokerHand.new( ["6H", "5S", "4C", "3H", "2S"] ).should > PokerHand.new( ["KH", "6S", "3D", "2D", "7S"] ) 
+    end
+  end
+
+  describe ".straight?" do
+    it "returns true if all cards form a contiguous sequence" do
+      PokerHand.new( ["4C", "2C", "3D", "6H", "5D"] ).should be_straight
+      PokerHand.new( ["JH", "AD", "4H", "2S", "QS"] ).should_not be_straight
+    end
+  end
+
+  describe ".flush?" do
+    it "returns true if all cards form a contiguous sequence" do
+      PokerHand.new( ["AC", "TC", "QC", "7C", "3C"] ).should be_flush
+      PokerHand.new( ["JH", "AD", "4H", "2S", "QS"] ).should_not be_flush
+    end
+  end
+
+  describe ".rank" do
+    it "calculates a numeric score associated based on hand type and card values" do
+      PokerHand.new( ["TH", "TD", "6C", "2S", "2S"] ).rank.should eq( 707438114 )
+      PokerHand.new( ["KD", "9H", "5C", "7C", "5S"] ).rank.should eq( 274569045 )
+      PokerHand.new( ["KS", "6S", "3S", "9S", "7S"] ).rank.should eq( 1343068003 )
+    end
+  end
+end
+
 describe ProjectEuler do
   it "provides general functions helpful when solving the problems" do
   end
