@@ -9,10 +9,17 @@ class Problem_0052
   # contain the same digits.
 
   def self.solve( n )
+    1.upto( 999999 ) do |i|
+      a = i.to_s.codepoints.sort
+      2.upto( n ) do |x|
+        break unless (x*i).to_s.codepoints.sort == a
+        puts i if x == n
+      end
+    end
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 142857
   Problem_0052.solve( 6 )
 end
