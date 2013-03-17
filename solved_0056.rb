@@ -10,10 +10,19 @@ class Problem_0056
   # the maximum digital sum?
 
   def self.solve( n )
+    max = 0
+    1.upto( n - 1 ) do |a|
+      1.upto( n - 1 ) do |b|
+        m = (a**b).sum_digits
+        max = m if m > max
+      end
+    end
+    
+    puts max
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 972
   Problem_0056.solve( 100 )
 end
