@@ -1,3 +1,9 @@
+class String
+  def palindromic?
+    reverse.start_with?( self[0, length >> 1] )
+  end
+end
+
 class Integer
   # Return a sorted array of divisors.
   def factors
@@ -58,6 +64,21 @@ class Integer
   # Determine if this number is coprime with another.
   def coprime?( number )
     return 1 == gcd( number )
+  end
+
+  # Reverses and adds a number repeatedly until a palindrome is generated (or
+  # too many attempts have been made).
+  def lychrel?
+    n = self
+    s = n.to_s
+
+    50.times do
+      n += s.reverse.to_i
+      s = n.to_s
+      return false if s.palindromic?
+    end
+
+    true
   end
 
   # Add a unary factorial (!) function to all integers.
@@ -141,12 +162,6 @@ class Integer
     else
       NIW_SML[self]
     end
-  end
-end
-
-class String
-  def palindromic?
-    reverse.start_with?( self[0, length >> 1] )
   end
 end
 

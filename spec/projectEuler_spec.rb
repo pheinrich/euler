@@ -1,6 +1,23 @@
 require 'spec_helper'
 require_relative '../projectEuler'
 
+describe String do
+  it "provides some additional string utilities" do
+  end
+
+  describe "#palindromic?" do
+    it "returns true if a string reads the same backwards and forwards" do
+      "A".should be_palindromic
+
+      "ABA".should be_palindromic
+      "ABC".should_not be_palindromic
+
+      "ABBA".should be_palindromic
+      "ABCD".should_not be_palindromic
+    end
+  end
+end
+
 describe Integer do
   it "provides some additional integer operations" do
   end
@@ -42,6 +59,16 @@ describe Integer do
 
       12.should_not be_coprime( 4 )
       100.should_not be_coprime( 250 )
+    end
+  end
+
+  describe "#lychrel?" do
+    it "returns true if reverse-and-add does lead to a palindrome in less that 50 iterations" do
+      196.should be_lychrel
+      4994.should be_lychrel
+
+      47.should_not be_lychrel
+      349.should_not be_lychrel
     end
   end
 
@@ -137,23 +164,6 @@ describe Integer do
   end
 end
 
-describe String do
-  it "provides some additional string utilities" do
-  end
-
-  describe "#palindromic?" do
-    it "returns true if a string reads the same backwards and forwards" do
-      "A".should be_palindromic
-
-      "ABA".should be_palindromic
-      "ABC".should_not be_palindromic
-
-      "ABBA".should be_palindromic
-      "ABCD".should_not be_palindromic
-    end
-  end
-end
-
 describe PokerHand do
   it "represents a set of five playing cards" do
   end
@@ -165,27 +175,27 @@ describe PokerHand do
     end
   end
 
-  describe ".<=>" do
+  describe "#<=>" do
     it "compares the numerical ranks of two collections of cards" do
       PokerHand.new( ["6H", "5S", "4C", "3H", "2S"] ).should > PokerHand.new( ["KH", "6S", "3D", "2D", "7S"] ) 
     end
   end
 
-  describe ".straight?" do
+  describe "#straight?" do
     it "returns true if all cards form a contiguous sequence" do
       PokerHand.new( ["4C", "2C", "3D", "6H", "5D"] ).should be_straight
       PokerHand.new( ["JH", "AD", "4H", "2S", "QS"] ).should_not be_straight
     end
   end
 
-  describe ".flush?" do
+  describe "#flush?" do
     it "returns true if all cards form a contiguous sequence" do
       PokerHand.new( ["AC", "TC", "QC", "7C", "3C"] ).should be_flush
       PokerHand.new( ["JH", "AD", "4H", "2S", "QS"] ).should_not be_flush
     end
   end
 
-  describe ".rank" do
+  describe "#rank" do
     it "calculates a numeric score associated based on hand type and card values" do
       PokerHand.new( ["TH", "TD", "6C", "2S", "2S"] ).rank.should eq( 707438114 )
       PokerHand.new( ["KD", "9H", "5C", "7C", "5S"] ).rank.should eq( 274569045 )
