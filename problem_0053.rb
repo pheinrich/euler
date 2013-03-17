@@ -16,14 +16,19 @@ class Problem_0053
   # It is not until n = 23 that a value exceeds one-million:
   # C(23,10) = 1144066.
   #
-  # How many, not necessarily distinct, values of C(n,r), for 1 <= n <=100,
+  # How many, not necessarily distinct, values of C(n,r), for 1 <= n <= 100,
   # are greater than one-million?
 
-  def self.solve( n )
+  def self.solve( n, limit )
+    f = (0..n).map {|i| i.fact}
+    count = 0
+
+    1.upto( n ) {|i| 1.upto( n ) {|j| count += 1 if f[i]/(f[j] * f[i - j]) > limit }}
+    puts count
   end
 end
 
 ProjectEuler.time do
-  # 
-  Problem_0053.solve( 1000000 )
+  # 4075
+  Problem_0053.solve( 100, 1000000 )
 end
