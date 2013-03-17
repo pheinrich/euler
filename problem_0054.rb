@@ -50,12 +50,14 @@ class Problem_0054
   # and in each hand there is a clear winner.
   #
   # How many hands does Player 1 win?
-
+  
   def self.solve()
+    deals = File.readlines( 'resources/poker.txt' ).map {|l| l.split}
+    puts deals.count {|d| PokerHand.new( d[0, 5] ) > PokerHand.new( d[5, 5] )}
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 376
   Problem_0054.solve()
 end
