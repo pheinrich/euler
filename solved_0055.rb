@@ -33,10 +33,11 @@ class Problem_0055
   # theoretical nature of Lychrel numbers.
 
   def self.solve( n )
+    puts 5.upto( n - 1 ).count {|i| i.lychrel?}
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 249
   Problem_0055.solve( 10000 )
 end
