@@ -22,10 +22,19 @@ class Problem_0057
   # numerator with more digits than denominator?
 
   def self.solve( n )
+    count = 0
+    a, b = 2, 1
+
+    n.times do
+      count += 1 if (a + b).to_s.length > a.to_s.length
+      a, b = (a << 1) + b, a
+    end
+
+    puts count
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 153
   Problem_0057.solve( 1000 )
 end
