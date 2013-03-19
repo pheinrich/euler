@@ -1,4 +1,8 @@
 class String
+  def mask( other, ch )
+    self.chars().zip( other.chars ).map {|m| '1' == m[1] ? m[0] : ch}.join
+  end
+
   def palindromic?
     reverse.start_with?( self[0, length >> 1] )
   end

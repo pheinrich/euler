@@ -16,6 +16,31 @@ class Problem_0051
   # prime value family.
 
   def self.solve( n )
+    h = Hash.new
+    ProjectEuler.eratosthenes( 1000000 ).select {|i| i > 56003}.each {|i| h[i.to_s] = i}
+    min = 1 << (0.size << 3) - 1
+
+    1.upto( 62 ) do |i|
+      puts "pass #{i} (min: #{min})"
+      wild = {}
+      m = i.to_s( 2 ).rjust( 6 )
+
+      h.keys.each do |p|
+        w = p.mask( m, '*' )
+        wild[w] ||= 0
+        
+        if n <= wild[w] += 1
+          set = '0123456789'.chars.reduce( [] ) {|a, c| h.keys.include?( w.tr( '*', c ) ) ? a << c : a}
+
+          if n <= set.length
+            first = w.tr( '*', set[0] ).to_i
+            min = first if min > first
+          end
+        end
+      end
+    end
+
+    puts min
   end
 end
 
