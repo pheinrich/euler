@@ -16,35 +16,47 @@ class Problem_0051
   # prime value family.
 
   def self.solve( n )
+    max = 1000000
+    bits = Math.log10( max )
+    mask = 1 << bits
+    
     h = Hash.new
-    ProjectEuler.eratosthenes( 1000000 ).select {|i| i > 56003}.each {|i| h[i.to_s] = i}
-    min = 1 << (0.size << 3) - 1
+    ProjectEuler.eratosthenes( max ).each {|i| h[i.to_s] = i}
+    min = 0
+    arr = []
 
-    1.upto( 62 ) do |i|
-      puts "pass #{i} (min: #{min})"
-      wild = {}
-      m = i.to_s( 2 ).rjust( 6 )
+    while 0 < mask
+      p = Hash.new
+      h.keys.each do |k|
+        s = String.new( k )
+        sub = false
 
-      h.keys.each do |p|
-        w = p.mask( m, '*' )
-        wild[w] ||= 0
-        
-        if n <= wild[w] += 1
-          set = '0123456789'.chars.reduce( [] ) {|a, c| h.keys.include?( w.tr( '*', c ) ) ? a << c : a}
+        0.upto( [bits, s.length].min - 1 ) do |b|
+          s[b], sub = '-', true if 0 != (mask & (1 << b))
+        end
 
-          if n <= set.length
-            first = w.tr( '*', set[0] ).to_i
-            min = first if min > first
-          end
+        if sub
+          p[s] = [] if !p.include?( s )
+          p[s] << k
         end
       end
+
+      p.each do |v, j|
+        a = []
+        (0..9).each {|i| t = v.tr( '-', i.to_s ); a << t if j.include?( t )}
+        if min < a.length
+          arr = a
+          min = a.length
+        end
+      end
+      mask -= 1
     end
 
-    puts min
+    puts arr.inspect
   end
 end
 
 ProjectEuler.time do
-  # 
+  # ["121313", "222323", "323333", "424343", "525353", "626363", "828383", "929393"]
   Problem_0051.solve( 8 )
 end
