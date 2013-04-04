@@ -22,7 +22,23 @@ class Problem_0058
   # what is the side length of the square spiral for which the ratio of primes
   # along both diagonals first falls below 10%?
 
-  def self.solve( n )
+  def self.solve( ratio )
+    start = len = 1 
+    ds = dc = 2
+    diag, primes = 1, 0
+    
+    begin
+      len += 2
+      start += ds
+
+      4.times {|i| primes += 1 if (start + i*dc).prime?}
+
+      ds += 8
+      dc += 2
+      diag += 4
+    end while primes >= ratio * diag
+
+    puts len
   end
 end
 
