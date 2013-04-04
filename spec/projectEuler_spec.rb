@@ -189,7 +189,7 @@ describe PokerHand do
   end
 
   describe "#flush?" do
-    it "returns true if all cards form a contiguous sequence" do
+    it "returns true if all cards have the same suit" do
       PokerHand.new( ["AC", "TC", "QC", "7C", "3C"] ).should be_flush
       PokerHand.new( ["JH", "AD", "4H", "2S", "QS"] ).should_not be_flush
     end
