@@ -34,16 +34,30 @@ class Problem_0061
   C = [2, 1,  2,  1,  2,  1]
 
   def self.figurate( order, range )
-    range.map {|n| (A[order]*n*n + B[order]*n) / C[order]}
+    range.map {|n| ((A[order]*n*n + B[order]*n) / C[order]).to_s}
+  end
+
+  # Collect all 4-digit values in each sequence.
+  P = [45..140, 32..99, 26..81, 23..70, 21..63, 19..58].each_with_index.map {|r, i| figurate( i, r )}
+
+  def self.expand( root, excl, accum )
+    if 6 != accum.length
+      ([*0..5] - excl).each do |k|
+        chain = P[k].select {|s| s.start_with?( root[2, 2] )}
+        chain.each {|n| expand( n, excl + [k], accum + [n])}
+      end
+    elsif accum[0].start_with?( accum[-1][2, 2] )
+      puts accum.map( &:to_i ).reduce( :+ )
+    end
   end
 
   def self.solve()
-    # Collect all 4-digit values in each sequence.
-    p = [45..140, 32..99, 26..81, 23..70, 21..63, 19..58].each_with_index.map {|r, i| figurate( i, r )}
+    # Traverse the octagonal numbers, since they're the shortest sequence.
+    P[5].each {|n| expand( n, [5], [n])}
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 28684
   Problem_0061.solve()
 end
