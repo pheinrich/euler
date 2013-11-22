@@ -20,7 +20,7 @@ class Problem_0063
   def self.solve()
     # 10^n will always generate a value with n+1 digits (which is too long).
     # Therefore, count_digits(X^n) == n can only be true for X < 10.
-    puts (1..9).map {|n| count_matches(n)}.inject(:+)
+    puts( (1..9).map {|n| count_matches(n)}.inject(:+) )
   end
 end
 
