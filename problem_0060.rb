@@ -11,23 +11,19 @@ class Problem_0060
   # Find the lowest sum for a set of five primes for which any two primes
   # concatenate to produce another prime.
 
-  POWER = 6
+  POWER = 8
   P = ProjectEuler.eratosthenes( 10**POWER )
 
-  def self.check(hash, array, n, result)
-    return false if array.empty?
+  def self.check( hash, array, n, result )
     return true if 0 == n
-
-    puts "#{n}: #{array.inspect}"
-    array.each do |val|
-      break unless hash.include?( val )
-
-      isect = array & hash[val]
-      if check( hash, isect, n - 1, result )
-        result[n - 1] = val
+    
+    array.each do |key|
+      if hash.include?( key ) && check( hash, array & hash[key], n - 1, result )
+        result[n - 1] = key
         return true
       end
     end
+    
     false
   end
 
@@ -49,23 +45,13 @@ class Problem_0060
       end
     end
     
-#    h.each do |k, v|
-#      puts "#{k}: #{v.inspect}" if 0 < v.count
-#    end
-
     result = []
-    h.each do |k, v|
-      if check( h, v, n - 1, result )
-        result[n - 1] = k
-        break
-      end
-    end
-    
-    puts result.inspect
+    check( h, h.keys(), n, result )
+    puts result.reduce( :+ )
   end
 end
 
 ProjectEuler.time do
-  # 
-  Problem_0060.solve( 3 )
+  # 26033
+  Problem_0060.solve( 5 )
 end
