@@ -50,7 +50,7 @@ class Problem_0065
   #                  2 + ---
   #                       2
   #
-  # Hence the sequence of the first ten convergents for 2 are:
+  # Hence the sequence of the first ten convergents for sqrt(2) are:
   #
   #     1, 3/2, 7/5, 17/12, 41/29, 99/70, 239/169, 577/408, 1393/985,
   #     3363/2378, ...
@@ -68,10 +68,20 @@ class Problem_0065
   # continued fraction for e.
 
   def self.solve( n )
+    e = [2, 1]
+    k = 1
+
+    # Build a continued fraction for e with at least n partials.
+    while e.length < n
+      e << 2*k << 1 << 1
+      k += 1
+    end
+
+    puts ProjectEuler.convergent( e, n - 1 ).numerator.sum_digits
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 272 (0.0009999s)
   Problem_0065.solve( 100 )
 end
