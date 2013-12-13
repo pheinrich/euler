@@ -226,6 +226,8 @@ describe ProjectEuler do
     it "generates an array of primes" do
       array = ProjectEuler.eratosthenes( 100 )
       array.should eq( [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97] )
+
+      ProjectEuler.eratosthenes(100000).count.should be( 9592 )
     end
   end
 
@@ -239,6 +241,15 @@ describe ProjectEuler do
     it "adds rows from the bottom up of a triangle of numbers" do
       expect { ProjectEuler.tree_sum( [1, 2, 3, 4, 5 ] ) }.to raise_error( ArgumentError )
       ProjectEuler.tree_sum( [3, 7, 4, 2, 4, 6, 8, 5, 9, 3] ).should be( 23 )
+    end
+  end
+
+  describe ".sqrt_cf" do
+    it "computes the continued fraction for the square root of an integer" do
+      ProjectEuler.sqrt_cf( 76 ).should eq( [8, 1, 2, 1, 1, 5, 4, 5, 1, 1, 2, 1, 16] )
+      ProjectEuler.sqrt_cf( 94 ).should eq( [9, 1, 2, 3, 1, 1, 5, 1, 8, 1, 5, 1, 1, 3, 2, 1, 18] )
+      ProjectEuler.sqrt_cf( 31684 ).should eq( [178] )
+      ProjectEuler.sqrt_cf( 9949 ).count.should be( 218 )
     end
   end
 end

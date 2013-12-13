@@ -28,6 +28,10 @@ class Problem_0066
   # largest value of x is obtained.
 
   def self.solve( n )
+    # http://www.numbertheory.org/php/patz.php
+    # http://www.numbertheory.org/pdfs/gauss1.pdf
+    # http://www.jpr2718.org/pell.pdf
+    # http://archives.math.utk.edu/articles/atuyl/confrac/applications.html
   end
 end
 

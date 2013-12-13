@@ -1,8 +1,4 @@
 class String
-  def mask( other, ch )
-    self.chars().zip( other.chars ).map {|m| '1' == m[1] ? m[0] : ch}.join
-  end
-
   def palindromic?
     reverse.start_with?( self[0, length >> 1] )
   end
@@ -276,4 +272,31 @@ module ProjectEuler
 
     from[0]
   end
+
+  # Return the continued fraction for the square root of an integer.
+  def self.sqrt_cf( n )
+    # From §3.3.1 of http://hal-enpc.archives-ouvertes.fr/docs/00/69/17/62/PDF/ComparisonQuadraticIrrationals.pdf
+    f = Math.sqrt( n )
+    lim = f.floor
+    return [lim] if f == lim
+
+    quots = [[0, 1, lim]]
+    i = 0
+
+    for q in quots
+      m = q[1] * q[2] - q[0]
+      d = (n - m*m) / q[1]
+      a = ((lim + m) / d).floor
+
+      # Stop as soon as the fraction becomes periodic.
+      break if quots.include?( [m, d, a] )
+
+      quots << [m, d, a]
+      i += 1
+    end
+
+    # The last element of each entry holds the partial denominator.
+    quots.map {|q| q[2]}
+  end
 end
+
