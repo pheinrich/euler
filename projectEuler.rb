@@ -1,4 +1,7 @@
 class String
+  # Returns true if a string equals its reverse.
+  #
+  # Problems:  36
   def palindromic?
     reverse.start_with?( self[0, length >> 1] )
   end
@@ -6,6 +9,8 @@ end
 
 class Integer
   # Return a sorted array of divisors.
+  #
+  # Problems:  12
   def factors
     return [0] if 0 == self
 
@@ -19,6 +24,8 @@ class Integer
 
   # Return an array of all prime numbers that divide a number.  Entries may be
   # duplicated (e.g. 234 = 2 x 3 x 3 x 13).
+  #
+  # Problems:  3, 5, 47
   def prime_factors
     arr = []
     val, lim = self, self**0.5
@@ -44,6 +51,8 @@ class Integer
   end
 
   # Returns true if a number is prime, otherwise false.
+  #
+  # Problems:  7, 27, 35, 37, 41, 46, 50, 58, 60
   def prime?
     return true if 2 == self
     return false if 2 > self || 0 == self % 2
@@ -62,12 +71,16 @@ class Integer
   end
 
   # Determine if this number is coprime with another.
+  #
+  # Problems:  39
   def coprime?( number )
     return 1 == gcd( number )
   end
 
   # Reverses and adds a number repeatedly until a palindrome is generated (or
   # too many attempts have been made).
+  #
+  # Problems:  55
   def lychrel?
     n = self
     s = n.to_s
@@ -82,17 +95,23 @@ class Integer
   end
 
   # Add a unary factorial (!) function to all integers.
+  #
+  # Problems:  15, 20, 34, 53
   def fact
     raise Math::DomainError, 'Factorial non-extendable to negative integers' if 0 > self
     (1..self).reduce( :* ) || 1
   end
 
   # Compute the sum of the decimal digits in this number.
+  #
+  # Problems:  16, 20, 56, 65
   def sum_digits( base = 10 )
     self.to_s( base ).split( "" ).inject( 0 ) {|sum, n| sum + n.to_i}
   end
 
   # Return the Collatz sequence for the specified number.
+  #
+  # Problems:  14
   def collatz
     return nil if self < 1
 
@@ -108,6 +127,8 @@ class Integer
   end
 
   # Return the length the Collatz sequence associated with a number.
+  #
+  # Problems:  14
   def collatz_length
     return 0 if self < 1
  
@@ -123,6 +144,8 @@ class Integer
   end
 
   # Returns true if a number forms part of an amicable pair.
+  #
+  # Problems:  21
   def amicable?
     return false if 0 == self
     p = self.factors.reduce( :+ ) - self
@@ -135,6 +158,8 @@ class Integer
   end
 
   # Returns true if the sum of a number's divisors is greater than the number.
+  #
+  # Problems:  23
   def abundant?
     self.factors.reduce( :+ ) > self << 1
   end
@@ -149,6 +174,8 @@ class Integer
   NIW_LRG = %w(thousand million billion trillion quadrillion quintillion)
 
   # Express a number in English words.
+  #
+  # Problems:  17
   def in_words( depth = 0 )
     if 999 < self
       q, r = self / 1000, self % 1000
@@ -165,6 +192,9 @@ class Integer
   end
 end
 
+# A class representing card hands used in Poker.
+#
+# Problems:  54
 class PokerHand
   include Comparable
 
@@ -228,6 +258,7 @@ class PokerHand
 end
 
 module ProjectEuler
+  # Measures execution time of a code block.  Used for every problem.
   def self.time
     start = Time.now.to_f
     yield
@@ -236,6 +267,8 @@ module ProjectEuler
 
   # Return an array of prime numbers less than the maximum specified.  Use the
   # Sieve of Eratosthenes to generate the array.
+  #
+  # Problems:  10, 27, 37, 49, 50, 51, 60
   def self.eratosthenes( n )
     s = Array.new( n ) {|i| i}
     s[0] = s[1] = nil
@@ -253,11 +286,15 @@ module ProjectEuler
   end
 
   # Perform exponentiation over a modulus, returning (b^e) % m.
+  #
+  # Problems:  48
   def self.modular_power( b, e, m )
     (1..e).inject( 1 ) {|c| (c * b) % m}
   end
 
   # Aggregate tree node weights from the bottom up.
+  #
+  # Problems:  18, 67
   def self.tree_sum( t )
     d = Math.sqrt( 1 + (t.length << 3) )
     raise ArgumentError, 'Array length not triangular' if d != d.to_i
@@ -274,6 +311,8 @@ module ProjectEuler
   end
 
   # Return the continued fraction for the square root of an integer.
+  #
+  # Problems:  64
   def self.sqrt_cf( n )
     # From §3.3.1 of http://hal-enpc.archives-ouvertes.fr/docs/00/69/17/62/PDF/ComparisonQuadraticIrrationals.pdf
     f = Math.sqrt( n )
@@ -300,6 +339,8 @@ module ProjectEuler
   end
 
   # Return the kth convergent for a simply periodic continued fraction.
+  #
+  # Problems:  65
   def self.convergent( cf, k )
     p, q = [1, 0], [0, 1]
     i = 0
