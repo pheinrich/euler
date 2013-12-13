@@ -298,5 +298,22 @@ module ProjectEuler
     # The last element of each entry holds the partial denominator.
     quots.map {|q| q[2]}
   end
+
+  # Return the kth convergent for a simply periodic continued fraction.
+  def self.convergent( cf, k )
+    p, q = [1, 0], [0, 1]
+    i = 0
+
+    until 0 > k
+      p.unshift( cf[i] * p[0] + p[1] )
+      q.unshift( cf[i] * q[0] + q[1] )
+      
+      k -= 1
+      i += 1
+      i = 1 unless i < cf.length
+    end
+
+    Rational( p[0], q[0] )
+  end
 end
 

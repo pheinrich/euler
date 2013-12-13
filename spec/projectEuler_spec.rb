@@ -252,4 +252,11 @@ describe ProjectEuler do
       ProjectEuler.sqrt_cf( 9949 ).count.should be( 218 )
     end
   end
+
+  describe ".convergent" do
+    it "calculates the kth convergent of a continued fraction" do
+      ProjectEuler.convergent( [1, 2], 5 ).should eq( Rational( 99, 70 ) )
+      ProjectEuler.convergent( [2, 1, 2, 1, 1, 4, 1, 1, 6, 1], 9 ).should eq( Rational( 1457, 536 ) )
+    end
+  end
 end
