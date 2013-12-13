@@ -33,6 +33,6 @@ class Problem_0035
 end
 
 ProjectEuler.time do
-  # 55
+  # 55 (9.877s)
   Problem_0035.solve( 1000000 )
 end

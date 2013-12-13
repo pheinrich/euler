@@ -41,6 +41,6 @@ class Problem_0038
 end
 
 ProjectEuler.time do
-  # 932718654 (1..2 x 9327)
+  # 932718654 (1..2 x 9327) (1.546s)
   Problem_0038.solve()
 end

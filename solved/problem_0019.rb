@@ -6,7 +6,7 @@ class Problem_0019
   # You are given the following information, but you may prefer to do some
   # research for yourself.
   #
-  #   * Jan 1900 was a Monday.
+  #   * 1 Jan 1900 was a Monday.
   #   * Thirty days has September,
   #     April, June and November.
   #     All the rest have thirty-one,
@@ -36,6 +36,6 @@ class Problem_0019
 end
 
 ProjectEuler.time do
-  # 171
+  # 171 (0.01500s)
   Problem_0019.solve( Date.new( 1901, 1, 1 ), Date.new( 2000, 12, 31 ) )
 end
