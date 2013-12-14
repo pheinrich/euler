@@ -131,6 +131,9 @@ describe Integer do
       6.should be_perfect
       28.should be_perfect
       8128.should be_perfect
+
+      12.should_not be_perfect
+      22.should_not be_perfect
     end
   end
 
@@ -139,6 +142,9 @@ describe Integer do
       12.should be_abundant
       714.should be_abundant
       109944.should be_abundant
+
+      6.should_not be_abundant
+      22.should_not be_abundant
     end
   end
 
@@ -147,6 +153,20 @@ describe Integer do
       22.should be_deficient
       615.should be_deficient
       5512371.should be_deficient
+
+      6.should_not be_deficient
+      12.should_not be_deficient
+    end
+  end
+
+  describe "#square?" do
+    it "returns true if a number is the product of an integer and itself" do
+      81.should be_square
+      15129.should be_square
+      95121009.should be_square
+
+      2.should_not be_square
+      95121010.should_not be_square
     end
   end
 

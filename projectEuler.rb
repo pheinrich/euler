@@ -169,6 +169,14 @@ class Integer
     self.factors.reduce( :+ ) < self << 1
   end
 
+  # Returns true if a number is square (the product of a number and itself).
+  #
+  # Problems:  66
+  def square?
+    d = Math.sqrt( self )
+    d == d.floor 
+  end
+
   NIW_SML = %w(zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen)
   NIW_MED = %w(twenty thirty forty fifty sixty seventy eighty ninety)
   NIW_LRG = %w(thousand million billion trillion quadrillion quintillion)
@@ -312,7 +320,7 @@ module ProjectEuler
 
   # Return the continued fraction for the square root of an integer.
   #
-  # Problems:  64
+  # Problems:  64, 66
   def self.sqrt_cf( n )
     # From §3.3.1 of http://hal-enpc.archives-ouvertes.fr/docs/00/69/17/62/PDF/ComparisonQuadraticIrrationals.pdf
     f = Math.sqrt( n )
@@ -340,7 +348,7 @@ module ProjectEuler
 
   # Return the kth convergent for a simply periodic continued fraction.
   #
-  # Problems:  65
+  # Problems:  65, 66
   def self.convergent( cf, k )
     p, q = [1, 0], [0, 1]
     i = 0
