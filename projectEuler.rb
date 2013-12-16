@@ -177,6 +177,16 @@ class Integer
     d == d.floor 
   end
 
+  # Count the numbers less than n that are coprime to n.
+  #
+  # Problems:  69, 70
+  def totient
+    raise ArgumentError, 'totient requires positive integer' unless 0 < self
+
+    # Euler's product formula.
+    (self * self.prime_factors.uniq.inject( 1 ) {|p, i| p * (1 - 1.0/i)}).to_i
+  end
+
   NIW_SML = %w(zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen seventeen eighteen nineteen)
   NIW_MED = %w(twenty thirty forty fifty sixty seventy eighty ninety)
   NIW_LRG = %w(thousand million billion trillion quadrillion quintillion)

@@ -170,6 +170,15 @@ describe Integer do
     end
   end
 
+  describe "#totient" do
+    it "counts the coprimes less than a number" do
+      expect { 0.totient }.to raise_error( ArgumentError )
+      1.totient.should be( 1 )
+      10.totient.should be( 4 )
+      763.totient.should be( 648 )
+    end
+  end
+
   describe "#in_words" do
     it "expresses an integer number in English words" do
       0.in_words.should eq( 'zero' )
