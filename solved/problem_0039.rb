@@ -48,6 +48,6 @@ class Problem_0039
 end
 
 ProjectEuler.time do
-  # count(840) = 8
+  # count(840) = 8 (0.001001s)
   Problem_0039.solve( 1000 )
 end

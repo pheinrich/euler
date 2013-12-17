@@ -28,10 +28,27 @@ class Problem_0066
   # largest value of x is obtained.
 
   def self.solve( n )
+    # Minimal solution comes from one of the convergents of the continued
+    # fraction for the square root of D.  Choose which one based on whether
+    # the length of the periodic part is odd or even.
+ 
+    x = []
+    2.upto( n ).each do |i|
+      cf = ProjectEuler.sqrt_cf( i )
+      l = cf.length - 1
+      
+      unless 0 == l
+        # http://www.numbertheory.org/pdfs/talk_2004.pdf
+        l <<= 1 if 1 == l % 2
+        x << [ProjectEuler.convergent( cf, l - 1 ).numerator, i]
+      end
+    end
+    
+    puts x.max[1]
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 661 (0.1790s)
   Problem_0066.solve( 1000 )
 end

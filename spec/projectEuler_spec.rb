@@ -131,6 +131,9 @@ describe Integer do
       6.should be_perfect
       28.should be_perfect
       8128.should be_perfect
+
+      12.should_not be_perfect
+      22.should_not be_perfect
     end
   end
 
@@ -139,6 +142,9 @@ describe Integer do
       12.should be_abundant
       714.should be_abundant
       109944.should be_abundant
+
+      6.should_not be_abundant
+      22.should_not be_abundant
     end
   end
 
@@ -147,6 +153,29 @@ describe Integer do
       22.should be_deficient
       615.should be_deficient
       5512371.should be_deficient
+
+      6.should_not be_deficient
+      12.should_not be_deficient
+    end
+  end
+
+  describe "#square?" do
+    it "returns true if a number is the product of an integer and itself" do
+      81.should be_square
+      15129.should be_square
+      95121009.should be_square
+
+      2.should_not be_square
+      95121010.should_not be_square
+    end
+  end
+
+  describe "#totient" do
+    it "counts the coprimes less than a number" do
+      expect { 0.totient }.to raise_error( ArgumentError )
+      1.totient.should be( 1 )
+      10.totient.should be( 4 )
+      763.totient.should be( 648 )
     end
   end
 
@@ -226,6 +255,8 @@ describe ProjectEuler do
     it "generates an array of primes" do
       array = ProjectEuler.eratosthenes( 100 )
       array.should eq( [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97] )
+
+      ProjectEuler.eratosthenes(100000).count.should be( 9592 )
     end
   end
 
@@ -239,6 +270,22 @@ describe ProjectEuler do
     it "adds rows from the bottom up of a triangle of numbers" do
       expect { ProjectEuler.tree_sum( [1, 2, 3, 4, 5 ] ) }.to raise_error( ArgumentError )
       ProjectEuler.tree_sum( [3, 7, 4, 2, 4, 6, 8, 5, 9, 3] ).should be( 23 )
+    end
+  end
+
+  describe ".sqrt_cf" do
+    it "computes the continued fraction for the square root of an integer" do
+      ProjectEuler.sqrt_cf( 76 ).should eq( [8, 1, 2, 1, 1, 5, 4, 5, 1, 1, 2, 1, 16] )
+      ProjectEuler.sqrt_cf( 94 ).should eq( [9, 1, 2, 3, 1, 1, 5, 1, 8, 1, 5, 1, 1, 3, 2, 1, 18] )
+      ProjectEuler.sqrt_cf( 31684 ).should eq( [178] )
+      ProjectEuler.sqrt_cf( 9949 ).count.should be( 218 )
+    end
+  end
+
+  describe ".convergent" do
+    it "calculates the kth convergent of a continued fraction" do
+      ProjectEuler.convergent( [1, 2], 5 ).should eq( Rational( 99, 70 ) )
+      ProjectEuler.convergent( [2, 1, 2, 1, 1, 4, 1, 1, 6, 1], 9 ).should eq( Rational( 1457, 536 ) )
     end
   end
 end

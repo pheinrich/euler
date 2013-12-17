@@ -37,6 +37,6 @@ class Problem_0050
 end
 
 ProjectEuler.time do
-  # 997651 (543 primes)
+  # 997651 (543 primes) (1.247s)
   Problem_0050.solve( 1000000 )
 end

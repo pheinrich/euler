@@ -13,13 +13,17 @@ class Problem_0052
       a = i.to_s.codepoints.sort
       2.upto( n ) do |x|
         break unless (x*i).to_s.codepoints.sort == a
-        puts i if x == n
+
+        if x == n
+          puts i
+          return
+        end
       end
     end
   end
 end
 
 ProjectEuler.time do
-  # 142857
+  # 142857 (1.845s)
   Problem_0052.solve( 6 )
 end

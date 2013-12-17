@@ -26,7 +26,7 @@ class Problem_0027
   # expression that produces the maximum number of primes for consecutive
   # values of n, starting with n = 0.
 
-  P = ProjectEuler.eratosthenes( 1000000 )
+  P = ProjectEuler.eratosthenes( 1000 )
 
   def self.solve( u, v )
     max, i, j = 0, 0, 0
@@ -39,36 +39,36 @@ class Problem_0027
         break if b >= v
 
         n = 0
-        while P.include?( n*n + a*n + b )
+        while (n*n + a*n + b).prime?
           n += 1
         end
         max, i, j = n, a, b if n > max
 
         n = 0
-        while P.include?( n*n + a*n - b )
+        while (n*n + a*n - b).prime?
           n += 1
         end
         max, i, j = n, a, -b if n > max
 
         n = 0
-        while P.include?( n*n - a*n + b )
+        while (n*n - a*n + b).prime?
           n += 1
         end
         max, i, j = n, -a, b if n > max
 
         n = 0
-        while P.include?( n*n - a*n - b )
+        while (n*n - a*n - b).prime?
           n += 1
         end
         max, i, j = n, -a, -b if n > max
       end
     end
 
-    puts "%d x %d = %d (length %d)" % [i, j, i*j, max]
+    puts "%d = %d x %d, length %d" % [i*j, i, j, max]
   end
 end
 
 ProjectEuler.time do
-  # -59231 (a = -61, b = 971, length = 71)
+  # -59231 = -61 x 971, length 71 (0.4720s)
   Problem_0027.solve( 1000, 1000 )
 end

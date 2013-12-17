@@ -90,10 +90,11 @@ class Problem_0064
   # How many continued fractions for N <= 10000 have an odd period?
 
   def self.solve( n )
+    puts( (0..n).select {|i| ProjectEuler.sqrt_cf( i ).count % 2 == 0}.count )
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 1322 (6.134s)
   Problem_0064.solve( 10000 )
 end
