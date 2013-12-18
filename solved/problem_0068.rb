@@ -62,30 +62,30 @@ class Problem_0068
             (1..10).each do |e|
               next if e == d || e == c || e == b || e == a
 
-              start = [a, b, c, d, e].min
+              rotate = 3*[a, b, c, d, e].each_with_index.min[1]
               (1..10).each do |f|
                 next if f == e || f == d || f == c || f == b || f == a
                 (1..10).each do |g|
                   next if g == f || g == e || g == d || g == c || g == b || g == a
+                  
+                  t = a + f + g
                   (1..10).each do |h|
                     next if h == g || h == f || h == e || h == d || h == c || h == b || h == a
+                    next unless t == b + g + h
+
                     (1..10).each do |i|
                       next if i == h || i == g || i == f || i == e || i == d || i == c || i == b || i == a
+                      next unless t == c + h + i
+
                       (1..10).each do |j|
                         next if j == i || j == h || j == g || j == f || j == e || j == d || j == c || j == b || j == a
+                        next unless t == d + i + j && t == e + j + f
 
-                        t = a + f + g
-                        next if t != b + g + h
-                        next if t != c + h + i
-                        next if t != d + i + j
-                        next if t != e + j + f
+                        s = [a, f, g, b, g, h, c, h, i, d, i, j, e, j, f]
+                        rotate.times {s.push s.shift}
 
-                        s = [a, f, g, b, g, h, c, h, i, d, i, j, e, j, f].join if a == start
-                        s = [b, g, h, c, h, i, d, i, j, e, j, f, a, f, g].join if b == start
-                        s = [c, h, i, d, i, j, e, j, f, a, f, g, b, g, h].join if c == start
-                        s = [d, i, j, e, j, f, a, f, g, b, g, h, c, h, i].join if d == start
-                        s = [e, j, f, a, f, g, b, g, h, c, h, i, d, i, j].join if e == start
-                        next if 16 != s.length
+                        s = s.join
+                        next if n != s.length
 
                         max = [max, s.to_i].max
                       end
@@ -104,6 +104,6 @@ class Problem_0068
 end
 
 ProjectEuler.time do
-  # 6531031914842725 (23.41s)
+  # 6531031914842725 (4.006s)
   Problem_0068.solve( 16 )
 end
