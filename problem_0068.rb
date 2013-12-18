@@ -50,10 +50,60 @@ class Problem_0068
   #            ( )
 
   def self.solve( n )
+    max = 0
+    
+    (1..10).each do |a|
+      (1..10).each do |b|
+        next if b == a
+        (1..10).each do |c|
+          next if c == b || c == a
+          (1..10).each do |d|
+            next if d == c || d == b || d == a
+            (1..10).each do |e|
+              next if e == d || e == c || e == b || e == a
+
+              start = [a, b, c, d, e].min
+              (1..10).each do |f|
+                next if f == e || f == d || f == c || f == b || f == a
+                (1..10).each do |g|
+                  next if g == f || g == e || g == d || g == c || g == b || g == a
+                  (1..10).each do |h|
+                    next if h == g || h == f || h == e || h == d || h == c || h == b || h == a
+                    (1..10).each do |i|
+                      next if i == h || i == g || i == f || i == e || i == d || i == c || i == b || i == a
+                      (1..10).each do |j|
+                        next if j == i || j == h || j == g || j == f || j == e || j == d || j == c || j == b || j == a
+
+                        t = a + f + g
+                        next if t != b + g + h
+                        next if t != c + h + i
+                        next if t != d + i + j
+                        next if t != e + j + f
+
+                        s = [a, f, g, b, g, h, c, h, i, d, i, j, e, j, f].join if a == start
+                        s = [b, g, h, c, h, i, d, i, j, e, j, f, a, f, g].join if b == start
+                        s = [c, h, i, d, i, j, e, j, f, a, f, g, b, g, h].join if c == start
+                        s = [d, i, j, e, j, f, a, f, g, b, g, h, c, h, i].join if d == start
+                        s = [e, j, f, a, f, g, b, g, h, c, h, i, d, i, j].join if e == start
+                        next if 16 != s.length
+
+                        max = [max, s.to_i].max
+                      end
+                    end
+                  end
+                end
+              end
+            end
+          end
+        end
+      end
+    end
+
+    puts max
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 6531031914842725 (23.41s)
   Problem_0068.solve( 16 )
 end
