@@ -179,7 +179,7 @@ class Integer
 
   # Count the numbers less than n that are coprime to n.
   #
-  # Problems:  69, 70
+  # Problems:  69
   def totient
     raise ArgumentError, 'totient requires positive integer' unless 0 < self
 
