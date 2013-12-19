@@ -109,23 +109,6 @@ class Integer
     self.to_s( base ).split( "" ).inject( 0 ) {|sum, n| sum + n.to_i}
   end
 
-  # Return the Collatz sequence for the specified number.
-  #
-  # Problems:  14
-  def collatz
-    return nil if self < 1
-
-    arr = [self]
-    val = self
-
-    while 1 != val
-      val = (1 == val & 1) ? 3*val + 1 : val >> 1
-      arr << val
-    end
-    
-    arr
-  end
-
   # Return the length the Collatz sequence associated with a number.
   #
   # Problems:  14
@@ -141,6 +124,28 @@ class Integer
     end
     
     len
+  end
+
+  # Return the length of a Farey sequence whose order matches this integer.
+  #
+  # Problems:  72
+  def farey_length
+    # By definition, |Fn| = 1 + ∑ φ(i).  φ(n) involves finding the prime
+    # factors of n, so |Fn| requires prime factorization of all integers <= n.
+    # Instead, sieve integers up to n similar to Eratosthenes, but rather than
+    # eliminating prime multiples, multiply by totient component (1 - 1/p).
+    # Upon completion, our sieve will hold the totient of every number <= n.
+    s = Array.new( 1 + self ) {|i| i}
+
+    i = 2
+    while i < self
+      r = 1 - (1.0 / i)
+      (i..self).step( i ) {|j| s[j] *= r}
+      i += 1 until i > self || i == s[i]
+    end
+
+    # Add all totients plus 1.
+    s.inject(1) {|acc, i| acc + i.to_i}
   end
 
   # Returns true if a number forms part of an amicable pair.
@@ -302,7 +307,7 @@ module ProjectEuler
     
     s.compact!
   end
-
+  
   # Perform exponentiation over a modulus, returning (b^e) % m.
   #
   # Problems:  48

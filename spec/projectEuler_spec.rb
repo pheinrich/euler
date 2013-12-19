@@ -95,21 +95,20 @@ describe Integer do
     end
   end
 
-  describe "#collatz" do
-    it "returns an array of the Collatz sequence starting at n" do
-      0.collatz.should be_nil
-      1.collatz.should eq( [1] )
-      144.collatz.should eq( [144, 72, 36, 18, 9, 28, 14, 7, 22, 11, 34, 17, 52, 26, 13, 40, 20, 10, 5, 16, 8, 4, 2, 1] )
-      301.collatz.should eq( [301, 904, 452, 226, 113, 340, 170, 85, 256, 128, 64, 32, 16, 8, 4, 2, 1] )
-    end
-  end
-
   describe "#collatz_length" do
     it "returns the length of the Collatz sequence starting at n" do
       0.collatz_length.should be( 0 )
       1.collatz_length.should be( 1 )
       198.collatz_length.should be( 27 )
       772283.collatz_length.should be( 194 )
+    end
+  end
+
+  describe "#farey_length" do
+    it "returns the length of the Farey sequence of order n" do
+      0.farey_length.should be( 1 )
+      36.farey_length.should be( 397 )
+      53673.farey_length.should eq( 875674873 )
     end
   end
 
