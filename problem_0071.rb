@@ -17,11 +17,26 @@ class Problem_0071
   # ascending order of size, find the numerator of the fraction immediately
   # to the left of 3/7.
 
-  def self.solve( n )
+  def self.solve( n, numer, denom )
+    #    a     a + p     p
+    #    -  <  -----  <  - 
+    #    b     b + q     q
+  end
+
+  def self.solve2( n, numer, denom )
+    # http://en.wikipedia.org/wiki/Farey_sequence#Next_term
+    a, b, c, d = 0, 1, 1, n
+
+    while c <= n && (c != numer || d != denom)
+      k = (n + b) / d
+      a, b, c, d = c, d, k*c - a, k*d - b
+    end
+
+    puts "#{a}/#{b}"
   end
 end
 
 ProjectEuler.time do
   # 
-  Problem_0071.solve( 1000000 )
+  Problem_0071.solve( 15, 3, 7 )
 end
