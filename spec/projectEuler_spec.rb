@@ -113,6 +113,14 @@ describe Integer do
     end
   end
 
+  describe "#farey_length" do
+    it "returns the length of the Farey sequence of order n" do
+      0.farey_length.should be( 1 )
+      36.farey_length.should be( 397 )
+      53673.farey_length.should eq( 875674873 )
+    end
+  end
+
   describe "#amicable?" do
     it "returns true if n forms part of an amicable pair" do
       220.should be_amicable
