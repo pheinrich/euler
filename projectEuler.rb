@@ -109,23 +109,6 @@ class Integer
     self.to_s( base ).split( "" ).inject( 0 ) {|sum, n| sum + n.to_i}
   end
 
-  # Return the Collatz sequence for the specified number.
-  #
-  # Problems:  14
-  def collatz
-    return nil if self < 1
-
-    arr = [self]
-    val = self
-
-    while 1 != val
-      val = (1 == val & 1) ? 3*val + 1 : val >> 1
-      arr << val
-    end
-    
-    arr
-  end
-
   # Return the length the Collatz sequence associated with a number.
   #
   # Problems:  14
