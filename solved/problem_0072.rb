@@ -17,10 +17,11 @@ class Problem_0072
   # fractions for d ≤ 1,000,000?
 
   def self.solve( n )
+    puts n.farey_length - 2
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 303963552391 (1.473s)
   Problem_0072.solve( 1000000 )
 end
