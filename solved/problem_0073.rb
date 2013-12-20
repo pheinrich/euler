@@ -17,10 +17,26 @@ class Problem_0073
   # proper fractions for d ≤ 12,000?
 
   def self.solve( n )
+    a, b, c, d = 0, 1, 1, n
+    
+    while c != 1 || d != 3
+      k = (n + b) / d
+      a, b, c, d = c, d, k*c - a, k*d - b
+    end
+
+    count = -1
+    
+    while c != 1 || d != 2
+      k = (n + b) / d
+      a, b, c, d = c, d, k*c - a, k*d - b
+      count += 1
+    end
+
+    puts count
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 7295372 (6.970s)
   Problem_0073.solve( 12000 )
 end
