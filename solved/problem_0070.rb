@@ -20,7 +20,7 @@ class Problem_0070
     # To minimize n/φ(n), maximize denominator. φ(n) = n ∏(p - 1/p) over p|n.
     # That means every prime factor makes the denominator smaller, so the
     # fewer (and larger) the prime factors, the better.
-    primes = (n / 2).eratosthenes.reverse
+    primes = (n / 2).prime_sieve.reverse
     limit = primes.each_with_index.min_by {|i| (i[0].to_f - Math.sqrt( n )).abs}[1]
     match = 0
     min = 5
@@ -48,4 +48,5 @@ end
 ProjectEuler.time do
   # 8319823 (55.92s)
   Problem_0070.solve( 10000000 )
+  #Problem_0070.solve( 88000 )
 end

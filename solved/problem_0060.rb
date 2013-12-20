@@ -12,7 +12,7 @@ class Problem_0060
   # concatenate to produce another prime.
 
   POWER = 8
-  P = (10**POWER).eratosthenes
+  P = (10**POWER).prime_sieve
 
   def self.check( hash, array, n, result )
     return true if 0 == n

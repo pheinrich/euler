@@ -111,7 +111,7 @@ class Integer
   # Sieve of Eratosthenes to generate the array.
   #
   # Problems:  10, 27, 37, 49, 50, 51, 60, 70
-  def eratosthenes
+  def prime_sieve
     s = Array.new( self ) {|i| i}
     s[0] = s[1] = nil
 
@@ -126,7 +126,28 @@ class Integer
     
     s.compact!
   end
-    
+
+  # Return an array of totient values for integers less than or equal to this
+  # one.  Use an approach similar to Eratosthenes' Sieve to fill the array.
+  #
+  # Problems:  72
+  def totient_sieve
+    # Sieve integers up to n similar to Eratosthenes, but instead of elim-
+    # nating prime multiples, multiply by the corresponding totient component
+    # (1 - 1/p).  Upon completion, our sieve will hold the totient of every
+    # number <= n.
+    s = Array.new( 1 + self ) {|i| i}
+
+    i = 2
+    while i < self
+      r = 1 - (1.0 / i)
+      (i..self).step( i ) {|j| s[j] *= r}
+      i += 1 until i > self || i == s[i]
+    end
+
+    s.map! {|i| i.to_i}
+  end
+
   # Reverses and adds a number repeatedly until a palindrome is generated (or
   # too many attempts have been made).
   #
@@ -180,22 +201,10 @@ class Integer
   #
   # Problems:  72
   def farey_length
-    # By definition, |Fn| = 1 + ∑ φ(i).  φ(n) involves finding the prime
-    # factors of n, so |Fn| requires prime factorization of all integers <= n.
-    # Instead, sieve integers up to n similar to Eratosthenes, but rather than
-    # eliminating prime multiples, multiply by totient component (1 - 1/p).
-    # Upon completion, our sieve will hold the totient of every number <= n.
-    s = Array.new( 1 + self ) {|i| i}
-
-    i = 2
-    while i < self
-      r = 1 - (1.0 / i)
-      (i..self).step( i ) {|j| s[j] *= r}
-      i += 1 until i > self || i == s[i]
-    end
-
-    # Add all totients plus 1.
-    s.inject(1) {|acc, i| acc + i.to_i}
+    # By definition, |Fn| = 1 + ∑ φ(i), which involves prime factorization of
+    # all integers less than or equal to n.  This is CPU-intensive, so we'll
+    # sieve the totients all at once.
+    1 + self.totient_sieve.inject( :+ ) 
   end
 
   # Returns true if a number forms part of an amicable pair.

@@ -17,7 +17,7 @@ class Problem_0050
 
   def self.solve( n )
     h = Hash.new
-    n.eratosthenes.each {|i| h[i] = true}
+    n.prime_sieve.each {|i| h[i] = true}
 
     p = h.keys
     max = run = 1

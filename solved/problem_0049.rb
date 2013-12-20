@@ -13,7 +13,7 @@ class Problem_0049
   #
   # What 12-digit number do you form by concatenating the three terms in this
   # sequence?
-  P = 10000.eratosthenes.reject {|i| 1000 > i}.map {|i| [i, i.to_s.chars.sort.join]}
+  P = 10000.prime_sieve.reject {|i| 1000 > i}.map {|i| [i, i.to_s.chars.sort.join]}
   
   def self.solve()
     P.each do |p|

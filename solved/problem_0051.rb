@@ -21,7 +21,7 @@ class Problem_0051
     mask = 1 << bits
     
     h = Hash.new
-    max.eratosthenes.each {|i| h[i.to_s] = i}
+    max.prime_sieve.each {|i| h[i.to_s] = i}
     min = 0
     arr = []
 

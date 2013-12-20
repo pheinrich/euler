@@ -66,10 +66,18 @@ describe Integer do
     end
   end
 
-  describe "#eratosthenes" do
+  describe "#prime_sieve" do
     it "generates an array of primes" do
-      100.eratosthenes == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
-      100000.eratosthenes.should have( 9592 ).items
+      100.prime_sieve == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+      100000.prime_sieve.should have( 9592 ).items
+    end
+  end
+
+  describe "#totient_sieve" do
+    it "generates an array of totient values" do
+      1.totient_sieve.should == [0, 1]
+      10.totient_sieve.should == [0, 1, 1, 2, 2, 4, 2, 6, 4, 6, 4]
+      629.totient_sieve[123..133].should == [80, 60, 100, 36, 126, 64, 84, 48, 130, 40, 108]
     end
   end
 
