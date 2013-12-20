@@ -26,7 +26,7 @@ class Problem_0027
   # expression that produces the maximum number of primes for consecutive
   # values of n, starting with n = 0.
 
-  P = ProjectEuler.eratosthenes( 1000 )
+  P = 1000.eratosthenes
 
   def self.solve( u, v )
     max, i, j = 0, 0, 0

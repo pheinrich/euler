@@ -23,7 +23,7 @@ class Problem_0067
 
   def self.solve()
     t = IO.read( 'resources/triangle.txt' ).split.map(&:to_i)
-    puts ProjectEuler.tree_sum( t )
+    puts t.tree_sum
   end
 end
 

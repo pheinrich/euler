@@ -17,7 +17,7 @@ class Problem_0050
 
   def self.solve( n )
     h = Hash.new
-    ProjectEuler.eratosthenes( n ).each {|i| h[i] = true}
+    n.eratosthenes.each {|i| h[i] = true}
 
     p = h.keys
     max = run = 1

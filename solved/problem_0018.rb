@@ -36,7 +36,7 @@ class Problem_0018
   # and requires a clever method! ;o)
 
   def self.solve()
-    puts ProjectEuler.tree_sum( N )
+    puts N.tree_sum
   end
 end
 

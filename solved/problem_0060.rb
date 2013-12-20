@@ -12,7 +12,7 @@ class Problem_0060
   # concatenate to produce another prime.
 
   POWER = 8
-  P = ProjectEuler.eratosthenes( 10**POWER )
+  P = (10**POWER).eratosthenes
 
   def self.check( hash, array, n, result )
     return true if 0 == n

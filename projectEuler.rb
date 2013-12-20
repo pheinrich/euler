@@ -110,7 +110,7 @@ class Integer
   # Return an array of prime numbers less than the maximum specified.  Use the
   # Sieve of Eratosthenes to generate the array.
   #
-  # Problems:  10, 27, 37, 49, 50, 51, 60
+  # Problems:  10, 27, 37, 49, 50, 51, 60, 70
   def eratosthenes
     s = Array.new( self ) {|i| i}
     s[0] = s[1] = nil

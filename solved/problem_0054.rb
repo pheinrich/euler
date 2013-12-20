@@ -53,7 +53,7 @@ class Problem_0054
   
   def self.solve()
     deals = File.readlines( 'resources/poker.txt' ).map {|l| l.split}
-    puts deals.count {|d| PokerHand.new( d[0, 5] ) > PokerHand.new( d[5, 5] )}
+    puts deals.count {|d| ProjectEuler::PokerHand.new( d[0, 5] ) > ProjectEuler::PokerHand.new( d[5, 5] )}
   end
 end
 

@@ -34,13 +34,13 @@ class Problem_0066
  
     x = []
     2.upto( n ).each do |i|
-      cf = ProjectEuler.sqrt_cf( i )
+      cf = i.sqrt_cf
       l = cf.length - 1
       
       unless 0 == l
         # http://www.numbertheory.org/pdfs/talk_2004.pdf
         l <<= 1 if 1 == l % 2
-        x << [ProjectEuler.convergent( cf, l - 1 ).numerator, i]
+        x << [cf.convergent( l - 1 ).numerator, i]
       end
     end
     

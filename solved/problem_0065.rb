@@ -77,7 +77,7 @@ class Problem_0065
       k += 1
     end
 
-    puts ProjectEuler.convergent( e, n - 1 ).numerator.sum_digits
+    puts e.convergent( n - 1 ).numerator.sum_digits
   end
 end
 

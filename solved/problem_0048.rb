@@ -8,7 +8,7 @@ class Problem_0048
 
   def self.solve( n, d )
     m = 10**d
-    puts (1..n).inject {|s, x| s + ProjectEuler.modular_power( x, x, m )}.to_s[-d, d]
+    puts (1..n).inject {|s, x| s + x.modular_power( x, m )}.to_s[-d, d]
   end
 end
 

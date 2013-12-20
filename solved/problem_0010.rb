@@ -7,7 +7,7 @@ class Problem_0010
   # Find the sum of all the primes below two million.
 
   def self.solve( n )
-    puts ProjectEuler.eratosthenes( n ).inject(:+)
+    puts n.eratosthenes.inject( :+ )
   end
 end
 
