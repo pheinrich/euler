@@ -1,19 +1,21 @@
 require 'spec_helper'
 require_relative '../projectEuler'
 
-describe String do
-  it "provides some additional string utilities" do
+describe Array do
+  it "provides some additional array operations" do
   end
 
-  describe "#palindromic?" do
-    it "returns true if a string reads the same backwards and forwards" do
-      "A".should be_palindromic
+  describe "#tree_sum" do
+    it "adds rows from the bottom up of a triangle of numbers" do
+      expect { [1, 2, 3, 4, 5 ].tree_sum }.to raise_error( ArgumentError )
+      [3, 7, 4, 2, 4, 6, 8, 5, 9, 3].tree_sum.should == 23
+    end
+  end
 
-      "ABA".should be_palindromic
-      "ABC".should_not be_palindromic
-
-      "ABBA".should be_palindromic
-      "ABCD".should_not be_palindromic
+  describe "#convergent" do
+    it "calculates the kth convergent of a continued fraction" do
+      [1, 2].convergent( 5 ).should == Rational( 99, 70 )
+      [2, 1, 2, 1, 1, 4, 1, 1, 6, 1].convergent( 9 ).should == Rational( 1457, 536 )
     end
   end
 end
@@ -24,19 +26,21 @@ describe Integer do
 
   describe "#factors" do
     it "returns a sorted array of divisors" do
-      0.factors.should eq( [0] )
-      240.factors.should eq( [1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 16, 20, 24, 30, 40, 48, 60, 80, 120, 240] )
-      10784.factors.should eq( [1, 2, 4, 8, 16, 32, 337, 674, 1348, 2696, 5392, 10784] )
-      10099.factors.should eq( [1, 10099] )
+      0.factors.should == [0]
+      240.factors.should == [1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 16, 20, 24, 30, 40, 48, 60, 80, 120, 240]
+      10784.factors.should == [1, 2, 4, 8, 16, 32, 337, 674, 1348, 2696, 5392, 10784]
+      10099.factors.should == [1, 10099]
+      51891840.factors.should have( 640 ).items
     end
   end
 
   describe "#prime_factors" do
     it "returns a sorted array of all prime divisors" do
-      0.prime_factors.should eq( [] )
-      1.prime_factors.should eq( [] )
-      20894.prime_factors.should eq( [2, 31, 337] )
-      135459162.prime_factors.should eq( [2, 3, 3, 3, 17, 41, 59, 61] )
+      0.prime_factors.should be_empty
+      1.prime_factors.should be_empty
+      20894.prime_factors.should == [2, 31, 337]
+      135459162.prime_factors.should == [2, 3, 3, 3, 17, 41, 59, 61]
+      1235591280.prime_factors.should have( 13 ).items
     end
   end
 
@@ -62,6 +66,13 @@ describe Integer do
     end
   end
 
+  describe "#eratosthenes" do
+    it "generates an array of primes" do
+      100.eratosthenes == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+      100000.eratosthenes.should have( 9592 ).items
+    end
+  end
+
   describe "#lychrel?" do
     it "returns true if reverse-and-add does lead to a palindrome in less that 50 iterations" do
       196.should be_lychrel
@@ -75,40 +86,40 @@ describe Integer do
   describe "#fact" do
     it "computes the product of all integers up to n" do
       expect { -5.fact }.to raise_error( Math::DomainError )
-      0.fact.should be( 1 )
-      12.fact.should be( 479001600 )  # largest result that will fit in 32 bits
+      0.fact.should == 1
+      12.fact.should == 479001600  # largest result that will fit in 32 bits
 
-      # These results generate objects (Bignum), so we must use eq(). 
-      21.fact.should eq( 51090942171709440000 )
-      30.fact.should eq( 265252859812191058636308480000000 )
+      # These results generate objects (Bignum). 
+      21.fact.should == 51090942171709440000
+      30.fact.should == 265252859812191058636308480000000
     end
   end
 
   describe "#sum_digits" do
     it "adds the decimal digits representing a number" do
-      0.sum_digits.should be( 0 )
-      987654.sum_digits.should be( 39 )
+      0.sum_digits.should == 0
+      987654.sum_digits.should == 39
 
       # Check some other bases.
-      66272.sum_digits( 8 ).should be( 10 )
-      99182267.sum_digits( 4 ).should be( 26 )
+      66272.sum_digits( 8 ).should == 10
+      99182267.sum_digits( 4 ).should == 26
     end
   end
 
   describe "#collatz_length" do
     it "returns the length of the Collatz sequence starting at n" do
-      0.collatz_length.should be( 0 )
-      1.collatz_length.should be( 1 )
-      198.collatz_length.should be( 27 )
-      772283.collatz_length.should be( 194 )
+      0.collatz_length.should == 0
+      1.collatz_length.should == 1
+      198.collatz_length.should == 27
+      772283.collatz_length.should == 194
     end
   end
 
   describe "#farey_length" do
     it "returns the length of the Farey sequence of order n" do
-      0.farey_length.should be( 1 )
-      36.farey_length.should be( 397 )
-      53673.farey_length.should eq( 875674873 )
+      0.farey_length.should == 1
+      36.farey_length.should == 397
+      53673.farey_length.should == 875674873
     end
   end
 
@@ -158,133 +169,130 @@ describe Integer do
     end
   end
 
-  describe "#square?" do
-    it "returns true if a number is the product of an integer and itself" do
-      81.should be_square
-      15129.should be_square
-      95121009.should be_square
-
-      2.should_not be_square
-      95121010.should_not be_square
+  describe "#sqrt_cf" do
+    it "computes the continued fraction for the square root of an integer" do
+      76.sqrt_cf.should == [8, 1, 2, 1, 1, 5, 4, 5, 1, 1, 2, 1, 16]
+      94.sqrt_cf.should == [9, 1, 2, 3, 1, 1, 5, 1, 8, 1, 5, 1, 1, 3, 2, 1, 18]
+      31684.sqrt_cf.should == [178]
+      9949.sqrt_cf.should have( 218 ).items
     end
   end
 
   describe "#totient" do
     it "counts the coprimes less than a number" do
       expect { 0.totient }.to raise_error( ArgumentError )
-      1.totient.should be( 1 )
-      10.totient.should be( 4 )
-      763.totient.should be( 648 )
+      1.totient.should == 1
+      10.totient.should == 4
+      763.totient.should == 648
+
+      # Some identities.
+      m, n = 282, 43779
+      (m*n).totient.should == ((m.totient * n.totient * m.gcd( n )) / m.gcd( n ).totient)
+
+      m, n = 5, 17
+      (n**m).totient.should == n.totient * n**(m - 1)
     end
   end
 
   describe "#in_words" do
     it "expresses an integer number in English words" do
-      0.in_words.should eq( 'zero' )
-      12.in_words.should eq( 'twelve' )
-      79.in_words.should eq( 'seventy-nine' )
-      200.in_words.should eq( 'two hundred' )
-      893.in_words.should eq( 'eight hundred and ninety-three' )
-      1004.in_words.should eq( 'one thousand four' )
-      8890.in_words.should eq( 'eight thousand eight hundred and ninety' )
-      2300754.in_words.should eq( 'two million three hundred thousand seven hundred and fifty-four' )
+      0.in_words.should == 'zero'
+      12.in_words.should == 'twelve'
+      79.in_words.should == 'seventy-nine'
+      200.in_words.should == 'two hundred'
+      893.in_words.should == 'eight hundred and ninety-three'
+      1004.in_words.should == 'one thousand four'
+      8890.in_words.should == 'eight thousand eight hundred and ninety'
+      2300754.in_words.should == 'two million three hundred thousand seven hundred and fifty-four'
     end
   end
 end
 
-describe PokerHand do
-  it "represents a set of five playing cards" do
+describe Numeric do
+  it "provides some additional numeric operations" do
   end
 
-  describe "#new" do
-    hand = PokerHand.new( ["AS", "2H", "AD", "2C", "JC"] )
-    it "takes an array of two-character card names and returns a PokerHand object" do
-      hand.should be_an_instance_of( PokerHand )
-    end
-  end
-
-  describe "#<=>" do
-    it "compares the numerical ranks of two collections of cards" do
-      PokerHand.new( ["6H", "5S", "4C", "3H", "2S"] ).should > PokerHand.new( ["KH", "6S", "3D", "2D", "7S"] ) 
-    end
-  end
-
-  describe "#straight?" do
-    it "returns true if all cards form a contiguous sequence" do
-      PokerHand.new( ["4C", "2C", "3D", "6H", "5D"] ).should be_straight
-      PokerHand.new( ["JH", "AD", "4H", "2S", "QS"] ).should_not be_straight
-    end
-  end
-
-  describe "#flush?" do
-    it "returns true if all cards have the same suit" do
-      PokerHand.new( ["AC", "TC", "QC", "7C", "3C"] ).should be_flush
-      PokerHand.new( ["JH", "AD", "4H", "2S", "QS"] ).should_not be_flush
-    end
-  end
-
-  describe "#rank" do
-    it "calculates a numeric score associated based on hand type and card values" do
-      PokerHand.new( ["TH", "TD", "6C", "2S", "2S"] ).rank.should eq( 707438114 )
-      PokerHand.new( ["KD", "9H", "5C", "7C", "5S"] ).rank.should eq( 274569045 )
-      PokerHand.new( ["KS", "6S", "3S", "9S", "7S"] ).rank.should eq( 1343068003 )
-    end
-  end
-end
-
-describe ProjectEuler do
-  it "provides general functions helpful when solving the problems" do
-  end
-  
-  describe ".time" do
-    it "measures execution time of a code block" do
-      out = capture_stdout do
-        ProjectEuler.time do
-          # Dummy operation; time irrelevant.
-          (0..100).each {|n| n.factors}
-        end
-      end
-
-      # Output string has format similar to "0.4105238914s\n"
-      out.string.should =~ /\d+\.\d{10}s\n/
-    end
-  end
-
-  describe ".eratosthenes" do
-    it "generates an array of primes" do
-      array = ProjectEuler.eratosthenes( 100 )
-      array.should eq( [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97] )
-
-      ProjectEuler.eratosthenes(100000).count.should be( 9592 )
-    end
-  end
-
-  describe ".modular_power" do
+  describe "#modular_power" do
     it "performs exponentiation over a modulus" do
-      ProjectEuler.modular_power( 1234, 567, 890 ).should be( 304 )
+      1234.modular_power( 567, 890 ).should == 304
+    end
+  end
+end
+
+describe String do
+  it "provides some additional string operations" do
+  end
+
+  describe "#palindromic?" do
+    it "returns true if a string reads the same backwards and forwards" do
+      "A".should be_palindromic
+
+      "ABA".should be_palindromic
+      "ABC".should_not be_palindromic
+
+      "ABBA".should be_palindromic
+      "ABCD".should_not be_palindromic
+    end
+  end
+end
+
+module ProjectEuler
+  describe ProjectEuler do
+    it "provides general functions helpful when solving the problems" do
+    end
+    
+    describe ".time" do
+      it "measures execution time of a code block" do
+        out = capture_stdout do
+          ProjectEuler.time do
+            # Dummy operation; time irrelevant.
+            (0..100).each {|n| n.factors}
+          end
+        end
+  
+        # Output string has format similar to "0.4105238914s\n"
+        out.string.should =~ /\d+\.\d{10}s\n/
+      end
     end
   end
 
-  describe ".tree_sum" do
-    it "adds rows from the bottom up of a triangle of numbers" do
-      expect { ProjectEuler.tree_sum( [1, 2, 3, 4, 5 ] ) }.to raise_error( ArgumentError )
-      ProjectEuler.tree_sum( [3, 7, 4, 2, 4, 6, 8, 5, 9, 3] ).should be( 23 )
+  describe PokerHand do
+    it "represents a set of five playing cards" do
     end
-  end
-
-  describe ".sqrt_cf" do
-    it "computes the continued fraction for the square root of an integer" do
-      ProjectEuler.sqrt_cf( 76 ).should eq( [8, 1, 2, 1, 1, 5, 4, 5, 1, 1, 2, 1, 16] )
-      ProjectEuler.sqrt_cf( 94 ).should eq( [9, 1, 2, 3, 1, 1, 5, 1, 8, 1, 5, 1, 1, 3, 2, 1, 18] )
-      ProjectEuler.sqrt_cf( 31684 ).should eq( [178] )
-      ProjectEuler.sqrt_cf( 9949 ).count.should be( 218 )
+  
+    describe "#new" do
+      it "takes an array of two-character card names and returns a PokerHand object" do
+        hand = PokerHand.new( ["AS", "2H", "AD", "2C", "JC"] )
+        hand.should be_an_instance_of( PokerHand )
+      end
     end
-  end
-
-  describe ".convergent" do
-    it "calculates the kth convergent of a continued fraction" do
-      ProjectEuler.convergent( [1, 2], 5 ).should eq( Rational( 99, 70 ) )
-      ProjectEuler.convergent( [2, 1, 2, 1, 1, 4, 1, 1, 6, 1], 9 ).should eq( Rational( 1457, 536 ) )
+  
+    describe "#<=>" do
+      it "compares the numerical ranks of two collections of cards" do
+        PokerHand.new( ["6H", "5S", "4C", "3H", "2S"] ).should > PokerHand.new( ["KH", "6S", "3D", "2D", "7S"] ) 
+      end
+    end
+  
+    describe "#straight?" do
+      it "returns true if all cards form a contiguous sequence" do
+        PokerHand.new( ["4C", "2C", "3D", "6H", "5D"] ).should be_straight
+        PokerHand.new( ["JH", "AD", "4H", "2S", "QS"] ).should_not be_straight
+      end
+    end
+  
+    describe "#flush?" do
+      it "returns true if all cards have the same suit" do
+        PokerHand.new( ["AC", "TC", "QC", "7C", "3C"] ).should be_flush
+        PokerHand.new( ["JH", "AD", "4H", "2S", "QS"] ).should_not be_flush
+      end
+    end
+  
+    describe "#rank" do
+      it "calculates a numeric score associated based on hand type and card values" do
+        PokerHand.new( ["TH", "TD", "6C", "2S", "2S"] ).rank.should == 707438114
+        PokerHand.new( ["KD", "9H", "5C", "7C", "5S"] ).rank.should == 274569045
+        PokerHand.new( ["KS", "6S", "3S", "9S", "7S"] ).rank.should == 1343068003
+      end
     end
   end
 end

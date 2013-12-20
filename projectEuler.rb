@@ -1,9 +1,39 @@
-class String
-  # Returns true if a string equals its reverse.
+class Array
+  # Aggregate tree node weights from the bottom up.
   #
-  # Problems:  36
-  def palindromic?
-    reverse.start_with?( self[0, length >> 1] )
+  # Problems:  18, 67
+  def tree_sum
+    d = Math.sqrt( 1 + (self.length << 3) )
+    raise ArgumentError, 'Array length not triangular' if d != d.to_i
+
+    rows = (d.to_i - 1) >> 1
+    from = self[rows*(rows - 1)/2, rows]
+
+    (rows - 1).downto( 1 ) do |i|
+      to = i*(i - 1)/2
+      i.times {|j| from[j] = self[to + j] + from[j, 2].max}
+    end
+
+    from[0]
+  end
+
+  # Return the kth convergent for a simply periodic continued fraction.
+  #
+  # Problems:  65, 66
+  def convergent( k )
+    p, q = [1, 0], [0, 1]
+    i = 0
+  
+    until 0 > k
+      p.unshift( self[i] * p[0] + p[1] )
+      q.unshift( self[i] * q[0] + q[1] )
+      
+      k -= 1
+      i += 1
+      i = 1 unless i < self.length
+    end
+  
+    Rational( p[0], q[0] )
   end
 end
 
@@ -77,6 +107,26 @@ class Integer
     return 1 == gcd( number )
   end
 
+  # Return an array of prime numbers less than the maximum specified.  Use the
+  # Sieve of Eratosthenes to generate the array.
+  #
+  # Problems:  10, 27, 37, 49, 50, 51, 60
+  def eratosthenes
+    s = Array.new( self ) {|i| i}
+    s[0] = s[1] = nil
+
+    max = Math.sqrt( self )
+    i = 2
+
+    while i < max
+      (2*i...self).step( i ) {|j| s[j] = nil}
+      i += 1
+      i += 1 while max > i && !s[i]
+    end
+    
+    s.compact!
+  end
+    
   # Reverses and adds a number repeatedly until a palindrome is generated (or
   # too many attempts have been made).
   #
@@ -174,12 +224,32 @@ class Integer
     self.factors.reduce( :+ ) < self << 1
   end
 
-  # Returns true if a number is square (the product of a number and itself).
+  # Return the continued fraction for the square root of an integer.
   #
-  # Problems:  66
-  def square?
-    d = Math.sqrt( self )
-    d == d.floor 
+  # Problems:  64, 66
+  def sqrt_cf
+    # From §3.3.1 of http://hal-enpc.archives-ouvertes.fr/docs/00/69/17/62/PDF/ComparisonQuadraticIrrationals.pdf
+    f = Math.sqrt( self )
+    lim = f.floor
+    return [lim] if f == lim
+  
+    quots = [[0, 1, lim]]
+    i = 0
+  
+    for q in quots
+      m = q[1] * q[2] - q[0]
+      d = (self - m*m) / q[1]
+      a = ((lim + m) / d).floor
+  
+      # Stop as soon as the fraction becomes periodic.
+      break if quots.include?( [m, d, a] )
+  
+      quots << [m, d, a]
+      i += 1
+    end
+  
+    # The last element of each entry holds the partial denominator.
+    quots.map {|q| q[2]}
   end
 
   # Count the numbers less than n that are coprime to n.
@@ -215,68 +285,21 @@ class Integer
   end
 end
 
-# A class representing card hands used in Poker.
-#
-# Problems:  54
-class PokerHand
-  include Comparable
-
-  RANK = "0123456789TJQKA"
-
-  def initialize( cards )
-    @cards = cards.sort {|x, y| RANK.index( y[0] ) <=> RANK.index( x[0]) }
-    @suits = @cards.map {|card| card[1]}.join
-    @cards = @cards.map {|card| card[0]}.join
+class Numeric
+  # Perform exponentiation over a modulus, returning (b^e) % m.
+  #
+  # Problems:  48
+  def modular_power( e, m )
+    (1..e).inject( 1 ) {|c| (c * self) % m}
   end
+end
 
-  def <=>( other )
-    self.rank <=> other.rank
-  end
-
-  def straight?
-    4 == RANK.index( @cards[0] ) - RANK.index( @cards[-1] )
-  end
-
-  def flush?
-    @suits =~ /(.)\1\1\1\1/
-  end
-
-  def rank
-    r = h = 0
-
-    case @cards
-    when /(.)\1\1\1/
-      # Four of a kind
-      r = 7
-      h = RANK.index( $1 )
-    when /(.)\1(.)\2\2|(.)\3\3(.)\4/
-      # Full house
-      r = 6
-      a, b = RANK.index( $1 ), RANK.index( $2 ) if $1
-      a, b = RANK.index( $3 ), RANK.index( $4 ) if $3
-      h = a > b ? (a << 4) | b : (b << 4) | a
-    when /(.)\1\1/
-      # Three of a kind
-      r = 3
-      h = RANK.index( $1 )
-    when /(.)\1.*(.)\2/
-      # Two pairs
-      r = 2
-      a, b = RANK.index( $1 ), RANK.index( $2 )
-      h = a > b ? (a << 4) | b : (b << 4) | a
-    when /(.)\1/
-      # Pair
-      r = 1
-      h = RANK.index( $1 )
-    else
-      if flush?
-        r = straight? ? 8 : 5
-      elsif straight?
-        r = 4
-      end
-    end
-
-    @cards.chars.reduce( (r << 8) | h ) {|a, c| (a << 4) | RANK.index( c )}
+class String
+  # Returns true if a string equals its reverse.
+  #
+  # Problems:  36
+  def palindromic?
+    reverse.start_with?( self[0, length >> 1] )
   end
 end
 
@@ -288,96 +311,69 @@ module ProjectEuler
     puts "%.10f%s" % [Time.now.to_f - start, 's']
   end
 
-  # Return an array of prime numbers less than the maximum specified.  Use the
-  # Sieve of Eratosthenes to generate the array.
+  # A class representing card hands used in Poker.
   #
-  # Problems:  10, 27, 37, 49, 50, 51, 60
-  def self.eratosthenes( n )
-    s = Array.new( n ) {|i| i}
-    s[0] = s[1] = nil
-
-    max = Math.sqrt( n )
-    i = 2
-
-    while i < max
-      (2*i...n).step( i ) {|j| s[j] = nil}
-      i += 1
-      i += 1 while i < max && !s[i]
-    end
-    
-    s.compact!
-  end
+  # Problems:  54
+  class PokerHand
+    include Comparable
   
-  # Perform exponentiation over a modulus, returning (b^e) % m.
-  #
-  # Problems:  48
-  def self.modular_power( b, e, m )
-    (1..e).inject( 1 ) {|c| (c * b) % m}
-  end
-
-  # Aggregate tree node weights from the bottom up.
-  #
-  # Problems:  18, 67
-  def self.tree_sum( t )
-    d = Math.sqrt( 1 + (t.length << 3) )
-    raise ArgumentError, 'Array length not triangular' if d != d.to_i
-
-    rows = (d.to_i - 1) >> 1
-    from = t[rows*(rows - 1)/2, rows]
-
-    (rows - 1).downto( 1 ) do |i|
-      to = i*(i - 1)/2
-      i.times {|j| from[j] = t[to + j] + from[j, 2].max}
+    RANK = "0123456789TJQKA"
+  
+    def initialize( cards )
+      @cards = cards.sort {|x, y| RANK.index( y[0] ) <=> RANK.index( x[0]) }
+      @suits = @cards.map {|card| card[1]}.join
+      @cards = @cards.map {|card| card[0]}.join
     end
-
-    from[0]
-  end
-
-  # Return the continued fraction for the square root of an integer.
-  #
-  # Problems:  64, 66
-  def self.sqrt_cf( n )
-    # From §3.3.1 of http://hal-enpc.archives-ouvertes.fr/docs/00/69/17/62/PDF/ComparisonQuadraticIrrationals.pdf
-    f = Math.sqrt( n )
-    lim = f.floor
-    return [lim] if f == lim
-
-    quots = [[0, 1, lim]]
-    i = 0
-
-    for q in quots
-      m = q[1] * q[2] - q[0]
-      d = (n - m*m) / q[1]
-      a = ((lim + m) / d).floor
-
-      # Stop as soon as the fraction becomes periodic.
-      break if quots.include?( [m, d, a] )
-
-      quots << [m, d, a]
-      i += 1
+  
+    def <=>( other )
+      self.rank <=> other.rank
     end
-
-    # The last element of each entry holds the partial denominator.
-    quots.map {|q| q[2]}
-  end
-
-  # Return the kth convergent for a simply periodic continued fraction.
-  #
-  # Problems:  65, 66
-  def self.convergent( cf, k )
-    p, q = [1, 0], [0, 1]
-    i = 0
-
-    until 0 > k
-      p.unshift( cf[i] * p[0] + p[1] )
-      q.unshift( cf[i] * q[0] + q[1] )
-      
-      k -= 1
-      i += 1
-      i = 1 unless i < cf.length
+  
+    def straight?
+      4 == RANK.index( @cards[0] ) - RANK.index( @cards[-1] )
     end
-
-    Rational( p[0], q[0] )
+  
+    def flush?
+      @suits =~ /(.)\1\1\1\1/
+    end
+  
+    def rank
+      r = h = 0
+  
+      case @cards
+      when /(.)\1\1\1/
+        # Four of a kind
+        r = 7
+        h = RANK.index( $1 )
+      when /(.)\1(.)\2\2|(.)\3\3(.)\4/
+        # Full house
+        r = 6
+        a, b = RANK.index( $1 ), RANK.index( $2 ) if $1
+        a, b = RANK.index( $3 ), RANK.index( $4 ) if $3
+        h = a > b ? (a << 4) | b : (b << 4) | a
+      when /(.)\1\1/
+        # Three of a kind
+        r = 3
+        h = RANK.index( $1 )
+      when /(.)\1.*(.)\2/
+        # Two pairs
+        r = 2
+        a, b = RANK.index( $1 ), RANK.index( $2 )
+        h = a > b ? (a << 4) | b : (b << 4) | a
+      when /(.)\1/
+        # Pair
+        r = 1
+        h = RANK.index( $1 )
+      else
+        if flush?
+          r = straight? ? 8 : 5
+        elsif straight?
+          r = 4
+        end
+      end
+  
+      @cards.chars.reduce( (r << 8) | h ) {|a, c| (a << 4) | RANK.index( c )}
+    end
   end
 end
 
