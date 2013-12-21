@@ -39,9 +39,10 @@ class Problem_0074
     (1..limit).each do |i|
       d, sum = i, 0
 
+      # This is roughly 2x as fast as the 1-line string-split-inject approach.
       while 0 < d
         quot = d.divmod( 10 )
-        sum += F[quot[1]]
+        sum += F[quot[1]]  # lookup ~50% faster than calculating each time
         d = quot[0]
       end
 
@@ -50,7 +51,7 @@ class Problem_0074
 
     # Count sequence lengths.
     (1..limit).each do |i|
-      cur, len, seen = i, 1, []
+      cur, len = i, 1
 
       while cur != right[cur]
         len += 1
@@ -73,6 +74,6 @@ class Problem_0074
 end
 
 ProjectEuler.time do
-  # 402 (20.68s)
+  # 402 (10.13s)
   Problem_0074.solve( 1000000, 60 )
 end
