@@ -29,11 +29,50 @@ class Problem_0074
   # How many chains, with a starting number below one million, contain exactly
   # sixty non-repeating terms?
 
+  F = (0..9).map( &:fact )
+
   def self.solve( limit, length )
+    count = 0
+    right = {}
+
+    # Reduce each number.
+    (1..limit).each do |i|
+      d, sum = i, 0
+
+      while 0 < d
+        quot = d.divmod( 10 )
+        sum += F[quot[1]]
+        d = quot[0]
+      end
+
+      right[i] = sum
+    end
+
+    # Count sequence lengths.
+    (1..limit).each do |i|
+      cur, len, seen = i, 1, []
+
+      while cur != right[cur]
+        len += 1
+        case cur = right[cur]
+        when 169
+          len += 2
+          break
+        when 871, 872
+          len += 1
+          break
+        end
+      end
+
+      # Tally lengths that match the target exactly.
+      count += 1 if len == length
+    end
+    
+    puts count
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 402 (20.68s)
   Problem_0074.solve( 1000000, 60 )
 end
