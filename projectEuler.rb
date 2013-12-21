@@ -127,7 +127,49 @@ class Integer
     s.compact!
   end
 
-  # Return an array of totient values for integers less than or equal to this
+  # Return an array of values representing the count of Pythagoreon triples
+  # that sum to each integer up to and including n.  For more information, see
+  # http://en.wikipedia.org/wiki/Pythagorean_triple#Generating_a_triple.
+  #
+  # Problems:  39, 75
+  def pytriple_sieve
+    s = Array.new( 1 + self, 0 )
+    u, v, k = 1, 2, 1
+
+    while true
+      a = k*(v*v - u*u)
+      b = k*(2*u*v)
+      c = k*(v*v + u*u)
+
+      p = a + b + c
+
+      if self >= p
+        # If p isn't too big, increment its popularity.
+        s[p] += 1
+        k += 1
+      else
+        if k > 1
+          # If p is too big for the current k, advance v.
+          v += 2
+          k = 1
+        elsif v > u + 1
+          # If p is too big for the current v, advance u.
+          u += 1
+          v = u + 1
+        else
+          # If p is too big for the current u, we're done.
+          break
+        end
+
+        # Skip invalid triples.
+        v += 2 until v.coprime?( u )
+      end
+    end
+
+    s
+  end
+
+# Return an array of totient values for integers less than or equal to this
   # one.  Use an approach similar to Eratosthenes' Sieve to fill the array.
   #
   # Problems:  72

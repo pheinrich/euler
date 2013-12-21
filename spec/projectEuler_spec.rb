@@ -73,11 +73,19 @@ describe Integer do
     end
   end
 
+  describe "#pytriple_sieve" do
+    it "generates an array of Pythagorean triple counts" do
+      1000.pytriple_sieve[415, 10].should == [0, 1, 0, 1, 0, 5, 0, 0, 0, 0]
+      5613.pytriple_sieve.inject( :+ ).should == 2502
+      17777.pytriple_sieve.max.should == 20
+    end
+  end
+
   describe "#totient_sieve" do
     it "generates an array of totient values" do
       1.totient_sieve.should == [0, 1]
       10.totient_sieve.should == [0, 1, 1, 2, 2, 4, 2, 6, 4, 6, 4]
-      629.totient_sieve[123..133].should == [80, 60, 100, 36, 126, 64, 84, 48, 130, 40, 108]
+      629.totient_sieve[123, 10].should == [80, 60, 100, 36, 126, 64, 84, 48, 130, 40]
     end
   end
 
