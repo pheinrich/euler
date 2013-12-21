@@ -25,10 +25,11 @@ class Problem_0075
   # formed?
 
   def self.solve( n )
+    puts n.pytriple_sieve.count(1)
   end
 end
 
 ProjectEuler.time do
-  # 
+  # 161676 (1.278s)
   Problem_0075.solve( 1500000 )
 end
