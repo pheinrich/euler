@@ -1,8 +1,17 @@
 require 'projectEuler'
 
-# 
-class Problem_0000
-  # 
+# Almost equilateral triangles
+class Problem_0094
+  # It is easily proved that no equilateral triangle exists with integral
+  # length sides and integral area. However, the almost equilateral triangle
+  # 5-5-6 has an area of 12 square units.
+  #
+  # We shall define an almost equilateral triangle to be a triangle for which
+  # two sides are equal and the third differs by no more than one unit.
+  #
+  # Find the sum of the perimeters of all almost equilateral triangles with
+  # integral side lengths and area and whose perimeters do not exceed one
+  # billion (1,000,000,000).
 
   def self.solve( n )
   end
@@ -10,5 +19,5 @@ end
 
 ProjectEuler.time do
   # 
-  Problem_0000.solve(  )
+  Problem_0094.solve( 1000000000 )
 end
