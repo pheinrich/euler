@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Prime digit replacements
+# 33.41s
 class Problem_0051
+  def title; 'Prime digit replacements' end
+  def solution; 121_313 end
+
   # By replacing the 1st digit of *3, it turns out that six of the nine
   # possible values: 13, 23, 43, 53, 73, and 83, are all prime.
   #
@@ -15,8 +18,8 @@ class Problem_0051
   # necessarily adjacent digits) with the same digit, is part of an eight
   # prime value family.
 
-  def self.solve( n )
-    max = 1000000
+  def solve( n = 8 )
+    max = 1_000_000
     bits = Math.log10( max )
     mask = 1 << bits
     
@@ -52,11 +55,6 @@ class Problem_0051
       mask -= 1
     end
 
-    puts arr.inspect
+    arr[0].to_i # puts arr.inspect
   end
-end
-
-ProjectEuler.time do
-  # ["121313", "222323", "323333", "424343", "525353", "626363", "828383", "929393"] (39.02s)
-  Problem_0051.solve( 8 )
 end

@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Distinct primes factors
+# 2.478s
 class Problem_0047
+  def title; 'Distinct primes factors' end
+  def solution; 134_043 end
+
   # The first two consecutive numbers to have two distinct prime factors are:
   #
   #     14 = 2 x 7
@@ -17,7 +20,7 @@ class Problem_0047
   # Find the first four consecutive integers to have four distinct primes
   # factors. What is the first of these numbers?
 
-  def self.solve( n )
+  def solve( n = 4 )
     cur = 2
     arr = Array.new( n, 1 )
 
@@ -30,11 +33,6 @@ class Problem_0047
       arr.shift
     end
 
-    puts arr[0]
+    arr[0]
   end
-end
-
-ProjectEuler.time do
-  # 134043 (3.502s)
-  Problem_0047.solve( 4 )
 end

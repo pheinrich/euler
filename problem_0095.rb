@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Amicable chains
+# 
 class Problem_0095
+  def title; 'Amicable chains' end
+  def solution;  end
+
   # The proper divisors of a number are all the divisors excluding the number
   # itself. For example, the proper divisors of 28 are 1, 2, 4, 7, and 14. As
   # the sum of these divisors is equal to 28, we call it a perfect number.
@@ -21,11 +24,6 @@ class Problem_0095
   # Find the smallest member of the longest amicable chain with no element
   # exceeding one million.
 
-  def self.solve( n )
+  def solve( n = 1_000_000 )
   end
-end
-
-ProjectEuler.time do
-  # 
-  Problem_0095.solve( 1000000 )
 end

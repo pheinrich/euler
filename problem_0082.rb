@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Path sum: three ways
+# 
 class Problem_0082
+  def title; 'Path sum: three ways' end
+  def solution;  end
+
   # NOTE: This problem is a more challenging version of Problem 81.
   #
   # The minimal path sum in the 5 by 5 matrix below, by starting in any cell
@@ -17,11 +20,6 @@ class Problem_0082
   # Find the minimal path sum, in matrix.txt, a 31K text file containing an 80
   # by 80 matrix, from the left column to the right column.
 
-  def self.solve
+  def solve
   end
-end
-
-ProjectEuler.time do
-  # 
-  Problem_0082.solve
 end

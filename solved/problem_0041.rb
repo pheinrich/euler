@@ -1,14 +1,17 @@
 require 'projectEuler'
 
-# Pandigital prime
+# 1.943s
 class Problem_0041
+  def title; 'Pandigital prime' end
+  def solution; 7_652_413 end
+
   # We shall say that an n-digit number is pandigital if it makes use of all
   # the digits 1 to n exactly once. For example, 2143 is a 4-digit pandigital
   # and is also prime.
   #
   # What is the largest n-digit pandigital prime that exists?
 
-  def self.solve()
+  def solve
     max = nil
 
     # Start with the longest possible and work down.    
@@ -17,11 +20,6 @@ class Problem_0041
       break if max
     end
     
-    puts max
+    max
   end
-end
-
-ProjectEuler.time do
-  # 7652413 (3.917s)
-  Problem_0041.solve()
 end

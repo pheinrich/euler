@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Cuboid route
+# 
 class Problem_0086
+  def title; 'Cuboid route' end
+  def solution;  end
+
   # A spider, S, sits in one corner of a cuboid room, measuring 6 by 5 by 3,
   # and a fly, F, sits in the opposite corner. By travelling on the surfaces
   # of the room the shortest "straight line" distance from S to F is 10 and
@@ -19,11 +22,6 @@ class Problem_0086
   # Find the least value of M such that the number of solutions first exceeds
   # one million.
 
-  def self.solve( n )
+  def solve( n = 1_000_000 )
   end
-end
-
-ProjectEuler.time do
-  # 
-  Problem_0086.solve( 1000000 )
 end

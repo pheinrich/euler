@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Reciprocal cycles
+# 0.7733s
 class Problem_0026
+  def title; 'Reciprocal cycles' end
+  def solution; 983 end
+
   # A unit fraction contains 1 in the numerator. The decimal representation of
   # the unit fractions with denominators 2 to 10 are given:
   #
@@ -21,7 +24,7 @@ class Problem_0026
   # Find the value of d < 1000 for which 1/d contains the longest recurring
   # cycle in its decimal fraction part.
 
-  def self.solve( n )
+  def solve( n = 1_000 )
     # Divide 1 by every number up to n, recording the length of repeating
     # digits that repeat.
     lens = (2...n).map do |i|
@@ -45,11 +48,6 @@ class Problem_0026
 
     # Return the index of the largest length value, offset to account for the
     # fact that we didn't divide by 0 or 1.
-    puts 2 + lens.each_with_index.max[1]
+    2 + lens.each_with_index.max[1]
   end
-end
-
-ProjectEuler.time do
-  # 983 (1.928s)
-  Problem_0026.solve( 1000 )
 end

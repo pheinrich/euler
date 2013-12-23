@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Amicable numbers
+# 0.3024s
 class Problem_0021
+  def title; 'Amicable numbers' end
+  def solution; 31_626 end
+
   # Let d(n) be defined as the sum of proper divisors of n (numbers less than
   # n which divide evenly into n).  If d(a) = b and d(b) = a, where a != b,
   # then a and b are an amicable pair and each of a and b are called amicable
@@ -13,12 +16,7 @@ class Problem_0021
   #
   # Evaluate the sum of all the amicable numbers under 10000.
 
-  def self.solve( n )
-    puts( (1..n).select {|i| i.amicable?}.reduce(:+) )
+  def solve( n = 10_000 )
+    (1..n).select {|i| i.amicable?}.reduce( :+ )
   end
-end
-
-ProjectEuler.time do
-  # 31626 (0.6420s)
-  Problem_0021.solve( 10000 )
 end

@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Product-sum numbers
+# 
 class Problem_0088
+  def title; 'Product-sum numbers' end
+  def solution;  end
+
   # A natural number, N, that can be written as the sum and product of a given
   # set of at least two natural numbers, {a1, a2, ... , ak} is called a
   # product-sum number: N = a1 + a2 + ... + ak = a1 × a2 × ... × ak.
@@ -26,11 +29,6 @@ class Problem_0088
   #
   # What is the sum of all the minimal product-sum numbers for 2≤k≤12000?
 
-  def self.solve( first, last )
+  def solve( first = 2, last = 12_000 )
   end
-end
-
-ProjectEuler.time do
-  # 
-  Problem_0088.solve( 2, 12000 )
 end

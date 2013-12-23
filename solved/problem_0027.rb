@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Quadratic primes
+# 0.2075s
 class Problem_0027
+  def title; 'Quadratic primes' end
+  def solution; -59_231 end
+
   # Euler published the remarkable quadratic formula:
   #
   #     n^2 + n + 41
@@ -26,9 +29,9 @@ class Problem_0027
   # expression that produces the maximum number of primes for consecutive
   # values of n, starting with n = 0.
 
-  P = 1000.prime_sieve
+  P = 1_000.prime_sieve
 
-  def self.solve( u, v )
+  def solve( u = 1_000, v = 1_000 )
     max, i, j = 0, 0, 0
 
     # Brute force, assuming a, b are prime.  Valid assumption?
@@ -64,11 +67,6 @@ class Problem_0027
       end
     end
 
-    puts "%d = %d x %d, length %d" % [i*j, i, j, max]
+    i * j # puts "%d = %d x %d, length %d" % [i*j, i, j, max]
   end
-end
-
-ProjectEuler.time do
-  # -59231 = -61 x 971, length 71 (0.4720s)
-  Problem_0027.solve( 1000, 1000 )
 end

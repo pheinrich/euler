@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Roman numerals
+# 
 class Problem_0089
+  def title; 'Roman numerals' end
+  def solution;  end
+
   # The rules for writing Roman numerals allow for many ways of writing each
   # number (see About Roman Numerals...). However, there is always a "best"
   # way of writing a particular number.
@@ -30,11 +33,6 @@ class Problem_0089
   # Note: You can assume that all the Roman numerals in the file contain no
   # more than four consecutive identical units.
 
-  def self.solve
+  def solve
   end
-end
-
-ProjectEuler.time do
-  # 
-  Problem_0089.solve
 end

@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# 1000-digit Fibonacci number
+# 0.03577s
 class Problem_0025
+  def title; '1000-digit Fibonacci number' end
+  def solution; 4_782 end
+
   # The Fibonacci sequence is defined by the recurrence relation:
   #
   # F[n] = F[n - 1] + F[n - 2], where F[1] = 1 and F[2] = 1.
@@ -25,7 +28,7 @@ class Problem_0025
   #
   # What is the first term in the Fibonacci sequence to contain 1000 digits?
 
-  def self.solve( n )
+  def solve( n = 1_000 )
     term = 1
     curr = 0
     succ = 1
@@ -36,11 +39,6 @@ class Problem_0025
       curr, succ = succ, curr + succ
     end
 
-    puts term
+    term
   end
-end
-
-ProjectEuler.time do
-  # 4782 (0.1600s)
-  Problem_0025.solve( 1000 )
 end

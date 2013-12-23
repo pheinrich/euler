@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Counting summations
+# 
 class Problem_0076
+  def title; 'Counting summations' end
+  def solution;  end
+
   # It is possible to write five as a sum in exactly six different ways:
   #
   #    4 + 1
@@ -14,11 +17,6 @@ class Problem_0076
   # How many different ways can one hundred be written as a sum of at least
   # two positive integers?
 
-  def self.solve( n )
+  def solve( n = 100 )
   end
-end
-
-ProjectEuler.time do
-  # 
-  Problem_0076.solve( 100 )
 end

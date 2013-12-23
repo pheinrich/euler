@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Singular integer right triangles
+# 0.8214s
 class Problem_0075
+  def title; 'Singular integer right triangles' end
+  def solution; 161_667 end
+
   # It turns out that 12 cm is the smallest length of wire that can be bent to
   # form an integer sided right angle triangle in exactly one way, but there
   # are many more examples.
@@ -24,12 +27,7 @@ class Problem_0075
   # L ≤ 1,500,000 can exactly one integer sided right angle triangle be
   # formed?
 
-  def self.solve( n )
-    puts n.pytriple_sieve.count(1)
+  def solve( n = 1_500_000 )
+    n.pytriple_sieve.count( 1 )
   end
-end
-
-ProjectEuler.time do
-  # 161676 (1.278s)
-  Problem_0075.solve( 1500000 )
 end

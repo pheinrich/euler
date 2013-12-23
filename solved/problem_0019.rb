@@ -1,8 +1,11 @@
 require 'date'
 require 'projectEuler'
 
-# Counting Sundays
+# 0.002950s
 class Problem_0019
+  def title; 'Counting Sundays' end
+  def solution; 171 end
+
   # You are given the following information, but you may prefer to do some
   # research for yourself.
   #
@@ -19,7 +22,7 @@ class Problem_0019
   # How many Sundays fell on the first of the month during the twentieth
   # century (1 Jan 1901 to 31 Dec 2000)?
 
-  def self.solve( start, stop )
+  def solve( start = Date.new( 1901, 1, 1 ), stop = Date.new( 2000, 12, 31 ) )
     total = 0
     
     # Move to the first Sunday in the range, if not there already.
@@ -31,11 +34,6 @@ class Problem_0019
       start += 7
     end
 
-    puts total
+    total
   end
-end
-
-ProjectEuler.time do
-  # 171 (0.01500s)
-  Problem_0019.solve( Date.new( 1901, 1, 1 ), Date.new( 2000, 12, 31 ) )
 end

@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Non-abundant sums
+# 3.038s
 class Problem_0023
+  def title; 'Non-abundant sums' end
+  def solution; 4_179_871 end
+
   # A perfect number is a number for which the sum of its proper divisors is
   # exactly equal to the number. For example, the sum of the proper divisors of
   # 28 would be 1 + 2 + 4 + 7 + 14 = 28, which means that 28 is a perfect
@@ -21,7 +24,7 @@ class Problem_0023
   # Find the sum of all the positive integers which cannot be written as the
   # sum of two abundant numbers.
 
-  def self.solve( n )
+  def solve( n = 28_123 )
     # Precompute the abundant numbers below the max.
     abn = (0..n).select {|i| i.abundant?}
     notsum = Array.new( n ) {|i| i}
@@ -41,11 +44,6 @@ class Problem_0023
     end
 
     # Add up all the numbers not identified as sums.
-    puts notsum.reduce( :+ )
+    notsum.reduce( :+ )
   end
-end
-
-ProjectEuler.time do
-  # 4179871 (4.961s)
-  Problem_0023.solve( 28123 )
 end

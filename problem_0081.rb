@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Path sum: two ways
+# 
 class Problem_0081
+  def title; 'Path sum: two ways' end
+  def solution;  end
+
   # In the 5 by 5 matrix below, the minimal path sum from the top left to the
   # bottom right, by only moving to the right and down, is indicated and is
   # equal to 2427.
@@ -16,11 +19,6 @@ class Problem_0081
   # 80 by 80 matrix, from the top left to the bottom right by only moving
   # right and down.
 
-  def self.solve
+  def solve
   end
-end
-
-ProjectEuler.time do
-  # 
-  Problem_0081.solve
 end

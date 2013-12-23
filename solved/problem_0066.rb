@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Diophantine equation
+# 0.08464
 class Problem_0066
+  def title; 'Diophantine equation' end
+  def solution; 661 end
+
   # Consider quadratic Diophantine equations of the form:
   #
   #     x^2 – Dy^2 = 1
@@ -27,7 +30,7 @@ class Problem_0066
   # Find the value of D <= 1000 in minimal solutions of x for which the
   # largest value of x is obtained.
 
-  def self.solve( n )
+  def solve( n = 1_000 )
     # Minimal solution comes from one of the convergents of the continued
     # fraction for the square root of D.  Choose which one based on whether
     # the length of the periodic part is odd or even.
@@ -44,11 +47,6 @@ class Problem_0066
       end
     end
     
-    puts x.max[1]
+    x.max[1]
   end
-end
-
-ProjectEuler.time do
-  # 661 (0.1790s)
-  Problem_0066.solve( 1000 )
 end

@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Prime summations
+# 
 class Problem_0077
+  def title; 'Prime summations' end
+  def solution;  end
+
   # It is possible to write ten as the sum of primes in exactly five different
   # ways:
   #
@@ -14,11 +17,6 @@ class Problem_0077
   # What is the first value which can be written as the sum of primes in over
   # five thousand different ways?
 
-  def self.solve( n )
+  def solve( n = 5_000 )
   end
-end
-
-ProjectEuler.time do
-  # 
-  Problem_0077.solve( 5000 )
 end

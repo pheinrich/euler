@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# XOR decryption
+# 2.626s
 class Problem_0059
+  def title; 'XOR decryption' end
+  def solution; 107_359 end
+
   # Each character on a computer is assigned a unique code and the preferred
   # standard is ASCII (American Standard Code for Information Interchange).
   # For example, uppercase A = 65, asterisk (*) = 42, and lowercase k = 107.
@@ -37,7 +40,7 @@ class Problem_0059
              its over think also back after use two how our work first well
              way even new want because any these give day most us)
 
-  def self.solve()
+  def solve
     orig = IO.read( 'resources/cipher1.txt' ).split( ',' ).map( &:to_i )
     repeat = 1 + orig.length / 3
 
@@ -46,16 +49,10 @@ class Problem_0059
       plain = orig.zip( pad ).map {|pair| (pair[0] ^ pair[1]).chr}.join.split
 
       if 15 < (WORDS & plain).length
-        puts plain.join( ' ' ).codepoints.reduce {|a, i| a + i}
-        return
+        return (plain.join( ' ' ).codepoints.reduce {|a, i| a + i}).to_i
       end
 
       key.next
     end
   end
-end
-
-ProjectEuler.time do
-  # 107359 (5.091s)
-  Problem_0059.solve()
 end

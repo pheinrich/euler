@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Prime pair sets
+# 343.7s
 class Problem_0060
+  def title; 'Prime pair sets' end
+  def solution; 26_033 end
+
   # The primes 3, 7, 109, and 673, are quite remarkable. By taking any two
   # primes and concatenating them in any order the result will always be
   # prime. For example, taking 7 and 109, both 7109 and 1097 are prime. The
@@ -14,7 +17,7 @@ class Problem_0060
   POWER = 8
   P = (10**POWER).prime_sieve
 
-  def self.check( hash, array, n, result )
+  def check( hash, array, n, result )
     return true if 0 == n
     
     array.each do |key|
@@ -27,7 +30,7 @@ class Problem_0060
     false
   end
 
-  def self.solve( n )
+  def solve( n = 5 )
     h = {}
     P[0..-2].each_with_index do |p, i|
       h[p] = []
@@ -47,11 +50,6 @@ class Problem_0060
     
     result = []
     check( h, h.keys(), n, result )
-    puts result.reduce( :+ )
+    result.reduce( :+ )
   end
-end
-
-ProjectEuler.time do
-  # 26033 (291.3s)
-  Problem_0060.solve( 5 )
 end

@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Monopoly odds
+# 
 class Problem_0084
+  def title; 'Monopoly odds' end
+  def solution;  end
+
   # In the game, Monopoly, the standard board is set up in the following way:
   #
   #     GO  A1  CC1 A2  T1  R1  B1  CH1 B2  B3  JAIL
@@ -73,11 +76,6 @@ class Problem_0084
   # If, instead of using two 6-sided dice, two 4-sided dice are used, find the
   # six-digit modal string.
 
-  def self.solve
+  def solve
   end
-end
-
-ProjectEuler.time do
-  # 
-  Problem_0084.solve
 end

@@ -2,13 +2,11 @@ require 'projectEuler'
 
 # 
 class Problem_0000
+  def title; '' end
+  def solution;  end
+
   # 
 
-  def self.solve( n )
+  def solve( n )
   end
-end
-
-ProjectEuler.time do
-  # 
-  Problem_0000.solve(  )
 end

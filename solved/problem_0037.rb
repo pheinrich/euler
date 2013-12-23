@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Truncatable primes
+# 0.4998s
 class Problem_0037
+  def title; 'Truncatable primes' end
+  def solution; 748_317 end
+
   # The number 3797 has an interesting property. Being prime itself, it is
   # possible to continuously remove digits from left to right, and remain
   # prime at each stage: 3797, 797, 97, and 7. Similarly we can work from
@@ -12,8 +15,8 @@ class Problem_0037
   #
   # NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 
-  def self.solve()
-    p = 1000000.prime_sieve.map( &:to_s ).select {|s| s =~ /^[25]?[1379]*$/ }
+  def solve
+    p = 1_000_000.prime_sieve.map( &:to_s ).select {|s| s =~ /^[25]?[1379]*$/ }
     sum = 0
 
     for s in p
@@ -24,11 +27,6 @@ class Problem_0037
       sum += s.to_i
     end
 
-    puts sum
+    sum
   end
-end
-
-ProjectEuler.time do
-  # 748317 (1.183s)
-  Problem_0037.solve()
 end

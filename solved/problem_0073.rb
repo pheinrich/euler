@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Counting fractions in a range
+# 3.659s
 class Problem_0073
+  def title; 'Counting fractions in a range' end
+  def solution; 7_295_372 end
+
   # Consider the fraction, n/d, where n and d are positive integers. If n<d
   # and HCF(n,d)=1, it is called a reduced proper fraction.
   #
@@ -16,27 +19,24 @@ class Problem_0073
   # How many fractions lie between 1/3 and 1/2 in the sorted set of reduced
   # proper fractions for d ≤ 12,000?
 
-  def self.solve( n )
+  def solve( n = 12_000 )
     a, b, c, d = 0, 1, 1, n
-    
+
+    # Advance a Farey sequence order n forward to 1/3.
     while c != 1 || d != 3
       k = (n + b) / d
       a, b, c, d = c, d, k*c - a, k*d - b
     end
 
     count = -1
-    
+
+    # Count the number of steps necessary to further advance to 1/2.
     while c != 1 || d != 2
       k = (n + b) / d
       a, b, c, d = c, d, k*c - a, k*d - b
       count += 1
     end
 
-    puts count
+    count
   end
-end
-
-ProjectEuler.time do
-  # 7295372 (6.970s)
-  Problem_0073.solve( 12000 )
 end

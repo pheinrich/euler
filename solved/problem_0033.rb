@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Digit canceling fractions
+# 0.02876s
 class Problem_0033
+  def title; 'Digit canceling fractions' end
+  def solution; 100 end
+
   # The fraction 49/98 is a curious fraction, as an inexperienced
   # mathematician in attempting to simplify it may incorrectly believe that
   # 49/98 = 4/8, which is correct, is obtained by cancelling the 9s.
@@ -15,7 +18,7 @@ class Problem_0033
   # If the product of these four fractions is given in its lowest common
   # terms, find the value of the denominator.
 
-  def self.solve()
+  def solve
     prod = 1
 
     # Don't include 10 since there's no non-trivial solution that includes it.
@@ -45,11 +48,6 @@ class Problem_0033
       end
     end
 
-    puts prod.denominator
+    prod.denominator
   end
-end
-
-ProjectEuler.time do
-  # 100 (0.07501s)
-  Problem_0033.solve()
 end

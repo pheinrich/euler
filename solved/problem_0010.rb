@@ -1,17 +1,15 @@
 require 'projectEuler'
 
-# Summation of primes
+# 0.8394s
 class Problem_0010
+  def title; 'Summation of primes' end
+  def solution; 142_913_828_922 end
+
   # The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
   #
   # Find the sum of all the primes below two million.
 
-  def self.solve( n )
-    puts n.prime_sieve.inject( :+ )
+  def solve( n = 2_000_000 )
+    n.prime_sieve.inject( :+ )
   end
-end
-
-ProjectEuler.time do
-  # 142913828922 (1.993s)
-  Problem_0010.solve( 2000000 )
 end

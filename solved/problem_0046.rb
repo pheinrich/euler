@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Goldbach's other conjecture
+# 0.01969s
 class Problem_0046
+  def title; 'Goldbach\'s other conjecture' end
+  def solution; 5_777 end
+
   # It was proposed by Christian Goldbach that every odd composite number can
   # be written as the sum of a prime and twice a square.
   #
@@ -17,7 +20,7 @@ class Problem_0046
   # What is the smallest odd composite that cannot be written as the sum of a
   # prime and twice a square?
 
-  def self.solve()
+  def solve
     n = 33
     while true
       begin
@@ -33,11 +36,6 @@ class Problem_0046
       break if s >= n
     end
     
-    puts n
+    n
   end
-end
-
-ProjectEuler.time do
-  # 5777 (0.04000s)
-  Problem_0046.solve()
 end

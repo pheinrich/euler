@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Largest product in a series
+# 0.004176s
 class Problem_0008
+  def title; 'Largest product in a series' end
+  def solution; 40_824 end
+
   # Find the greatest product of five consecutive digits in the 1000-digit
   # number, N.
 
@@ -26,14 +29,9 @@ class Problem_0008
       '05886116467109405077541002256983155200055935729725' \
       '71636269561882670428252483600823257530420752963450'
 
-  def self.solve( n )
+  def solve( n = 5 )
     p = []
     (0..(N.length - n)).each {|i| p << N[i, n].unpack( 'aaaaa' ).inject(1) {|a, b| a * b.to_i}}
-    puts p.max
+    p.max
   end
-end
-
-ProjectEuler.time do
-  # 40824 (0.02800s)
-  Problem_0008.solve( 5 )
 end

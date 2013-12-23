@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Prime power triples
+#
 class Problem_0087
+  def title; 'Prime power triples' end
+  def solution;  end
+
   # The smallest number expressible as the sum of a prime square, prime cube,
   # and prime fourth power is 28. In fact, there are exactly four numbers
   # below fifty that can be expressed in such a way:
@@ -14,11 +17,6 @@ class Problem_0087
   # How many numbers below fifty million can be expressed as the sum of a
   # prime square, prime cube, and prime fourth power?
 
-  def self.solve( n )
+  def self.solve( n = 50_000_000 )
   end
-end
-
-ProjectEuler.time do
-  # 
-  Problem_0087.solve( 50000000 )
 end

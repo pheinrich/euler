@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Pandigital products
+# 2.703s
 class Problem_0032
+  def title; 'Pandigital products' end
+  def solution; 45_228 end
+
   # We shall say that an n-digit number is pandigital if it makes use of all
   # the digits 1 to n exactly once; for example, the 5-digit number, 15234, is
   # 1 through 5 pandigital.
@@ -15,7 +18,7 @@ class Problem_0032
   # HINT: Some products can be obtained in more than one way so be sure to
   # only include it once in your sum.
 
-  def self.solve()
+  def solve
     perms = (1..9).to_a.permutation.map {|p| p.join}
     prods = []
 
@@ -26,11 +29,6 @@ class Problem_0032
       end
     end
     
-    puts prods.uniq.reduce( :+ )
+    prods.uniq.reduce( :+ )
   end
-end
-
-ProjectEuler.time do
-  # 45228 (4.581s)
-  Problem_0032.solve()
 end

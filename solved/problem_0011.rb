@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Largest product in a grid
+# 0.001548s
 class Problem_0011
+  def title; 'Largest product in a grid' end
+  def solution; 70_600_674 end
+
   # In the 20 x 20 grid below, consider the four numbers along the diagonal
   # line from (8, 11) to (11, 11):
   
@@ -31,7 +34,7 @@ class Problem_0011
   # What is the greatest product of four adjacent numbers in the same
   # direction (up, down, left, right, or diagonally) in the 2020 grid?
 
-  def self.solve( w, h, n )
+  def solve( w = 20, h = 20, n = 4 )
     max = 0
 
     for i in 0...w
@@ -64,11 +67,6 @@ class Problem_0011
       end
     end
 
-    puts max
+    max
   end
-end
-
-ProjectEuler.time do
-  # 70600674 (0.004001s)
-  Problem_0011.solve( 20, 20, 4 )
 end

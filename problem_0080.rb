@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Square root digital expansion
+# 
 class Problem_0080
+  def title; 'Square root digital expansion' end
+  def solution;  end
+
   # It is well known that if the square root of a natural number is not an
   # integer, then it is irrational. The decimal expansion of such square roots
   # is infinite without any repeating pattern at all.
@@ -13,11 +16,6 @@ class Problem_0080
   # sums of the first one hundred decimal digits for all the irrational square
   # roots.
 
-  def self.solve( n, figs )
+  def solve( n = 100, figs = 100 )
   end
-end
-
-ProjectEuler.time do
-  # 
-  Problem_0080.solve( 100, 100 )
 end

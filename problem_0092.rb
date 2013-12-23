@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Square digit chains
+# 
 class Problem_0092
+  def title; 'Square digit chains' end
+  def solution;  end
+
   # A number chain is created by continuously adding the square of the digits
   # in a number to form a new number until it has been seen before.
   #
@@ -16,11 +19,6 @@ class Problem_0092
   #
   # How many starting numbers below ten million will arrive at 89?
 
-  def self.solve( n )
+  def solve( n = 10_000_000 )
   end
-end
-
-ProjectEuler.time do
-  # 
-  Problem_0092.solve( 10000000 )
 end

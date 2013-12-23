@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Path sum: four ways
+# 
 class Problem_0083
+  def title; 'Path sum: four ways' end
+  def solution;  end
+
   # NOTE: This problem is a significantly more challenging version of Problem
   # 81.
   #
@@ -19,11 +22,6 @@ class Problem_0083
   # by 80 matrix, from the top left to the bottom right by moving left, right,
   # up, and down.
 
-  def self.solve
+  def solve
   end
-end
-
-ProjectEuler.time do
-  # 
-  Problem_0083.solve
 end

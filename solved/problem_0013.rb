@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Large sum
+# 0.0001070s
 class Problem_0013
+  def title; 'Large sum' end
+  def solution; 5_537_376_230 end
+
   # Work out the first ten digits of the sum of the following one-hundred
   # 50-digit numbers.
 
@@ -106,13 +109,8 @@ class Problem_0013
         20849603980134001723930671666823555245252804609722,
         53503534226472524250874054075591789781264330331690 ]
   
-  def self.solve( n )
+  def solve( n = 10 )
     # Cheating with Ruby's big number support.
-    puts N.inject(:+).to_s[0...n]
+    N.inject( :+ ).to_s[0...n].to_i
   end
-end
-
-ProjectEuler.time do
-  # 5537376230 (0.0000s)
-  Problem_0013.solve( 10 )
 end

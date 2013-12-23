@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Number spiral diagonals
+# 0.0002179s
 class Problem_0028
+  def title; 'Number spiral diagonals' end
+  def solution; 669_171_001 end
+
   # Starting with the number 1 and moving to the right in a clockwise
   # direction a 5 by 5 spiral is formed as follows:
   #
@@ -16,7 +19,7 @@ class Problem_0028
   # What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral
   # formed in the same way?
 
-  def self.solve( n )
+  def solve( n = 1_001 )
     # For each enclosing rectangle, index 0 < i < (n - 1)/2, the corner values
     # are given by:
     #
@@ -41,11 +44,6 @@ class Problem_0028
     end
 
     # The center 1 was counted four times, so adjust.
-    puts total - 3
+    total - 3
   end
-end
-
-ProjectEuler.time do
-  # 669171001 (0.001000s)
-  Problem_0028.solve( 1001 )
 end

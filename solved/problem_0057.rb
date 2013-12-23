@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Square root convergents
+# 0.03066s
 class Problem_0057
+  def title; 'Square root convergents' end
+  def solution; 153 end
+
   # It is possible to show that the square root of two can be expressed as an
   # infinite continued fraction.
   #
@@ -21,7 +24,7 @@ class Problem_0057
   # In the first one-thousand expansions, how many fractions contain a
   # numerator with more digits than denominator?
 
-  def self.solve( n )
+  def solve( n = 1_000 )
     count = 0
     a, b = 2, 1
 
@@ -30,11 +33,6 @@ class Problem_0057
       a, b = (a << 1) + b, a
     end
 
-    puts count
+    count
   end
-end
-
-ProjectEuler.time do
-  # 153 (0.09601s)
-  Problem_0057.solve( 1000 )
 end

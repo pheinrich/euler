@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Digit fifth powers
+# 2.932s
 class Problem_0030
+  def title; 'Digit fifth powers' end
+  def solution; 443_839 end
+
   # Surprisingly there are only three numbers that can be written as the sum
   # of fourth powers of their digits:
   #
@@ -16,7 +19,7 @@ class Problem_0030
   # Find the sum of all the numbers that can be written as the sum of fifth
   # powers of their digits.
 
-  def self.solve( n )
+  def solve( n = 5 )
     p = (0..9).map {|i| i**n}
 
     # Determine the largest number of digits possible with the powers given.
@@ -25,11 +28,6 @@ class Problem_0030
     lim = 10**lim - 1
 
     # Brute force every number with that many digits or fewer.
-    puts (2..lim).select {|i| i == i.to_s.chars.inject( 0 ) {|a, x| a + p[x.to_i]}}.reduce( :+ )
+    (2..lim).select {|i| i == i.to_s.chars.inject( 0 ) {|a, x| a + p[x.to_i]}}.reduce( :+ )
   end
-end
-
-ProjectEuler.time do
-  # 443839 (5.379s)
-  Problem_0030.solve( 5 )
 end

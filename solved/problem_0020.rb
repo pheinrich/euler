@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Factorial digit sum
+# 0.0003011s
 class Problem_0020
+  def title; 'Factorial digit sum' end
+  def solution; 648 end
+
   # n! means n x (n - 1) x ... x 3 x 2 x 1
   #
   # For example, 10! = 10 x 9 x ... x 3 x 2 x 1 = 3628800, and the sum of the
@@ -9,12 +12,7 @@ class Problem_0020
   #
   # Find the sum of the digits in the number 100!
 
-  def self.solve( n )
-    puts n.fact.sum_digits
+  def solve( n = 100 )
+    n.fact.sum_digits
   end
-end
-
-ProjectEuler.time do
-  # 648 (0.0000s)
-  Problem_0020.solve( 100 )
 end

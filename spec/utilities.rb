@@ -1,5 +1,5 @@
 require 'spec_helper'
-require_relative '../projectEuler'
+require 'projectEuler'
 
 describe Array do
   it "provides some additional array operations" do

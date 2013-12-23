@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Odd period square roots
+# 3.606s
 class Problem_0064
+  def title; 'Odd period square roots' end
+  def solution; 1_322 end
+
   # All square roots are periodic when written as continued fractions and can
   # be written in the form:
   #
@@ -89,12 +92,7 @@ class Problem_0064
   #
   # How many continued fractions for N <= 10000 have an odd period?
 
-  def self.solve( n )
-    puts( (0..n).select {|i| i.sqrt_cf.count % 2 == 0}.count )
+  def solve( n = 10_000 )
+    (0..n).select {|i| i.sqrt_cf.count % 2 == 0}.count
   end
-end
-
-ProjectEuler.time do
-  # 1322 (6.134s)
-  Problem_0064.solve( 10000 )
 end

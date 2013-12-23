@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Ordered fractions
+# 0.03006s
 class Problem_0071
+  def title; 'Ordered fractions' end
+  def solution; 428_570 end
+
   # Consider the fraction, n/d, where n and d are positive integers. If n<d
   # and HCF(n,d)=1, it is called a reduced proper fraction.
   #
@@ -17,7 +20,7 @@ class Problem_0071
   # ascending order of size, find the numerator of the fraction immediately
   # to the left of 3/7.
 
-  def self.solve( n, numer, denom )
+  def solve( n = 1_000_000, numer = 3, denom = 7 )
     # http://en.wikipedia.org/wiki/Farey_sequence#Next_term
     a, b, c, d = 0, 1, 1, denom
 
@@ -39,11 +42,6 @@ class Problem_0071
       c, d = c / gcd, d / gcd if 1 < gcd
     end while n >= d
 
-    puts "#{a}/#{b}"
+    a # puts "#{a}/#{b}"
   end
-end
-
-ProjectEuler.time do
-  # 428570/999997 (0.03434s)
-  Problem_0071.solve( 1000000, 3, 7 )
 end

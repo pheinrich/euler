@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Coin sums
+# 0.6955s
 class Problem_0031
+  def title; 'Coin sums' end
+  def solution; 73_682 end
+
   # In England the currency is made up of pound, £, and pence, p, and there
   # are eight coins in general circulation:
   #
@@ -13,7 +16,7 @@ class Problem_0031
   #
   # How many different ways can £2 be made using any number of coins?
 
-  def self.fit( n, denoms, sum = 0, index = 0, total = 0 )
+  def fit( n, denoms, sum = 0, index = 0, total = 0 )
     if index < denoms.length
       0.step( n - sum, denoms[index] ) do |x|
         total = fit( n, denoms, x + sum, 1 + index, total )
@@ -25,12 +28,7 @@ class Problem_0031
     total
   end
 
-  def self.solve( n, denoms )
-    puts fit( n, denoms )
+  def solve( n = 200, denoms = [200, 100, 50, 20, 10, 5, 2, 1] )
+    fit( n, denoms )
   end
-end
-
-ProjectEuler.time do
-  # 73682 (1.400s)
-  Problem_0031.solve( 200, [200, 100, 50, 20, 10, 5, 2, 1] )
 end

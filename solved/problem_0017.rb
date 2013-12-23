@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Number letter counts
+# 0.005430s
 class Problem_0017
+  def title; 'Number letter counts' end
+  def solution; 21_124 end
+
   # If the numbers 1 to 5 are written out in words: one, two, three, four,
   # five, then there are 3 + 3 + 5 + 4 + 4 = 19 letters used in total.
   #
@@ -13,12 +16,7 @@ class Problem_0017
   # 20 letters. The use of "and" when writing out numbers is in compliance
   # with British usage.
 
-  def self.solve( n )
-    puts( (1..n).inject( 0 ) {|sum, i| sum + i.in_words.delete(' -').length} )
+  def solve( n = 1_000 )
+    (1..n).inject( 0 ) {|sum, i| sum + i.in_words.delete(' -').length}
   end
-end
-
-ProjectEuler.time do
-  # 21124 (0.01300s)
-  Problem_0017.solve( 1000 )
 end

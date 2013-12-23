@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Longest Collatz sequence
+# 22.94s
 class Problem_0014
+  def title; 'Longest Collatz sequence' end
+  def solution; 837_799 end
+
   # The following iterative sequence is defined for the set of positive
   # integers:
   #
@@ -21,7 +24,7 @@ class Problem_0014
   #
   # NOTE: Once the chain starts the terms are allowed to go above one million.
 
-  def self.solve( n )
+  def solve( n = 1_000_000 )
     m = 1
     max = 1
 
@@ -33,11 +36,6 @@ class Problem_0014
       end
     end
 
-    puts m
+    m
   end
-end
-
-ProjectEuler.time do
-  # 837799 (19.91s)
-  Problem_0014.solve( 1000000 )
 end

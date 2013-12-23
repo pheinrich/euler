@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Champernowne's constant
+# 0.0001292s
 class Problem_0040
+  def title; 'Champernowne\'s constant' end
+  def solution; 210 end
+
   # An irrational decimal fraction is created by concatenating the positive
   # integers:
   #
@@ -14,7 +17,7 @@ class Problem_0040
   #
   #     d[1] x d[10] x d[100] x d[1000] x d[10000] x d[100000] x d[1000000]
 
-  def self.solve( offsets )
+  def solve( offsets = [1, 10, 100, 1000, 10000, 100000, 1000000] )
     # Count of tuples         Relevant offsets     Expression    
     # 9 x 1 = 9            => [0, 9]            => o
     # 90 x 2 = 180         => [10, 189]         => (int[(o - 10) / 2] + 10)[2*frac]
@@ -35,11 +38,6 @@ class Problem_0040
       p * d.to_i
     end
 
-    puts product
+    product
   end
-end
-
-ProjectEuler.time do
-  # 210 (0.0000s)
-  Problem_0040.solve( [1, 10, 100, 1000, 10000, 100000, 1000000] )
 end

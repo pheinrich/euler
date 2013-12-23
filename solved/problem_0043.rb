@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Sub-string divisibility
+# 1.814s
 class Problem_0043
+  def title; 'Sub-string divisibility' end
+  def solution; 16_695_334_890 end
+
   # The number 1406357289 is a 0 to 9 pandigital number because it is made up
   # of each of the digits 0 to 9 in some order, but it also has a rather
   # interesting sub-string divisibility property.
@@ -19,7 +22,7 @@ class Problem_0043
   #
   # Find the sum of all 0 to 9 pandigital numbers with this property.
 
-  def self.chain( maps, candidate = "", index = 0, sum = 0 )
+  def chain( maps, candidate = "", index = 0, sum = 0 )
     if index < maps.length
       maps[index].each do |a|
         # If this is the first pass, the string will start with all three
@@ -44,16 +47,11 @@ class Problem_0043
     sum
   end
 
-  def self.solve( divisors )
+  def solve( divisors = [1, 2, 3, 5, 7, 11, 13, 17] )
     # Create an array of divisor lists.  Each list will contain all 3-digit
     # values divisible by the corresponding entry from the divisors array, not
     # including those with duplicated digits.
     maps = divisors.map {|i| (12..987).reject {|j| 0 != j % i || "%03d" % j =~ /([0-9]).*\1/}.map {|k| "%03d" % k}}
-    puts chain( maps )
+    chain( maps )
   end
-end
-
-ProjectEuler.time do
-  # 16695334890 (2.825s)
-  Problem_0043.solve( [1, 2, 3, 5, 7, 11, 13, 17] )
 end

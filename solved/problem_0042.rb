@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Coded triangle numbers
+# 0.01971s
 class Problem_0042
+  def title; 'Coded triangle numbers' end
+  def solution; 162 end
+
   # The nth term of the sequence of triangle numbers is given by,
   # t[n] = n(n+1)/2; so the first ten triangle numbers are:
   #
@@ -15,7 +18,7 @@ class Problem_0042
   # Using words.txt, a 16K text file containing nearly two-thousand common
   # English words, how many are triangle words?
 
-  def self.solve()
+  def solve
     # Strip quotes and split comma-separated values into a sorted array.
     words = IO.read( 'resources/words.txt' ).delete( '\"' ).split( ',' )
 
@@ -28,11 +31,6 @@ class Problem_0042
     t = Array.new( words.max ) {|i| i*(i + 1) / 2}
 
     # Count the number of words whose length corresponds to a triangle number.
-    puts words.count {|i| t.include?( i )}
+    words.count {|i| t.include?( i )}
   end
-end
-
-ProjectEuler.time do
-  # 162 (0.05800s)
-  Problem_0042.solve()
 end

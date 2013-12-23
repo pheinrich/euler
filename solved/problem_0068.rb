@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Magic 5-gon ring
+# 2.017s
 class Problem_0068
+  def title; 'Magic 5-gon ring' end
+  def solution; 6_531_031_914_842_725 end
+
   # Consider the following "magic" 3-gon ring, filled with the numbers 1 to 6,
   # and each line adding to nine.
   #
@@ -49,7 +52,7 @@ class Problem_0068
   #            \
   #            ( )
 
-  def self.solve( n )
+  def solve( n = 16 )
     max = 0
     
     (1..10).each do |a|
@@ -99,11 +102,6 @@ class Problem_0068
       end
     end
 
-    puts max
+    max
   end
-end
-
-ProjectEuler.time do
-  # 6531031914842725 (4.006s)
-  Problem_0068.solve( 16 )
 end

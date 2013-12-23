@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Cube digit pairs
+# 
 class Problem_0090
+  def title; 'Cube digit pairs' end
+  def solution;  end
+
   # Each of the six faces on a cube has a different digit (0 to 9) written on
   # it; the same is done to a second cube. By placing the two cubes
   # side-by-side in different positions we can form a variety of 2-digit
@@ -34,11 +37,6 @@ class Problem_0090
   # How many distinct arrangements of the two cubes allow for all of the
   # square numbers to be displayed?
 
-  def self.solve
+  def solve
   end
-end
-
-ProjectEuler.time do
-  # 
-  Problem_0090.solve
 end

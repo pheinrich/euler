@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Arithmetic expressions
+# 
 class Problem_0093
+  def title; 'Arithmetic expressions' end
+  def solution;  end
+
   # By using each of the digits from the set, {1, 2, 3, 4}, exactly once,
   # and making use of the four arithmetic operations (+, −, *, /) and
   # brackets/parentheses, it is possible to form different positive integer
@@ -24,11 +27,6 @@ class Problem_0093
   # set of consecutive positive integers, 1 to n, can be obtained, giving your
   # answer as a string: abcd.
 
-  def self.solve
+  def solve
   end
-end
-
-ProjectEuler.time do
-  # 
-  Problem_0093.solve
 end

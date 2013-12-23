@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Names scores
+# 0.01374s
 class Problem_0022
+  def title; 'Names scores' end
+  def solution; 871_198_282 end
+
   # Using names.txt, a 46K text file containing over five-thousand first names,
   # begin by sorting it into alphabetical order. Then working out the
   # alphabetical value for each name, multiply this value by its alphabetical
@@ -13,7 +16,7 @@ class Problem_0022
   #
   # What is the total of all the name scores in the file?
 
-  def self.solve
+  def solve
     # Strip quotes and split comma-separated values into a sorted array.
     names = IO.read( 'resources/names.txt' ).delete( '\"' ).split( ',' ).sort
 
@@ -21,11 +24,6 @@ class Problem_0022
     names.map! {|n| n.bytes.inject( :+ ) - (n.length << 6)}
 
     # Weight each name score according to its list position and add together.
-    puts names.each_with_index.inject( 0 ) {|sum, (n, i)| sum + n*(1 + i)}
+    names.each_with_index.inject( 0 ) {|sum, (n, i)| sum + n*(1 + i)}
   end
-end
-
-ProjectEuler.time do
-  # 871198282 (0.03100s)
-  Problem_0022.solve
 end

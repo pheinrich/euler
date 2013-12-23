@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Digital factorial chains
+# 10.50s
 class Problem_0074
+  def title; 'Digital factorial chains' end
+  def solution; 402 end
+
   # The number 145 is well known for the property that the sum of the
   # factorial of its digits is equal to 145:
   #
@@ -31,7 +34,7 @@ class Problem_0074
 
   F = (0..9).map( &:fact )
 
-  def self.solve( limit, length )
+  def solve( limit = 1_000_000, length = 60 )
     count = 0
     right = {}
 
@@ -69,11 +72,6 @@ class Problem_0074
       count += 1 if len == length
     end
     
-    puts count
+    count
   end
-end
-
-ProjectEuler.time do
-  # 402 (10.13s)
-  Problem_0074.solve( 1000000, 60 )
 end

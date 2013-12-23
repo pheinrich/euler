@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Consecutive prime sum
+# 0.5725s
 class Problem_0050
+  def title; 'Consecutive prime sum' end
+  def solution; 997_651 end
+
   # The prime 41 can be written as the sum of six consecutive primes:
   #
   #     41 = 2 + 3 + 5 + 7 + 11 + 13
@@ -15,7 +18,7 @@ class Problem_0050
   # Which prime, below one-million, can be written as the sum of the most
   # consecutive primes?
 
-  def self.solve( n )
+  def solve( n = 1_000_000 )
     h = Hash.new
     n.prime_sieve.each {|i| h[i] = true}
 
@@ -32,11 +35,6 @@ class Problem_0050
       end
     end
 
-    puts "%d (%d primes)" % [max, 1 + run]
+    max # puts "%d (%d primes)" % [max, 1 + run]
   end
-end
-
-ProjectEuler.time do
-  # 997651 (543 primes) (1.247s)
-  Problem_0050.solve( 1000000 )
 end

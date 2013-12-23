@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Lychrel numbers
+# 0.07033s
 class Problem_0055
+  def title; 'Lychrel numbers' end
+  def solution; 249 end
+
   # If we take 47, reverse and add, 47 + 74 = 121, which is palindromic.
   #
   # Not all numbers produce palindromes so quickly. For example,
@@ -32,12 +35,7 @@ class Problem_0055
   # NOTE: Wording was modified slightly on 24 April 2007 to emphasise the
   # theoretical nature of Lychrel numbers.
 
-  def self.solve( n )
-    puts 5.upto( n - 1 ).count {|i| i.lychrel?}
+  def solve( n = 10_000 )
+    5.upto( n - 1 ).count {|i| i.lychrel?}
   end
-end
-
-ProjectEuler.time do
-  # 249 (0.2050s)
-  Problem_0055.solve( 10000 )
 end

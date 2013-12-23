@@ -1,13 +1,16 @@
 require 'projectEuler'
 
-# 10001st prime
+# 0.1604s
 class Problem_0007
+  def title; '10001st prime' end
+  def solution; 104_743 end
+
   # By listing the first six prime numbers: 2, 3, 5, 7, 11, and 13, we can see
   # that the 6th prime is 13.
   #
   # What is the 10001st prime number?
 
-  def self.solve( n )
+  def solve( n = 10_001 )
     i = 3
     p = 2
 
@@ -19,11 +22,6 @@ class Problem_0007
       i += 2
     end
 
-    puts p
+    p
   end
-end
-
-ProjectEuler.time do
-  # 104743 (0.3600s)
-  Problem_0007.solve( 10001 )
 end

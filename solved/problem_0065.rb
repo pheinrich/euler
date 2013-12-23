@@ -1,7 +1,10 @@
 require 'projectEuler'
 
-# Convergents of e
+# 0.0003641s
 class Problem_0065
+  def title; 'Convergents of e' end
+  def solution; 272 end
+
   # The square root of 2 can be written as an infinite continued fraction.
   #
   #                            1
@@ -67,7 +70,7 @@ class Problem_0065
   # Find the sum of digits in the numerator of the 100th convergent of the
   # continued fraction for e.
 
-  def self.solve( n )
+  def solve( n = 100 )
     e = [2, 1]
     k = 1
 
@@ -77,11 +80,6 @@ class Problem_0065
       k += 1
     end
 
-    puts e.convergent( n - 1 ).numerator.sum_digits
+    e.convergent( n - 1 ).numerator.sum_digits
   end
-end
-
-ProjectEuler.time do
-  # 272 (0.0009999s)
-  Problem_0065.solve( 100 )
 end
