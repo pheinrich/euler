@@ -1,5 +1,5 @@
 require 'spec_helper'
-n = 7
+n = 69
 n.upto(n) do |i|
   require "problem_%04d" % i
   problem = Object::const_get( "Problem_%04d" % i ).new

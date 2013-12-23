@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 51.03s
+# 1.880s
 class Problem_0069
   def title; 'Totient maximum' end
   def solution; 510_510 end
@@ -27,6 +27,8 @@ class Problem_0069
   # Find the value of n <= 1,000,000 for which n/φ(n) is a maximum.
 
   def solve( n = 1_000_000 )
-    2 + (2..n).map {|i| i.to_f / i.totient}.each_with_index.max[1]
+    s = n.totient_sieve
+    s.shift
+    1 + s.each_with_index.max_by {|i, j| j.to_f / i}[1]
   end
 end

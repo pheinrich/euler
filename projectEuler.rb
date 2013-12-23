@@ -169,10 +169,10 @@ class Integer
     s
   end
 
-# Return an array of totient values for integers less than or equal to this
+  # Return an array of totient values for integers less than or equal to this
   # one.  Use an approach similar to Eratosthenes' Sieve to fill the array.
   #
-  # Problems:  72
+  # Problems:  69, 72
   def totient_sieve
     # Sieve integers up to n similar to Eratosthenes, but instead of elim-
     # nating prime multiples, multiply by the corresponding totient component
@@ -304,8 +304,6 @@ class Integer
   end
 
   # Count the numbers less than n that are coprime to n.
-  #
-  # Problems:  69
   def totient
     raise ArgumentError, 'totient requires positive integer' unless 0 < self
 
