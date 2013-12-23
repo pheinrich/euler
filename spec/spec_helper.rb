@@ -1,3 +1,5 @@
+%w(../.. ../../solved).each {|path| $LOAD_PATH.unshift File.expand_path( path, __FILE__ )}
+
 require 'stringio'
 
 module Kernel
