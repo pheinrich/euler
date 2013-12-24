@@ -1,9 +1,9 @@
 require 'projectEuler'
 
-# 
+# 82.75s (#7757)
 class Problem_0078
   def title; 'Coin partitions' end
-  def solution;  end
+  def solution; 55374 end
 
   # Let p(n) represent the number of different ways in which n coins can be
   # separated into piles. For example, five coins can separated into piles in
@@ -20,5 +20,8 @@ class Problem_0078
   # Find the least value of n for which p(n) is divisible by one million.
 
   def solve( n = 1_000_000 )
+    # From observation, brute force.
+    limit = (2.75 * n**0.75).floor
+    limit.partition_sieve.find_index {|i| 0 == (i % n)}
   end
 end
