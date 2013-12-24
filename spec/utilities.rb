@@ -66,9 +66,26 @@ describe Integer do
     end
   end
 
+  describe "#genpents" do
+    it "generates an array of generalized pentagonal numbers" do
+      0.genpents.should == [0]
+      100.genpents.should == [0, 1, 2, 5, 7, 12, 15, 22, 26, 35, 40, 51, 57, 70, 77, 92, 100]
+      6543.genpents[121, 5].should == [5551, 5612, 5735, 5797, 5922]
+    end
+  end
+
+  describe "#partition_sieve" do
+    it "generates an array of partition numbers" do
+      0.partition_sieve.should == [1]
+      1.partition_sieve.should == [1, 1]
+      13.partition_sieve.should == [1, 1, 2, 3, 5, 7, 11, 15, 22, 30, 42, 56, 77, 101]
+      439.partition_sieve[329, 3].should == [68834885946073850, 73653287861850339, 78801255302666615]
+    end
+  end
+
   describe "#prime_sieve" do
     it "generates an array of primes" do
-      100.prime_sieve == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
+      100.prime_sieve.should == [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97]
       100000.prime_sieve.should have( 9592 ).items
     end
   end

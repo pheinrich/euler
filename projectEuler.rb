@@ -107,6 +107,44 @@ class Integer
     return 1 == gcd( number )
   end
 
+  # Return an array of generalized pentagonal numbers up to n.
+  def genpents
+    s = []
+    gnomon = [0, 1, 0, 2]
+    sign = 1
+
+    begin
+      s << gnomon[0]
+      gnomon[0] += gnomon[1]
+      gnomon[1] += gnomon[2]
+      gnomon[2] += (sign * gnomon[3])
+      gnomon[3] += 1
+      sign = -sign
+    end until self < gnomon[0] 
+
+    s
+  end
+
+  # Return the partition function p(n) for an array of values.  A recurrence
+  # relation is used to calculate this value, so computing it for n involves
+  # computing it for every number less than n.  That makes a sieve approach
+  # convenient since it effectively caches the intermediate results.
+  def partition_sieve
+    s = Array.new( 1 + self, 0 )
+    pents = self.genpents
+    sign = [-1, 1, 1, -1]
+  
+    s[0] = 1
+    (1..self).each do |i|
+      (1...pents.length).each do |j|
+        break if pents[j] > i
+        s[i] += sign[j % 4] * s[i - pents[j]]
+      end
+    end
+  
+    s
+  end
+
   # Return an array of prime numbers less than the maximum specified.  Use the
   # Sieve of Eratosthenes to generate the array.
   #
