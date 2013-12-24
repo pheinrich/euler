@@ -1,9 +1,9 @@
 require 'projectEuler'
 
-# 
+# 0.001000s (#14159)
 class Problem_0076
   def title; 'Counting summations' end
-  def solution;  end
+  def solution; 190569291 end
 
   # It is possible to write five as a sum in exactly six different ways:
   #
@@ -18,5 +18,6 @@ class Problem_0076
   # two positive integers?
 
   def solve( n = 100 )
+    n.partition_sieve[-1] - 1
   end
 end
