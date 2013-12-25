@@ -110,17 +110,16 @@ class Integer
   # Return an array of generalized pentagonal numbers up to n.
   def genpents
     s = []
-    gnomon = [0, 1, 0, 2]
-    sign = 1
+    a, b, c, d, sign = 0, 1, 0, 2, 1
 
     begin
-      s << gnomon[0]
-      gnomon[0] += gnomon[1]
-      gnomon[1] += gnomon[2]
-      gnomon[2] += (sign * gnomon[3])
-      gnomon[3] += 1
+      s << a
+      a += b
+      b += c
+      c += (sign * d)
+      d += 1
       sign = -sign
-    end until self < gnomon[0] 
+    end until self < a 
 
     s
   end
@@ -163,6 +162,19 @@ class Integer
     end
     
     s.compact!
+  end
+
+  # Return the sum of prime factors for each number less than n.
+  def primefactorsum_sieve
+    s = Array.new( self, 0 )
+
+    i = 2
+    while i < self
+      (i...self).step( i ) {|j| s[j] += i}
+      i += 1 until i > self || 0 == s[i]
+    end
+
+    s
   end
 
   # Return an array of values representing the count of Pythagoreon triples

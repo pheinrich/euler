@@ -90,6 +90,14 @@ describe Integer do
     end
   end
 
+  describe "#primefactorsum_sieve" do
+    it "generates an array of prime factor sums" do
+      0.primefactorsum_sieve.should == []
+      10.primefactorsum_sieve.should == [0, 0, 2, 3, 2, 5, 5, 7, 2, 3]
+      8364.primefactorsum_sieve[-5, 5].should == [656, 37, 932, 152, 8363] 
+    end
+  end
+
   describe "#pytriple_sieve" do
     it "generates an array of Pythagorean triple counts" do
       1000.pytriple_sieve[415, 10].should == [0, 1, 0, 1, 0, 5, 0, 0, 0, 0]
