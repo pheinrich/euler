@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 82.75s (#7757)
+# 49.05s (#7757)
 class Problem_0078
   def title; 'Coin partitions' end
   def solution; 55374 end
