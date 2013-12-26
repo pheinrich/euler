@@ -92,9 +92,16 @@ describe Integer do
 
   describe "#primefactorsum_sieve" do
     it "generates an array of prime factor sums" do
-      0.primefactorsum_sieve.should == []
       10.primefactorsum_sieve.should == [0, 0, 2, 3, 2, 5, 5, 7, 2, 3]
       8364.primefactorsum_sieve[-5, 5].should == [656, 37, 932, 152, 8363] 
+    end
+  end
+
+  describe "#primepartition_sieve" do
+    it "generates an array of prime partition numbers" do
+      15.primepartition_sieve.should == [0, 0, 1, 1, 1, 2, 2, 3, 3, 4, 5, 6, 7, 9, 10]
+      553.primepartition_sieve[-3, 3].should == [1665790419712, 1711588947172, 1758600154825]
+      750.primepartition_sieve.count {|i| i.prime?}.should == 53 
     end
   end
 

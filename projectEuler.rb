@@ -128,6 +128,8 @@ class Integer
   # relation is used to calculate this value, so computing it for n involves
   # computing it for every number less than n.  That makes a sieve approach
   # convenient since it effectively caches the intermediate results.
+  #
+  # Problems:  76, 78
   def partition_sieve
     s = Array.new( 1 + self, 0 )
     pents = self.genpents
@@ -177,7 +179,25 @@ class Integer
     s
   end
 
-  # Return an array of values representing the count of Pythagoreon triples
+  # Return the prime partition function for every value less than n.  For more
+  # info, see http://math.stackexchange.com/questions/89240/prime-partition.
+  #
+  # Problems:  77
+  def primepartition_sieve
+    sopf = self.primefactorsum_sieve
+    s = Array.new( sopf )
+
+    (2...self).each do |i|
+      (1...i).each do |j|
+        s[i] += sopf[j] * s[i - j]
+      end
+      s[i] /= i
+    end
+
+    s
+  end
+
+  # Return an array of values representing the count of Pythagorean triples
   # that sum to each integer up to and including n.  For more information, see
   # http://en.wikipedia.org/wiki/Pythagorean_triple#Generating_a_triple.
   #
