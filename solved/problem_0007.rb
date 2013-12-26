@@ -11,14 +11,10 @@ class Problem_0007
   # What is the 10001st prime number?
 
   def solve( n = 10_001 )
-    i = 3
-    p = 2
+    p, i = 2, 3
 
     while 1 < n
-      if i.prime?
-        p = i
-        n -= 1
-      end
+      p, n = i, n - 1 if i.prime?
       i += 2
     end
 
