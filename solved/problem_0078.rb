@@ -3,7 +3,7 @@ require 'projectEuler'
 # 49.05s (#7757)
 class Problem_0078
   def title; 'Coin partitions' end
-  def solution; 55374 end
+  def solution; 55_374 end
 
   # Let p(n) represent the number of different ways in which n coins can be
   # separated into piles. For example, five coins can separated into piles in

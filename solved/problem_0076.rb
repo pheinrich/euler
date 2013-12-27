@@ -3,7 +3,7 @@ require 'projectEuler'
 # 0.0006421 (#14159)
 class Problem_0076
   def title; 'Counting summations' end
-  def solution; 190569291 end
+  def solution; 190_569_291 end
 
   # It is possible to write five as a sum in exactly six different ways:
   #
