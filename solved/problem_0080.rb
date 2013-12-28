@@ -1,9 +1,9 @@
 require 'projectEuler'
 
-# 
+# 0.2013s (#9575)
 class Problem_0080
   def title; 'Square root digital expansion' end
-  def solution;  end
+  def solution; 40_886 end
 
   # It is well known that if the square root of a natural number is not an
   # integer, then it is irrational. The decimal expansion of such square roots
@@ -16,51 +16,38 @@ class Problem_0080
   # sums of the first one hundred decimal digits for all the irrational square
   # roots.
 
-  def find_d( ds, r )
-    x = 20*ds.join.to_i
-    9.downto( 0 ) do |i|
-      p = i*(x + i)
-      return i, p if p <= r
-    end
-  end
-
   def solve( n = 100, figs = 100 )
     sum = 0
-    i = 2
 
-#    n.times do |i|
+    n.times do |i|
       digits = []
 
+      # Do manual "long division"-type root calculation.  See
+      # http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Decimal_.28base_10.29
       d = Math.sqrt( i ).floor
-      digits << d
-      puts digits.inspect
+      r = i - d*d
+      next if 0 == r
 
-      r = (i - d) * 100
+      figs.times do
+        digits << d
+        r *= 100
+        subt = 20 * digits.join.to_i
 
-      x, m = find_d( digits, r )
-      digits << x
-      
-      r = (r - m) * 100
-      
-      x, m = find_d( digits, r )
-      digits << x
+        # Find the digit that produces a subtrahend closest to the minuend
+        # without going over.
+        9.downto( 0 ) do |b|
+          p = b * (subt + b)
 
-      r = (r - m) * 100
-  
-      x, m = find_d( digits, r )
-      digits << x
-    
-      r = (r - m) * 100
-      
-      x, m = find_d( digits, r )
-      digits << x
-  
-      r = (r - m) * 100
-  
-      x, m = find_d( digits, r )
-      digits << x
-#    end
+          if p <= r
+            d, r = b, r - p
+            break
+          end
+        end
+      end
 
-    digits.join
+      sum += digits.inject( :+ )
+    end
+
+    sum
   end
 end
