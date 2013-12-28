@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 10.50s
+# 10.50s (12/20/13)
 class Problem_0074
   def title; 'Digital factorial chains' end
   def solution; 402 end

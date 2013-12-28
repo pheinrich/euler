@@ -1,7 +1,7 @@
 require 'date'
 require 'projectEuler'
 
-# 0.002950s
+# 0.002950s (2/5/13)
 class Problem_0019
   def title; 'Counting Sundays' end
   def solution; 171 end

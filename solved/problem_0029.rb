@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.02242s
+# 0.02242s (2/13/13)
 class Problem_0029
   def title; 'Distinct powers' end
   def solution; 9_183 end

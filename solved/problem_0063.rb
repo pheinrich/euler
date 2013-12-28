@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.0001099s
+# 0.0001099s (10/31/13)
 class Problem_0063
   def title; 'Powerful digit counts' end
   def solution; 49 end

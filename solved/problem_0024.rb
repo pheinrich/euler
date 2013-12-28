@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 8.196s
+# 8.196s (2/8/13)
 class Problem_0024
   def title; 'Lexicographic permutations' end
   def solution; 2_783_915_460 end

@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 1.943s
+# 1.943s (2/17/13)
 class Problem_0041
   def title; 'Pandigital prime' end
   def solution; 7_652_413 end

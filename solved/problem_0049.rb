@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.04348s
+# 0.04348s (3/11/13)
 class Problem_0049
   def title; 'Prime permutations' end
   def solution; 296_962_999_629 end

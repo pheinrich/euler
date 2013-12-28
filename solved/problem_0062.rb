@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 27.51s
+# 27.51s (11/22/13)
 class Problem_0062
   def title; 'Cubic permutations' end
   def solution; 127_035_954_683 end

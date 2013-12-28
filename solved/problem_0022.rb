@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.01374s
+# 0.01374s (2/5/13)
 class Problem_0022
   def title; 'Names scores' end
   def solution; 871_198_282 end

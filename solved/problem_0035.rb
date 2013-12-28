@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 7.234s
+# 7.234s (2/15/13)
 class Problem_0035
   def title; 'Circular primes' end
   def solution; 55 end

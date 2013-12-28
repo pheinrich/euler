@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.00008702s
+# 0.00008702s (1/30/13)
 class Problem_0015
   def title; 'Lattice paths' end
   def solution; 137_846_528_820 end

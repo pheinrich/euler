@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.7733s
+# 0.7733s (2/7/13)
 class Problem_0026
   def title; 'Reciprocal cycles' end
   def solution; 983 end

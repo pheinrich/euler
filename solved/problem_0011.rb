@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.001548s
+# 0.001548s (1/26/13)
 class Problem_0011
   def title; 'Largest product in a grid' end
   def solution; 70_600_674 end

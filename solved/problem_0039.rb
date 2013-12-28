@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.001001s
+# 0.001001s (3/6/13)
 class Problem_0039
   def title; 'Integer right triangles' end
   def solution; 8 end

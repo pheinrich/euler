@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.01498s
+# 0.01498s (3/15/13)
 class Problem_0053
   def title; 'Combinatoric selections' end
   def solution; 4_075 end

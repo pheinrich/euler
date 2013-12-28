@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.07033s
+# 0.07033s (3/17/13)
 class Problem_0055
   def title; 'Lychrel numbers' end
   def solution; 249 end

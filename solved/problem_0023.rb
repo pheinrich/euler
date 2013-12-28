@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 3.038s
+# 3.038s (2/7/13)
 class Problem_0023
   def title; 'Non-abundant sums' end
   def solution; 4_179_871 end

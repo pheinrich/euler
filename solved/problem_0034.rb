@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 39.26s
+# 39.26s (2/15/13)
 class Problem_0034
   def title; 'Digit factorials' end
   def solution; 40_730 end

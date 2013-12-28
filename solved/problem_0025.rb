@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.03577s
+# 0.03577s (2/7/13)
 class Problem_0025
   def title; '1000-digit Fibonacci number' end
   def solution; 4_782 end

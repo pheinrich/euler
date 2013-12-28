@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.03066s
+# 0.03066s (3/18/13)
 class Problem_0057
   def title; 'Square root convergents' end
   def solution; 153 end

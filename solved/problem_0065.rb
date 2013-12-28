@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.0003641s
+# 0.0003641s (12/12/13)
 class Problem_0065
   def title; 'Convergents of e' end
   def solution; 272 end

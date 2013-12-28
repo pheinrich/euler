@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.0002179s
+# 0.0002179s (2/13/13)
 class Problem_0028
   def title; 'Number spiral diagonals' end
   def solution; 669_171_001 end

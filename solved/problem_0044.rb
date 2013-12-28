@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 5.936s
+# 5.936s (3/8/13)
 class Problem_0044
   def title; 'Pentagon numbers' end
   def solution; 5_482_660 end

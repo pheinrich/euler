@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.03006s
+# 0.03006s (12/19/13)
 class Problem_0071
   def title; 'Ordered fractions' end
   def solution; 428_570 end

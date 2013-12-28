@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.005430s
+# 0.005430s (2/3/13)
 class Problem_0017
   def title; 'Number letter counts' end
   def solution; 21_124 end

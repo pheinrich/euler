@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.6955s
+# 0.6955s (2/14/13)
 class Problem_0031
   def title; 'Coin sums' end
   def solution; 73_682 end

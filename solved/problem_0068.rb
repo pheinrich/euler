@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 2.017s
+# 2.017s (12/17/13)
 class Problem_0068
   def title; 'Magic 5-gon ring' end
   def solution; 6_531_031_914_842_725 end

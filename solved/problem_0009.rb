@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.00005722s
+# 0.00005722s (1/26/13)
 class Problem_0009
   def title; 'Special Pythagorean triplet' end
   def solution; 31_875_000 end

@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 2.932s
+# 2.932s (2/13/13)
 class Problem_0030
   def title; 'Digit fifth powers' end
   def solution; 443_839 end

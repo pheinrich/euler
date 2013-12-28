@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.0004969s (#23596)
+# 0.0004969s (12/27/13, #23596)
 class Problem_0079
   def title; 'Passcode derivation' end
   def solution; 73_162_890 end

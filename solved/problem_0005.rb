@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.00006294s
+# 0.00006294s (1/23/13)
 class Problem_0005
   def title; 'Smallest multiple' end
   def solution; 232_792_560 end

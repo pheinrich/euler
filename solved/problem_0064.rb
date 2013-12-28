@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 3.606s
+# 3.606s (12/12/13)
 class Problem_0064
   def title; 'Odd period square roots' end
   def solution; 1_322 end

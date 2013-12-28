@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.004272s
+# 0.004272s (3/9/13)
 class Problem_0045
   def title; 'Triangular, pentagonal, and hexagonal' end
   def solution; 1_533_776_805 end

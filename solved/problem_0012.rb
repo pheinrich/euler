@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 6.2399s
+# 6.2399s (1/26/13)
 class Problem_0012
   def title; 'Highly divisible triangular number' end
   def solution; 76_576_500 end

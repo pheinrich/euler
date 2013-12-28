@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.8722s
+# 0.8722s (2/17/13)
 class Problem_0036
   def title; 'Double-base palindromes' end
   def solution; 872_187 end

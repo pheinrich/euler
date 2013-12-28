@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.0006421 (#14159)
+# 0.0006421 (12/24/13, #14159)
 class Problem_0076
   def title; 'Counting summations' end
   def solution; 190_569_291 end

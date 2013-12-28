@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.01969s
+# 0.01969s (3/9/13)
 class Problem_0046
   def title; 'Goldbach\'s other conjecture' end
   def solution; 5_777 end

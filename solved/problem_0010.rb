@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.8394s
+# 0.8394s (1/26/13)
 class Problem_0010
   def title; 'Summation of primes' end
   def solution; 142_913_828_922 end

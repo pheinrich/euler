@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.02876s
+# 0.02876s (2/15/13)
 class Problem_0033
   def title; 'Digit canceling fractions' end
   def solution; 100 end

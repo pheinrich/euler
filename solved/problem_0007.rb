@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.1604s
+# 0.1604s (1/24/13)
 class Problem_0007
   def title; '10001st prime' end
   def solution; 104_743 end

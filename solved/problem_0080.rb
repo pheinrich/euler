@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.2013s (#9575)
+# 0.2013s (12/28/13, #9575)
 class Problem_0080
   def title; 'Square root digital expansion' end
   def solution; 40_886 end

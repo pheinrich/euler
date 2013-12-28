@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.02400s
+# 0.02400s (1/22/13)
 class Problem_0004
   def title; 'Largest palindrome product' end
   def solution; 906_609 end
