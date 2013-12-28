@@ -16,6 +16,51 @@ class Problem_0080
   # sums of the first one hundred decimal digits for all the irrational square
   # roots.
 
+  def find_d( ds, r )
+    x = 20*ds.join.to_i
+    9.downto( 0 ) do |i|
+      p = i*(x + i)
+      return i, p if p <= r
+    end
+  end
+
   def solve( n = 100, figs = 100 )
+    sum = 0
+    i = 2
+
+#    n.times do |i|
+      digits = []
+
+      d = Math.sqrt( i ).floor
+      digits << d
+      puts digits.inspect
+
+      r = (i - d) * 100
+
+      x, m = find_d( digits, r )
+      digits << x
+      
+      r = (r - m) * 100
+      
+      x, m = find_d( digits, r )
+      digits << x
+
+      r = (r - m) * 100
+  
+      x, m = find_d( digits, r )
+      digits << x
+    
+      r = (r - m) * 100
+      
+      x, m = find_d( digits, r )
+      digits << x
+  
+      r = (r - m) * 100
+  
+      x, m = find_d( digits, r )
+      digits << x
+#    end
+
+    digits.join
   end
 end
