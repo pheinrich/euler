@@ -2,8 +2,7 @@ require 'spec_helper'
 require 'projectEuler'
 
 describe Array do
-  it "provides some additional array operations" do
-  end
+  it "provides some additional array operations" do; end
 
   describe "#tree_sum" do
     it "adds rows from the bottom up of a triangle of numbers" do
@@ -21,8 +20,7 @@ describe Array do
 end
 
 describe Integer do
-  it "provides some additional integer operations" do
-  end
+  it "provides some additional integer operations" do; end
 
   describe "#factors" do
     it "returns a sorted array of divisors" do
@@ -257,8 +255,7 @@ describe Integer do
 end
 
 describe Numeric do
-  it "provides some additional numeric operations" do
-  end
+  it "provides some additional numeric operations" do; end
 
   describe "#modular_power" do
     it "performs exponentiation over a modulus" do
@@ -268,8 +265,7 @@ describe Numeric do
 end
 
 describe String do
-  it "provides some additional string operations" do
-  end
+  it "provides some additional string operations" do; end
 
   describe "#palindromic?" do
     it "returns true if a string reads the same backwards and forwards" do
@@ -304,9 +300,71 @@ module ProjectEuler
     end
   end
 
-  describe PokerHand do
-    it "represents a set of five playing cards" do
+  describe Graph do
+    it "represents a set of vertices and the directed edges between them" do; end
+
+    before( :all ) do
+      @graph = Graph.new
+      @graph.connect( 1, 2, 7 ).connect( 1, 3, 9 ).connect( 1, 6, 14 )
+      @graph.connect( 2, 3, 10 ).connect( 2, 4, 15 )
+      @graph.connect( 3, 4, 11 ).connect( 3, 6, 2 )
+      @graph.connect( 4, 5, 6 )
+      @graph.connect( 6, 5, 9 )
     end
+
+    describe "#new" do
+      it "creates a Graph object" do
+        @graph.should be_an_instance_of( Graph )
+      end
+    end
+
+    describe "#connect" do
+      it "creates a one-way-weighted directed edge between two nodes" do
+        @graph.connect( 1, 7, 8 )
+        @graph.len( 1, 7 ).should == 8
+        @graph.len( 7, 1 ).should == Float::INFINITY
+
+        @graph.connect( 1, 8, 9, 10 )
+        @graph.len( 1, 8 ).should == 9
+        @graph.len( 8, 1 ).should == 10
+      end
+    end
+
+    describe "#biconnect" do
+      it "creates a two-way-weighted directed edge between two nodes" do
+        @graph.biconnect( 1, 9, 11 )
+        @graph.len( 1, 9 ).should == 11
+        @graph.len( 9, 1 ).should == 11
+      end
+    end
+
+    describe "#neighbors" do
+      it "returns the nodes reachable from another" do
+        @graph.neighbors( 2 ).should == [3, 4]
+        @graph.neighbors( 5 ).should be_empty
+      end
+    end
+
+    describe "#len" do
+      it "returns the weight for the edge between two nodes" do
+        @graph.len( 1, 2 ).should == 7
+        @graph.len( 3, 4 ).should == 11
+        @graph.len( 2, 6 ).should == Float::INFINITY
+      end
+    end
+
+    describe "#dijkstra" do
+      it "it returns the least-cost path total between nodes" do
+        @graph.dijkstra( 1, 5 ).should == 20
+        @graph.dijkstra( 2, 6 ).should == 12
+        @graph.dijkstra( 2, 7 ).should == Float::INFINITY
+        @graph.dijkstra( 3 ).should == {3=>0, 4=>11, 6=>2, 5=>11}
+      end
+    end
+  end
+
+  describe PokerHand do
+    it "represents a set of five playing cards" do; end
   
     describe "#new" do
       it "takes an array of two-character card names and returns a PokerHand object" do

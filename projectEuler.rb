@@ -430,6 +430,72 @@ module ProjectEuler
     puts "%.10f%s" % [Time.now.to_f - start, 's']
   end
 
+  # A class representing vertices and the edges between them.
+  #
+  # Problems:  81, 82, 83
+  class Graph < Array
+    class Edge
+      attr_accessor :src, :dst, :len
+
+      def initialize( src, dst, len )
+        @src, @dst, @len = src, dst, len
+      end
+    end
+
+    def connect( src, dst, fwd, back = nil )
+      self << Edge.new( src, dst, fwd )
+      self << Edge.new( dst, src, back ) if back
+      self
+    end
+
+    def biconnect( src, dst, len )
+      connect( src, dst, len, len )
+    end
+
+    def neighbors( src )
+      self.select {|edge| edge.src == src}.map {|edge| edge.dst}.uniq
+    end
+
+    def len( src, dst )
+      edge = self.find {|edge| edge.src == src && edge.dst == dst}
+      edge ? edge.len : Float::INFINITY
+    end
+
+    # Find the least-cost path between a source node and all others, or to a
+    # single, specific destination node.
+    def dijkstra( src, dst = nil )
+      dist = Hash.new( Float::INFINITY )
+      dist[src] = 0
+
+      unvisited = self.map {|edge| [edge.src, edge.dst]}.flatten.uniq
+      until unvisited.empty?
+        # Find the next nearest vertex (the one closest to the source based on
+        # distances computed so far).
+        nearest = unvisited.min_by {|node| dist[node]}
+
+        # If distance is infinite, no more nodes can be reached.
+        break if Float::INFINITY == dist[nearest]
+
+        # If we're looking for a specific node and reached it, cut out early.
+        return dist[dst] if dst && nearest == dst        
+
+        # Refine distances for this node's neighbors. 
+        neighbors = self.neighbors( nearest )
+        neighbors.each do |node|
+          alt = dist[nearest] + self.len( nearest, node )
+          dist[node] = alt if alt < dist[node]
+        end
+
+        # Mark this node as visited.
+        unvisited.delete nearest
+      end
+
+      # Return the distances from src to every node, or infinity if we were
+      # looking for a specific node but never found it. 
+      return dst ? Float::INFINITY : dist
+    end
+  end
+
   # A class representing card hands used in Poker.
   #
   # Problems:  54
