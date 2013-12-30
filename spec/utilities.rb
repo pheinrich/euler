@@ -318,6 +318,14 @@ module ProjectEuler
       end
     end
 
+    describe "#add" do
+      it "ensures a node is present in the graph, even if it has no out-bound paths" do
+        @graph.add( 10 )
+        @graph.should have_key( 10 )
+        @graph.neighbors( 10 ).should == []
+      end
+    end
+
     describe "#connect" do
       it "creates a one-way-weighted directed edge between two nodes" do
         @graph.connect( 1, 7, 8 )

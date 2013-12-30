@@ -433,18 +433,22 @@ module ProjectEuler
   # A class representing vertices and the edges between them.
   #
   # Problems:  81, 82, 83
-  class Graph < Array
-    class Edge
-      attr_accessor :src, :dst, :len
-
-      def initialize( src, dst, len )
-        @src, @dst, @len = src, dst, len
+  class Graph < Hash
+    def initialize
+      self.default_proc = proc do |hash, key|
+        hash[key] = [] unless hash.has_key?( key )
+        hash[key]
       end
     end
 
+    def add( src )
+      self[src] << [] unless self.has_key?( src )
+      self
+    end
+
     def connect( src, dst, fwd, back = nil )
-      self << Edge.new( src, dst, fwd )
-      self << Edge.new( dst, src, back ) if back
+      self[src] << [dst, fwd]
+      self[dst] << [src, back] if back
       self
     end
 
@@ -453,12 +457,12 @@ module ProjectEuler
     end
 
     def neighbors( src )
-      self.select {|edge| edge.src == src}.map {|edge| edge.dst}.uniq
+      self[src].map {|edge| edge[0]}.compact
     end
 
     def len( src, dst )
-      edge = self.find {|edge| edge.src == src && edge.dst == dst}
-      edge ? edge.len : Float::INFINITY
+      edge = self[src].find {|edge| edge[0] == dst}
+      edge ? edge[1] : Float::INFINITY
     end
 
     # Find the least-cost path between a source node and all others, or to a
@@ -467,7 +471,7 @@ module ProjectEuler
       dist = Hash.new( Float::INFINITY )
       dist[src] = 0
 
-      unvisited = self.map {|edge| [edge.src, edge.dst]}.flatten.uniq
+      unvisited = self.keys.uniq
       until unvisited.empty?
         # Find the next nearest vertex (the one closest to the source based on
         # distances computed so far).
@@ -480,7 +484,7 @@ module ProjectEuler
         return dist[dst] if dst && nearest == dst        
 
         # Refine distances for this node's neighbors. 
-        neighbors = self.neighbors( nearest )
+        neighbors = self.neighbors( nearest ) & unvisited
         neighbors.each do |node|
           alt = dist[nearest] + self.len( nearest, node )
           dist[node] = alt if alt < dist[node]
