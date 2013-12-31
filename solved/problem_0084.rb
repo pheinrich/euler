@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.4240s (12/30/13, #5887)
+# 0.3130s (12/30/13, #5887)
 class Problem_0084
   def title; 'Monopoly odds' end
   def solution; 101_524 end
@@ -76,9 +76,17 @@ class Problem_0084
   # If, instead of using two 6-sided dice, two 4-sided dice are used, find the
   # six-digit modal string.
 
+  NUM_SQUARES  = 40
+  NUM_CC_CARDS = 16
+  NUM_CH_CARDS = 16
+
+  GO, CC1, R1, CH1, JAIL, C1, U1, R2, CC2 = 0, 2, 5, 7, 10, 11, 12, 15, 17
+  CH2, E3, R3, U2, G2J, CC3, R4, CH3, H2 = 22, 24, 25, 28, 30, 33, 35, 36, 39
+
   def community_chest( space, card )
     # Go to the starting square or Jail, depending on card.
-    space = 10 * card unless 1 < card
+    space = GO if 0 == card
+    space = JAIL if 1 == card 
     space
   end
 
@@ -86,16 +94,16 @@ class Problem_0084
     case card
     when 0..5
       # Move directly to an alternative square, depending on card.
-      space = [0, 10, 11, 24, 39, 5].at( card )
+      space = [GO, JAIL, C1, E3, H2, R1].at( card )
     when 6, 7
       # Move to the next Railroad square.
-      space = [5, 15, 25, 35].find {|s| s > space} || 5
+      space = [R1, R2, R3, R4].find {|s| s > space} || R1
     when 8
       # Move to the next Utility square.
-      space = [12, 28].find {|s| s > space} || 12 
+      space = [U1, U2].find {|s| s > space} || U1
     when 9
       # Move back three spaces.
-      space = (space - 3) % 40
+      space = (space - 3) % NUM_SQUARES
     end
 
     space
@@ -104,14 +112,14 @@ class Problem_0084
   def solve( n = 4, iter = 250000 )
     # These represent the cards in the Community Chest and Chance decks.  They
     # are shuffled once only at the beginning of the game.
-    cc = Array.new( 16 ) {|i| i}.shuffle
-    ch = Array.new( 16 ) {|i| i}.shuffle
+    cc = Array.new( NUM_CC_CARDS ) {|i| i}.shuffle
+    ch = Array.new( NUM_CH_CARDS ) {|i| i}.shuffle
 
-    count = Array.new( 40, 0 )
+    count = Array.new( NUM_SQUARES, 0 )
     space = doubles = 0
 
     # Run a Monte Carlo simulation to see asymptotic results.
-    iter.times do |i|
+    iter.times do
       # Keep track of how many times each square is reached.
       count[space] += 1
 
@@ -122,23 +130,23 @@ class Problem_0084
 #        space = 10
 #        doubles = 0
 #      else
-        space = (space + d1 + d2) % 40
+        space = (space + d1 + d2) % NUM_SQUARES
 #        doubles = 0 unless d1 == d2
 #      end
 
       # Adjust destination square based on dice roll.
       case space
-      when 2, 17, 33
+      when CC1, CC2, CC3
         # Draw from the Community Chest pile.
         cc.push( draw = cc.shift )
-        space = community_chest( space, draw )       
-      when 7, 22, 36
+        space = community_chest( space, draw )
+      when CH1, CH2, CH3
         # Draw from the Chance pile.
         ch.push( draw = ch.shift )
         space = chance( space, draw )
-      when 30
+      when G2J
         # Go directly to Jail.
-        space = 10
+        space = JAIL
       end
     end
 
