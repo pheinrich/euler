@@ -1,9 +1,9 @@
 require 'projectEuler'
 
-# 
+# 0.4240s (12/30/13, #5887)
 class Problem_0084
   def title; 'Monopoly odds' end
-  def solution;  end
+  def solution; 101_524 end
 
   # In the game, Monopoly, the standard board is set up in the following way:
   #
@@ -76,6 +76,73 @@ class Problem_0084
   # If, instead of using two 6-sided dice, two 4-sided dice are used, find the
   # six-digit modal string.
 
-  def solve
+  def community_chest( space, card )
+    # Go to the starting square or Jail, depending on card.
+    space = 10 * card unless 1 < card
+    space
+  end
+
+  def chance( space, card )
+    case card
+    when 0..5
+      # Move directly to an alternative square, depending on card.
+      space = [0, 10, 11, 24, 39, 5].at( card )
+    when 6, 7
+      # Move to the next Railroad square.
+      space = [5, 15, 25, 35].find {|s| s > space} || 5
+    when 8
+      # Move to the next Utility square.
+      space = [12, 28].find {|s| s > space} || 12 
+    when 9
+      # Move back three spaces.
+      space = (space - 3) % 40
+    end
+
+    space
+  end
+
+  def solve( n = 4, iter = 250000 )
+    # These represent the cards in the Community Chest and Chance decks.  They
+    # are shuffled once only at the beginning of the game.
+    cc = Array.new( 16 ) {|i| i}.shuffle
+    ch = Array.new( 16 ) {|i| i}.shuffle
+
+    count = Array.new( 40, 0 )
+    space = doubles = 0
+
+    # Run a Monte Carlo simulation to see asymptotic results.
+    iter.times do |i|
+      # Keep track of how many times each square is reached.
+      count[space] += 1
+
+      # Roll two dice.  Ignore the rule for doubles, because although it is
+      # technically correct, it actually slows convergence.
+      d1, d2 = 1 + rand( n ), 1 + rand( n )
+#      if d1 == d2 && 3 == doubles += 1
+#        space = 10
+#        doubles = 0
+#      else
+        space = (space + d1 + d2) % 40
+#        doubles = 0 unless d1 == d2
+#      end
+
+      # Adjust destination square based on dice roll.
+      case space
+      when 2, 17, 33
+        # Draw from the Community Chest pile.
+        cc.push( draw = cc.shift )
+        space = community_chest( space, draw )       
+      when 7, 22, 36
+        # Draw from the Chance pile.
+        ch.push( draw = ch.shift )
+        space = chance( space, draw )
+      when 30
+        # Go directly to Jail.
+        space = 10
+      end
+    end
+
+    # Concatenate the two-digit indices of the three most popular spaces.
+    count.each_with_index.sort.reverse[0, 3].inject( "" ) {|acc, c| acc + ("%02d" % c[1])}
   end
 end
