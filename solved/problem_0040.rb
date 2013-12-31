@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.0001292s (3/7/13)
+# 0.0001292s (3/7/13, #32151)
 class Problem_0040
   def title; 'Champernowne\'s constant' end
   def solution; 210 end

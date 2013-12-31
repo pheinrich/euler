@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.00003100s (1/21/13)
+# 0.00003100s (1/21/13, #~222745)
 class Problem_0002
   def title; 'Even Fibonacci numbers' end
   def solution; 4_613_732 end

@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.06298s (3/16/13)
+# 0.06298s (3/16/13, #~11936)
 class Problem_0054
   def title; 'Poker hands' end
   def solution; 376 end

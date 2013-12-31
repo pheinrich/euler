@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 2.626s (4/3/13)
+# 2.626s (4/3/13, #~16950)
 class Problem_0059
   def title; 'XOR decryption' end
   def solution; 107_359 end

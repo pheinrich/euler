@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.00003624s (1/24/13)
+# 0.00003624s (1/24/13, #~157925)
 class Problem_0006
   def title; 'Sum square difference' end
   def solution; 25_164_150 end

@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.01971s (2/17/13)
+# 0.01971s (2/17/13, #~31032)
 class Problem_0042
   def title; 'Coded triangle numbers' end
   def solution; 162 end

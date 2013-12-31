@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.004176s (1/24/13)
+# 0.004176s (1/24/13, #~117573)
 class Problem_0008
   def title; 'Largest product in a series' end
   def solution; 40_824 end

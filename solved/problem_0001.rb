@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.0002527s (1/21/13)
+# 0.0002527s (1/21/13, #~274675)
 class Problem_0001
   def title;'Multiples of 3 and 5' end
   def solution; 233_168 end

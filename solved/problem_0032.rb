@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 2.703s (2/14/13)
+# 2.703s (2/14/13, #~26994)
 class Problem_0032
   def title; 'Pandigital products' end
   def solution; 45_228 end

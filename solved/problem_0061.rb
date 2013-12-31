@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.08340s (4/6/13)
+# 0.08340s (4/6/13, #~10434)
 class Problem_0061
   def title; 'Cyclical figurate numbers' end
   def solution; 28_684 end

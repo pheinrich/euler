@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.0001690s (2/5/13)
+# 0.0001690s (2/5/13, #~52918)
 class Problem_0018
   def title; 'Maximum path sum I' end
   def solution; 1_074 end

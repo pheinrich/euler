@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 343.7s (11/25/13)
+# 343.7s (11/25/13, #~11429)
 class Problem_0060
   def title; 'Prime pair sets' end
   def solution; 26_033 end

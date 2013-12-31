@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 4.126s (4/3/13)
+# 4.126s (4/3/13, #~15930)
 class Problem_0058
   def title; 'Spiral primes' end
   def solution; 26_241 end

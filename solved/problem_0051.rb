@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 33.41s (3/25/13)
+# 33.41s (3/25/13, #~12457)
 class Problem_0051
   def title; 'Prime digit replacements' end
   def solution; 121_313 end

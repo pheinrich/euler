@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.0003679s (2/1/13)
+# 0.0003679s (2/1/13, #~84937)
 class Problem_0016
   def title; 'Power digit sum' end
   def solution; 1_366 end

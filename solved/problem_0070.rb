@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 20.32s (12/17/13)
+# 20.32s (12/17/13, #~10787)
 class Problem_0070
   def title; 'Totient permutation' end
   def solution; 8_319_823 end

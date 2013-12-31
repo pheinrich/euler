@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.8499s (1/25/13)
+# 0.8499s (1/25/13, #~50546)
 class Problem_0048
   def title; 'Self powers' end
   def solution; 9_110_846_700 end

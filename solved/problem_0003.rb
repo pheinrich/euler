@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.1960s (1/21/13)
+# 0.1960s (1/21/13, #~158901)
 class Problem_0003
   def title; 'Largest prime factor' end
   def solution; 67_679 end

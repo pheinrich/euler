@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.3024s (2/5/13)
+# 0.3024s (2/5/13, #~54309)
 class Problem_0021
   def title; 'Amicable numbers' end
   def solution; 31_626 end

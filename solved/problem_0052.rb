@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.6866s (3/15/13)
+# 0.6866s (3/15/13, #~26359)
 class Problem_0052
   def title; 'Permuted multiples' end
   def solution; 142_857 end

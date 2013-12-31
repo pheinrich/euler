@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 22.94s (1/27/13)
+# 22.94s (1/27/13, #~73172)
 class Problem_0014
   def title; 'Longest Collatz sequence' end
   def solution; 837_799 end

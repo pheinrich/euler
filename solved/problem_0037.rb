@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.4998s (2/19/13)
+# 0.4998s (2/19/13, #28582)
 class Problem_0037
   def title; 'Truncatable primes' end
   def solution; 748_317 end

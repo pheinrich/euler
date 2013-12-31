@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.0001070s (1/26/13)
+# 0.0001070s (1/26/13, #~74171)
 class Problem_0013
   def title; 'Large sum' end
   def solution; 5_537_376_230 end

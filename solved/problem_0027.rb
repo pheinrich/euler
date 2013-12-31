@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.2075s (2/9/13)
+# 0.2075s (2/9/13, #~33154)
 class Problem_0027
   def title; 'Quadratic primes' end
   def solution; -59_231 end

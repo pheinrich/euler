@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.5725s (3/12/13)
+# 0.5725s (3/12/13, #~23891)
 class Problem_0050
   def title; 'Consecutive prime sum' end
   def solution; 997_651 end

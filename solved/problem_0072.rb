@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 1.581s (12/19/13)
+# 1.581s (12/19/13, #~10806)
 class Problem_0072
   def title; 'Counting fractions' end
   def solution; 303_963_552_391 end

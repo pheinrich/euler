@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.08464 (12/13/13)
+# 0.08464 (12/13/13, #~9009)
 class Problem_0066
   def title; 'Diophantine equation' end
   def solution; 661 end

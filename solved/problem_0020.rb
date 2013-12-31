@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.0003011s (2/1/13)
+# 0.0003011s (2/1/13, #~76316)
 class Problem_0020
   def title; 'Factorial digit sum' end
   def solution; 648 end

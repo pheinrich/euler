@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.6012s (3/17/13)
+# 0.6012s (3/17/13, #~23371)
 class Problem_0056
   def title; 'Powerful digit sum' end
   def solution; 972 end

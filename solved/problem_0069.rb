@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 1.880s (12/16/13)
+# 1.880s (12/16/13, ~16665)
 class Problem_0069
   def title; 'Totient maximum' end
   def solution; 510_510 end

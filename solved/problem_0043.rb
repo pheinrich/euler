@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 1.814s (2/19/13)
+# 1.814s (2/19/13, #~21574)
 class Problem_0043
   def title; 'Sub-string divisibility' end
   def solution; 16_695_334_890 end
