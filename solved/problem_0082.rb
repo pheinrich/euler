@@ -3,7 +3,7 @@ require 'projectEuler'
 # 10.09s (12/30/13, #10299)
 class Problem_0082
   def title; 'Path sum: three ways' end
-  def solution; 260324 end
+  def solution; 260_324 end
 
   # NOTE: This problem is a more challenging version of Problem 81.
   #

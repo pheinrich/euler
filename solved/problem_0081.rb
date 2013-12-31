@@ -3,7 +3,7 @@ require 'projectEuler'
 # 10.37s (12/29/13, #17059)
 class Problem_0081
   def title; 'Path sum: two ways' end
-  def solution; 427337 end
+  def solution; 427_337 end
 
   # In the 5 by 5 matrix below, the minimal path sum from the top left to the
   # bottom right, by only moving to the right and down, is indicated and is
