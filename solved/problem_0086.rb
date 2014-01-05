@@ -1,9 +1,9 @@
 require 'projectEuler'
 
-# 
+# 1.418s (1/4/14, #6000)
 class Problem_0086
   def title; 'Cuboid route' end
-  def solution;  end
+  def solution; 1_818 end
 
   # A spider, S, sits in one corner of a cuboid room, measuring 6 by 5 by 3,
   # and a fly, F, sits in the opposite corner. By travelling on the surfaces
@@ -22,27 +22,16 @@ class Problem_0086
   # Find the least value of M such that the number of solutions first exceeds
   # one million.
 
-  def solve( n = 50 )
+  def solve( n = 1_000_000 )
     sum = limit = 0
-
+    
     while sum < n
       limit += 1
-      puts "#{limit} (sum = #{sum})"
+      limit2 = limit * limit
       
-      (1..limit).each do |a|
-        aa = a*a
-        (1..limit).each do |b|
-          bb = b*b
-          (1..limit).each do |c|
-            dd = aa + bb + c*c
-  
-            dd += 2*b*c if a > b && a > c
-            dd += 2*a*c if b > a && b > c
-            dd += 2*a*b if c > a && c > b
-  
-            sum += 1 if Math.sqrt( dd ).to_i**2 == dd
-          end
-        end
+      2.upto( limit << 1 ) do |bc|
+        d = Math.sqrt( limit2 + bc*bc )
+        sum += (bc > limit ? 1 + limit - (1 + bc)/2 : bc/2) if d.to_i == d
       end
     end
 
