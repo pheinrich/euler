@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 1.374s (1/5/14, #10109)
+# 1.351s (1/5/14, #10109)
 class Problem_0087
   def title; 'Prime power triples' end
   def solution; 1_097_343 end
@@ -18,7 +18,7 @@ class Problem_0087
   # prime square, prime cube, and prime fourth power?
 
   def solve( n = 50_000_000 )
-    terms = (2..4).map {|root| (1 + (n - 12)**(1.0 / root)).to_i.prime_sieve}
+    terms = (2..4).map {|root| (1 + n**(1.0 / root)).to_i.prime_sieve}
     (2..4).each {|i| terms[i - 2].map! {|j| j**i}}
 
     sums = {}
