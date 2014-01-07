@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.003923s (1/6/14, #4488)
+# 0.0001271s (1/6/14, #4488)
 class Problem_0243
   def title; 'Resilience' end
   def solution; 892_371_480 end
@@ -16,13 +16,12 @@ class Problem_0243
   # R(d), to be the ratio of its proper fractions that are resilient; for
   # example, R(12) = 4/11.
   #
-  # In fact, d = 12 is the smallest denominator having a resilience R(d) <
-  # 4/10.
+  # In fact, d=12 is the smallest denominator having a resilience R(d) < 4/10.
   #
   # Find the smallest denominator d, having a resilience R(d) < 15499 / 94744.
 
   def solve( numer = 15_499, denom = 94_744 )
-    # R(d) is simply φ(d)/(d - 1).  Since φ(d) = d⋅∏[p|d] (1 - 1/p), that
+    # R(d) is simply φ(d)/(d - 1).  Since φ(d) = d·∏[p|d] (1 - 1/p), that
     # means R(d) ≈ ∏[p|d] (1 - 1/p) for large d, as d/(d - 1) -> 1.
     primes = 100.prime_sieve
     prod, resilience = 1, 1.0 * numer / denom
@@ -31,15 +30,16 @@ class Problem_0243
     # less than numer/denom.
     i = 0
     until prod < resilience
-      prod = prod * (1 - 1.0 / primes[i])
+      prod *= 1 - 1.0 / primes[i]
       i += 1
     end
 
     # The first i primes divide d, but that d is not necessarily the smallest
     # possible value.  Back up one prime value and start testing multiples of
     # the corresponding (lesser) d.  It will have the same n-ary product.
+    # Note that φ(d) = d·prod.
     d = s = primes[0...i].inject( :* )
-    d += s until d.totient / (d - 1.0) < resilience
+    d += s until (d * prod) / (d - 1.0) < resilience
 
     d
   end
