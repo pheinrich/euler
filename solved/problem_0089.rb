@@ -1,9 +1,9 @@
 require 'projectEuler'
 
-# 
+# 0.02057s (1/9/14, #10791)
 class Problem_0089
   def title; 'Roman numerals' end
-  def solution;  end
+  def solution; 743 end
 
   # The rules for writing Roman numerals allow for many ways of writing each
   # number (see About Roman Numerals...). However, there is always a "best"
@@ -34,5 +34,11 @@ class Problem_0089
   # more than four consecutive identical units.
 
   def solve
+    t = IO.read( 'resources/roman.txt' ).split.map do |line|
+      n = ProjectEuler::Roman.to_i( line )
+      line.length - ProjectEuler::Roman.from_i( n ).length
+    end
+
+    t.inject( :+ )
   end
 end

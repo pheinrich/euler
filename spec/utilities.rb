@@ -282,8 +282,7 @@ end
 
 module ProjectEuler
   describe ProjectEuler do
-    it "provides general functions helpful when solving the problems" do
-    end
+    it "provides general functions helpful when solving the problems" do; end
     
     describe ".time" do
       it "measures execution time of a code block" do
@@ -406,6 +405,27 @@ module ProjectEuler
         PokerHand.new( ["TH", "TD", "6C", "2S", "2S"] ).rank.should == 707438114
         PokerHand.new( ["KD", "9H", "5C", "7C", "5S"] ).rank.should == 274569045
         PokerHand.new( ["KS", "6S", "3S", "9S", "7S"] ).rank.should == 1343068003
+      end
+    end
+  end
+
+  describe Roman do
+    it "represents an integer value as a Roman numeral" do; end
+
+    describe ".to_i" do
+      it "computes the integer value of a Roman numeral string" do
+        Roman.to_i( 'MCCCCCCCCCXCIX' ).should == 1999
+        Roman.to_i( 'MMMMDCCCLXXIIII' ).should == 4874
+        Roman.to_i( 'MCDLXXXXIV' ).should == 1494
+      end
+    end
+
+    describe ".from_i" do
+      it "converts an integer value to a Roman numeral" do
+        expect { Roman.from_i( 5000 ) }.to raise_error( ArgumentError )
+        Roman.from_i( 1999 ).should == 'MCMXCIX'
+        Roman.from_i( 4874 ).should == 'MMMMDCCCLXXIV'
+        Roman.from_i( 1494 ).should == 'MCDXCIV'
       end
     end
   end

@@ -564,5 +564,54 @@ module ProjectEuler
       @cards.chars.reduce( (r << 8) | h ) {|a, c| (a << 4) | RANK.index( c )}
     end
   end
+
+  # A class representing Roman numerals
+  #
+  # Problems:  89
+  class Roman
+    CHARS = {'I' => 1, 'V' => 5, 'X' => 10, 'L' => 50, 'C' => 100, 'D' => 500, 'M' => 1000}
+    SRAHC = CHARS.invert
+    FORMS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX']
+
+    # Compute the integer equivalent of a Roman numeral string.
+    def self.to_i( s )
+      last = 1001
+      total = acc = 0
+
+      s.chars.each do |c|
+        value = CHARS[c]
+
+        if value < last
+          total += acc
+          acc = value
+        elsif value > last
+          total += value - acc
+          acc = 0
+        else
+          acc += value
+        end
+
+        last = value
+      end
+
+      total += acc
+    end
+
+    # Return the string representation of an integer value.
+    def self.from_i( n )
+      raise ArgumentError, 'Roman numerals must be less than 5000' unless 5000 > n
+      i, m = 1, n
+      acc = []
+
+      while 0 < n
+        d, n = n - 10*(n / 10), n / 10
+        acc.unshift( FORMS[d - 1].gsub( /[XVI]/, 'X'=>SRAHC[10*i], 'V'=>SRAHC[5*i], 'I'=>SRAHC[i] ) ) if 0 < d
+        i *= 10
+      end
+
+      acc.unshift( 'MMM' ) unless 4000 > m
+      acc.join
+    end
+  end
 end
 
