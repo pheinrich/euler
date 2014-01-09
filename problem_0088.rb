@@ -29,6 +29,11 @@ class Problem_0088
   #
   # What is the sum of all the minimal product-sum numbers for 2≤k≤12000?
 
+  def sumprod_seqs( n )
+    seq = Array.new( n - 1, 1 )
+  end
+
   def solve( first = 2, last = 12_000 )
+    # http://www-users.mat.umk.pl/~anow/ps-dvi/si-krl-a.pdf
   end
 end

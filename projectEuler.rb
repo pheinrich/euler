@@ -287,9 +287,9 @@ class Integer
 
   # Compute the sum of the decimal digits in this number.
   #
-  # Problems:  16, 20, 56, 65
-  def sum_digits( base = 10 )
-    self.to_s( base ).split( "" ).inject( 0 ) {|sum, n| sum + n.to_i}
+  # Problems:  16, 20, 56, 65, 92
+  def sum_digits( base = 10, power = 1 )
+    self.to_s( base ).split( "" ).inject( 0 ) {|sum, n| sum + n.to_i**power}
   end
 
   # Return the length the Collatz sequence associated with a number.
@@ -604,7 +604,7 @@ module ProjectEuler
       acc = []
 
       while 0 < n
-        d, n = n - 10*(n / 10), n / 10
+        n, d = n.divmod( 10 )
         acc.unshift( FORMS[d - 1].gsub( /[XVI]/, 'X'=>SRAHC[10*i], 'V'=>SRAHC[5*i], 'I'=>SRAHC[i] ) ) if 0 < d
         i *= 10
       end
