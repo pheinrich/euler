@@ -1,9 +1,9 @@
 require 'projectEuler'
 
-# 
+# 0.03446s (1/9/14, #5162)
 class Problem_0090
   def title; 'Cube digit pairs' end
-  def solution;  end
+  def solution; 1_217 end
 
   # Each of the six faces on a cube has a different digit (0 to 9) written on
   # it; the same is done to a second cube. By placing the two cubes
@@ -37,6 +37,27 @@ class Problem_0090
   # How many distinct arrangements of the two cubes allow for all of the
   # square numbers to be displayed?
 
+  def check_squares?( d1, d2 )
+    ((d1.include?( 0 ) && d2.include?( 1 )) || (d2.include?( 0 ) && d1.include?( 1 ))) &&
+    ((d1.include?( 0 ) && d2.include?( 4 )) || (d2.include?( 0 ) && d1.include?( 4 ))) &&
+    ((d1.include?( 0 ) && (d2.include?( 9 ) || d2.include?( 6 ))) || (d2.include?( 0 ) && (d1.include?( 9 ) || d1.include?( 6 )))) &&
+    ((d1.include?( 1 ) && (d2.include?( 6 ) || d2.include?( 9 ))) || (d2.include?( 1 ) && (d1.include?( 6 ) || d1.include?( 9 )))) &&
+    ((d1.include?( 2 ) && d2.include?( 5 )) || (d2.include?( 2 ) && d1.include?( 5 ))) &&
+    ((d1.include?( 3 ) && (d2.include?( 6 ) || d2.include?( 9 ))) || (d2.include?( 3 ) && (d1.include?( 6 ) || d1.include?( 9 )))) &&
+    ((d1.include?( 4 ) && (d2.include?( 9 ) || d2.include?( 6 ))) || (d2.include?( 4 ) && (d1.include?( 9 ) || d1.include?( 6 )))) &&
+    ((d1.include?( 8 ) && d2.include?( 1 )) || (d2.include?( 8 ) && d1.include?( 1 )))
+  end
+
   def solve
+    cubes = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].combination( 6 ).to_a
+    sum = 0
+
+    (0...cubes.length-1).each do |i|
+      (i+1...cubes.length).each do |j|
+        sum += 1 if check_squares?( cubes[i], cubes[j] )
+      end
+    end
+
+    sum
   end
 end
