@@ -1,9 +1,9 @@
 require 'projectEuler'
 
-# 
+# 0.002537s, (1/10/14, #7570)
 class Problem_0091
   def title; 'Right triangles with integer coordinates' end
-  def solution;  end
+  def solution; 14_234 end
 
   # The points P (x1, y1) and Q (x2, y2) are plotted at integer co-ordinates
   # and are joined to the origin, O(0,0), to form ΔOPQ (see diagram 1).
@@ -15,6 +15,18 @@ class Problem_0091
   # Given that 0 ≤ x1, y1, x2, y2 ≤ 50, how many right triangles can be
   # formed?
 
-  def solve( n = 50 )
+  def solve( w = 50, h = 50 )
+    tris = 3 * w * h
+
+    (1..w).each do |x|
+      (1..h).each do |y|
+        gcd = x.gcd( y )
+
+        tris += [gcd * (w - x) / y, gcd * y / x].min
+        tris += [gcd * x / y, gcd * (h - y) / x].min
+      end
+    end
+        
+    tris
   end
 end
