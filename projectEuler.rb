@@ -407,7 +407,7 @@ end
 class Numeric
   # Perform exponentiation over a modulus, returning (b^e) % m.
   #
-  # Problems:  48
+  # Problems:  48, 97
   def modular_power( e, m )
     (1..e).inject( 1 ) {|c| (c * self) % m}
   end
