@@ -27,10 +27,11 @@ class Problem_0093
   # set of consecutive positive integers, 1 to n, can be obtained, giving your
   # answer as a string: abcd.
 
-  GROUPS = %w[(%0.1f%c%0.1f)%c%0.1f%c%0.1f %0.1f%c(%0.1f%c%0.1f)%c%0.1f %0.1f%c%0.1f%c(%0.1f%c%0.1f)
-              (%0.1f%c%0.1f)%c(%0.1f%c%0.1f) ((%0.1f%c%0.1f)%c%0.1f)%c%0.1f (%0.1f%c(%0.1f%c%0.1f))%c%0.1f
-              %0.1f%c((%0.1f%c%0.1f)%c%0.1f) %0.1f%c(%0.1f%c(%0.1f%c%0.1f)) (%0.1f%c%0.1f%c%0.1f)%c%0.1f
-              %0.1f%c(%0.1f%c%0.1f%c%0.1f)]
+  GROUPS = %w[(%0.1f%c%0.1f)%c%0.1f%c%0.1f    %0.1f%c(%0.1f%c%0.1f)%c%0.1f
+              %0.1f%c%0.1f%c(%0.1f%c%0.1f)    (%0.1f%c%0.1f)%c(%0.1f%c%0.1f)
+              ((%0.1f%c%0.1f)%c%0.1f)%c%0.1f  (%0.1f%c(%0.1f%c%0.1f))%c%0.1f
+              %0.1f%c((%0.1f%c%0.1f)%c%0.1f)  %0.1f%c(%0.1f%c(%0.1f%c%0.1f))
+              (%0.1f%c%0.1f%c%0.1f)%c%0.1f    %0.1f%c(%0.1f%c%0.1f%c%0.1f)]
  
   def solve
     # Precompute 64 possible combinations of operators, plus the 210 sets of
