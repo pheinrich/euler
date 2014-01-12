@@ -16,12 +16,22 @@ class Problem_0091
   # formed?
 
   def solve( w = 50, h = 50 )
+    # Trivially countable triangles with right angle at origin, on x-axis, or
+    # on y-axis.
     tris = 3 * w * h
 
+    # Visit each point and imagine the right angle positioned there.  The
+    # third point will be along the line through that point, perpendicular to
+    # line from the point to the origin. 
     (1..w).each do |x|
       (1..h).each do |y|
+
+        # Use the gcd to normalize the slope.
         gcd = x.gcd( y )
 
+        # Extend the perpendicular both directions away from the point,
+        # counting steps (each representing a valid triangle) until we reach
+        # the edge of the grid.
         tris += [gcd * (w - x) / y, gcd * y / x].min
         tris += [gcd * x / y, gcd * (h - y) / x].min
       end
