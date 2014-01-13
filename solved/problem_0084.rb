@@ -125,14 +125,7 @@ class Problem_0084
 
       # Roll two dice.  Ignore the rule for doubles, because although it is
       # technically correct, it actually slows convergence.
-      d1, d2 = 1 + rand( n ), 1 + rand( n )
-#      if d1 == d2 && 3 == doubles += 1
-#        space = 10
-#        doubles = 0
-#      else
-        space = (space + d1 + d2) % NUM_SQUARES
-#        doubles = 0 unless d1 == d2
-#      end
+      space = (2 + space + rand( n ) + rand( n )) % NUM_SQUARES
 
       # Adjust destination square based on dice roll.
       case space
@@ -151,6 +144,6 @@ class Problem_0084
     end
 
     # Concatenate the two-digit indices of the three most popular spaces.
-    count.each_with_index.sort.reverse[0, 3].inject( "" ) {|acc, c| acc + ("%02d" % c[1])}
+    count.each_with_index.sort.reverse[0, 3].inject( "" ) {|acc, c| acc + ("%02d" % c[1])}.to_i
   end
 end

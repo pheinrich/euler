@@ -72,6 +72,6 @@ class Problem_0093
       max, result = seq, abcd if max < seq
     end
 
-    result.join
+    result.join.to_i
   end
 end
