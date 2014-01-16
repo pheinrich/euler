@@ -1,0 +1,21 @@
+#!/bin/bash
+PROB="$1"
+
+if [ "$PROB" = "--help" ]; then
+  echo "Usage:  solve <problem number>"
+  exit
+elif [ "$PROB" = "" ]; then
+  echo "Missing problem number.  '`basename $0` --help' for more information."
+  exit
+fi
+
+ruby -I. -Isolved <<EOF
+  require "problem_%04d.rb" % $PROB
+
+  problem = Object::const_get( "Problem_%04d" % $PROB ).new
+  puts "Problem %d: %s" % [$PROB, problem.title]
+
+  ProjectEuler.time do
+    puts problem.solve
+  end
+EOF
