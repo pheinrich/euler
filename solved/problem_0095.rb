@@ -1,9 +1,9 @@
 require 'projectEuler'
 
-# 
+# 9.751s (2/14/14, #6859)
 class Problem_0095
   def title; 'Amicable chains' end
-  def solution;  end
+  def solution; 14_316 end
 
   # The proper divisors of a number are all the divisors excluding the number
   # itself. For example, the proper divisors of 28 are 1, 2, 4, 7, and 14. As
@@ -25,5 +25,26 @@ class Problem_0095
   # exceeding one million.
 
   def solve( n = 1_000_000 )
+    # Compute the sum of all factors for each number less than n.
+    s = n.factorsum_sieve
+    longest = []
+
+    # For each value, count the chain links.
+    (2...n).each do |x|
+      cur, chain = x, []
+
+      # Follow the chain until the sum exceeds the limit, or until we see a
+      # value more than once.
+      begin
+        chain << cur
+        cur = s[cur]
+      end while cur < n && !chain.include?( cur )
+
+      # If we stopped because we saw the starting value again, it's a chain
+      # satisfying our criteria.  Keep track of the longest one seen so far.
+      longest = chain if cur == x && chain.length > longest.length 
+    end
+
+    longest[0]
   end
 end
