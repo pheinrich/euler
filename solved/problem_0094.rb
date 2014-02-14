@@ -3,7 +3,7 @@ require 'projectEuler'
 # 38.37s (2/12/14, #5799)
 class Problem_0094
   def title; 'Almost equilateral triangles' end
-  def solution; 518408346 end
+  def solution; 518_408_346 end
 
   # It is easily proved that no equilateral triangle exists with integral
   # length sides and integral area. However, the almost equilateral triangle
