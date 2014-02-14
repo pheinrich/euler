@@ -64,6 +64,13 @@ describe Integer do
     end
   end
 
+  describe "#factorsum_sieve" do
+    it "generates an array of factor sums" do
+      10.factorsum_sieve.should == [0, 0, 1, 1, 3, 1, 6, 1, 7, 4]
+      8364.factorsum_sieve[-5, 5].should == [657, 13240, 3729, 4634, 1] 
+    end
+  end
+
   describe "#genpents" do
     it "generates an array of generalized pentagonal numbers" do
       0.genpents.should == [0]

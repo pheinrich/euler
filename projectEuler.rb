@@ -107,6 +107,21 @@ class Integer
     return 1 == gcd( number )
   end
 
+  # Return the sum of factors for each number less than n.
+  #
+  # Problems:  95
+  def factorsum_sieve
+    s = Array.new( self, 0 )
+    i = 1
+
+    while i < self
+      (2*i...self).step( i ) {|j| s[j] += i}
+      i += 1
+    end
+
+    s
+  end
+
   # Return an array of generalized pentagonal numbers up to n.
   def genpents
     s = []
