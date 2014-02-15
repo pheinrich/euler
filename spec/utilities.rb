@@ -274,6 +274,13 @@ end
 describe String do
   it "provides some additional string operations" do; end
 
+  describe "#make_mask" do
+    it "returns a mask based on the positions of unique characters" do
+      "ARISE".make_mask.should == "01234"
+      "Incontrovertible".make_mask.should == "01231453675489:7"
+    end
+  end
+
   describe "#palindromic?" do
     it "returns true if a string reads the same backwards and forwards" do
       "A".should be_palindromic

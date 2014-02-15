@@ -429,6 +429,23 @@ class Numeric
 end
 
 class String
+  # Creates a mask based on repeated characters.
+  #
+  # Problems:  98
+  def make_mask
+    # Replace each char with the index of its first appearance in the array.
+    ch = self.split( '' ).map {|d| self.index( d )}
+
+    # Compact indices so there are no gaps.  For example, "01111557" becomes
+    # "01111223".
+    (ch.max - ch.uniq.length).times do
+      (0..9).each {|d| ch.map! {|c| c > d ? c - 1 : c} unless ch.include?( d )}
+    end
+
+    # Convert to a string of printable characters.
+    ch.map {|c| (c + 48).chr}.join
+  end
+
   # Returns true if a string equals its reverse.
   #
   # Problems:  36
