@@ -645,5 +645,86 @@ module ProjectEuler
       acc.join
     end
   end
+
+  # A Su Doku puzzle solver.
+  #
+  # Problems:  96
+  class SuDoku
+    DIGITS = (1..9).to_a
+  
+    def self.constraints( grid )
+      r, c, s = [], [], []
+  
+      # Determine which values are missing from each row, column, and subsquare.
+      (0...9).each do |i| 
+        r[i] = DIGITS - grid[i]
+        c[i] = DIGITS - grid.map {|row| row[i]}
+        s[i] = DIGITS - grid.map {|row| row[i%3 * 3, 3]}[i/3 * 3, 3].flatten
+      end
+  
+      return r, c, s
+    end
+
+    # Return a solved version of the puzzle provided, or nil if it is not
+    # solvable.
+    def self.solve( puzzle )
+      grid = puzzle.map( &:dup )
+  
+      # Substitute values as long as there are empty squares.
+      while 0 < grid.flatten.count( 0 )
+        r, c, s = constraints( grid )
+        min, x, y = DIGITS, 0, 0
+    
+        # Look at each blank square in the grid and determine which values would
+        # be valid there. 
+        (0...9).each do |i|
+          (0...9).each do |j|
+            next unless 0 == grid[j][i]
+    
+            # Only values that are missing from the corresponding row, column,
+            # and subsquare are valid.  This may be more than one number, or
+            # none.  If none, the puzzle isn't solvable.
+            vals = r[j] & c[i] & s[j/3 * 3 + i/3]
+            return nil if 0 == vals.count
+  
+            # If exactly one number is valid here, hooray.  Go ahead and insert
+            # it, then recompute the constraints.
+            if 1 == vals.count
+              grid[j][i] = vals[0]
+              r, c, s = constraints( grid )
+            end
+  
+            # Chances are (for difficult puzzles), there will be no single
+            # choices.  Keep track of the first space with the fewest options
+            # for later guessing.
+            min, x, y = vals, i, j if vals.count < min.count
+          end
+        end
+  
+        # If there were no "easy wins" above, we must pick a square and insert
+        # each of its candidate values in turn, looking for one that leads to a
+        # solution.  
+        if 1 < min.count
+          guess = nil
+  
+          # Substitute each candidate value for the chosen square and solve.
+          for v in min
+            grid[y][x] = v
+  
+            # If the grid isn't solvable, recursively try the next value.  One
+            # of them is guaranteed to work.
+            guess = solve( grid )
+            break if guess
+          end
+  
+          # Return the solution, or nil if this path was a dead end.  In that
+          # case, we'll end up backtracking in order to try a different branch.
+          return guess
+        end
+      end
+  
+      grid
+    end
+  end
 end
 
