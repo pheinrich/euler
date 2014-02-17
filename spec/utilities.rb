@@ -457,25 +457,25 @@ module ProjectEuler
                  [9, 0, 7, 0, 0, 6, 0, 0, 0],
                  [0, 3, 0, 4, 0, 0, 0, 1, 0],
                  [2, 0, 0, 0, 0, 0, 6, 0, 0]]
-
-      @r, @c, @s = SuDoku.constraints( @puzzle )
-      @solved = SuDoku.solve( @puzzle )
     end
 
     describe ".constraints" do
       it "find missing values for each each row, column, and subsquare" do
-        @r.flatten.inject( :+ ).should == 272
-        @c.flatten.count.should == 55
-        @s[2].should == [3, 4, 5, 8, 9]
-        (@r[3] & @c[6] & @s[7]).should == [2, 3, 7, 9]
+        r, c, s = SuDoku.constraints( @puzzle )
+        
+        r.flatten.inject( :+ ).should == 272
+        c.flatten.count.should == 55
+        s[2].should == [3, 4, 5, 8, 9]
+        (r[3] & c[6] & s[7]).should == [2, 3, 7, 9]
       end
     end
 
     describe ".solve" do
       it "fills in blank squares, or returns nil if impossible" do
-        @solved.should_not be_nil
-        @solved[6].should == [9, 8, 7, 2, 1, 6, 4, 5, 3]
-        @solved.map {|row| row[3]}.should == [7, 3, 5, 1, 8, 6, 2, 4, 9]
+        solved = SuDoku.solve( @puzzle )
+        solved.should_not be_nil
+        solved[6].should == [9, 8, 7, 2, 1, 6, 4, 5, 3]
+        solved.map {|row| row[3]}.should == [7, 3, 5, 1, 8, 6, 2, 4, 9]
 
         @puzzle[2][5] = 1
         SuDoku.solve( @puzzle ).should be_nil
