@@ -29,39 +29,62 @@ class Problem_0088
   #
   # What is the sum of all the minimal product-sum numbers for 2≤k≤12000?
 
-  def advance( seq )
+  def advance(k, seq)
     len = seq.length
+    pad = k - 1 - len
     digit = 0
 
     while true
       seq[digit] += 1
+#      puts "#{seq.inspect}"
 
-      prod = seq.inject( :* ) - 1
-      return prod, seq.inject( :+ ) unless len < prod
+      # If the updated digit is valid, check the product as well.  If it's
+      # also valid, this sequence is a candidate.
+      if seq[digit] < k
+        prod = seq.inject( :* )
+        return prod - 1, pad + seq.inject( :+ ) unless k < prod
+      end
 
+      # Short circuit if our product is too big even at the beginning.
+      return nil, nil if 2 == seq[0]
+
+      # The digit or product got too big, so advance to the next digit in
+      # preparation for incrementing it.
       digit += 1
-      return nil, nil unless digit < len - 1
+      if digit >= seq.length
+        # If the next digit doesn't exist yet, tack it on (and reduce the
+        # number of padding digits by one.
+        seq << 1
+        pad -= 1
+      end
 
+      # Short-circuit if we can't add any more digits.
+      return nil, nil if pad <= 0
+
+      # Reset all least-significant digits to match the value of the digit
+      # we're about to increment. 
       seq[0, digit] = [1 + seq[digit]] * digit
     end
   end
-    
+
   def sumprod_min( n )
-    min = n << 1
-    seq = Array.new( n - 1, 1 )
+    min, s = n << 1, [2, n]
+    seq = [1]
 
     while true
-      prod, sum = advance( seq )
+      prod, sum = advance( n, seq )
       break unless prod
 
       quot, rem = sum.divmod( prod )
       if 0 == rem
         sum += quot
-        min = sum if sum < min
-#        puts "#{n}: #{(seq.reverse + [quot]).inspect} = #{min}"
+        if sum < min
+          min, s = sum, seq.reverse + [quot]
+        end
       end
     end 
 
+#    puts "#{n}: #{s.inspect} = #{min}"
     min
   end
 
