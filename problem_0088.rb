@@ -29,11 +29,43 @@ class Problem_0088
   #
   # What is the sum of all the minimal product-sum numbers for 2≤k≤12000?
 
-  def sumprod_seqs( n )
+  def advance( seq )
+    len = seq.length
+    digit = 0
+
+    while true
+      seq[digit] += 1
+
+      prod = seq.inject( :* ) - 1
+      return prod, seq.inject( :+ ) unless len < prod
+
+      digit += 1
+      return nil, nil unless digit < len - 1
+
+      seq[0, digit] = [1 + seq[digit]] * digit
+    end
+  end
+    
+  def sumprod_min( n )
+    min = n << 1
     seq = Array.new( n - 1, 1 )
+
+    while true
+      prod, sum = advance( seq )
+      break unless prod
+
+      quot, rem = sum.divmod( prod )
+      if 0 == rem
+        sum += quot
+        min = sum if sum < min
+#        puts "#{n}: #{(seq.reverse + [quot]).inspect} = #{min}"
+      end
+    end 
+
+    min
   end
 
-  def solve( first = 2, last = 12_000 )
-    # http://www-users.mat.umk.pl/~anow/ps-dvi/si-krl-a.pdf
+  def solve( first = 2, last = 12 )#_000 )
+    (first..last).map {|i| sumprod_min( i )}.uniq.inject( :+ )
   end
 end
