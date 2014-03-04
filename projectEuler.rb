@@ -38,6 +38,13 @@ class Array
 end
 
 class Integer
+  # Calculates a binomial coefficient.
+  def choose( k )
+    return 0 if 0 > k || k > self
+    return 1 if 0 == k
+    (self - k + 1).upto( self ).inject( :* ) / k.fact
+  end
+
   # Return a sorted array of divisors.
   #
   # Problems:  12
