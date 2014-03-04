@@ -30,13 +30,10 @@ class Problem_0088
   # What is the sum of all the minimal product-sum numbers for 2≤k≤12000?
 
   def advance(k, seq)
-    len = seq.length
-    pad = k - 1 - len
-    digit = 0
+    digit, pad = 0, k - 1 - seq.length
 
     while true
       seq[digit] += 1
-#      puts "#{seq.inspect}"
 
       # If the updated digit is valid, check the product as well.  If it's
       # also valid, this sequence is a candidate.
@@ -45,8 +42,9 @@ class Problem_0088
         return prod - 1, pad + seq.inject( :+ ) unless k < prod
       end
 
-      # Short circuit if our product is too big even at the beginning.
-      return nil, nil if 2 == seq[0]
+      # Short circuit if our product is too big even at the beginning, or if
+      # we can't add any more digits
+      return nil, nil if 0 == pad || 2 == seq[0]
 
       # The digit or product got too big, so advance to the next digit in
       # preparation for incrementing it.
@@ -58,9 +56,6 @@ class Problem_0088
         pad -= 1
       end
 
-      # Short-circuit if we can't add any more digits.
-      return nil, nil if pad <= 0
-
       # Reset all least-significant digits to match the value of the digit
       # we're about to increment. 
       seq[0, digit] = [1 + seq[digit]] * digit
@@ -68,6 +63,9 @@ class Problem_0088
   end
 
   def sumprod_min( n )
+#    print '.' if 0 == n % 100
+#    puts if 0 == n % 1000
+
     min, s = n << 1, [2, n]
     seq = [1]
 
@@ -85,10 +83,57 @@ class Problem_0088
     end 
 
 #    puts "#{n}: #{s.inspect} = #{min}"
+    @h[min] += 1
     min
   end
 
-  def solve( first = 2, last = 12 )#_000 )
-    (first..last).map {|i| sumprod_min( i )}.uniq.inject( :+ )
+  def rpf( n )
+    hash = {}
+    pf = n.prime_factors
+
+    puts "#{n}: #{pf.inspect}"
+    prod = pf.inject( :* )
+    sum = pf.inject( :+ )
+
+    hash[n - sum + pf.count] = 1
+    puts "  0000 -> #{n - sum + pf.count} (count = #{pf.count}, sum = #{sum})"
+
+    (1...(2**pf.count)-2).each do |i|
+      print "  %04b -> " % i
+      if (i & (~i + 1)) == i
+        puts "power of two"
+        next
+      end
+      count, sum, prod = 1, 0, 1
+
+      pf.count.times do |j|
+        if 1 == i & 1
+          prod *= pf[j]
+        else
+          sum += pf[j]
+          count += 1
+        end
+        i >>= 1
+      end
+
+      sum += prod
+      hash[n - sum + count] = 1
+      puts "#{n - sum + count} (count = #{count}, sum = #{sum})"
+    end
+
+    hash
+  end
+
+  def solve
+    # http://en.wikipedia.org/wiki/Multiplicative_partition
+    # http://math.wvu.edu/~mays/Papers/apf7.pdf
+    rpf( 16 ).keys.inspect
+  end
+
+  def solve2( first = 2, last = 500 )#_000 )
+    @h = Hash.new {|h, k| h[k] = 0}
+    s = (first..last).map {|i| sumprod_min( i )}
+#    puts "#{s.uniq.sort.inspect}"
+    s.uniq.inject( :+ )
   end
 end
