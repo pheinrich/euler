@@ -22,6 +22,15 @@ end
 describe Integer do
   it "provides some additional integer operations" do; end
 
+  describe "#choose" do
+    it "computes a binomial coefficient" do
+      0.choose( 4 ).should == 0
+      345.choose( 400 ).should == 0
+      12.choose( 0 ).should == 1
+      45.choose( 17 ).should == 1103068603890
+    end
+  end
+
   describe "#factors" do
     it "returns a sorted array of divisors" do
       0.factors.should == [0]
