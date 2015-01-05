@@ -1,9 +1,9 @@
 require 'projectEuler'
 
-# 
+# 543.8s (1/5/14, #5178)
 class Problem_0088
   def title; 'Product-sum numbers' end
-  def solution;  end
+  def solution; 7_587_457 end
 
   # A natural number, N, that can be written as the sum and product of a given
   # set of at least two natural numbers, {a1, a2, ... , ak} is called a
@@ -29,53 +29,47 @@ class Problem_0088
   #
   # What is the sum of all the minimal product-sum numbers for 2≤k≤12000?
 
-  def prodSum( path )
+  def prodSum( sum, prod, last )
     # Compute final term satisfying N = ∑a_i = ∏a_i. If it's an integer, use
     # it to calculate N, otherwise return nil.
-    return nil if 1 == path[1]
-    return nil if path[0] + path[2] < path[1] * path[2]
+    return nil if 1 == prod
+    return nil if sum + last < prod * last
 
-    ak = 1.0 * path[0] / (path[1] - 1)
+    ak = 1.0 * sum / (prod - 1)
     return nil if ak.to_i != ak
 
-    puts "  #{path.inspect}: N = #{path[0] + ak.to_i}"
-    path[0] + ak.to_i
+    sum + ak.to_i
   end
 
-  def extendPath( path, limit )
-    paths = []
-    sum, prod, last = path[0], path[1], path[2]
-
-    (last..limit).each do |l|
-      paths << [sum + l, prod * l, l] if prod * l <= limit
-    end
-
-    paths
-  end
-
-  def solve( max = 500 )
+  def solve( max = 12_000 )
     # http://www-users.mat.umk.pl/~anow/ps-dvi/si-krl-a.pdf
 
-    # Path format: [sum, prod, last]
-    paths = [[1, 1, 1], [2, 2, 2]]
+    sum  = [1, 2]
+    prod = [1, 2]
+    last = [1, 2]
     mins = []
-
+    
     # For each value of k, find valid extensions of the (k-1)-length paths we
     # have found so far, computing the kth integer element for each, if it
     # exists. Choose the smallest N from these options.  
     (2..max).each do |k|
-      puts "k = #{k}"
+      min = k << 1
+      len = sum.length
 
-      min = k * 3
-      paths.each do |p|
-        ps = prodSum( p )
+      len.times do
+        s, p, l = sum.shift, prod.shift, last.shift
+
+          (l..(k+1)/p).each do |ext|
+            sum  << s + ext
+            prod << p * ext
+            last << ext
+          end
+ 
+        ps = prodSum( s, p, l )
         min = ps if ps && ps < min
       end
-      mins << min
 
-      extended = []
-      paths.each {|p| extended += extendPath( p, k + 1 )}
-      paths = extended
+      mins << min
     end
 
     mins.uniq.reduce( :+ )
