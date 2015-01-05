@@ -29,111 +29,55 @@ class Problem_0088
   #
   # What is the sum of all the minimal product-sum numbers for 2≤k≤12000?
 
-  def advance(k, seq)
-    digit, pad = 0, k - 1 - seq.length
+  def prodSum( path )
+    # Compute final term satisfying N = ∑a_i = ∏a_i. If it's an integer, use
+    # it to calculate N, otherwise return nil.
+    return nil if 1 == path[1]
+    return nil if path[0] + path[2] < path[1] * path[2]
 
-    while true
-      seq[digit] += 1
+    ak = 1.0 * path[0] / (path[1] - 1)
+    return nil if ak.to_i != ak
 
-      # If the updated digit is valid, check the product as well.  If it's
-      # also valid, this sequence is a candidate.
-      if seq[digit] < k
-        prod = seq.inject( :* )
-        return prod - 1, pad + seq.inject( :+ ) unless k < prod
-      end
-
-      # Short circuit if our product is too big even at the beginning, or if
-      # we can't add any more digits
-      return nil, nil if 0 == pad || 2 == seq[0]
-
-      # The digit or product got too big, so advance to the next digit in
-      # preparation for incrementing it.
-      digit += 1
-      if digit >= seq.length
-        # If the next digit doesn't exist yet, tack it on (and reduce the
-        # number of padding digits by one.
-        seq << 1
-        pad -= 1
-      end
-
-      # Reset all least-significant digits to match the value of the digit
-      # we're about to increment. 
-      seq[0, digit] = [1 + seq[digit]] * digit
-    end
+    puts "  #{path.inspect}: N = #{path[0] + ak.to_i}"
+    path[0] + ak.to_i
   end
 
-  def sumprod_min( n )
-#    print '.' if 0 == n % 100
-#    puts if 0 == n % 1000
+  def extendPath( path, limit )
+    paths = []
+    sum, prod, last = path[0], path[1], path[2]
 
-    min, s = n << 1, [2, n]
-    seq = [1]
-
-    while true
-      prod, sum = advance( n, seq )
-      break unless prod
-
-      quot, rem = sum.divmod( prod )
-      if 0 == rem
-        sum += quot
-        if sum < min
-          min, s = sum, seq.reverse + [quot]
-        end
-      end
-    end 
-
-#    puts "#{n}: #{s.inspect} = #{min}"
-    @h[min] += 1
-    min
-  end
-
-  def rpf( n )
-    hash = {}
-    pf = n.prime_factors
-
-    puts "#{n}: #{pf.inspect}"
-    prod = pf.inject( :* )
-    sum = pf.inject( :+ )
-
-    hash[n - sum + pf.count] = 1
-    puts "  0000 -> #{n - sum + pf.count} (count = #{pf.count}, sum = #{sum})"
-
-    (1...(2**pf.count)-2).each do |i|
-      print "  %04b -> " % i
-      if (i & (~i + 1)) == i
-        puts "power of two"
-        next
-      end
-      count, sum, prod = 1, 0, 1
-
-      pf.count.times do |j|
-        if 1 == i & 1
-          prod *= pf[j]
-        else
-          sum += pf[j]
-          count += 1
-        end
-        i >>= 1
-      end
-
-      sum += prod
-      hash[n - sum + count] = 1
-      puts "#{n - sum + count} (count = #{count}, sum = #{sum})"
+    (last..limit).each do |l|
+      paths << [sum + l, prod * l, l] if prod * l <= limit
     end
 
-    hash
+    paths
   end
 
-  def solve
-    # http://en.wikipedia.org/wiki/Multiplicative_partition
-    # http://math.wvu.edu/~mays/Papers/apf7.pdf
-    rpf( 16 ).keys.inspect
-  end
+  def solve( max = 500 )
+    # http://www-users.mat.umk.pl/~anow/ps-dvi/si-krl-a.pdf
 
-  def solve2( first = 2, last = 500 )#_000 )
-    @h = Hash.new {|h, k| h[k] = 0}
-    s = (first..last).map {|i| sumprod_min( i )}
-#    puts "#{s.uniq.sort.inspect}"
-    s.uniq.inject( :+ )
+    # Path format: [sum, prod, last]
+    paths = [[1, 1, 1], [2, 2, 2]]
+    mins = []
+
+    # For each value of k, find valid extensions of the (k-1)-length paths we
+    # have found so far, computing the kth integer element for each, if it
+    # exists. Choose the smallest N from these options.  
+    (2..max).each do |k|
+      puts "k = #{k}"
+
+      min = k * 3
+      paths.each do |p|
+        ps = prodSum( p )
+        min = ps if ps && ps < min
+      end
+      mins << min
+
+      extended = []
+      paths.each {|p| extended += extendPath( p, k + 1 )}
+      paths = extended
+    end
+
+    mins.uniq.reduce( :+ )
   end
 end
