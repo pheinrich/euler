@@ -35,6 +35,19 @@ class Array
   
     Rational( p[0], q[0] )
   end
+
+  # Create a polynomial generating function from an array of coefficients. For
+  # example, the array [0, 0, 0, 1] corresponds to f(x) = x^3, since
+  # x^3 = (0)(x^0) + (0)(x^1) + (0)(x^2) + (1)(x^3). Similarly, the array
+  # [2, -1, 0, 0, 3, -2, 0, 1] -> f(x) = x^6 - 2x^4 + 3x^3 - x + 2.
+  #
+  # The resulting function can be evaluated at any x using the call() method
+  # of the object returned. 
+  #
+  # Problems:  101 
+  def poly_genfunc
+    Proc.new {|x| self.each_with_index.inject( 0 ) {|acc, (a, i)| acc + (a * x**i)}}
+  end
 end
 
 class Integer

@@ -17,6 +17,21 @@ describe Array do
       expect { [2, 1, 2, 1, 1, 4, 1, 1, 6, 1].convergent( 9 ) == Rational( 1457, 536 ) }
     end
   end
+
+  describe "#poly_genfunc" do
+    it "creates a polynomial generating function from coefficients" do
+      f = [0, 0, 0, 1].poly_genfunc
+      expect( f ).to be_an_instance_of( Proc )
+      expect { f.call( 3 ) == 27 }
+      expect { f.call( 34.1 ) == 39651.821 }
+      expect { f.call( -0.75 ) == -0.421875 }
+
+      g = [-3, 2, 1, 0, 0, 0.5, -0.8, 2, 0, 1].poly_genfunc()
+      expect { g.call( 0 ) == -3.0 }
+      expect { g.call( 13 ) == 10726320798.3 }
+      expect { g.call( -0.125 ) == -3.234394271671772 }
+    end
+  end
 end
 
 describe Integer do
