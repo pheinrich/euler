@@ -46,6 +46,31 @@ class Problem_0101
   #
   # Find the sum of FITs for the BOPs.
 
-  def solve( n )
+  def next_in_seq( points )
+    (0...points.length).map do |i|
+      coeffs = points.reject.each_with_index {|p, j| j == i}
+      coeffs.each_with_index do |c, j|
+        
+      end
+    end
+  end
+  
+#  def solve( coeffs = [1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1] )
+  def solve( coeffs = [0, 0, 0, 1] )
+    # Compute the first n terms in the polynomial sequence defined by the co-
+    # efficients specified. 
+    u = (1..coeffs.length).map do |x|
+      # The coefficients uniquely define the sequence. For example, the array
+      # [0, 0, 0, 1] corresponds to f(x) = x^3, since f(x) = (0)(x^0) +
+      # (0)(x^1) + (0)(x^2) + (1)(x^3).
+      coeffs.each_with_index.inject( 0 ) {|acc, (a, i)| acc + (a * x**i)}
+    end
+
+    fits = (2..u.length).map do |n|
+      next_in_seq( u[0, n] )
+    end
+
+#    puts fits.inspect
+#    1 + fits.reduce( :+ )
   end
 end
