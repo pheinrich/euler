@@ -102,7 +102,29 @@ class Integer
     # Adjust for negative indices.
     succ = -succ if 0 > self && self.even?
     succ
-   end
+  end
+
+  # Return true if an integer contains a single instance of each numeral 1-9
+  # in base 10.
+  #
+  # Problems:  104
+  def pandigital?
+    # http://stackoverflow.com/questions/15189341/fast-algorithm-for-pandigital-check/15190627#15190627
+    return false if 123456789 > self || 987654321 < self
+    return false if self != 9 * ((0x1c71c71d * self) >> 32) 
+
+    n, digits = self, 0
+    while 0 < n
+      quot = (0x1999999a * n) >> 32
+      bit = 1 << (n - 10 * quot)
+
+      return false if 0 != (digits & bit)
+      digits |= bit
+      n = quot
+    end
+
+    true
+  end
 
   # Return an array of all prime numbers that divide a number.  Entries may be
   # duplicated (e.g. 234 = 2 x 3 x 3 x 13).

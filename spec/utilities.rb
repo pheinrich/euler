@@ -81,6 +81,17 @@ describe Integer do
     end
   end
 
+  describe "#pandigital?" do
+    it "returns true if an integer's digits include exactly one of 1-9" do
+      expect( 123456789 ).to be_pandigital
+      expect( 741258963 ).to be_pandigital
+      expect( 326159487 ).to be_pandigital
+
+      expect( 123456780 ).to_not be_pandigital
+      expect( 326159486 ).to_not be_pandigital
+    end
+  end
+
   describe "#prime_factors" do
     it "returns a sorted array of all prime divisors" do
       expect( 0.prime_factors ).to be_empty
