@@ -1,22 +1,4 @@
 class Array
-  # Aggregate tree node weights from the bottom up.
-  #
-  # Problems:  18, 67
-  def tree_sum
-    d = Math.sqrt( 1 + (self.length << 3) )
-    raise ArgumentError, 'Array length not triangular' if d != d.to_i
-
-    rows = (d.to_i - 1) >> 1
-    from = self[rows*(rows - 1)/2, rows]
-
-    (rows - 1).downto( 1 ) do |i|
-      to = i*(i - 1)/2
-      i.times {|j| from[j] = self[to + j] + from[j, 2].max}
-    end
-
-    from[0]
-  end
-
   # Return the kth convergent for a simply periodic continued fraction.
   #
   # Problems:  65, 66
@@ -36,6 +18,25 @@ class Array
     Rational( p[0], q[0] )
   end
 
+  # Create a Lagrange Polynomial interpolation function for the points in this
+  # array. Its order will equal the length of the array (caution: large arrays
+  # may suffer ringing). Array elements are expected to be (x, y) 2-tuples.
+  # http://www1.maths.leeds.ac.uk/~kersale/2600/Notes/appendix_E.pdf
+  #
+  # Problems:  101
+  def lagrange_interp_func
+    Proc.new {|x|
+      # Calculate the intermediate multipliers L_k(x).
+      l = self.map.with_index do |a, i|
+        points = self.reject.with_index {|p, j| j == i}
+        points.inject( 1.0 ) {|acc, p| acc * (x - p[0]) / (self[i][0] - p[0])}
+      end
+
+      # Weight each term by its multiplier and combine. 
+      self.each_with_index.reduce( 0 ) {|acc, (p, i)| acc + p[1]*l[i]}
+    }
+  end
+
   # Create a polynomial generating function from an array of coefficients. For
   # example, the array [0, 0, 0, 1] corresponds to f(x) = x^3, since
   # x^3 = (0)(x^0) + (0)(x^1) + (0)(x^2) + (1)(x^3). Similarly, the array
@@ -45,8 +46,26 @@ class Array
   # of the object returned. 
   #
   # Problems:  101 
-  def poly_genfunc
+  def poly_gen_func
     Proc.new {|x| self.each_with_index.inject( 0 ) {|acc, (a, i)| acc + (a * x**i)}}
+  end
+
+  # Aggregate tree node weights from the bottom up.
+  #
+  # Problems:  18, 67
+  def tree_sum
+    d = Math.sqrt( 1 + (self.length << 3) )
+    raise ArgumentError, 'Array length not triangular' if d != d.to_i
+  
+    rows = (d.to_i - 1) >> 1
+    from = self[rows*(rows - 1)/2, rows]
+  
+    (rows - 1).downto( 1 ) do |i|
+      to = i*(i - 1)/2
+      i.times {|j| from[j] = self[to + j] + from[j, 2].max}
+    end
+  
+    from[0]
   end
 end
 
