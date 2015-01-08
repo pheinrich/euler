@@ -1,9 +1,9 @@
 require 'projectEuler'
 
-# 
+# 21.35s (1/8/15, #9567)
 class Problem_0104
   def title; 'Pandigital Fibonacci ends' end
-  def solution;  end
+  def solution; 329_468 end
 
   # The Fibonacci sequence is defined by the recurrence relation:
   # 
@@ -19,18 +19,16 @@ class Problem_0104
   # digits AND the last nine digits are 1-9 pandigital, find k.
 
   def solve
-    k, curr, succ = 2, 0, 1
-    while k < 2745 do
-      k += 1
-      curr, succ = succ, curr + succ
+    k, curr, succ = 2749, 1, 0
+    k.times { curr, succ = succ, curr + succ }
+
+    while true
+      break if (succ % 1000000000).pandigital? &&
+               succ.to_s[0, 9].to_i.pandigital?
+
+      k, curr, succ = k + 1, succ, curr + succ
     end
 
-    10.times do
-      curr, succ = succ, curr + succ
-      puts "#{k}: #{succ}"
-      k += 1
-    end
-
-    succ.to_s
+    k
   end
 end
