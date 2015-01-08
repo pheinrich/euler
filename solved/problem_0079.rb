@@ -10,7 +10,7 @@ class Problem_0079
   # 531278, they may ask for the 2nd, 3rd, and 5th characters; the expected
   # reply would be: 317.
   #
-  # The text file, keylog.txt, contains fifty successful login attempts.
+  # The text file, 0079_keylog.txt, contains fifty successful login attempts.
   #
   # Given that the three characters are always asked for in order, analyse the
   # file so as to determine the shortest possible secret passcode of unknown
@@ -19,7 +19,7 @@ class Problem_0079
   def solve
     # Read lines and split into start-end pairs.
     pairs = []
-    IO.read( 'resources/keylog.txt' ).split.uniq.each do |line|
+    IO.read( 'resources/0079_keylog.txt' ).split.uniq.each do |line|
       pairs << line[0, 2] << line[1, 2] << line[0] + line[2]
     end
 

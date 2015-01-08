@@ -20,9 +20,9 @@ class Problem_0096
   # example above is considered easy because it can be solved by straight
   # forward direct deduction.
   #
-  # The 6K text file, sudoku.txt, contains fifty different Su Doku puzzles
-  # ranging in difficulty, but all with unique solutions (the first puzzle in
-  # the file is the example above).
+  # The 6K text file, 0096_sudoku.txt, contains fifty different Su Doku
+  # puzzles ranging in difficulty, but all with unique solutions (the first
+  # puzzle in the file is the example above).
   #
   # By solving all fifty puzzles find the sum of the 3-digit numbers found in
   # the top left corner of each solution grid; for example, 483 is the 3-digit
@@ -31,7 +31,7 @@ class Problem_0096
   def solve
     # Parse data file into an array of puzzles, each of which is an array of
     # rows, each of which is an array of values.
-    grids = IO.read( 'resources/sudoku.txt' ).split( /Grid [0-9]+\n/ )[1..-1]
+    grids = IO.read( 'resources/0096_sudoku.txt' ).split( /Grid [0-9]+\n/ )[1..-1]
     grids.map! do |g|
       g.gsub( /\n/, '' ).split( '' ).map( &:to_i ).each_slice( 9 ).to_a
     end

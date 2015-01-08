@@ -13,9 +13,9 @@ class Problem_0098
   # mitted, neither may a different letter have the same digital value as
   # another letter.
   #
-  # Using words.txt, a 16K text file containing nearly two-thousand common
-  # English words, find all the square anagram word pairs (a palindromic word
-  # is NOT considered to be an anagram of itself).
+  # Using 0042_words.txt, a 16K text file containing nearly two-thousand
+  # common English words, find all the square anagram word pairs (a palin-
+  # dromic word is NOT considered to be an anagram of itself).
   #
   # What is the largest square number formed by any member of such a pair?
   #
@@ -23,7 +23,7 @@ class Problem_0098
 
   def solve
     # Load the word list and remove commas and quotes.
-    words = IO.read( 'resources/words.txt' ).delete( '\"' ).split( ',' )
+    words = IO.read( 'resources/0042_words.txt' ).delete( '\"' ).split( ',' )
 
     # Select words whose letters are used by at least one other in the file,
     # then group anagrammatic words together.

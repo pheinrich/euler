@@ -5,8 +5,8 @@ class Problem_0022
   def title; 'Names scores' end
   def solution; 871_198_282 end
 
-  # Using names.txt, a 46K text file containing over five-thousand first names,
-  # begin by sorting it into alphabetical order. Then working out the
+  # Using 0022_names.txt, a 46K text file containing over five-thousand first
+  # names, begin by sorting it into alphabetical order. Then working out the
   # alphabetical value for each name, multiply this value by its alphabetical
   # position in the list to obtain a name score.
   #
@@ -18,7 +18,7 @@ class Problem_0022
 
   def solve
     # Strip quotes and split comma-separated values into a sorted array.
-    names = IO.read( 'resources/names.txt' ).delete( '\"' ).split( ',' ).sort
+    names = IO.read( 'resources/0022_names.txt' ).delete( '\"' ).split( ',' ).sort
 
     # Add all character values together, then account for offset value of 'A'.
     names.map! {|n| n.bytes.inject( :+ ) - (n.length << 6)}

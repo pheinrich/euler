@@ -17,9 +17,9 @@ class Problem_0102
   # It can be verified that triangle ABC contains the origin, whereas triangle
   # XYZ does not.
   #
-  # Using triangles.txt, a 27K text file containing the coordinates of one
-  # thousand "random" triangles, find the number of triangles for which the
-  # interior contains the origin.
+  # Using 0102_triangles.txt, a 27K text file containing the coordinates of
+  # one thousand "random" triangles, find the number of triangles for which
+  # the interior contains the origin.
   #
   # NOTE: The first two examples in the file represent the triangles in the
   # example given above.
@@ -49,7 +49,7 @@ class Problem_0102
   end
 
   def solve
-    tris = IO.read( 'resources/triangles.txt' ).split( /,|\s/ ).map( &:to_i )
+    tris = IO.read( 'resources/0102_triangles.txt' ).split( /,|\s/ ).map( &:to_i )
     tris.each_slice( 2 ).each_slice( 3 ).count {|tri| 0 != winding( tri )}
   end
 end

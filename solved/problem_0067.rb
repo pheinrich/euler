@@ -15,8 +15,8 @@ class Problem_0067
   #
   # That is, 3 + 7 + 4 + 9 = 23.
   # 
-  # Find the maximum total from top to bottom in triangle.txt, a 15K text file
-  # containing a triangle with one-hundred rows.
+  # Find the maximum total from top to bottom in 0067_triangle.txt, a 15K text
+  # file containing a triangle with one-hundred rows.
   #
   # NOTE: This is a much more difficult version of Problem 18. It is not
   # possible to try every route to solve this problem, as there are 2^99
@@ -25,7 +25,7 @@ class Problem_0067
   # efficient algorithm to solve it. ;o)
 
   def solve
-    t = IO.read( 'resources/triangle.txt' ).split.map(&:to_i)
+    t = IO.read( 'resources/0067_triangle.txt' ).split.map(&:to_i)
     t.tree_sum
   end
 end

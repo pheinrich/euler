@@ -11,8 +11,8 @@ class Problem_0099
   # However, confirming that 632382^518061 > 519432^525806 would be much more
   # difficult, as both numbers contain over three million digits.
   #
-  # Using base_exp.txt, a 22K text file containing one thousand lines with a
-  # base/exponent pair on each line, determine which line number has the
+  # Using 0099_base_exp.txt, a 22K text file containing one thousand lines with
+  # a base/exponent pair on each line, determine which line number has the
   # greatest numerical value.
   #
   # NOTE: The first two lines in the file represent the numbers in the example
@@ -27,7 +27,7 @@ class Problem_0099
   end
 
   def solve
-    tuples = IO.read( 'resources/base_exp.txt' ).split().map {|line| line.split( ',' ).map( &:to_i )}
+    tuples = IO.read( 'resources/0099_base_exp.txt' ).split().map {|line| line.split( ',' ).map( &:to_i )}
     max = 0
 
     (1...tuples.length).each {|i| max = compare( tuples, max, i )}

@@ -15,12 +15,12 @@ class Problem_0042
   # example, the word value for SKY is 19 + 11 + 25 = 55 = t[10]. If the word
   # value is a triangle number then we shall call the word a triangle word.
   #
-  # Using words.txt, a 16K text file containing nearly two-thousand common
-  # English words, how many are triangle words?
+  # Using 0042_words.txt, a 16K text file containing nearly two-thousand
+  # common English words, how many are triangle words?
 
   def solve
     # Strip quotes and split comma-separated values into a sorted array.
-    words = IO.read( 'resources/words.txt' ).delete( '\"' ).split( ',' )
+    words = IO.read( 'resources/0042_words.txt' ).delete( '\"' ).split( ',' )
 
     # Add all character values together, then account for offset value of 'A'.
     words.map! {|i| i.bytes.inject( :+ ) - (i.length << 6)}

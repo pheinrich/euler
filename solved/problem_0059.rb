@@ -27,10 +27,10 @@ class Problem_0059
   # key for security, but short enough to be memorable.
   #
   # Your task has been made easy, as the encryption key consists of three
-  # lower case characters. Using cipher1.txt, a file containing the encrypted
-  # ASCII codes, and the knowledge that the plain text must contain common
-  # English words, decrypt the message and find the sum of the ASCII values in
-  # the original text.
+  # lower case characters. Using 0059_cipher1.txt, a file containing the en-
+  # crypted ASCII codes, and the knowledge that the plain text must contain
+  # common English words, decrypt the message and find the sum of the ASCII
+  # values in the original text.
 
   WORDS = %w(the be to of and a in that have I it for not on with he as you do
              at this but his by from they we say her she or an will my one all
@@ -41,7 +41,7 @@ class Problem_0059
              way even new want because any these give day most us)
 
   def solve
-    orig = IO.read( 'resources/cipher1.txt' ).split( ',' ).map( &:to_i )
+    orig = IO.read( 'resources/0059_cipher1.txt' ).split( ',' ).map( &:to_i )
     repeat = 1 + orig.length / 3
 
     'aaa'.upto( 'zzz' ) do |key|

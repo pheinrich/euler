@@ -17,11 +17,11 @@ class Problem_0082
   #      537   699   497   121   956
   #      805   732   524    37   331
   #
-  # Find the minimal path sum, in matrix.txt, a 31K text file containing an 80
-  # by 80 matrix, from the left column to the right column.
+  # Find the minimal path sum, in 0081_matrix.txt, a 31K text file containing
+  # an 80 by 80 matrix, from the left column to the right column.
 
   def solve
-    rows = File.readlines( 'resources/matrix.txt' )
+    rows = File.readlines( 'resources/0081_matrix.txt' )
     rows.map! {|row| row.scan( /\d+/ ).map( &:to_i )}
 
     g = ProjectEuler::Graph.new

@@ -22,7 +22,7 @@ class Problem_0089
   # The last example being considered the most efficient, as it uses the least
   # number of numerals.
   #
-  # The 11K text file roman.txt contains one thousand numbers written in
+  # The 11K text file 0089_roman.txt contains one thousand numbers written in
   # valid, but not necessarily minimal, Roman numerals; that is, they are
   # arranged in descending units and obey the subtractive pair rule (see About
   # Roman Numerals... for the definitive rules for this problem).
@@ -34,7 +34,7 @@ class Problem_0089
   # more than four consecutive identical units.
 
   def solve
-    t = IO.read( 'resources/roman.txt' ).split.map do |line|
+    t = IO.read( 'resources/0089_roman.txt' ).split.map do |line|
       n = ProjectEuler::Roman.to_i( line )
       line.length - ProjectEuler::Roman.from_i( n ).length
     end
