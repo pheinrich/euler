@@ -91,6 +91,19 @@ class Integer
     arr.sort!
   end
 
+  # Return the kth term in the Fibonacci sequence. This is an iterative
+  # implementation (not recursive) and has been generalized to include terms
+  # for negative k.
+  def fib
+    # Do this iteratively instead of recursively to spare the stack.
+    curr, succ = 1, 0
+    self.abs.times { curr, succ = succ, curr + succ }
+
+    # Adjust for negative indices.
+    succ = -succ if 0 > self && self.even?
+    succ
+   end
+
   # Return an array of all prime numbers that divide a number.  Entries may be
   # duplicated (e.g. 234 = 2 x 3 x 3 x 13).
   #

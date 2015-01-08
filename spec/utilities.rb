@@ -68,6 +68,19 @@ describe Integer do
     end
   end
 
+  describe "#fib" do
+    it "returns the kth term in the Fibonacci series" do
+      expect( 0.fib ).to eq( 0 )
+      expect( 1.fib ).to eq( 1 )
+      expect( 2.fib ).to eq( 1 )
+      expect( 34.fib ).to eq( 5702887 )
+
+      # Should work for negative numbers, too.
+      expect( -7.fib ).to eq( 13 )
+      expect( -28.fib ).to eq( -317811 )
+    end
+  end
+
   describe "#prime_factors" do
     it "returns a sorted array of all prime divisors" do
       expect( 0.prime_factors ).to be_empty
