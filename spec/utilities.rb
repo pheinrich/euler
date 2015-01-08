@@ -23,12 +23,14 @@ describe Array do
 
   describe "#poly_gen_func" do
     it "creates a polynomial generating function from coefficients" do
+      # f(x) = x^3
       f = [0, 0, 0, 1].poly_gen_func
       expect( f ).to be_an_instance_of( Proc )
       expect( f.call( 3 ) ).to eq( 27 )
       expect( f.call( 34.1 ) ).to eq( 39651.821 )
       expect( f.call( -0.75 ) ).to eq( -0.421875 )
 
+      # g(x) = x^9 + 2x^7 - 0.8x^6 + 0.5x^5 + x^2 + 2x - 3
       g = [-3, 2, 1, 0, 0, 0.5, -0.8, 2, 0, 1].poly_gen_func()
       expect( g.call( 0 ) ).to eq( -3.0 )
       expect( g.call( 13 ) ).to eq( 10726320798.3 )

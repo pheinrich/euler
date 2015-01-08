@@ -1,9 +1,9 @@
 require 'projectEuler'
 
-# 
+# 0.0003009s (1/7/14, #6047)
 class Problem_0101
   def title; 'Optimum polynomial' end
-  def solution;  end
+  def solution; 37_076_114_526 end
 
   # If we are presented with the first k terms of a sequence it is impossible
   # to say with certainty the value of the next term, as there are infinitely
@@ -46,31 +46,19 @@ class Problem_0101
   #
   # Find the sum of FITs for the BOPs.
 
-  def next_in_seq( points )
-    (0...points.length).map do |i|
-      coeffs = points.reject.each_with_index {|p, j| j == i}
-      coeffs.each_with_index do |c, j|
-        
-      end
-    end
-  end
-  
-#  def solve( coeffs = [1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1] )
-  def solve( coeffs = [0, 0, 0, 1] )
+  def solve( coeffs = [1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1] )
     # Compute the first n terms in the polynomial sequence defined by the co-
-    # efficients specified. 
-    u = (1..coeffs.length).map do |x|
-      # The coefficients uniquely define the sequence. For example, the array
-      # [0, 0, 0, 1] corresponds to f(x) = x^3, since f(x) = (0)(x^0) +
-      # (0)(x^1) + (0)(x^2) + (1)(x^3).
-      coeffs.each_with_index.inject( 0 ) {|acc, (a, i)| acc + (a * x**i)}
+    # efficients specified. Treat them as points along the x axis so we can
+    # use our Lagrange polynomial interpolator.
+    f = coeffs.poly_gen_func
+    u = (1..coeffs.length).map.with_index {|c, i| [i + 1, f.call( c )]}
+
+    # Create and call the interpolator function for progressively longer
+    # subsets of the points, collecting the FITs.
+    fits = (1...u.length).map do |n|
+      u[0, n].lagrange_interp_func.call( n + 1 )
     end
 
-    fits = (2..u.length).map do |n|
-      next_in_seq( u[0, n] )
-    end
-
-#    puts fits.inspect
-#    1 + fits.reduce( :+ )
+    fits.reduce( :+ )
   end
 end
