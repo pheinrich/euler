@@ -104,6 +104,27 @@ class Integer
     succ
   end
 
+  # Return true if an integer is palindromic in base 10 (reads the same back-
+  # wards and forwards). Only modestly faster than string-based version.
+  #
+  # Problems:  125
+  def palindrome?
+    return false if 0 > self
+
+    x, div = self, 1
+    div *= 10 until div * 10 > x
+
+    while 0 < x
+      q, r = x.divmod( div )
+      return false if q != x % 10
+
+      x = r / 10
+      div /= 100
+    end
+
+    true
+  end
+
   # Return true if an integer contains a single instance of each numeral 1-9
   # in base 10.
   #

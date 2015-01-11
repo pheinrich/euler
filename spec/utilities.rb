@@ -81,8 +81,19 @@ describe Integer do
     end
   end
 
+  describe "#palindrome?" do
+    it "returns true if a base-10 integer reads the same backwards and forwards" do
+      expect( 0 ).to be_palindrome
+      expect( 99 ).to be_palindrome
+      expect( 32455955423 ).to be_palindrome
+
+      expect( 154 ).to_not be_palindrome
+      expect( -1001 ).to_not be_palindrome
+    end
+  end
+
   describe "#pandigital?" do
-    it "returns true if an integer's digits include exactly one of 1-9" do
+    it "returns true if a base-10 integer's digits include exactly one of 1-9" do
       expect( 123456789 ).to be_pandigital
       expect( 741258963 ).to be_pandigital
       expect( 326159487 ).to be_pandigital
