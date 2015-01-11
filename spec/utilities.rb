@@ -387,12 +387,16 @@ module ProjectEuler
     it "represents a set of vertices and the directed edges between them" do; end
 
     before( :all ) do
-      @graph = Graph.new
-      @graph.connect( 1, 2, 7 ).connect( 1, 3, 9 ).connect( 1, 6, 14 )
-      @graph.connect( 2, 3, 10 ).connect( 2, 4, 15 )
-      @graph.connect( 3, 4, 11 ).connect( 3, 6, 2 )
-      @graph.connect( 4, 5, 6 )
-      @graph.connect( 6, 5, 9 )
+      @matrix = m = [[ 0, 16, 12, 21,  0,  0,  0],
+                     [16,  0,  0, 17, 20,  0,  0],
+                     [12,  0,  0, 28,  0, 31,  0],
+                     [21,  0, 28,  0, 18,  0, 23],
+                     [ 0, 20,  0, 18,  0,  0, 11],
+                     [ 0,  0, 31,  0,  0,  0, 27],
+                     [ 0,  0,  0, 23, 11, 27,  0]]
+
+      @graph = Graph.new( @matrix )
+      @graph.connect( 1, 3, 17 ).biconnect( 5, 3, 19 )
     end
 
     describe "#new" do
@@ -405,7 +409,6 @@ module ProjectEuler
       it "ensures a node is present in the graph, even if it has no out-bound paths" do
         @graph.add( 10 )
         expect( @graph ).to have_key( 10 )
-        expect( @graph.neighbors( 10 ) ).to be_empty
       end
     end
 
@@ -431,25 +434,26 @@ module ProjectEuler
 
     describe "#neighbors" do
       it "returns the nodes reachable from another" do
-        expect( @graph.neighbors( 2 ) ).to eq( [3, 4] )
-        expect( @graph.neighbors( 5 ) ).to be_empty
+        @graph.add( 10 )
+        expect( @graph.neighbors( 2 ) ).to eq( [0, 3, 5] )
+        expect( @graph.neighbors( 10 ) ).to be_empty
       end
     end
 
     describe "#len" do
       it "returns the weight for the edge between two nodes" do
-        expect( @graph.len( 1, 2 ) ).to eq( 7 )
-        expect( @graph.len( 3, 4 ) ).to eq( 11 )
+        expect( @graph.len( 1, 4 ) ).to eq( 20 )
+        expect( @graph.len( 3, 6 ) ).to eq( 23 )
         expect( @graph.len( 2, 6 ) ).to eq( Float::INFINITY )
       end
     end
 
     describe "#dijkstra" do
       it "it returns the least-cost path total between nodes" do
-        expect( @graph.dijkstra( 1, 5 ) ).to eq( 20 )
-        expect( @graph.dijkstra( 2, 6 ) ).to eq( 12 )
-        expect( @graph.dijkstra( 2, 7 ) ).to eq( Float::INFINITY )
-        expect( @graph.dijkstra( 3 ) ).to eq( {3=>0, 4=>11, 6=>2, 5=>11} )
+        expect( @graph.dijkstra( 1, 5 ) ).to eq( 36 )
+        expect( @graph.dijkstra( 2, 6 ) ).to eq( 51 )
+        expect( @graph.dijkstra( 2, 10 ) ).to eq( Float::INFINITY )
+        expect( @graph.dijkstra( 3 ) ).to eq( {3=>0, 0=>21, 1=>17, 2=>28, 4=>18, 6=>23, 5=>19, 7=>25, 8=>26, 9=>28} )
       end
     end
   end

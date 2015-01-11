@@ -561,10 +561,15 @@ module ProjectEuler
   #
   # Problems:  81, 82, 83
   class Graph < Hash
-    def initialize
+    def initialize( rows = nil )
       self.default_proc = proc do |hash, key|
         hash[key] = [] unless hash.has_key?( key )
         hash[key]
+      end
+
+      if rows
+        w, h = rows[0].length, rows.length
+        (0...w).each {|i| (0...h).each {|j| connect( i, j, rows[j][i] ) if 0 != rows[j][i]}}
       end
     end
 
@@ -624,6 +629,10 @@ module ProjectEuler
       # Return the distances from src to every node, or infinity if we were
       # looking for a specific node but never found it. 
       return dst ? Float::INFINITY : dist
+    end
+
+    def min_span
+      mst = Graph.new
     end
   end
 
