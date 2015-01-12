@@ -49,6 +49,15 @@ end
 describe Integer do
   it "provides some additional integer operations" do; end
 
+  describe "#bounce" do
+    it "scores a number by how 'bouncy' its digits are" do
+      expect( 222222.bounce ).to eq( 0 )
+      expect( 134468.bounce ).to eq( 1 )
+      expect( 866420.bounce ).to eq( 2 )
+      expect( 155349.bounce ).to eq( 3 )
+    end
+  end
+
   describe "#choose" do
     it "computes a binomial coefficient" do
       expect( 0.choose( 4 ) ).to eq( 0 )

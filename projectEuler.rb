@@ -70,6 +70,29 @@ class Array
 end
 
 class Integer
+  # Scores an integer on how "bouncy" it is:
+  #
+  #   0 = digits do not rise or fall, e.g. "222222"
+  #   1 = digits strictly increase left to right, e.g. "134468"
+  #   2 = digits strictly decrease left to right, e.g. "66420"
+  #   3 = digits rise and fall left to right, e.g. "155349"
+  #
+  # Problems:  112
+  def bounce
+    x, r = self.divmod( 10 )
+    last, score = r, 0
+
+    while 0 < x && 3 > score
+      score |= 1 if r < last
+      score |= 2 if r > last
+
+      last = r
+      x, r = x.divmod( 10 )
+    end
+
+    score
+  end
+
   # Calculates a binomial coefficient.
   def choose( k )
     return 0 if 0 > k || k > self
