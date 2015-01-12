@@ -1,9 +1,9 @@
 require 'projectEuler'
 
-# 
+# 1.013s (1/12/15, #14269)
 class Problem_0112
   def title; 'Bouncy numbers' end
-  def solution;  end
+  def solution; 1_587_000 end
 
   # Working from left-to-right if no digit is exceeded by the digit to its
   # left it is called an increasing number; for example, 134468.
@@ -26,5 +26,19 @@ class Problem_0112
   # actly 99%.
 
   def solve( n = 99 )
+    type = [0, 0, 0, 0]
+    x, limit = 0, 0
+
+    begin
+      x += 1
+
+      # As x increases, keep a running total of n*x and 100 times the count of
+      # bouncy numbers so far. This makes our percentage check a simple (and
+      # exact) comparison of integers for equality. 
+      limit += n
+      type[ x.bounce ] += 100
+    end while limit != type[3]
+
+    x
   end
 end
