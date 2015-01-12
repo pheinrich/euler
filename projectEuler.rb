@@ -567,14 +567,15 @@ module ProjectEuler
         hash[key]
       end
 
+      # Initialize edge weights from an array of values, if provided.
       if rows
         w, h = rows[0].length, rows.length
-        (0...w).each {|i| (0...h).each {|j| connect( i, j, rows[j][i] ) if 0 != rows[j][i]}}
+        (0...w).each {|i| (0...h).each {|j| connect( i, j, rows[j][i] ) if rows[j][i]}}
       end
     end
 
     def add( src )
-      self[src] << [] unless self.has_key?( src )
+      self[src] = [] unless self.has_key?( src )
       self
     end
 
@@ -633,6 +634,10 @@ module ProjectEuler
 
     def min_span
       mst = Graph.new
+    end
+
+    def total_weight
+      self.values.reduce( 0 ) {|acc, v| acc + (v.transpose[1] || [0]).reduce( :+ )}
     end
   end
 

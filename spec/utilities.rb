@@ -387,16 +387,18 @@ module ProjectEuler
     it "represents a set of vertices and the directed edges between them" do; end
 
     before( :all ) do
-      @matrix = m = [[ 0, 16, 12, 21,  0,  0,  0],
-                     [16,  0,  0, 17, 20,  0,  0],
-                     [12,  0,  0, 28,  0, 31,  0],
-                     [21,  0, 28,  0, 18,  0, 23],
-                     [ 0, 20,  0, 18,  0,  0, 11],
-                     [ 0,  0, 31,  0,  0,  0, 27],
-                     [ 0,  0,  0, 23, 11, 27,  0]]
+      @matrix = m = [[nil,  16,  12,  21, nil, nil, nil],
+                     [ 16, nil, nil,  17,  20, nil, nil],
+                     [ 12, nil, nil,  28, nil,  31, nil],
+                     [ 21,  17,  28, nil,  18, nil,  23],
+                     [nil,  20, nil,  18, nil, nil,  11],
+                     [nil, nil,  31, nil, nil, nil,  27],
+                     [nil, nil, nil,  23,  11,  27, nil]]
 
       @graph = Graph.new( @matrix )
-      @graph.connect( 1, 3, 17 ).biconnect( 5, 3, 19 )
+      @graph.add( 10 ).add( 11 ).add( 12 )
+      @graph.connect( 1, 10, 17 ).connect( 2, 11, 6, 8 )
+      @graph.biconnect( 5, 3, 19 )
     end
 
     describe "#new" do
@@ -407,36 +409,31 @@ module ProjectEuler
 
     describe "#add" do
       it "ensures a node is present in the graph, even if it has no out-bound paths" do
-        @graph.add( 10 )
-        expect( @graph ).to have_key( 10 )
+        expect( @graph ).to have_key( 12 )
       end
     end
 
     describe "#connect" do
       it "creates a one-way-weighted directed edge between two nodes" do
-        @graph.connect( 1, 7, 8 )
-        expect( @graph.len( 1, 7 ) ).to eq( 8 )
-        expect( @graph.len( 7, 1 ) ).to eq( Float::INFINITY )
+        expect( @graph.len( 1, 10 ) ).to eq( 17 )
+        expect( @graph.len( 10, 1 ) ).to eq( Float::INFINITY )
 
-        @graph.connect( 1, 8, 9, 10 )
-        expect( @graph.len( 1, 8 ) ).to eq( 9 )
-        expect( @graph.len( 8, 1 ) ).to eq( 10 )
+        expect( @graph.len( 2, 11 ) ).to eq( 6 )
+        expect( @graph.len( 11, 2 ) ).to eq( 8 )
       end
     end
 
     describe "#biconnect" do
       it "creates a two-way-weighted directed edge between two nodes" do
-        @graph.biconnect( 1, 9, 11 )
-        expect( @graph.len( 1, 9 ) ).to eq( 11 )
-        expect( @graph.len( 9, 1 ) ).to eq( 11 )
+        expect( @graph.len( 5, 3 ) ).to eq( 19 )
+        expect( @graph.len( 3, 5 ) ).to eq( 19 )
       end
     end
 
     describe "#neighbors" do
       it "returns the nodes reachable from another" do
-        @graph.add( 10 )
-        expect( @graph.neighbors( 2 ) ).to eq( [0, 3, 5] )
-        expect( @graph.neighbors( 10 ) ).to be_empty
+        expect( @graph.neighbors( 2 ) ).to eq( [0, 3, 5, 11] )
+        expect( @graph.neighbors( 12 ) ).to be_empty
       end
     end
 
@@ -449,11 +446,24 @@ module ProjectEuler
     end
 
     describe "#dijkstra" do
-      it "it returns the least-cost path total between nodes" do
+      it "returns the least-cost path total between nodes" do
         expect( @graph.dijkstra( 1, 5 ) ).to eq( 36 )
         expect( @graph.dijkstra( 2, 6 ) ).to eq( 51 )
-        expect( @graph.dijkstra( 2, 10 ) ).to eq( Float::INFINITY )
-        expect( @graph.dijkstra( 3 ) ).to eq( {3=>0, 0=>21, 1=>17, 2=>28, 4=>18, 6=>23, 5=>19, 7=>25, 8=>26, 9=>28} )
+        expect( @graph.dijkstra( 2, 12 ) ).to eq( Float::INFINITY )
+        expect( @graph.dijkstra( 3 ) ).to eq( {3=>0, 0=>21, 1=>17, 2=>28, 4=>18, 6=>23, 5=>19, 10=>34, 11=>34} )
+      end
+    end
+
+    describe "#min_span" do
+      it "returns the minimum spanning tree of a graph" do
+        mst = @graph.min_span
+        expect( mst ).to be_an_instance_of( Graph )
+      end
+    end
+
+    describe "#total_weight" do
+      it "returns the sum of all edge weights" do
+        expect( @graph.total_weight ).to eq( 517 )
       end
     end
   end
