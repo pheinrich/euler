@@ -559,7 +559,7 @@ module ProjectEuler
 
   # A class representing vertices and the edges between them.
   #
-  # Problems:  81, 82, 83
+  # Problems:  81, 82, 83, 107
   class Graph < Hash
     def initialize( rows = nil )
       self.default_proc = proc do |hash, key|
@@ -624,7 +624,7 @@ module ProjectEuler
         end
 
         # Mark this node as visited.
-        unvisited.delete nearest
+        unvisited.delete( nearest )
       end
 
       # Return the distances from src to every node, or infinity if we were
@@ -632,10 +632,43 @@ module ProjectEuler
       return dst ? Float::INFINITY : dist
     end
 
+    # Returns the minimum spanning tree of an undirected graph (assumes for-
+    # ward and backward weights are equal for each edge.
     def min_span
       mst = Graph.new
+
+      parent = Hash.new
+      dist = Hash.new( Float::INFINITY )
+      dist[ self.keys[0] ] = 0
+
+      unvisited = self.keys.uniq
+      until unvisited.empty?
+        # Find the next nearest vertex not already in the MST.
+        nearest = unvisited.min_by {|node| dist[node]}
+
+        # Add it to the MST, linking back to the parent node we previously saw
+        # for it. (If none, this is the first addition.)
+        mst.biconnect( nearest, parent[nearest], dist[nearest] ) if parent[nearest]
+
+        # Based on the node we just added, update current distance and parent
+        # on record for each of its children not yet in the MST.
+        (self[nearest].transpose[0] || []).select {|v| unvisited.include?( v )}.each do |child|
+          # Don't change parents unless the new one has a shorter path to the
+          # child node.
+          if dist[child] > self.len( nearest, child )
+            parent[child] = nearest 
+            dist[child] = self.len( nearest, child )
+          end
+        end
+
+        unvisited.delete( nearest )
+      end
+
+      mst
     end
 
+    # Return the sum of all (forward and backward) edge weights. For undirect-
+    # ed graphs, assume result must be halved.
     def total_weight
       self.values.reduce( 0 ) {|acc, v| acc + (v.transpose[1] || [0]).reduce( :+ )}
     end

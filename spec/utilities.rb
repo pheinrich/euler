@@ -31,7 +31,7 @@ describe Array do
       expect( f.call( -0.75 ) ).to eq( -0.421875 )
 
       # g(x) = x^9 + 2x^7 - 0.8x^6 + 0.5x^5 + x^2 + 2x - 3
-      g = [-3, 2, 1, 0, 0, 0.5, -0.8, 2, 0, 1].poly_gen_func()
+      g = [-3, 2, 1, 0, 0, 0.5, -0.8, 2, 0, 1].poly_gen_func
       expect( g.call( 0 ) ).to eq( -3.0 )
       expect( g.call( 13 ) ).to eq( 10726320798.3 )
       expect( g.call( -0.125 ) ).to eq( -3.234394271671772 )
@@ -458,6 +458,9 @@ module ProjectEuler
       it "returns the minimum spanning tree of a graph" do
         mst = @graph.min_span
         expect( mst ).to be_an_instance_of( Graph )
+        expect( mst.total_weight ).to eq( 232 )
+        expect( mst.len( 0, 3 ) ).to eq( Float::INFINITY )
+        expect( mst.dijkstra( 2, 6 ) ).to eq( 74 )
       end
     end
 
