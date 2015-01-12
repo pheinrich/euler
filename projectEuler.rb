@@ -79,15 +79,15 @@ class Integer
   #
   # Problems:  112
   def bounce
-    x, r = self.divmod( 10 )
+    x, r = self, self % 10
     last, score = r, 0
 
     while 0 < x && 3 > score
+      x, r = x.divmod( 10 )
+
       score |= 1 if r < last
       score |= 2 if r > last
-
       last = r
-      x, r = x.divmod( 10 )
     end
 
     score

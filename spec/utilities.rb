@@ -53,8 +53,11 @@ describe Integer do
     it "scores a number by how 'bouncy' its digits are" do
       expect( 222222.bounce ).to eq( 0 )
       expect( 134468.bounce ).to eq( 1 )
-      expect( 866420.bounce ).to eq( 2 )
+      expect( 66420.bounce ).to eq( 2 )
       expect( 155349.bounce ).to eq( 3 )
+
+      expect( (332..336).map {|x| x.bounce} ).to eq( [2, 0, 1, 1, 1] )
+      expect( (11332..13226).reduce( 0 ) {|acc, x| acc + x.bounce} ).to eq( 5277 )
     end
   end
 
