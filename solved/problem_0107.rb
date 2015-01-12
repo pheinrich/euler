@@ -1,9 +1,9 @@
 require 'projectEuler'
 
-# 
+# 0.003449s (1/12/15, #6327)
 class Problem_0107
   def title; 'Minimal network' end
-  def solution;  end
+  def solution; 259_679 end
 
   # The undirected network depicted by problem_0107_1.gif consists of seven
   # vertices and twelve edges with a total weight of 243.
@@ -31,5 +31,13 @@ class Problem_0107
   # remains connected.
 
   def solve
+    rows = File.readlines( 'resources/0107_network.txt' )
+    rows.map! {|row| row.scan( /[-\d]+/ ).map {|s| '-' == s ? nil : s.to_i}}
+
+    g = ProjectEuler::Graph.new( rows )
+
+    # Total weight is doubled since our computation assumes the graph is dir-
+    # ected (which it isn't, in this case).
+    (g.total_weight - g.min_span.total_weight) >> 1
   end
 end
