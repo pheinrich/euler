@@ -34,6 +34,8 @@ class Problem_0107
     rows = File.readlines( 'resources/0107_network.txt' )
     rows.map! {|row| row.scan( /[-\d]+/ ).map {|s| '-' == s ? nil : s.to_i}}
 
+    # By definition, the 'optimised' network will be the minimum spanning tree
+    # (MST) of the original graph.
     g = ProjectEuler::Graph.new( rows )
 
     # Total weight is doubled since our computation assumes the graph is dir-
