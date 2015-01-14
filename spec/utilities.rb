@@ -64,9 +64,19 @@ describe Integer do
   describe "#choose" do
     it "computes a binomial coefficient" do
       expect( 0.choose( 4 ) ).to eq( 0 )
-      expect( 345.choose( 400 ) ).to eq( 0) 
+      expect( 345.choose( 400 ) ).to eq( 0 ) 
       expect( 12.choose( 0 ) ).to eq( 1 )
+      expect( -3.choose( 2 ) ).to eq( 0 )
       expect( 45.choose( 17 ) ).to eq( 1103068603890 )
+    end
+  end
+
+  describe "#multichoose" do
+    it "counts the k-multisubsets possible with n items" do
+      expect( 0.multichoose( 2 ) ).to eq( 0 )
+      expect( 9.multichoose( 5 ) ).to eq( 1287 )
+      expect( -7.multichoose( 3 ) ).to eq( 0 )
+      expect( 239.multichoose( 6 ) ).to eq( 275489565912 )
     end
   end
 

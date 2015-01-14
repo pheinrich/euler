@@ -93,11 +93,18 @@ class Integer
     score
   end
 
-  # Calculates a binomial coefficient.
+  # Calculates a binomial coefficient. This effectively counts the number of
+  # k-subsets (k distinct items from a set) possible with n items.
   def choose( k )
     return 0 if 0 > k || k > self
     return 1 if 0 == k
     (self - k + 1).upto( self ).inject( :* ) / k.fact
+  end
+
+  # Counts k-multisubsets (k-subsets allowing for replacement but without re-
+  # gard for order).
+  def multichoose( k )
+    (self + k - 1).choose( k )
   end
 
   # Return a sorted array of divisors.
