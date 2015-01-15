@@ -1,9 +1,9 @@
 require 'projectEuler'
 
-# 
+# 0.0005181s (1/14/15, #6967)
 class Problem_0116
   def title; 'Red, green or blue tiles' end
-  def solution;  end
+  def solution; 20_492_570_929 end
 
   # A row of five black square tiles is to have a number of its tiles replaced
   # with coloured oblong tiles chosen from red (length two), green (length
@@ -22,6 +22,21 @@ class Problem_0116
   #
   # NOTE: This is related to Problem 117.
 
-  def solve( n = 50 )
+  def fill( len, row, memo )
+    return memo[row] if memo[row]
+
+    total = 0
+    if len <= row
+      total += row - len + 1
+      (row - len).downto( len ) do |sub|
+        total += fill( len, sub, memo )
+      end
+    end
+
+    memo[row] = total
+  end
+
+  def solve( n = 50, len = [2, 3, 4] )
+    len.map {|l| fill( l, n, {} )}.reduce( :+ )
   end
 end
