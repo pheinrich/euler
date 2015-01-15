@@ -1,9 +1,9 @@
 require 'projectEuler'
 
-# 
+# 0.01049s (1/14/15, #5756)
 class Problem_0115
   def title; 'Counting block combinations II' end
-  def solution;  end
+  def solution; 168 end
 
   # NOTE: This is a more difficult version of Problem 114.
   #
@@ -26,6 +26,43 @@ class Problem_0115
   # For m = 50, find the least value of n for which the fill-count function
   # first exceeds one million.
 
-  def solve( m = 50, n = 1_000_000 )
+  def fill( min, row, memo )
+    return memo[row] if memo[row]
+
+    total = 0
+    if min <= row
+      (min..row).each do |len|
+        total += row - len + 1
+
+        (row - len - 1).downto( min ) do |sub|
+          total += fill( min, sub, memo )
+        end
+      end
+    end
+
+    memo[row] = total
+  end
+
+  def solve( m = 50, thresh = 1_000_000 )
+    count, low, high = 0, 0, m + 1
+
+    # Advance upper limit until threshold is exceeded.
+    while count <= thresh
+      low, high = high, high + m
+      count = fill( m, high, {} )
+    end
+
+    # Use binary search to zero in on the correct value.
+    while low + 1 < high 
+      mid = (low + high) / 2
+
+      if thresh < fill( m, mid, {} )
+        high = mid
+      else
+        low = mid
+      end
+    end
+    
+    high
   end
 end
