@@ -1,9 +1,9 @@
 require 'projectEuler'
 
-# 
+# 0.0006001s (1/16/15, #6404)
 class Problem_0117
   def title; 'Red, green, and blue tiles' end
-  def solution;  end
+  def solution; 100_808_458_960_497 end
 
   # Using a combination of black square tiles and oblong tiles chosen from:
   # red tiles measuring two units, green tiles measuring three units, and blue
@@ -14,6 +14,23 @@ class Problem_0117
   #
   # NOTE: This is related to Problem 116.
 
-  def solve( n = 50 )
+  def fill( lens, row, memo )
+    return memo[row] if memo[row]
+
+    total = 0
+    for l in lens
+      next if l > row
+      total += row - l + 1
+
+      (row - l).downto( 1 ) do |sub|
+        total += fill( lens, sub, memo )
+      end
+    end
+
+    memo[row] = total
+  end
+
+  def solve( n = 50, lens = [2, 3, 4] )
+    1 + fill( lens, n, {} )
   end
 end
