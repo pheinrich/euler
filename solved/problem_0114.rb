@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 1483s (1/13/15, #6267)
+# 0.002269s (1/13/15, #6267)
 class Problem_0114
   def title; 'Counting block combinations I' end
   def solution; 16_475_640_049 end
@@ -18,28 +18,25 @@ class Problem_0114
   # measuring eight units in length you could use red (3), black (1), and red
   # (4).
 
-  def count( spaces, min, tabs )
-#    puts "%sSpaces: #{spaces}" % ('  ' * tabs)
-    total = 0
+  def count( spaces, min )
+    return @memo[spaces] if @memo[spaces]
 
-    unless min > spaces
+    total = 0
+    if min <= spaces
       (min..spaces).each do |len|
-#        puts "%s  Length: #{len}" % ('  ' * tabs)
         total += spaces - len + 1
 
         (spaces - len - 1).downto( min ) do |sub|
-          total += count( sub, min, tabs + 1 )
-#          puts "%s  Total: #{total}" % ('  ' * tabs)
+          total += count( sub, min )
         end
       end
     end
-#    puts "%s-----" % ('  ' * tabs)
 
-    total
+    @memo[spaces] = total
   end
 
-#  def solve( n = 50 )
-  def solve( n = 50 )
-    1 + count( n, 3, 0 )
+  def solve( n = 50, min = 3 )
+    @memo = Hash.new
+    1 + count( n, min )
   end
 end
