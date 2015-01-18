@@ -59,6 +59,6 @@ class Problem_0101
       u[0, n].lagrange_interp_func.call( n + 1 )
     end
 
-    fits.reduce( :+ )
+    fits.reduce( :+ ).to_i
   end
 end
