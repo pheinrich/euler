@@ -107,6 +107,12 @@ class Integer
     (self + k - 1).choose( k )
   end
 
+  # Sum the digits, then the digits of the result, repeating the process until
+  # a single digit is generated.
+  def digital_root
+    1 + (self - 1) % 9
+  end
+
   # Return a sorted array of divisors.
   #
   # Problems:  12

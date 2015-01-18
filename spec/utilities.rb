@@ -80,6 +80,14 @@ describe Integer do
     end
   end
 
+  describe "#digital_root" do
+    it "repeatedly sums digits until a single digit is generated" do
+      expect( 9876.digital_root ).to eq( 3 )
+      expect( 2873112.digital_root ).to eq( 6 )
+      expect( 8899889989898775.digital_root ).to eq( 3 )
+    end
+  end
+
   describe "#factors" do
     it "returns a sorted array of divisors" do
       expect( 0.factors ).to eq( [0] )
@@ -394,9 +402,9 @@ module ProjectEuler
     describe ".bsearch" do
       it "uses binary search and a comparator to zero in on a value" do
         array = [3, 5, 16, 19, 25, 100, 132]
-        expect( ProjectEuler.bsearch( 0, array.count, lambda {|x| 45 > array[x]} ) ).to be( 5 )
-        expect( ProjectEuler.bsearch( 2, 5, lambda {|x| 19 > array[x]})).to be( 3 )
-        expect( ProjectEuler.bsearch( 0, 100, lambda {|x| 64 > x*x } ) ).to be( 8 )
+        expect( ProjectEuler.bsearch( 0, array.count, lambda {|x| 45 > array[x]} ) ).to eq( 5 )
+        expect( ProjectEuler.bsearch( 2, 5, lambda {|x| 19 > array[x]})).to eq( 3 )
+        expect( ProjectEuler.bsearch( 0, 100, lambda {|x| 64 > x*x } ) ).to eq( 8 )
       end
     end
 
