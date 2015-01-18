@@ -18,25 +18,24 @@ class Problem_0114
   # measuring eight units in length you could use red (3), black (1), and red
   # (4).
 
-  def count( spaces, min )
-    return @memo[spaces] if @memo[spaces]
+  def fill( min, row, memo )
+    return memo[row] if memo[row]
 
     total = 0
-    if min <= spaces
-      (min..spaces).each do |len|
-        total += spaces - len + 1
+    if min <= row
+      (min..row).each do |len|
+        total += row - len + 1
 
-        (spaces - len - 1).downto( min ) do |sub|
-          total += count( sub, min )
+        (row - len - 1).downto( min ) do |sub|
+          total += fill( min, sub, memo )
         end
       end
     end
 
-    @memo[spaces] = total
+    memo[row] = total
   end
 
   def solve( n = 50, min = 3 )
-    @memo = Hash.new
-    1 + count( n, min )
+    1 + fill( min, n, {} )
   end
 end
