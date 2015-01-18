@@ -385,6 +385,21 @@ class Integer
     s
   end
 
+  # Return the product of prime factors for each number less than n.
+  #
+  # Problems:  124
+  def radical_sieve
+    s = Array.new( self, 1 )
+  
+    i = 2
+    while i < self
+      (i...self).step( i ) {|j| s[j] *= i}
+      i += 1 until i > self || 1 == s[i]
+    end
+  
+    s
+  end
+
   # Return an array of totient values for integers less than or equal to this
   # one.  Use an approach similar to Eratosthenes' Sieve to fill the array.
   #

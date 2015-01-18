@@ -219,6 +219,14 @@ describe Integer do
     end
   end
 
+  describe "#radical_sieve" do
+    it "generates an array of radical values" do
+      expect( 10.radical_sieve ).to eq( [1, 1, 2, 3, 2, 5, 6, 7, 2, 3] )
+      expect( 7736.radical_sieve[775, 4] ).to eq( [155, 194, 777, 778] )
+      expect( 10099.radical_sieve.reduce( :+ ) ).to eq( 35924862 )
+    end
+  end
+
   describe "#totient_sieve" do
     it "generates an array of totient values" do
       expect( 1.totient_sieve ).to eq( [0, 1] )
