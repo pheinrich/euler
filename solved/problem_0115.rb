@@ -53,16 +53,6 @@ class Problem_0115
     end
 
     # Use binary search to zero in on the correct value.
-    while low + 1 < high 
-      mid = (low + high) / 2
-
-      if thresh < fill( m, mid, {} )
-        high = mid
-      else
-        low = mid
-      end
-    end
-    
-    high
+    ProjectEuler.bsearch( low, high, lambda {|x| thresh > fill( m, x, {} )} )
   end
 end

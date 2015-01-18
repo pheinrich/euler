@@ -390,7 +390,16 @@ end
 module ProjectEuler
   describe ProjectEuler do
     it "provides general functions helpful when solving the problems" do; end
-    
+
+    describe ".bsearch" do
+      it "uses binary search and a comparator to zero in on a value" do
+        array = [3, 5, 16, 19, 25, 100, 132]
+        expect( ProjectEuler.bsearch( 0, array.count, lambda {|x| 45 > array[x]} ) ).to be( 5 )
+        expect( ProjectEuler.bsearch( 2, 5, lambda {|x| 19 > array[x]})).to be( 3 )
+        expect( ProjectEuler.bsearch( 0, 100, lambda {|x| 64 > x*x } ) ).to be( 8 )
+      end
+    end
+
     describe ".time" do
       it "measures execution time of a code block" do
         expect {

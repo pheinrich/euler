@@ -25,7 +25,7 @@ class Array
   #
   # Problems:  101
   def lagrange_interp_func
-    Proc.new {|x|
+    lambda {|x|
       # Calculate the intermediate multipliers L_k(x).
       l = self.map.with_index do |a, i|
         points = self.reject.with_index {|p, j| j == i}
@@ -47,7 +47,7 @@ class Array
   #
   # Problems:  101 
   def poly_gen_func
-    Proc.new {|x| self.each_with_index.inject( 0 ) {|acc, (a, i)| acc + (a * x**i)}}
+    lambda {|x| self.each_with_index.inject( 0 ) {|acc, (a, i)| acc + (a * x**i)}}
   end
 
   # Aggregate tree node weights from the bottom up.
@@ -580,6 +580,25 @@ class String
 end
 
 module ProjectEuler
+  # Zeros in on an arithmetic value using binary search and a comparator
+  # function that returns true for increasing values. (That is, when the
+  # search should be narrowed to the upper half of a range.)
+  #
+  # Problems:  115, 123
+  def self.bsearch( min, max, func )
+    while min + 1 < max
+      mid = (min + max) / 2
+
+      if func.call( mid )
+        min = mid
+      else
+        max = mid
+      end
+    end
+
+    max
+  end
+
   # Measures execution time of a code block.  Used for every problem.
   def self.time
     start = Time.now.to_f
