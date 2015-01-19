@@ -506,6 +506,17 @@ class Integer
     self.factors.reduce( :+ ) < self << 1
   end
 
+  # Returns the radical, equivalent to the product of distinct prime factors.
+  # By definition, the will be a square-free number.
+  def rad
+    self.prime_factors.uniq.reduce( :* )
+  end
+
+  # Returns true if no prime factor is repeated.
+  def square_free?
+    self.rad == self
+  end
+
   # Return the continued fraction for the square root of an integer.
   #
   # Problems:  64, 66

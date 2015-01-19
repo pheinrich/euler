@@ -331,6 +331,27 @@ describe Integer do
     end
   end
 
+  describe "#rad" do
+    it "computes the product of distinct prime factors" do
+      expect( 124.rad ).to eq( 62 )
+      expect( 38260.rad ).to eq( 19130 )
+      expect( 119784.rad ).to eq( 29946 )
+      expect( 119985.rad ).to eq( 119985 )
+    end
+  end
+
+  describe "#square_free?" do
+    it "returns true if no prime factor is repeated" do
+      expect( 45121 ).to be_square_free
+      expect( 89843 ).to be_square_free
+      expect( 114398 ).to be_square_free
+
+      expect( 20912 ).to_not be_square_free
+      expect( 72268 ).to_not be_square_free
+      expect( 107212 ).to_not be_square_free
+    end
+  end
+
   describe "#sqrt_cf" do
     it "computes the continued fraction for the square root of an integer" do
       expect( 76.sqrt_cf ).to eq( [8, 1, 2, 1, 1, 5, 4, 5, 1, 1, 2, 1, 16] )
