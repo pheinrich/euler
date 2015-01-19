@@ -400,6 +400,40 @@ class Integer
     s
   end
 
+  # Returns the reduced residue of an integer (i.e. numbers less than n that
+  # are relatively prime to n). Cardinality of this set will always be ɸ(n),
+  # Euler's Totient function, by definition. 
+  def totatives
+    raise ArgumentError, 'cannot calculate totatives for negative numbers' if 0 > self
+
+    t = Array.new( self ) {|i| i}
+    val, lim = self, self**0.5
+
+    # Divide by prime numbers in the same way as prime_factors().
+    i = 2
+    while i <= lim do
+      if 0 == val % i
+        # Every time we find a prime divisor, sieve its multiples.
+        j = i
+        while j < self
+          (j..self).step( j ) {|k| t[k] = nil}
+          j += 1
+          j += 1 until j > self || t[j].nil?
+        end
+
+        # Repeatedly factor this divisor.
+        val /= i while 0 == val % i
+      end
+
+      # Advance to the next prime candidate.
+      i = 1 if i == 2 
+      i += 2
+    end
+
+    t[0] = nil
+    t.compact
+  end
+
   # Return an array of totient values for integers less than or equal to this
   # one.  Use an approach similar to Eratosthenes' Sieve to fill the array.
   #

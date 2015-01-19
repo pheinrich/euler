@@ -227,6 +227,16 @@ describe Integer do
     end
   end
 
+  describe "#totatives" do
+    it "returns the reduced residue of a number" do
+      expect { -13.totient }.to raise_error( ArgumentError )
+      expect( 12.totatives ).to eq( [1, 5, 7, 11] )
+      expect( 15.totatives ).to eq( [1, 2, 4, 5, 7, 8, 10, 11, 13, 14] )
+      expect( 997.totatives.reduce( :+ ) ).to eq( 496506 )
+      expect( 8537.totatives.count ).to eq( 8536 )
+    end
+  end
+
   describe "#totient_sieve" do
     it "generates an array of totient values" do
       expect( 1.totient_sieve ).to eq( [0, 1] )
