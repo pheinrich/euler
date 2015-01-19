@@ -1,9 +1,9 @@
 require 'projectEuler'
 
-# 
+# 142.6s (1/18/15, #3433)
 class Problem_0127
   def title; 'abc-hits' end
-  def solution;  end
+  def solution; 18_407_904 end
 
   # The radical of n, rad(n), is the product of distinct prime factors of n.
   # For example, 504 = 2^3 × 3^2 × 7, so rad(504) = 2 × 3 × 7 = 42.
@@ -27,6 +27,28 @@ class Problem_0127
   #
   # Find ∑c for c < 120000.
 
-  def solve( c = 120_000 )
+  def solve( max = 120000)#20_000 )
+    # http://www.mathpages.com/home/kmath194.htm
+    rads = max.radical_sieve
+    nsf = (1...max).select {|i| i > rads[i]}   # non-square-free candidates for c
+#    puts "#{nsf.count}"
+    count = 0
+    sum = 0
+    nsf.each do |c|
+      puts "...#{c}" if 0 == c % 5000
+      check = c / c.rad
+      (1...c/2).each do |a|
+        if rads[a]*rads[c-a] < check
+          if a.coprime?(c)
+            count += 1
+            sum += c
+#            puts "#{a} + #{c-a} = #{c}"
+          end
+        end
+      end
+    end
+
+    puts "count = #{count}"
+    sum
   end
 end

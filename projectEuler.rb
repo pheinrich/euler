@@ -387,7 +387,7 @@ class Integer
 
   # Return the product of prime factors for each number less than n.
   #
-  # Problems:  124
+  # Problems:  124, 127
   def radical_sieve
     s = Array.new( self, 1 )
   
