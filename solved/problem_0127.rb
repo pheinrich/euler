@@ -27,28 +27,23 @@ class Problem_0127
   #
   # Find ∑c for c < 120000.
 
-  def solve( max = 120000)#20_000 )
-    # http://www.mathpages.com/home/kmath194.htm
+  def solve( max = 120_000 )
+    # Since a, b, c are pairwise coprime, they don't share any prime factors.
+    # That means that rad(abc) = rad(a)rad(b)rad(c). We know rad(abc) < c,
+    # which is only possible if rad(c) < c, so we can eliminate square-free
+    # numbers from consideration (a square-free number n has rad(n) = n).
     rads = max.radical_sieve
-    nsf = (1...max).select {|i| i > rads[i]}   # non-square-free candidates for c
-#    puts "#{nsf.count}"
-    count = 0
+    nsf = (1...max).select {|i| i > rads[i]}
+
     sum = 0
     nsf.each do |c|
-      puts "...#{c}" if 0 == c % 5000
+      # From above, note that rad(a)rad(b) < c / rad(c). Check possibilities
+      # for a, b against this and make sure a and c are coprime. (This seems
+      # to be sufficient.)
       check = c / c.rad
-      (1...c/2).each do |a|
-        if rads[a]*rads[c-a] < check
-          if a.coprime?(c)
-            count += 1
-            sum += c
-#            puts "#{a} + #{c-a} = #{c}"
-          end
-        end
-      end
+      sum += c * (1...c/2).count {|a| rads[a] * rads[c - a] < check && a.coprime?( c )}
     end
 
-    puts "count = #{count}"
     sum
   end
 end
