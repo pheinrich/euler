@@ -229,7 +229,7 @@ describe Integer do
 
   describe "#totatives" do
     it "returns the reduced residue of a number" do
-      expect { -13.totient }.to raise_error( ArgumentError )
+      expect { -13.totatives }.to raise_error( ArgumentError )
       expect( 12.totatives ).to eq( [1, 5, 7, 11] )
       expect( 15.totatives ).to eq( [1, 2, 4, 5, 7, 8, 10, 11, 13, 14] )
       expect( 997.totatives.reduce( :+ ) ).to eq( 496506 )
