@@ -28,6 +28,8 @@ class Problem_0127
   # Find ∑c for c < 120000.
 
   def solve( max = 120_000 )
+    # http://en.wikipedia.org/wiki/Abc_conjecture
+
     # Since a, b, c are pairwise coprime, they don't share any prime factors.
     # That means that rad(abc) = rad(a)rad(b)rad(c). We know rad(abc) < c,
     # which is only possible if rad(c) < c, so we can eliminate square-free
