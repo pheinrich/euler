@@ -11,15 +11,14 @@ class Array
   # http://rosettacode.org/wiki/Chinese_remainder_theorem#C
   # Problems:  134
   def chinese_rem
-    mods, rems = self.transpose
-    prod = mods.reduce( :* )
+    prod = self.reduce( 1 ) {|acc, (m, r)| acc * m}
 
-    sum = (0...mods.length).inject( 0 ) do |acc, i|
-      p = prod / mods[i]
-      inv = p.inverse( mods[i] )
+    sum = self.reduce( 0 ) do |acc, (m, r)|
+      p = prod / m 
+      inv = p.inverse( m )
 
       return nil if inv.nil?
-      acc + rems[i] * inv * p
+      acc + r * inv * p
     end
    
     sum % prod
