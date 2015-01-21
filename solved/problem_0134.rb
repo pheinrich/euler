@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 2808s (1/20/15, #4108)
+# 0.6329s (1/20/15, #4108)
 class Problem_0134
   def title; 'Prime pair connection' end
   def solution; 18_613_426_663_617_118 end
@@ -17,18 +17,19 @@ class Problem_0134
   # Find ∑ S for every pair of consecutive primes with 5 ≤ p1 ≤ 1000000.
 
   def solve( min = 5, max = 1_000_000 )
-    p = (max + 10*Math.log( max )).to_i.prime_sieve
+    # Extend the range of our prime sieve slightly to ensure we include the
+    # prime just on the other side of our upper bound.
+    p = (max + 10*Math.log10( max )).to_i.prime_sieve
+
+    # Find the indices of the primes that will bound our calculation.
     first = p.find_index( min )
     last = p.find_index {|n| n > max}
-    sum = 0
 
-    (first...last).each do |i|
-      order = 10**(Math.log10( p[i] ).to_i + 1)
-      k = 1
-      k += 1 while (k*p[i + 1] - p[i]) % order != 0
-      sum += k*p[i + 1]
+    # Use the Chinese Remainder theorem on each pair of primes, since we can
+    # set up a system of congruences for each.
+    (first...last).inject( 0 ) do |acc, i|
+      ord = 1 + Math.log10( p[i] ).to_i
+      acc + [[p[i + 1], 0], [10**ord, p[i]]].chinese_rem
     end
-    
-    sum
   end
 end
