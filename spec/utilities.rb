@@ -4,6 +4,16 @@ require 'projectEuler'
 describe Array do
   it "provides some additional array operations" do; end
 
+  describe "#chinese_rem" do
+    it "solves a system of congruences" do
+      expect( [[23, 0], [100, 19]].chinese_rem ).to eq( 1219 )
+      expect( [[3, 2], [5, 3], [7, 2]].chinese_rem ).to eq( 23 )
+      expect( [[11, 10], [12, 4], [13, 12], [17, 14]].chinese_rem ).to eq( 1000 )
+      expect( [[3, 1], [4, 1], [5, 1], [7, 0], [11, 4]].chinese_rem ).to eq( 301 )
+      expect( [[11, 10], [22, 4], [19, 9]].chinese_rem ).to be_nil
+    end
+  end
+
   describe "#convergent" do
     it "calculates the kth convergent of a continued fraction" do
       expect( [1, 2].convergent( 5 ) ).to eq( Rational( 99, 70 ) )
@@ -88,6 +98,14 @@ describe Integer do
     end
   end
 
+  describe "#extgcd" do
+    it "solves Bézout's identity for ax + by = gcd(a, b)" do
+      expect( 240.extgcd( 46 ) ).to eq( [-9, 47, 2, 120, 23] )
+      expect( 0.extgcd( 15 ) ).to eq( [0, 1, 15, 0, 1] )
+      expect( -24.extgcd( 9 ) ).to eq( [1, 3, 3, -8, 3] )
+    end
+  end
+
   describe "#factors" do
     it "returns a sorted array of divisors" do
       expect( 0.factors ).to eq( [0] )
@@ -108,6 +126,18 @@ describe Integer do
       # Should work for negative numbers, too.
       expect( -7.fib ).to eq( 13 )
       expect( -28.fib ).to eq( -317811 )
+    end
+  end
+
+  describe "#inverse" do
+    it "returns the multiplicative inverse for a specific modulus" do
+      expect( 3.inverse( 11 ) ).to eq( 4 )
+      expect( 23.inverse( 12 ) ).to eq( 11 )
+      expect( -5.inverse( 17 ) ).to eq( 7 )
+      expect( 100.inverse( 1 ) ).to eq( 1 )
+
+      expect( 0.inverse( 145 ) ).to be_nil
+      expect( 14.inverse( 20 ) ).to be_nil
     end
   end
 

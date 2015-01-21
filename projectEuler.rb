@@ -1,4 +1,30 @@
 class Array
+  # Return an integer satisfying a series of congruences whose moduli and
+  # remainders are the 2-tuples of this array. For example:
+  #
+  #  x ≡ 2 (mod 3) --> [3, 2]
+  #  x ≡ 3 (mod 5) --> [5, 3]
+  #  x ≡ 2 (mod 7) --> [7, 2]
+  #
+  # So, [[3, 2], [5, 3], [7, 2]].chinese_rem = 23.
+  #
+  # http://rosettacode.org/wiki/Chinese_remainder_theorem#C
+  # Problems:  134
+  def chinese_rem
+    mods, rems = self.transpose
+    prod = mods.reduce( :* )
+
+    sum = (0...mods.length).inject( 0 ) do |acc, i|
+      p = prod / mods[i]
+      inv = p.inverse( mods[i] )
+
+      return nil if inv.nil?
+      acc + rems[i] * inv * p
+    end
+   
+    sum % prod
+  end
+
   # Return the kth convergent for a simply periodic continued fraction.
   #
   # Problems:  65, 66
@@ -21,8 +47,8 @@ class Array
   # Create a Lagrange Polynomial interpolation function for the points in this
   # array. Its order will equal the length of the array (caution: large arrays
   # may suffer ringing). Array elements are expected to be (x, y) 2-tuples.
-  # http://www1.maths.leeds.ac.uk/~kersale/2600/Notes/appendix_E.pdf
   #
+  # http://www1.maths.leeds.ac.uk/~kersale/2600/Notes/appendix_E.pdf
   # Problems:  101
   def lagrange_interp_func
     lambda {|x|
@@ -113,6 +139,33 @@ class Integer
     1 + (self - 1) % 9
   end
 
+  # Solves Bézout's identity for known a and b: ax + by = gcd(a, b). This
+  # method actually returns several quantities [x, y, gcd, qa, qb]:
+  #
+  #  x, y     Bézout coefficients
+  #  gcd      greatest common divisor of a and b
+  #  qa, qb   quotients of a and b with gcd (a/gcd and b/gcd)
+  #
+  # http://en.wikipedia.org/wiki/Extended_Euclidean_algorithm#Pseudocode
+  def extgcd( number )
+    r, pr = number, self
+    s, ps = 0, 1
+    t, pt = 1, 0
+
+    while 0 != r
+      q = pr / r
+      pr, r = r, pr - q*r
+      ps, s = s, ps - q*s
+      pt, t = t, pt - q*t
+    end
+
+    # Adjust signs if necessary.
+    s = -s if 0 > s ^ number
+    t = -t if 0 > t ^ self
+
+    return ps, pt, pr, t, s
+  end
+
   # Return a sorted array of divisors.
   #
   # Problems:  12
@@ -140,6 +193,35 @@ class Integer
     succ
   end
 
+  # Returns the multiplicative inverse if it exists for a specific modulus.
+  # The result will satisfy the congruence a·t ≡ 1 (mod n). This is just a
+  # slightly modified extgcd(), detecting the case when a and n are not
+  # coprime, in which case there is no corresponding multiplicative inverse.
+  #
+  # http://en.wikipedia.org/wiki/Extended_Euclidean_algorithm#Computing_multiplicative_inverses_in_modular_structures   
+  def inverse( modulus )
+    return 1 if 1 == modulus
+
+    t, nt = 0, 1
+    r, nr = modulus, self
+
+    while 0 != nr
+      q = r / nr
+      t, nt = nt, t - q*nt
+      r, nr = nr, r - q*nr 
+    end
+
+    # If the number and modulus aren't coprime (gcd > 1), there can't be an
+    # inverse, so return nil. Also adjust negative results to be positive.
+    if 1 < r
+      t = nil
+    elsif 0 > t
+      t += modulus
+    end
+
+    t
+  end
+
   # Return true if an integer is palindromic in base 10 (reads the same back-
   # wards and forwards). Only modestly faster than string-based version.
   #
@@ -164,9 +246,9 @@ class Integer
   # Return true if an integer contains a single instance of each numeral 1-9
   # in base 10.
   #
+  # http://stackoverflow.com/questions/15189341/fast-algorithm-for-pandigital-check/15190627#15190627
   # Problems:  104
   def pandigital?
-    # http://stackoverflow.com/questions/15189341/fast-algorithm-for-pandigital-check/15190627#15190627
     return false if 123456789 > self || 987654321 < self
     return false if self != 9 * ((0x1c71c71d * self) >> 32) 
 
@@ -325,9 +407,9 @@ class Integer
     s
   end
 
-  # Return the prime partition function for every value less than n.  For more
-  # info, see http://math.stackexchange.com/questions/89240/prime-partition.
+  # Return the prime partition function for every value less than n.
   #
+  # http://math.stackexchange.com/questions/89240/prime-partition.
   # Problems:  77
   def primepartition_sieve
     sopf = self.primefactorsum_sieve
@@ -345,8 +427,8 @@ class Integer
 
   # Return an array of values representing the count of Pythagorean triples
   # that sum to each integer up to and including n.  For more information, see
-  # http://en.wikipedia.org/wiki/Pythagorean_triple#Generating_a_triple.
   #
+  # http://en.wikipedia.org/wiki/Pythagorean_triple#Generating_a_triple.
   # Problems:  39, 75
   def pytriple_sieve
     s = Array.new( 1 + self, 0 )
@@ -553,9 +635,9 @@ class Integer
 
   # Return the continued fraction for the square root of an integer.
   #
+  # §3.3.1 of http://hal-enpc.archives-ouvertes.fr/docs/00/69/17/62/PDF/ComparisonQuadraticIrrationals.pdf
   # Problems:  64, 66
   def sqrt_cf
-    # From §3.3.1 of http://hal-enpc.archives-ouvertes.fr/docs/00/69/17/62/PDF/ComparisonQuadraticIrrationals.pdf
     f = Math.sqrt( self )
     lim = f.floor
     return [lim] if f == lim
