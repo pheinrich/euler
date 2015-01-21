@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 1.013s (1/12/15, #14269)
+# 0.8618s (1/12/15, #14269)
 class Problem_0112
   def title; 'Bouncy numbers' end
   def solution; 1_587_000 end

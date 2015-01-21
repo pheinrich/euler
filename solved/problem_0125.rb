@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.2164s (1/11/15, #8087)
+# 0.1936s (1/11/15, #8087)
 class Problem_0125
   def title; 'Palindromic sums' end
   def solution; 2_906_969_179 end

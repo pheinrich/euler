@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 41.84s (1/9/14, #20668)
+# 5.435s (1/9/14, #20668)
 class Problem_0092
   def title; 'Square digit chains' end
   def solution; 8_581_146 end
@@ -32,7 +32,7 @@ class Problem_0092
       (limit...10*limit).each do |i|
         j = i
         while 0 < j
-          j, r = j.divmod( limit )
+          j, r = j / limit, j % limit
           sum[i] += sum[r]
         end
       end

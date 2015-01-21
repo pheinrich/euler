@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 10.50s (12/20/13, #~12923)
+# 7.365s (12/20/13, #~12923)
 class Problem_0074
   def title; 'Digital factorial chains' end
   def solution; 402 end
@@ -44,9 +44,9 @@ class Problem_0074
 
       # This is roughly 2x as fast as the 1-line string-split-inject approach.
       while 0 < d
-        quot = d.divmod( 10 )
-        sum += F[quot[1]]  # lookup ~50% faster than calculating each time
-        d = quot[0]
+        q, r = d / 10, d % 10
+        sum += F[r]  # lookup ~50% faster than calculating each time
+        d = q
       end
 
       right[i] = sum

@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.04400s (12/31/13, #12247)
+# 0.01387s (12/31/13, #12247)
 class Problem_0085
   def title; 'Counting rectangles' end
   def solution; 2_772 end

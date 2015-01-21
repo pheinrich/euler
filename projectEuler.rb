@@ -108,7 +108,7 @@ class Integer
     last, score = r, 0
 
     while 0 < x && 3 > score
-      x, r = x.divmod( 10 )
+      x, r = x / 10, x % 10
 
       score |= 1 if r < last
       score |= 2 if r > last
@@ -232,7 +232,7 @@ class Integer
     div *= 10 until div * 10 > x
 
     while 0 < x
-      q, r = x.divmod( div )
+      q, r = x / div, x % div
       return false if q != x % 10
 
       x = r / 10
@@ -974,7 +974,7 @@ module ProjectEuler
       acc = []
 
       while 0 < n
-        n, d = n.divmod( 10 )
+        n, d = n / 10, n % 10
         acc.unshift( FORMS[d - 1].gsub( /[XVI]/, 'X'=>SRAHC[10*i], 'V'=>SRAHC[5*i], 'I'=>SRAHC[i] ) ) if 0 < d
         i *= 10
       end
