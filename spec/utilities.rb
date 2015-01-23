@@ -141,6 +141,24 @@ describe Integer do
     end
   end
 
+  describe "#lps" do
+    it "returns the greatest prime less than or equal to the square root" do
+      expect { 2.lps }.to raise_error( ArgumentError )
+      expect( 4.lps ).to eq( 2 )
+      expect( 1000.lps ).to eq( 31 )
+      expect( 999966633.lps ).to eq( 31607 )
+    end
+  end
+
+  describe "#ups" do
+    it "returns the smallest prime greater than or equal to the square root" do
+      expect { 3.ups }.to raise_error( ArgumentError )
+      expect( 4.ups ).to eq( 2 )
+      expect( 1000.ups ).to eq( 37 )
+      expect( 999966633.ups ).to eq( 31627 )
+    end
+  end
+
   describe "#palindrome?" do
     it "returns true if a base-10 integer reads the same backwards and forwards" do
       expect( 0 ).to be_palindrome

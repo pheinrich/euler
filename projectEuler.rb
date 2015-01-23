@@ -221,6 +221,34 @@ class Integer
     t
   end
 
+  # Return the lower prime square root, which is the largest prime less than
+  # or equal to the square root of a number. 
+  def lps
+    raise ArgumentError, 'lower prime square root only valid for 4+' if 4 > self
+    r = Math.sqrt( self ).floor
+
+    while true
+      return r if r.prime?
+
+      r -= 1
+      r -= 1 while 0 == r & 1
+    end
+  end
+
+  # Return the upper prime square root, which is the smallest prime greater
+  # than or equal to the square root of a number. 
+  def ups
+    raise ArgumentError, 'upper prime square root only valid for 4+' if 4 > self
+    r = Math.sqrt( self ).ceil
+
+    while true
+      return r if r.prime?
+
+      r += 1
+      r += 1 while 0 == r & 1
+    end
+  end
+    
   # Return true if an integer is palindromic in base 10 (reads the same back-
   # wards and forwards). Only modestly faster than string-based version.
   #
