@@ -1,9 +1,9 @@
 require 'projectEuler'
 
-# 
+# 11.95s (1/24/15, #6876)
 class Problem_0187
   def title; 'Semiprimes' end
-  def solution;  end
+  def solution; 17_427_258 end
 
   # A composite is a number containing at least two prime factors. For ex-
   # ample, 15 = 3 × 5; 9 = 3 × 3; 12 = 2 × 2 × 3.
@@ -15,5 +15,20 @@ class Problem_0187
   # distinct, prime factors?
 
   def solve( n = 100_000_000 )
+    p = (n / 2).prime_sieve
+    first, last = 0, p.length - 1
+    sum = 0
+
+    while first < last
+      limit = n / p[first]
+      last -= 1 while limit < p[last]
+
+      sum += last - first + 1
+      first += 1 
+    end
+
+    sum
   end
+
+  # See also: http://mathworld.wolfram.com/Semiprime.html
 end
