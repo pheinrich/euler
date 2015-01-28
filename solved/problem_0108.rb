@@ -31,7 +31,9 @@ class Problem_0108
   # NOTE: This problem is an easier version of Problem 110; it is strongly
   # advised that you solve this one first.
 
-  def solve( min = 1_000 )
+  P = 100.prime_sieve
+
+  def solve( sols = 1_000 )
     #        1        1        1
     #   (xyn)- + (xyn)- = (xyn)-  =>  ny + nx = xy  =>  xy - ny = nx 
     #        x        y        n
@@ -66,20 +68,14 @@ class Problem_0108
     #
     # So we need (α + 1)(β + 1)...(γ + 1) > 1998. Since N = (p^α)(p^β)...(p^γ)
     # = n^2 is a square number, we need the smallest square number > 1998.
-    min = Math.sqrt( (min - 1) << 1 ).ceil**2
-    pf = min.prime_factors.reverse
+    r = Math.sqrt( (sols - 1) << 1 ).ceil
+    pf = r.prime_factors * 2
+    pf = pf.sort.reverse.map {|f| (f/2.0 - 0.5).round}
 
     # The prime factors of min represent α, β, ..., γ (excess 1). Minimize the
-    # N by substituting the first (lowest) primes into the equation above. 
-    p = 100.prime_sieve
-    n2 = pf.each_with_index.reduce( 1 ) {|acc, (e, i)| acc * p[i]**(e - 1)}
-
-    # Now that we've found n^2, return the desired n.
-    Math.sqrt( n2 ).to_i
-  end
-
-  def refs
-    ['http://bit.ly/1Eo6u1v',
-     'http://www.cut-the-knot.org/blue/NumberOfFactors.shtml']
+    # N by substituting the first (lowest) primes into the equation above.
+    # Take a shortcut to n = √n^2 by dividing the subtracting the excess from
+    # each factor and dividing by 2.
+    pf.each_with_index.reduce( 1 ) {|acc, (e, i)| acc * P[i]**e}
   end
 end
