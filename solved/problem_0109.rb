@@ -1,9 +1,9 @@
 require 'projectEuler'
 
-# 
+# 0.06504s (1/28/15, #4577)
 class Problem_0109
   def title; 'Darts' end
-  def solution;  end
+  def solution; 38_182 end
 
   # In the game of darts a player throws three darts at a target board which
   # is split into twenty equal sized sections numbered one to twenty (see
@@ -57,5 +57,54 @@ class Problem_0109
   # How many distinct ways can a player checkout with a score less than 100?
 
   def solve( n = 100 )
+    co = {}
+
+    (0..20).each do |i|
+      d3 = (0 == i) ? 50 : i << 1
+      co["D#{i}"] = d3
+
+      (0..20).each do |j|
+        d2 = (0 == j) ? 25 : j
+        co["S#{j} D#{i}"] = d2 + d3
+
+        (0..20).each do |k|
+          d1 = (0 == k) ? 25 : k
+          co["S#{k} S#{j} D#{i}"] = d1 + d2 + d3 if k >= j
+
+          d1 <<= 1
+          co["D#{k} S#{j} D#{i}"] = d1 + d2 + d3
+
+          if 0 < k
+            d1 += k
+            co["T#{k} S#{j} D#{i}"] = d1 + d2 + d3
+          end
+        end
+
+        d2 <<= 1
+        co["D#{j} D#{i}"] = d2 + d3
+
+        (0..20).each do |k|
+          d1 = (0 == k) ? 50 : k << 1
+          co["D#{k} D#{j} D#{i}"] = d1 + d2 + d3 if k >= j
+
+          if 0 < k
+            d1 += k
+            co["T#{k} D#{j} D#{i}"] = d1 + d2 + d3
+          end
+        end
+
+        if 0 < j
+          d2 += j
+          co["T#{j} D#{i}"] = d2 + d3
+
+          (j..20).each do |k|
+            d1 = 3*k
+            co["T#{k} T#{j} D#{i}"] = d1 + d2 + d3
+          end
+        end
+      end
+    end
+
+    co.count {|k, v| n > v}
   end
 end
