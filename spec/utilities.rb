@@ -59,6 +59,14 @@ end
 describe Integer do
   it "provides some additional integer operations" do; end
 
+  describe "#bitseq" do
+    it "returns the next larger integer having the same number of set bits" do
+      expect( 0.bitseq ).to eq( 0 )
+      expect( 511.bitseq ).to eq( 767 )
+      expect( 6584.bitseq ).to eq( 6595 )
+    end
+  end
+
   describe "#bounce" do
     it "scores a number by how 'bouncy' its digits are" do
       expect( 222222.bounce ).to eq( 0 )

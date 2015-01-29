@@ -95,6 +95,20 @@ class Array
 end
 
 class Integer
+  # Returns the next larger integer having the same number of set bits.
+  #
+  # http://hackersdelight.org/hdcodetxt/snoob.c.txt
+  def bitseq
+    return 0 if 0 == self 
+
+    smallest = self & -self
+    ripple = self + smallest
+    newsmall = ripple & -ripple
+    ones = ((newsmall / smallest) >> 1) - 1
+    
+    ripple | ones
+  end
+
   # Scores an integer on how "bouncy" it is:
   #
   #   0 = digits do not rise or fall, e.g. "222222"
