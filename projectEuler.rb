@@ -98,6 +98,7 @@ class Integer
   # Returns the next larger integer having the same number of set bits.
   #
   # http://hackersdelight.org/hdcodetxt/snoob.c.txt
+  # Problems:  111
   def bitseq
     return 0 if 0 == self 
 
