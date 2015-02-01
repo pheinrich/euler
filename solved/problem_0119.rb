@@ -1,9 +1,9 @@
 require 'projectEuler'
 
-# 
+# 0.005718s (1/31/15, #7181)
 class Problem_0119
   def title; 'Digit power sum' end
-  def solution;  end
+  def solution; 248_155_780_267_521 end
 
   # The number 512 is interesting because it is equal to the sum of its digits
   # raised to some power: 5 + 1 + 2 = 8, and 8^3 = 512. Another example of a
@@ -17,5 +17,18 @@ class Problem_0119
   # Find a[30].
 
   def solve( n = 30 )
+    term = nil
+
+    (2..10).each do |e|
+      (2..100).each do |sum|
+        if (sum**e).sum_digits == sum
+          term, n = sum**e, n - 1 
+        end
+        break if 0 == n
+      end
+      break if 0 == n
+    end
+
+    term
   end
 end
