@@ -98,7 +98,7 @@ class Integer
   # Returns the next larger integer having the same number of set bits.
   #
   # http://hackersdelight.org/hdcodetxt/snoob.c.txt
-  # Problems:  111
+  # Problems:  111, 121
   def bitseq
     return 0 if 0 == self 
 
@@ -289,7 +289,7 @@ class Integer
   # in base 10.
   #
   # http://stackoverflow.com/questions/15189341/fast-algorithm-for-pandigital-check/15190627#15190627
-  # Problems:  104
+  # Problems:  104, 118
   def pandigital?
     return false if 123456789 > self || 987654321 < self
     return false if self != 9 * ((0x1c71c71d * self) >> 32) 
@@ -310,7 +310,7 @@ class Integer
   # Return an array of all prime numbers that divide a number.  Entries may be
   # duplicated (e.g. 234 = 2 x 3 x 3 x 13).
   #
-  # Problems:  3, 5, 47
+  # Problems:  3, 47, 108, 110
   def prime_factors
     arr = []
     val, lim = self, self**0.5
@@ -337,7 +337,7 @@ class Integer
 
   # Returns true if a number is prime, otherwise false.
   #
-  # Problems:  7, 27, 35, 37, 41, 46, 50, 58, 60
+  # Problems:  7, 27, 35, 37, 41, 46, 58, 60, 111, 118, 127
   def prime?
     return true if 2 == self
     return false if 2 > self || 0 == self % 2
@@ -357,7 +357,7 @@ class Integer
 
   # Determine if this number is coprime with another.
   #
-  # Problems:  39
+  # Problems:  127
   def coprime?( number )
     return 1 == gcd( number )
   end
@@ -419,7 +419,8 @@ class Integer
   # Return an array of prime numbers less than the maximum specified.  Use the
   # Sieve of Eratosthenes to generate the array.
   #
-  # Problems:  10, 27, 37, 49, 50, 51, 60, 70
+  # Problems:  10, 27, 37, 49, 50, 51, 60, 70, 87, 108, 110, 118, 123, 134,
+  #            187, 234, 243
   def prime_sieve
     s = Array.new( self ) {|i| i}
     s[0] = s[1] = nil
@@ -561,7 +562,7 @@ class Integer
   # Return an array of totient values for integers less than or equal to this
   # one.  Use an approach similar to Eratosthenes' Sieve to fill the array.
   #
-  # Problems:  69, 72
+  # Problems:  69
   def totient_sieve
     # Sieve integers up to n similar to Eratosthenes, but instead of elim-
     # nating prime multiples, multiply by the corresponding totient component
@@ -598,7 +599,7 @@ class Integer
 
   # Add a unary factorial (!) function to all integers.
   #
-  # Problems:  15, 20, 34, 53
+  # Problems:  15, 20, 34, 53, 74, 121, 
   def fact
     raise Math::DomainError, 'Factorial non-extendable to negative integers' if 0 > self
     (1..self).reduce( :* ) || 1
