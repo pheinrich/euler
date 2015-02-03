@@ -3,7 +3,6 @@ require 'projectEuler'
 # 4.126s (4/3/13, #~15930)
 class Problem_0058
   def title; 'Spiral primes' end
-  def solution; 26_241 end
 
   # Starting with 1 and spiralling anticlockwise in the following way, a
   # square spiral with side length 7 is formed.
@@ -24,6 +23,14 @@ class Problem_0058
   # spiral with side length 9 will be formed. If this process is continued,
   # what is the side length of the square spiral for which the ratio of primes
   # along both diagonals first falls below 10%?
+
+  def refs; [] end
+  def solution; 26_241 end
+  def best_time; 4.126 end
+
+  def completed_on; '2013-04-03' end
+  def ordinality; 15_930 end
+  def percentile; 95.08 end
 
   def solve( ratio = 0.1 )
     start = len = 1 

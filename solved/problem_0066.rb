@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.08464 (12/13/13, #~9009)
 class Problem_0066
   def title; 'Diophantine equation' end
-  def solution; 661 end
 
   # Consider quadratic Diophantine equations of the form:
   #
@@ -30,6 +29,14 @@ class Problem_0066
   # Find the value of D <= 1000 in minimal solutions of x for which the
   # largest value of x is obtained.
 
+  def refs; ["http://www.numbertheory.org/pdfs/talk_2004.pdf"] end
+  def solution; 661 end
+  def best_time; 0.08464 end
+  
+  def completed_on; '2013-12-13' end
+  def ordinality; 9_009 end
+  def percentile; 97.62 end
+
   def solve( n = 1_000 )
     # Minimal solution comes from one of the convergents of the continued
     # fraction for the square root of D.  Choose which one based on whether
@@ -41,7 +48,6 @@ class Problem_0066
       l = cf.length - 1
       
       unless 0 == l
-        # http://www.numbertheory.org/pdfs/talk_2004.pdf
         l <<= 1 if 1 == l % 2
         x << [cf.convergent( l - 1 ).numerator, i]
       end

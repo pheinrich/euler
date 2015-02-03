@@ -3,7 +3,6 @@ require 'projectEuler'
 # 2.626s (4/3/13, #~16950)
 class Problem_0059
   def title; 'XOR decryption' end
-  def solution; 107_359 end
 
   # Each character on a computer is assigned a unique code and the preferred
   # standard is ASCII (American Standard Code for Information Interchange).
@@ -39,6 +38,14 @@ class Problem_0059
              your good some could them see other than then now look only come
              its over think also back after use two how our work first well
              way even new want because any these give day most us)
+
+  def refs; [] end
+  def solution; 107_359 end
+  def best_time; 2.626 end
+
+  def completed_on; '2013-04-03' end
+  def ordinality; 16_950 end
+  def percentile; 94.74 end
 
   def solve
     orig = IO.read( 'resources/0059_cipher1.txt' ).split( ',' ).map( &:to_i )

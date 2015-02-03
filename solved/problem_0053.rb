@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.01498s (3/15/13, #~25682)
 class Problem_0053
   def title; 'Combinatoric selections' end
-  def solution; 4_075 end
 
   # There are exactly ten ways of selecting three from five, 12345:
   #
@@ -21,6 +20,14 @@ class Problem_0053
   #
   # How many, not necessarily distinct, values of C(n,r), for 1 <= n <= 100,
   # are greater than one-million?
+
+  def refs; [] end
+  def solution; 4_075 end
+  def best_time; 0.01498 end
+
+  def completed_on; '2013-03-15' end
+  def ordinality; 25_682 end
+  def percentile; 92.40 end
 
   def solve( n = 100, limit = 1_000_000 )
     f = (0..n).map {|i| i.fact}

@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.0001292s (3/7/13, #32151)
 class Problem_0040
   def title; 'Champernowne\'s constant' end
-  def solution; 210 end
 
   # An irrational decimal fraction is created by concatenating the positive
   # integers:
@@ -16,6 +15,14 @@ class Problem_0040
   # the following expression.
   #
   #     d[1] x d[10] x d[100] x d[1000] x d[10000] x d[100000] x d[1000000]
+
+  def refs; [] end
+  def solution; 210 end
+  def best_time; 0.0001292 end
+
+  def completed_on; '2013-03-07' end
+  def ordinality; 32_151 end
+  def percentile; 89.99 end
 
   def solve( offsets = [1, 10, 100, 1000, 10000, 100000, 1000000] )
     # Count of tuples         Relevant offsets     Expression    

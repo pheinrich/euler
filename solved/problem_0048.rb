@@ -3,11 +3,18 @@ require 'projectEuler'
 # 0.8499s (1/25/13, #~50546)
 class Problem_0048
   def title; 'Self powers' end
-  def solution; 9_110_846_700 end
 
   # The series, 1^1 + 2^2 + 3^3 + ... + 10^10 = 10405071317.
   #
   # Find the last ten digits of the series, 1^1 + 2^2 + 3^3 + ... + 1000^1000.
+
+  def refs; [] end
+  def solution; 9_110_846_700 end
+  def best_time; 0.8499 end
+
+  def completed_on; '2013-01-25' end
+  def ordinality; 50_546 end
+  def percentile; 85.07 end
 
   def solve( n = 1_000, d = 10 )
     m = 10**d

@@ -3,7 +3,6 @@ require 'projectEuler'
 # 5.435s (1/9/14, #20668)
 class Problem_0092
   def title; 'Square digit chains' end
-  def solution; 8_581_146 end
 
   # A number chain is created by continuously adding the square of the digits
   # in a number to form a new number until it has been seen before.
@@ -18,6 +17,14 @@ class Problem_0092
   # eventually arrive at 1 or 89.
   #
   # How many starting numbers below ten million will arrive at 89?
+
+  def refs; [] end
+  def solution; 8_581_146 end
+  def best_time; 5.435 end
+
+  def completed_on; '2014-01-09' end
+  def ordinality; 20_668 end
+  def percentile; 94.67 end
 
   def solve( n = 10_000_000 )
     sum = Array.new( n, 0 )

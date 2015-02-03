@@ -3,12 +3,19 @@ require 'projectEuler'
 # 0.0001099s (10/31/13, #~20359)
 class Problem_0063
   def title; 'Powerful digit counts' end
-  def solution; 49 end
 
   # The 5-digit number, 16807=7^5, is also a fifth power. Similarly, the
   # 9-digit number, 134217728=8^9, is a ninth power.
   #
   # How many n-digit positive integers exist which are also an nth power?
+
+  def refs; [] end
+  def solution; 49 end
+  def best_time; 0.0001099 end
+  
+  def completed_on; '2013-10-31' end
+  def ordinality; 20_359 end
+  def percentile; 94.63 end
 
   def count_matches( n )
     i = 1

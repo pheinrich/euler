@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.06504s (1/28/15, #4577)
 class Problem_0109
   def title; 'Darts' end
-  def solution; 38_182 end
 
   # In the game of darts a player throws three darts at a target board which
   # is split into twenty equal sized sections numbered one to twenty (see
@@ -55,6 +54,14 @@ class Problem_0109
   # Incredibly there are 42336 distinct ways of checking out in total.
   #
   # How many distinct ways can a player checkout with a score less than 100?
+
+  def refs; [] end
+  def solution; 38_182 end
+  def best_time; 0.06504 end
+
+  def completed_on; '2015-01-28' end
+  def ordinality; 4_577 end
+  def percentile; 99.00 end
 
   def solve( n = 100 )
     co = {}

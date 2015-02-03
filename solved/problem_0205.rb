@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.07074s (1/23/15, #8914)
 class Problem_0205
   def title; 'Dice Game' end
-  def solution; 0.5731441 end
 
   # Peter has nine four-sided (pyramidal) dice, each with faces numbered 1, 2,
   # 3, 4. Colin has six six-sided (cubic) dice, each with faces numbered 1, 2,
@@ -14,6 +13,14 @@ class Problem_0205
   #
   # What is the probability that Pyramidal Pete beats Cubic Colin? Give your
   # answer rounded to seven decimal places in the form 0.abcdefg
+
+  def refs; [] end
+  def solution; 0.5731441 end
+  def best_time; 0.07074 end
+
+  def completed_on; '2015-01-23' end
+  def ordinality; 8_914 end
+  def percentile; 98.04 end
 
   def roll( dice, sides, array, total )
     # Recursively roll dice and tally the frequency of each possible result.

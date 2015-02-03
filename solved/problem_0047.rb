@@ -3,7 +3,6 @@ require 'projectEuler'
 # 2.478s (3/9/13, #~22517)
 class Problem_0047
   def title; 'Distinct primes factors' end
-  def solution; 134_043 end
 
   # The first two consecutive numbers to have two distinct prime factors are:
   #
@@ -19,6 +18,14 @@ class Problem_0047
   #
   # Find the first four consecutive integers to have four distinct primes
   # factors. What is the first of these numbers?
+
+  def refs; [] end
+  def solution; 134_043 end
+  def best_time; 2.478 end
+
+  def completed_on; '2013-03-09' end
+  def ordinality; 22_517 end
+  def percentile; 92.97 end
 
   def solve( n = 4 )
     cur = 2

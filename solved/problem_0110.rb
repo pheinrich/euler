@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.0005360.s (1/27/15, #4851)
 class Problem_0110
   def title; 'Diophantine reciprocals II' end
-  def solution; 9_350_130_049_860_600 end
 
   # In the following equation x, y, and n are positive integers.
   #
@@ -23,6 +22,14 @@ class Problem_0110
   # clever implementation.
 
   P = 1000.prime_sieve
+
+  def refs; [] end
+  def solution; 9_350_130_049_860_600 end
+  def best_time; 0.0005360 end
+
+  def completed_on; '2015-01-27' end
+  def ordinality; 4_851 end
+  def percentile; 98.94 end
 
   def limit( root, max )
     # Starting at the root provided, step forward until we find one with

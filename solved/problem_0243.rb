@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.0001271s (1/6/14, #4488)
 class Problem_0243
   def title; 'Resilience' end
-  def solution; 892_371_480 end
 
   # A positive fraction whose numerator is less than its denominator is called
   # a proper fraction.  For any denominator, d, there will be d−1 proper
@@ -19,6 +18,14 @@ class Problem_0243
   # In fact, d=12 is the smallest denominator having a resilience R(d) < 4/10.
   #
   # Find the smallest denominator d, having a resilience R(d) < 15499 / 94744.
+
+  def refs; [] end
+  def solution; 892_371_480 end
+  def best_time; 0.0001271 end
+
+  def completed_on; '2014-01-06' end
+  def ordinality; 4_488 end
+  def percentile; 98.80 end
 
   def solve( numer = 15_499, denom = 94_744 )
     # R(d) is simply φ(d)/(d - 1).  Since φ(d) = d·∏[p|d] (1 - 1/p), that

@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.0005181s (1/14/15, #6967)
 class Problem_0116
   def title; 'Red, green or blue tiles' end
-  def solution; 20_492_570_929 end
 
   # A row of five black square tiles is to have a number of its tiles replaced
   # with coloured oblong tiles chosen from red (length two), green (length
@@ -21,6 +20,14 @@ class Problem_0116
   # tile must be used?
   #
   # NOTE: This is related to Problem 117.
+
+  def refs; [] end
+  def solution; 20_492_570_929 end
+  def best_time; 0.0005181 end
+
+  def completed_on; '2015-01-14' end
+  def ordinality; 6_967 end
+  def percentile; 98.46 end
 
   def fill( len, row, memo )
     return memo[row] if memo[row]

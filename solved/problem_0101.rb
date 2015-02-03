@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.0003009s (1/7/14, #6047)
 class Problem_0101
   def title; 'Optimum polynomial' end
-  def solution; 37_076_114_526 end
 
   # If we are presented with the first k terms of a sequence it is impossible
   # to say with certainty the value of the next term, as there are infinitely
@@ -45,6 +44,14 @@ class Problem_0101
   #      u_n = 1 − n + n^2 − n^3 + n^4 − n^5 + n^6 − n^7 + n^8 − n^9 + n^10
   #
   # Find the sum of FITs for the BOPs.
+
+  def refs; [] end
+  def solution; 37_076_114_526 end
+  def best_time; 0.0003009 end
+
+  def completed_on; '2015-01-07' end
+  def ordinality; 6_047 end
+  def percentile; 98.66 end
 
   def solve( coeffs = [1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1] )
     # Compute the first n terms in the polynomial sequence defined by the co-

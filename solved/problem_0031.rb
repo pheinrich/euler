@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.6955s (2/14/13, #29529)
 class Problem_0031
   def title; 'Coin sums' end
-  def solution; 73_682 end
 
   # In England the currency is made up of pound, £, and pence, p, and there
   # are eight coins in general circulation:
@@ -15,6 +14,14 @@ class Problem_0031
   #     1x£1 + 1x50p + 2x20p + 1x5p + 1x2p + 3x1p
   #
   # How many different ways can £2 be made using any number of coins?
+
+  def refs; [] end
+  def solution; 73_682 end
+  def best_time; 0.6955 end
+
+  def completed_on; '2013-02-14' end
+  def ordinality; 29_529 end
+  def percentile; 89.94 end
 
   def fit( n, denoms, sum = 0, index = 0, total = 0 )
     if index < denoms.length

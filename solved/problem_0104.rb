@@ -3,7 +3,6 @@ require 'projectEuler'
 # 21.35s (1/8/15, #9567)
 class Problem_0104
   def title; 'Pandigital Fibonacci ends' end
-  def solution; 329_468 end
 
   # The Fibonacci sequence is defined by the recurrence relation:
   # 
@@ -17,6 +16,14 @@ class Problem_0104
   #
   # Given that Fk is the first Fibonacci number for which the first nine
   # digits AND the last nine digits are 1-9 pandigital, find k.
+
+  def refs; [] end
+  def solution; 329_468 end
+  def best_time; 21.35 end
+
+  def completed_on; '2015-01-15' end
+  def ordinality; 9_567 end
+  def percentile; 97.88 end
 
   def solve
     k, curr, succ = 2749, 1, 0

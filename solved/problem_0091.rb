@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.002537s, (1/10/14, #7570)
 class Problem_0091
   def title; 'Right triangles with integer coordinates' end
-  def solution; 14_234 end
 
   # The points P (x1, y1) and Q (x2, y2) are plotted at integer co-ordinates
   # and are joined to the origin, O(0,0), to form ΔOPQ (see diagram 1).
@@ -14,6 +13,14 @@ class Problem_0091
   #
   # Given that 0 ≤ x1, y1, x2, y2 ≤ 50, how many right triangles can be
   # formed?
+
+  def refs; [] end
+  def solution; 14_234 end
+  def best_time; 0.002537 end
+
+  def completed_on; '2014-01-10' end
+  def ordinality; 7_570 end
+  def percentile; 98.07 end
 
   def solve( w = 50, h = 50 )
     # Trivially countable triangles with right angle at origin, on x-axis, or

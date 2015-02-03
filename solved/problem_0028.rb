@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.0002179s (2/13/13, #~46228)
 class Problem_0028
   def title; 'Number spiral diagonals' end
-  def solution; 669_171_001 end
 
   # Starting with the number 1 and moving to the right in a clockwise
   # direction a 5 by 5 spiral is formed as follows:
@@ -18,6 +17,14 @@ class Problem_0028
   #
   # What is the sum of the numbers on the diagonals in a 1001 by 1001 spiral
   # formed in the same way?
+
+  def refs; [] end
+  def solution; 669_171_001 end
+  def best_time; 0.0002179 end
+
+  def completed_on; '2013-02-13' end
+  def ordinality; 46_228 end
+  def percentile; 86.11 end
 
   def solve( n = 1_001 )
     # For each enclosing rectangle, index 0 < i < (n - 1)/2, the corner values

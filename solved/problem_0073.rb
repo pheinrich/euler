@@ -3,7 +3,6 @@ require 'projectEuler'
 # 3.659s (12/19/13, #~12842)
 class Problem_0073
   def title; 'Counting fractions in a range' end
-  def solution; 7_295_372 end
 
   # Consider the fraction, n/d, where n and d are positive integers. If n<d
   # and HCF(n,d)=1, it is called a reduced proper fraction.
@@ -18,6 +17,14 @@ class Problem_0073
   #
   # How many fractions lie between 1/3 and 1/2 in the sorted set of reduced
   # proper fractions for d ≤ 12,000?
+
+  def refs; [] end
+  def solution; 7_295_372 end
+  def best_time; 3.659 end
+
+  def completed_on; '2013-12-19' end
+  def ordinality; 12_842 end
+  def percentile; 96.76 end
 
   def solve( n = 12_000 )
     a, b, c, d = 0, 1, 1, n

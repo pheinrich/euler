@@ -3,7 +3,6 @@ require 'projectEuler'
 # 4.794s (1/23/15, #2198)
 class Problem_0234
   def title; 'Semidivisible numbers' end
-  def solution; 1_259_187_438_574_927_161 end
 
   # For an integer n ≥ 4, we define the lower prime square root of n, denoted
   # by lps(n), as the largest prime ≤ √n and the upper prime square root of n,
@@ -19,6 +18,14 @@ class Problem_0234
   # divisible numbers up to 1000 is 34825.
   #
   # What is the sum of all semidivisible numbers not exceeding 999966663333?
+
+  def refs; [] end
+  def solution; 1_259_187_438_574_927_161 end
+  def best_time; 4.794 end
+
+  def completed_on; '2015-01-23' end
+  def ordinality; 2_198 end
+  def percentile; 99.52 end
 
   def solve( n = 999966663333 )
     # Extend the range of our prime sieve slightly to ensure we include the

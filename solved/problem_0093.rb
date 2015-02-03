@@ -3,7 +3,6 @@ require 'projectEuler'
 # 37.63s (1/11/14, #5426)
 class Problem_0093
   def title; 'Arithmetic expressions' end
-  def solution; 1_258 end
 
   # By using each of the digits from the set, {1, 2, 3, 4}, exactly once,
   # and making use of the four arithmetic operations (+, −, *, /) and
@@ -26,6 +25,14 @@ class Problem_0093
   # Find the set of four distinct digits, a < b < c < d, for which the longest
   # set of consecutive positive integers, 1 to n, can be obtained, giving your
   # answer as a string: abcd.
+
+  def refs; [] end
+  def solution; 1_258 end
+  def best_time; 37.63 end
+
+  def completed_on; '2014-01-11' end
+  def ordinality; 5_426 end
+  def percentile; 98.60 end
 
   GROUPS = %w[(%0.1f%c%0.1f)%c%0.1f%c%0.1f    %0.1f%c(%0.1f%c%0.1f)%c%0.1f
               %0.1f%c%0.1f%c(%0.1f%c%0.1f)    (%0.1f%c%0.1f)%c(%0.1f%c%0.1f)

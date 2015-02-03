@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.0006001s (1/16/15, #6404)
 class Problem_0117
   def title; 'Red, green, and blue tiles' end
-  def solution; 100_808_458_960_497 end
 
   # Using a combination of black square tiles and oblong tiles chosen from:
   # red tiles measuring two units, green tiles measuring three units, and blue
@@ -13,6 +12,14 @@ class Problem_0117
   # How many ways can a row measuring fifty units in length be tiled?
   #
   # NOTE: This is related to Problem 116.
+
+  def refs; [] end
+  def solution; 100_808_458_960_497 end
+  def best_time; 0.0006001 end
+
+  def completed_on; '2015-01-16' end
+  def ordinality; 6_404 end
+  def percentile; 98.59 end
 
   def fill( lens, row, memo )
     return memo[row] if memo[row]

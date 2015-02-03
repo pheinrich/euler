@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.8128s (3/8/13, #25455)
 class Problem_0038
   def title; 'Pandigital multiples' end
-  def solution; 932_718_654 end
 
   # Take the number 192 and multiply it by each of 1, 2, and 3:
   #
@@ -20,6 +19,14 @@ class Problem_0038
   #
   # What is the largest 1 to 9 pandigital 9-digit number that can be formed as
   # the concatenated product of an integer with (1,2, ... , n) where n > 1?
+
+  def refs; [] end
+  def solution; 932_718_654 end
+  def best_time; 0.8128 end
+
+  def completed_on; '2013-03-08' end
+  def ordinality; 25_455 end
+  def percentile; 92.27 end
 
   def solve
     d = %w(1 2 3 4 5 6 7 8 9).permutation.map {|i| i.join}.select {|i| i >= '918273645'}.reverse

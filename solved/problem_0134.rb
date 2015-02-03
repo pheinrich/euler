@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.6329s (1/20/15, #4108)
 class Problem_0134
   def title; 'Prime pair connection' end
-  def solution; 18_613_426_663_617_118 end
 
   # Consider the consecutive primes p1 = 19 and p2 = 23. It can be verified
   # that 1219 is the smallest number such that the last digits are formed by
@@ -15,6 +14,14 @@ class Problem_0134
   # these values of n.
   #
   # Find ∑ S for every pair of consecutive primes with 5 ≤ p1 ≤ 1000000.
+
+  def refs; [] end
+  def solution; 18_613_426_663_617_118 end
+  def best_time; 0.6329 end
+
+  def completed_on; '2015-01-20' end
+  def ordinality; 4_108 end
+  def percentile; 99.10 end
 
   def solve( min = 5, max = 1_000_000 )
     # Extend the range of our prime sieve slightly to ensure we include the

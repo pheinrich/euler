@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.3130s (12/30/13, #5887)
 class Problem_0084
   def title; 'Monopoly odds' end
-  def solution; 101_524 end
 
   # In the game, Monopoly, the standard board is set up in the following way:
   #
@@ -75,6 +74,14 @@ class Problem_0084
   #
   # If, instead of using two 6-sided dice, two 4-sided dice are used, find the
   # six-digit modal string.
+
+  def refs; [] end
+  def solution; 101_524 end
+  def best_time; 0.3130 end
+
+  def completed_on; '2013-12-30' end
+  def ordinality; 5_887 end
+  def percentile; 98.49 end
 
   NUM_SQUARES  = 40
   NUM_CC_CARDS = 16

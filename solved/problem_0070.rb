@@ -3,7 +3,6 @@ require 'projectEuler'
 # 20.32s (12/17/13, #~10787)
 class Problem_0070
   def title; 'Totient permutation' end
-  def solution; 8_319_823 end
 
   # Euler's Totient function, φ(n) [sometimes called the phi function], is
   # used to determine the number of positive numbers less than or equal to n
@@ -18,6 +17,14 @@ class Problem_0070
   #
   # Find the value of n, 1 < n < 10^7, for which φ(n) is a permutation of n
   # and the ratio n/φ(n) produces a minimum.
+
+  def refs; [] end
+  def solution; 8_319_823 end
+  def best_time; 20.32 end
+
+  def completed_on; '2013-12-17' end
+  def ordinality; 10_787 end
+  def percentile; 97.22 end
 
   def solve( n = 10_000_000 )
     # To minimize n/φ(n), maximize denominator. φ(n) = n ∏(p - 1/p) over p|n.

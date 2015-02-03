@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.0002120s (1/16/15, #8257)
 class Problem_0120
   def title; 'Square remainders' end
-  def solution; 333_082_500 end
 
   # Let r be the remainder when (a−1)^n + (a+1)^n is divided by a^2.
   #
@@ -12,6 +11,14 @@ class Problem_0120
   # 42.
   #
   # For 3 ≤ a ≤ 1000, find ∑ r[max].
+
+  def refs; [] end
+  def solution; 333_082_500 end
+  def best_time; 0.0002120 end
+
+  def completed_on; '2015-01-16' end
+  def ordinality; 8_257 end
+  def percentile; 98.18 end
 
   def solve( n = 1_000 )
     # We're looking for [(a-1)^n + (a+1)^n] mod a^2, which is equivalent to

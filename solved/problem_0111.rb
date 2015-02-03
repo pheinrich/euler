@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.2758s (1/29/15, #4161)
 class Problem_0111
   def title; 'Primes with runs' end
-  def solution; 612_407_567_715 end
 
   # Considering 4-digit primes containing repeated digits it is clear that
   # they cannot all be the same: 1111 is divisible by 11, 2222 is divisible by
@@ -38,6 +37,14 @@ class Problem_0111
   # For d = 0 to 9, the sum of all S(4, d) is 273700.
   #
   # Find the sum of all S(10, d).
+
+  def refs; [] end
+  def solution; 612_407_567_715 end
+  def best_time; 0.2758 end
+
+  def completed_on; '2015-01-29' end
+  def ordinality; 4_161 end
+  def percentile; 99.09 end
 
   def s_of_nd( len, digit )
     primes = {}

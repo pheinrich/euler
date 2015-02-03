@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.01971s (2/17/13, #~31032)
 class Problem_0042
   def title; 'Coded triangle numbers' end
-  def solution; 162 end
 
   # The nth term of the sequence of triangle numbers is given by,
   # t[n] = n(n+1)/2; so the first ten triangle numbers are:
@@ -17,6 +16,14 @@ class Problem_0042
   #
   # Using 0042_words.txt, a 16K text file containing nearly two-thousand
   # common English words, how many are triangle words?
+
+  def refs; [] end
+  def solution; 162 end
+  def best_time; 0.01971 end
+
+  def completed_on; '2013-02-17' end
+  def ordinality; 31_032 end
+  def percentile; 90.48 end
 
   def solve
     # Strip quotes and split comma-separated values into a sorted array.

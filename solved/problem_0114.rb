@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.002269s (1/13/15, #6267)
 class Problem_0114
   def title; 'Counting block combinations I' end
-  def solution; 16_475_640_049 end
 
   # A row measuring seven units in length has red blocks with a minimum length
   # of three units placed on it, such that any two red blocks (which are
@@ -17,6 +16,14 @@ class Problem_0114
   # in general it is permitted to mix block sizes. For example, on a row
   # measuring eight units in length you could use red (3), black (1), and red
   # (4).
+
+  def refs; [] end
+  def solution; 16_475_640_049 end
+  def best_time; 0.002269 end
+
+  def completed_on; '2015-01-13' end
+  def ordinality; 6_267 end
+  def percentile; 98.62 end
 
   def fill( min, row, memo )
     return memo[row] if memo[row]

@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.1936s (1/11/15, #8087)
 class Problem_0125
   def title; 'Palindromic sums' end
-  def solution; 2_906_969_179 end
 
   # The palindromic number 595 is interesting because it can be written as the
   # sum of consecutive squares: 6^2 + 7^2 + 8^2 + 9^2 + 10^2 + 11^2 + 12^2.
@@ -15,6 +14,14 @@ class Problem_0125
   #
   # Find the sum of all the numbers less than 10^8 that are both palindromic
   # and can be written as the sum of consecutive squares.
+
+  def refs; [] end
+  def solution; 2_906_969_179 end
+  def best_time; 0.1936 end
+
+  def completed_on; '2015-01-11' end
+  def ordinality; 8_087 end
+  def percentile; 98.12 end
 
   def solve( n = 100_000_000 )
     # Assuming the largest valid sum of squares is S = a^2 + (a - 1)^1 < n,

@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.003449s (1/12/15, #6327)
 class Problem_0107
   def title; 'Minimal network' end
-  def solution; 259_679 end
 
   # The undirected network depicted by problem_0107_1.gif consists of seven
   # vertices and twelve edges with a total weight of 243.
@@ -29,6 +28,14 @@ class Problem_0107
   # vertices, and given in matrix form, find the maximum saving which can be
   # achieved by removing redundant edges whilst ensuring that the network
   # remains connected.
+
+  def refs; [] end
+  def solution; 259_679 end
+  def best_time; 0.003449 end
+
+  def completed_on; '2015-01-12' end
+  def ordinality; 6_327 end
+  def percentile; 98.60 end
 
   def solve
     rows = File.readlines( 'resources/0107_network.txt' )

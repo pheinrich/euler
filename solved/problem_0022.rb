@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.01374s (2/5/13, #~48926)
 class Problem_0022
   def title; 'Names scores' end
-  def solution; 871_198_282 end
 
   # Using 0022_names.txt, a 46K text file containing over five-thousand first
   # names, begin by sorting it into alphabetical order. Then working out the
@@ -15,6 +14,14 @@ class Problem_0022
   # COLIN would obtain a score of 938 x 53 = 49714.
   #
   # What is the total of all the name scores in the file?
+
+  def refs; [] end
+  def solution; 871_198_282 end
+  def best_time; 0.01374 end
+
+  def completed_on; '2013-02-05' end
+  def ordinality; 48_926 end
+  def percentile; 83.66 end
 
   def solve
     # Strip quotes and split comma-separated values into a sorted array.

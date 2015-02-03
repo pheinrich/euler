@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.03577s (2/7/13, #~59579)
 class Problem_0025
   def title; '1000-digit Fibonacci number' end
-  def solution; 4_782 end
 
   # The Fibonacci sequence is defined by the recurrence relation:
   #
@@ -27,6 +26,14 @@ class Problem_0025
   # The 12th term, F[12], is the first term to contain three digits.
   #
   # What is the first term in the Fibonacci sequence to contain 1000 digits?
+
+  def refs; [] end
+  def solution; 4_782 end
+  def best_time; 0.03577 end
+
+  def completed_on; '2013-02-07' end
+  def ordinality; 59_579 end
+  def percentile; 80.91 end
 
   def solve( n = 1_000 )
     term = 1

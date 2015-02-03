@@ -3,7 +3,6 @@ require 'projectEuler'
 # 1.228s (2/14/14, #5299)
 class Problem_0098
   def title; 'Anagramic squares' end
-  def solution; 18_769 end
 
   # By replacing each of the letters in the word CARE with 1, 2, 9, and 6
   # respectively, we form a square number: 1296 = 36^2. What is remarkable is
@@ -20,6 +19,14 @@ class Problem_0098
   # What is the largest square number formed by any member of such a pair?
   #
   # NOTE: All anagrams formed must be contained in the given text file.
+
+  def refs; [] end
+  def solution; 18_769 end
+  def best_time; 1.228 end
+
+  def completed_on; '2014-02-14' end
+  def ordinality; 5_299 end
+  def percentile; 98.66 end
 
   def solve
     # Load the word list and remove commas and quotes.

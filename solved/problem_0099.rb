@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.002644s (1/11/14, #15315)
 class Problem_0099
   def title; 'Largest exponential' end
-  def solution; 709 end
 
   # Comparing two numbers written in index form like 2^11 and 3^7 is not
   # difficult, as any calculator would confirm that 2^11 = 2048 < 3^7 = 2187.
@@ -17,6 +16,14 @@ class Problem_0099
   #
   # NOTE: The first two lines in the file represent the numbers in the example
   # given above.
+
+  def refs; [] end
+  def solution; 709 end
+  def best_time; 0.002644 end
+
+  def completed_on; '2014-01-11' end
+  def ordinality; 15_315 end
+  def percentile; 96.11 end
 
   def compare( tuples, i, j )
     a, x = tuples[i][0], tuples[i][1]

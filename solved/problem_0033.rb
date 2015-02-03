@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.02876s (2/15/13, #~27603)
 class Problem_0033
   def title; 'Digit canceling fractions' end
-  def solution; 100 end
 
   # The fraction 49/98 is a curious fraction, as an inexperienced
   # mathematician in attempting to simplify it may incorrectly believe that
@@ -17,6 +16,14 @@ class Problem_0033
   #
   # If the product of these four fractions is given in its lowest common
   # terms, find the value of the denominator.
+
+  def refs; [] end
+  def solution; 100 end
+  def best_time; 0.02876 end
+
+  def completed_on; '2013-02-15' end
+  def ordinality; 27_603 end
+  def percentile; 91.15 end
 
   def solve
     prod = 1

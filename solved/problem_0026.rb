@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.7733s (2/7/13, #~30742)
 class Problem_0026
   def title; 'Reciprocal cycles' end
-  def solution; 983 end
 
   # A unit fraction contains 1 in the numerator. The decimal representation of
   # the unit fractions with denominators 2 to 10 are given:
@@ -23,6 +22,14 @@ class Problem_0026
   #
   # Find the value of d < 1000 for which 1/d contains the longest recurring
   # cycle in its decimal fraction part.
+
+  def refs; [] end
+  def solution; 983 end
+  def best_time; 0.7733 end
+
+  def completed_on; '2013-02-07' end
+  def ordinality; 30_742 end
+  def percentile; 89.93 end
 
   def solve( n = 1_000 )
     # Divide 1 by every number up to n, recording the length of repeating

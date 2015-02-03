@@ -3,7 +3,6 @@ require 'projectEuler'
 # 10.20s (12/29/13, #8699)
 class Problem_0083
   def title; 'Path sum: four ways' end
-  def solution; 425_185 end
 
   # NOTE: This problem is a significantly more challenging version of Problem
   # 81.
@@ -21,6 +20,14 @@ class Problem_0083
   # Find the minimal path sum, in 0081_matrix.txt, a 31K text file containing
   # an 80 by 80 matrix, from the top left to the bottom right by moving left,
   # right, up, and down.
+
+  def refs; [] end
+  def solution; 425_185 end
+  def best_time; 10.20 end
+
+  def completed_on; '2013-12-29' end
+  def ordinality; 8_699 end
+  def percentile; 97.74 end
 
   def solve
     rows = File.readlines( 'resources/0081_matrix.txt' )

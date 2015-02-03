@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.03446s (1/9/14, #5162)
 class Problem_0090
   def title; 'Cube digit pairs' end
-  def solution; 1_217 end
 
   # Each of the six faces on a cube has a different digit (0 to 9) written on
   # it; the same is done to a second cube. By placing the two cubes
@@ -36,6 +35,14 @@ class Problem_0090
   #
   # How many distinct arrangements of the two cubes allow for all of the
   # square numbers to be displayed?
+
+  def refs; [] end
+  def solution; 1_217 end
+  def best_time; 0.03446 end
+
+  def completed_on; '2014-01-09' end
+  def ordinality; 5_162 end
+  def percentile; 98.68 end
 
   def check_squares?( d1, d2 )
     ((d1.include?( 0 ) && d2.include?( 1 )) || (d2.include?( 0 ) && d1.include?( 1 ))) &&

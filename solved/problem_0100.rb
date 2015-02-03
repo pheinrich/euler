@@ -19,6 +19,18 @@ class Problem_0100
   # discs in total, determine the number of blue discs that the box would
   # contain.
 
+  def refs
+    [ "http://www.alpertron.com.ar/METHODS.HTM",
+      "http://www.alpertron.com.ar/QUAD.HTM" ]
+  end
+
+  def solution; 756_872_327_473 end
+  def best_time; 0.00001192 end
+
+  def completed_on; '2015-01-09' end
+  def ordinality; 8_868 end
+  def percentile; 98.04 end
+
   def solve( n = 1_000_000_000_000 )
     # We are looking for x and y that satisfy the relationship:
     #
@@ -34,10 +46,7 @@ class Problem_0100
     #      X[0] = 1,     X[n + 1] = P*X[n] + Q*Y[n] + K 
     #      Y[0] = 0,     Y[n + 1] = R*X[n] + S*Y[n] + L
     #
-    # where P = 5, Q = 2, K = -2, R = 2, S = 1, and L = -1. See
-    # http://www.alpertron.com.ar/METHODS.HTM and
-    # http://www.alpertron.com.ar/QUAD.HTM
-
+    # where P = 5, Q = 2, K = -2, R = 2, S = 1, and L = -1.
     x, y = 1, 0
     while x + y < n
       x, y = 5*x + 2*y - 2, 2*x + y - 1

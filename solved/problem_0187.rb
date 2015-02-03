@@ -3,7 +3,6 @@ require 'projectEuler'
 # 11.95s (1/24/15, #6876)
 class Problem_0187
   def title; 'Semiprimes' end
-  def solution; 17_427_258 end
 
   # A composite is a number containing at least two prime factors. For ex-
   # ample, 15 = 3 × 5; 9 = 3 × 3; 12 = 2 × 2 × 3.
@@ -13,6 +12,14 @@ class Problem_0187
   #
   # How many composite integers, n < 10^8, have precisely two, not necessarily
   # distinct, prime factors?
+
+  def refs; ["http://mathworld.wolfram.com/Semiprime.html"] end
+  def solution; 17_427_258 end
+  def best_time; 11.95 end
+
+  def completed_on; '2015-01-24' end
+  def ordinality; 6_876 end
+  def percentile; 98.49 end
 
   def solve( n = 100_000_000 )
     p = (n / 2).prime_sieve
@@ -29,6 +36,4 @@ class Problem_0187
 
     sum
   end
-
-  # See also: http://mathworld.wolfram.com/Semiprime.html
 end

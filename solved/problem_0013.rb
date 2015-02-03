@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.0001070s (1/26/13, #~74171)
 class Problem_0013
   def title; 'Large sum' end
-  def solution; 5_537_376_230 end
 
   # Work out the first ten digits of the sum of the following one-hundred
   # 50-digit numbers.
@@ -108,7 +107,15 @@ class Problem_0013
         72107838435069186155435662884062257473692284509516,
         20849603980134001723930671666823555245252804609722,
         53503534226472524250874054075591789781264330331690 ]
-  
+
+  def refs; [] end
+  def solution; 5_537_376_230 end
+  def best_time; 0.0001070 end
+
+  def completed_on; '2013-01-26' end
+  def ordinality; 74_171 end
+  def percentile; 73.19 end
+
   def solve( n = 10 )
     # Cheating with Ruby's big number support.
     N.inject( :+ ).to_s[0...n].to_i

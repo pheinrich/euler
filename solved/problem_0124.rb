@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.4321s (1/18/15, #8527)
 class Problem_0124
   def title; 'Ordered radicals' end
-  def solution; 21_417 end
 
   # The radical of n, rad(n), is the product of the distinct prime factors of
   # n. For example, 504 = 23 × 32 × 7, so rad(504) = 2 × 3 × 7 = 42.
@@ -28,6 +27,14 @@ class Problem_0124
   # and E(6) = 9.
   #
   # If rad(n) is sorted for 1 ≤ n ≤ 100000, find E(10000).
+
+  def refs; [] end
+  def solution; 21_417 end
+  def best_time; 0.4321 end
+
+  def completed_on; '2015-01-18' end
+  def ordinality; 8_527 end
+  def percentile; 98.12 end
 
   def solve( n = 100_000, k = 10_000 )
     (n + 1).radical_sieve.map.with_index {|x, i| [x, i]}.sort[k][1]

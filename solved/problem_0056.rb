@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.6012s (3/17/13, #~23371)
 class Problem_0056
   def title; 'Powerful digit sum' end
-  def solution; 972 end
 
   # A googol (10^100) is a massive number: one followed by one-hundred zeros;
   # 100^100 is almost unimaginably large: one followed by two-hundred zeros.
@@ -11,6 +10,14 @@ class Problem_0056
   #
   # Considering natural numbers of the form, a^b, where a, b < 100, what is
   # the maximum digital sum?
+
+  def refs; [] end
+  def solution; 972 end
+  def best_time; 0.6012 end
+
+  def completed_on; '2013-03-17' end
+  def ordinality; 23_371 end
+  def percentile; 92.59 end
 
   def solve( n = 100 )
     max = 0

@@ -3,7 +3,6 @@ require 'projectEuler'
 # 1.581s (12/19/13, #~10806)
 class Problem_0072
   def title; 'Counting fractions' end
-  def solution; 303_963_552_391 end
 
   # Consider the fraction, n/d, where n and d are positive integers. If n<d
   # and HCF(n,d)=1, it is called a reduced proper fraction.
@@ -18,6 +17,14 @@ class Problem_0072
   #
   # How many elements would be contained in the set of reduced proper
   # fractions for d ≤ 1,000,000?
+
+  def refs; [] end
+  def solution; 303_963_552_391 end
+  def best_time; 1.581 end
+
+  def completed_on; '2013-12-19' end
+  def ordinality; 10_806 end
+  def percentile; 97.23 end
 
   def solve( n = 1_000_000 )
     n.farey_length - 2

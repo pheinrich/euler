@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.4998s (2/19/13, #28582)
 class Problem_0037
   def title; 'Truncatable primes' end
-  def solution; 748_317 end
 
   # The number 3797 has an interesting property. Being prime itself, it is
   # possible to continuously remove digits from left to right, and remain
@@ -14,6 +13,14 @@ class Problem_0037
   # to right and right to left.
   #
   # NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
+
+  def refs; [] end
+  def solution; 748_317 end
+  def best_time; 0.4998 end
+
+  def completed_on; '2013-02-19' end
+  def ordinality; 28_582 end
+  def percentile; 90.91 end
 
   def solve
     p = 1_000_000.prime_sieve.map( &:to_s ).select {|s| s =~ /^[25]?[1379]*$/ }

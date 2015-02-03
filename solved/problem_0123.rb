@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.06736s (1/17/15, #6988)
 class Problem_0123
   def title; 'Prime square remainders' end
-  def solution; 21_035 end
 
   # Let p[n] be the nth prime: 2, 3, 5, 7, 11, ..., and let r be the remainder
   # when (p[n]−1)^n + (p[n]+1)^n is divided by p[n]^2.
@@ -14,8 +13,15 @@ class Problem_0123
   #
   # Find the least value of n for which the remainder first exceeds 10^10.
 
+  def refs; ["http://en.wikipedia.org/wiki/Prime-counting_function#Inequalities"] end
+  def solution; 21_035 end
+  def best_time; 0.06736 end
+
+  def completed_on; '2015-01-17' end
+  def ordinality; 6_988 end
+  def percentile; 98.46 end
+
   def get_n_primes( n )
-    # http://en.wikipedia.org/wiki/Prime-counting_function#Inequalities
     lnn = Math.log( n )
     est = n*(Math.log( n*lnn ) - 1) + n*(Math.log(lnn) - 2)/lnn + n*(Math.log(lnn)**2)/(lnn*lnn)
     est.to_i.prime_sieve 

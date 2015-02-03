@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.04348s (3/11/13, #~20996)
 class Problem_0049
   def title; 'Prime permutations' end
-  def solution; 296_962_999_629 end
 
   # The arithmetic sequence, 1487, 4817, 8147, in which each of the terms
   # increases by 3330, is unusual in two ways: (i) each of the three terms are
@@ -17,6 +16,14 @@ class Problem_0049
   # What 12-digit number do you form by concatenating the three terms in this
   # sequence?
   P = 10_000.prime_sieve.reject {|i| 1_000 > i}.map {|i| [i, i.to_s.chars.sort.join]}
+
+  def refs; [] end
+  def solution; 296_962_999_629 end
+  def best_time; 0.04348 end
+  
+  def completed_on; '2013-03-11' end
+  def ordinality; 20_996 end
+  def percentile; 93.01 end
   
   def solve
     P.each do |p|

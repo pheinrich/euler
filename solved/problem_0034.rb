@@ -3,7 +3,6 @@ require 'projectEuler'
 # 39.26s (2/15/13, #~38022)
 class Problem_0034
   def title; 'Digit factorials' end
-  def solution; 40_730 end
 
   # 145 is a curious number, as 1! + 4! + 5! = 1 + 24 + 120 = 145.
   #
@@ -11,6 +10,14 @@ class Problem_0034
   # their digits.
   #
   # Note: as 1! = 1 and 2! = 2 are not sums they are not included.
+
+  def refs; [] end
+  def solution; 40_730 end
+  def best_time; 39.26 end
+
+  def completed_on; '2013-02-15' end
+  def ordinality; 38_022 end
+  def percentile; 88.27 end
 
   def solve()
     f = (0..9).map( &:fact )

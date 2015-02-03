@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.2013s (12/28/13, #9575)
 class Problem_0080
   def title; 'Square root digital expansion' end
-  def solution; 40_886 end
 
   # It is well known that if the square root of a natural number is not an
   # integer, then it is irrational. The decimal expansion of such square roots
@@ -16,14 +15,21 @@ class Problem_0080
   # sums of the first one hundred decimal digits for all the irrational square
   # roots.
 
+  def refs; ["http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Decimal_.28base_10.29"] end
+  def solution; 40_886 end
+  def best_time; 0.2013 end
+
+  def completed_on; '2013-12-28' end
+  def ordinality; 9_575 end
+  def percentile; 97.53 end
+
   def solve( n = 100, figs = 100 )
     sum = 0
 
     n.times do |i|
       digits = []
 
-      # Do manual "long division"-type root calculation.  See
-      # http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Decimal_.28base_10.29
+      # Do manual "long division"-type root calculation.
       d = Math.sqrt( i ).floor
       r = i - d*d
       next if 0 == r

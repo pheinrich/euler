@@ -3,7 +3,6 @@ require 'projectEuler'
 # 543.8s (1/5/14, #5178)
 class Problem_0088
   def title; 'Product-sum numbers' end
-  def solution; 7_587_457 end
 
   # A natural number, N, that can be written as the sum and product of a given
   # set of at least two natural numbers, {a1, a2, ... , ak} is called a
@@ -29,6 +28,14 @@ class Problem_0088
   #
   # What is the sum of all the minimal product-sum numbers for 2≤k≤12000?
 
+  def refs; ["http://www-users.mat.umk.pl/~anow/ps-dvi/si-krl-a.pdf"] end
+  def solution; 7_587_457 end
+  def best_time; 543.8 end
+
+  def completed_on; '2014-01-05' end
+  def ordinality; 5_178 end
+  def percentile; 98.85 end
+
   def prodSum( sum, prod, last )
     # Compute final term satisfying N = ∑a_i = ∏a_i. If it's an integer, use
     # it to calculate N, otherwise return nil.
@@ -42,8 +49,6 @@ class Problem_0088
   end
 
   def solve( max = 12_000 )
-    # http://www-users.mat.umk.pl/~anow/ps-dvi/si-krl-a.pdf
-
     sum  = [1, 2]
     prod = [1, 2]
     last = [1, 2]

@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.02057s (1/9/14, #10791)
 class Problem_0089
   def title; 'Roman numerals' end
-  def solution; 743 end
 
   # The rules for writing Roman numerals allow for many ways of writing each
   # number (see About Roman Numerals...). However, there is always a "best"
@@ -32,6 +31,14 @@ class Problem_0089
   #
   # Note: You can assume that all the Roman numerals in the file contain no
   # more than four consecutive identical units.
+
+  def refs; [] end
+  def solution; 743 end
+  def best_time; 0.02057 end
+
+  def completed_on; '2014-01-09' end
+  def ordinality; 10_791 end
+  def percentile; 97.20 end
 
   def solve
     t = IO.read( 'resources/0089_roman.txt' ).split.map do |line|

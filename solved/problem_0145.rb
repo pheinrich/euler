@@ -3,7 +3,6 @@ require 'projectEuler'
 # 0.00004792s (1/20/15, #9591)
 class Problem_0145
   def title; 'How many reversible numbers are there below one-billion?' end
-  def solution; 608_720 end
 
   # Some positive integers n have the property that the sum [ n + reverse(n) ]
   # consists entirely of odd (decimal) digits. For instance, 36 + 63 = 99 and
@@ -14,6 +13,14 @@ class Problem_0145
   # There are 120 reversible numbers below one-thousand.
   #
   # How many reversible numbers are there below one-billion (10^9)?
+
+  def refs; [] end
+  def solution; 608_720 end
+  def best_time; 0.00004792 end
+
+  def completed_on; '2015-01-20' end
+  def ordinality; 9_591 end
+  def percentile; 97.89 end
 
   def solve( n = 1_000_000_000 )
     log10 = Math.log10( n )
