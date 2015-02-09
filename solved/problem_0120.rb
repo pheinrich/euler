@@ -14,7 +14,7 @@ class Problem_0120
 
   def refs; [] end
   def solution; 333_082_500 end
-  def best_time; 0.0002120 end
+  def best_time; 0.0001509 end
 
   def completed_on; '2015-01-16' end
   def ordinality; 8_257 end
@@ -63,6 +63,6 @@ class Problem_0120
     # The problem as it's stated allows us to ignore values of n < 3, so it's
     # enough just to compute r[max] directly for each a, choosing the right
     # formula for each one and accumulating the results. 
-    (3..n).map {|a| (0 == a & 1) ? a*(a - 2) : a*(a - 1)}.reduce( :+ )
+    (3..n).reduce( 0 ) {|acc, a| acc + a*(a - 1 & ~1)} 
   end
 end
