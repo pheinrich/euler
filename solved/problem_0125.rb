@@ -24,7 +24,7 @@ class Problem_0125
   def percentile; 98.12 end
 
   def solve( n = 100_000_000 )
-    # Assuming the largest valid sum of squares is S = a^2 + (a - 1)^1 < n,
+    # Assuming the largest valid sum of squares is S = a^2 + (a - 1)^2 < n,
     # first find a and set aside space to cache that many running sums.
     len = (1 + Math.sqrt( 2*n )) / 2
     sos = Array.new( len )
