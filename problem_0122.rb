@@ -33,8 +33,9 @@ class Problem_0122
   def refs
     ["http://en.wikipedia.org/wiki/Addition-chain_exponentiation",
      "https://oeis.org/A003313",
+     "http://cr.yp.to/papers/pippenger.pdf",
      "http://wwwhomes.uni-bielefeld.de/achim/ac.ps.gz",
-     "http://cr.yp.to/papers/pippenger.pdf"]
+     "http://wwwhomes.uni-bielefeld.de/achim/addition_chain.html"]
   end
 
   def solution; end
@@ -44,55 +45,40 @@ class Problem_0122
   def ordinality; end
   def percentile; end
 
-  def chain( k, mins, seqs, tab = 0 )
-    return seqs[k] if seqs[k]
-
-    (1..k/2).each do |i|
-      cs = chain( k - i, mins, seqs, tab + 1 )
-
-      seq = [i, k - i]
-      seqs[seq] = k
-      len = seq.uniq.reduce( seq.length - 1 ) {|acc, e| acc + mins[e]}
-      mins[k] = len if mins[k].nil? || len < mins[k]
-#      puts "%s  seqs: #{seqs.inspect}" % ['  ' * tab]
-
-      cs.each do |h, v|
-        seq = [i] + h
-        seqs[seq] = k
-        len = seq.uniq.reduce( seq.length - 1 ) {|acc, e| acc + mins[e]}
-        mins[k] = len if len < mins[k]
-      end
-    end
-
-    seqs.select {|h, v| v == k}
+  def lb( k )
+    vofn = k.to_s( 2 ).count( '1' )
+    Math.log2( k ).floor + Math.log2( vofn ).ceil
   end
 
-  def solve( k = 15 )
-    # For 0 < k <= 6:
-    #   1: 0
-    #   2: 1+(1)=1
-    #   3: 1+(2)=2, 1+(1+(1))=2
-    #   4: 1+(3)=3, 1+(1+(2))=3, 1+(1+(1+(1)))=3,
-    #      2+(2)=2
-    #   5: 1+(4)=3, 1+(1+(3))=4, 1+(1+(1+(2)))=4, 1+(1+(1+(1+(1))))=4, 1+(2+(2))=3,
-    #      2+(3)=4, 2+(1+(2))=4, 2+(1+(1+(1)))=4
-    #   6: 1+(5)=4, 1+(1+(4))=4, 1+(1+(1+(3)))=5, 1+(1+(1+(1+(2))))=5, 1+(1+(1+(1+(1+(1)))))=5, 1+(1+(2+(2)))=4,
-    #      2+(4)=4, 2+(1+(3))=5, 2+(1+(1+(2)))=4, 2+(1+(1+(1+(1))))=5, 2+(2+(2))=3
-    #      3+(3)=3, 3+(1+(2))=5, 3+(1+(1+(1)))=5
-    #
-    # Looking at each partition of k {p[0], p[1], ..., p[m]} where k = ∑ p[i],
-    # we naively start with l(k) = m - 1 + ∑ l(p[i]). We don't have to sum
-    # p[j], though, if p[i] = p[j] for some i != j. That is, only unique p[i]
-    # contribute to the total. (Each addition counts as 1, however, no matter
-    # what.)
-    #
-    # So we recursively partition k, eliminate duplicate p[i], and compute
-    # m - 1 + ∑ l(p[i]) where p[i] != p[j] ∀ i, j.
-    mins = {1=>0}
-    seqs = {[1]=>1}
+  def chain( k, set, memo )
+    return [1] if [1] == set && 0 == k
+    r = set.map {|s| memo[s]}.max
+    return nil if r > k
+    m = set.max
+    rset = set - [m]
 
-    chain( k, mins, seqs )
-#    mins.values.reduce( :+ )
-    mins.inspect
+    x = m
+    (x - 1).downto( 1 ) do |xp|
+      if memo[xp] < k
+        x = xp
+        break
+      end
+    end
+    return nil if x < m / 2
+
+    setp = rset + [x, m - x]
+    ap = chain( k - 1, setp, memo )
+    if ap
+      memo[m - x] = k - 1
+      return ap + [m]
+    end
+
+    nil
+  end
+
+  def solve( k = 100 )
+    memo = Hash.new {0}
+    chain( 1, [1, 2], memo )
+    memo.inspect
   end
 end
