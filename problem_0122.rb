@@ -38,6 +38,60 @@ class Problem_0122
      "http://wwwhomes.uni-bielefeld.de/achim/addition_chain.html"]
   end
 
+  class Tree
+    attr_accessor :parent, :children, :value
+    
+    def initialize( value, parent = nil )
+      @value = value
+      @parent = parent
+      @children = []
+    end
+
+    def add( value )
+      @children << Tree.new( value, self )
+    end
+
+    def pp( tab = 0 )
+      puts "%sValue = #{@value} (Parent: #{@parent ? @parent.value : 'nil'})" % ['  ' * tab]
+      @children.each {|c| c.pp( tab + 1)}
+    end
+
+    def build_power( root, depth )
+      s, p = [], @parent
+      while p
+        s << (@value + p.value)
+        p = p.parent
+      end
+      s << (@value << 1)
+
+      s.each {|v| add( v ) unless root.dfs( v )}
+      @children.each {|c| c.build_power( root, depth - 1)} if 1 < depth 
+    end
+
+    def dfs( value )
+      return true if @value == value
+
+      for c in @children
+        return true if c.dfs( value )
+      end
+
+      false
+    end
+
+    def bfs( value )
+      stack = []
+      c = self
+
+      while c
+        return true if c.value == value
+        stack += c.children
+        c = stack.shift
+      end
+
+      false
+    end
+  end
+
   def solution; end
   def best_time; end
 
@@ -45,40 +99,13 @@ class Problem_0122
   def ordinality; end
   def percentile; end
 
-  def lb( k )
-    vofn = k.to_s( 2 ).count( '1' )
-    Math.log2( k ).floor + Math.log2( vofn ).ceil
+  def build_tree( root, max )
+    
   end
 
-  def chain( k, set, memo )
-    return [1] if [1] == set && 0 == k
-    r = set.map {|s| memo[s]}.max
-    return nil if r > k
-    m = set.max
-    rset = set - [m]
-
-    x = m
-    (x - 1).downto( 1 ) do |xp|
-      if memo[xp] < k
-        x = xp
-        break
-      end
-    end
-    return nil if x < m / 2
-
-    setp = rset + [x, m - x]
-    ap = chain( k - 1, setp, memo )
-    if ap
-      memo[m - x] = k - 1
-      return ap + [m]
-    end
-
-    nil
-  end
-
-  def solve( k = 100 )
-    memo = Hash.new {0}
-    chain( 1, [1, 2], memo )
-    memo.inspect
+  def solve( k = 200 )
+    root = Tree.new( 1 )
+    root.build_power( root, 7 )
+    root.pp
   end
 end
