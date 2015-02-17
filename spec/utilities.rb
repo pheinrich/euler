@@ -703,4 +703,36 @@ module ProjectEuler
       end
     end
   end
+
+  describe Tree do
+    it "represents a branching structure of parents and children" do; end
+
+    before( :all ) do
+      @tree = Tree.new( 1 )
+      @tree.add( 2 )
+      @tree.add( 3 )
+      @tree.children[0].add( 3 )
+      @tree.children[1].add( 4 )
+    end
+
+    describe "#new" do
+      it "creates a tree node" do
+        expect( @tree ).to be_an_instance_of( Tree )
+      end
+    end
+
+    describe "#add" do
+      it "adds a child leaf to a tree node" do
+        @tree.add( 5 )
+        expect( @tree.children.length ).to eq( 3 )
+      end
+    end
+
+    describe "#bfi" do
+      it "traverses a tree breadth first" do
+        expect( @tree.bfi( lambda {|n| 3 == n.value} ).parent.value ).to eq( 1 )
+        expect( @tree.bfi( lambda {|n| 6 == n.value} ) ).to be_nil
+      end
+    end
+  end
 end

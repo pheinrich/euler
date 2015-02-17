@@ -1108,5 +1108,41 @@ module ProjectEuler
       grid
     end
   end
+
+  class Tree
+    attr_accessor :value, :parent, :children
+
+    def initialize( value = 0, parent = nil )
+      @value = value
+      @parent = parent
+      @children = []
+    end
+
+    def add( value )
+      @children << Tree.new( value, self )
+    end
+
+    # Do a depth-first iteration of the tree, starting with this node. The
+    # function supplied will be called for each node visited.
+    def dfi( func, depth = 0 )
+      func.call( self, depth )
+      @children.each {|c| c.dfi( func, 1 + depth )}
+    end
+
+    # Do a breadth-first iteration of the tree, starting with this node. The
+    # function supplied will be called for each node visited, and should
+    # return true to terminate processing. In that case, the last node to be
+    # visited will be returned, otherwise this function returns nil.
+    def bfi( func )
+      stack, node = [], self
+
+      while node && !func.call( node )
+        stack += node.children
+        node = stack.shift
+      end
+
+      node
+    end
+  end
 end
 
