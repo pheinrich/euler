@@ -34,6 +34,14 @@ class Problem_0345
       '815 559 813 459 522 788 168 586 966 232 308 833 251 631 107 ' \
       '813 883 451 509 615  77 281 613 459 205 380 274 302  35 805'.split.map( &:to_i )
 
+  def refs; [] end
+  def solution; end
+  def best_time; end
+
+  def completed_on; '2015-??-??' end
+  def ordinality; end
+  def percentile; end
+
   def solve
   end
 end
