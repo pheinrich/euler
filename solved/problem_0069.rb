@@ -27,7 +27,7 @@ class Problem_0069
 
   def refs; [] end
   def solution; 510_510 end
-  def best_time; 1.880 end
+  def best_time; 0.8761 end
 
   def completed_on; '2013-12-16' end
   def ordinality; 16_665 end
@@ -35,7 +35,7 @@ class Problem_0069
 
   def solve( n = 1_000_000 )
     s = n.totient_sieve
-    s.shift
-    1 + s.each_with_index.max_by {|i, j| j.to_f / i}[1]
+    s[0] = 1
+    s.each_with_index.max_by {|i, j| j.to_f / i}[1]
   end
 end
