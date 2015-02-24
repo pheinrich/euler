@@ -13,9 +13,12 @@ ruby -I. -Isolved <<EOF
   require "problem_%04d.rb" % $PROB
 
   problem = Object::const_get( "Problem_%04d" % $PROB ).new
+  percentile = 100 * (1.0 - problem.ordinality.to_f / problem.population)
   puts "Problem %d: %s" % [$PROB, problem.title]
+  puts "  Solved on #{problem.completed_on}, \##{problem.ordinality} of #{problem.population} (%0.6f percentile)" % [percentile]
 
   ProjectEuler.time do
-    puts problem.solve
+    solution = problem.solve
+    puts "  Solution: #{solution} (%sVerified)" % [solution.to_s == problem.solution.to_s ? '' : 'NOT ']
   end
 EOF
