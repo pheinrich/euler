@@ -43,7 +43,7 @@ class Problem_0122
 
   def completed_on; '2015-02-16' end
   def ordinality; 4_447 end
-  def percentile; 99.04 end
+  def population; 462_287 end
 
   def build( node, depth, max, memo )
     # Exit if we've built the tree deep enough.

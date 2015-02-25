@@ -11,11 +11,11 @@ class Problem_0001
 
   def refs; [] end
   def solution; 233_168 end
-  def best_time; 0.0002527 end
+  def best_time; 0.0001531 end
 
   def completed_on; '2013-01-21' end
   def ordinality; 274_675 end
-  def percentile; 5.25 end
+  def population; 274_675 end
 
   def solve( n = 1_000, a = 3, b = 5 )
     # Important that multiples of BOTH a and b not be double-counted.

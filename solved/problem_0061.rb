@@ -33,11 +33,11 @@ class Problem_0061
 
   def refs; [] end
   def solution; 28_684 end
-  def best_time; 0.08340 end
+  def best_time; 0.06811 end
   
   def completed_on; '2013-04-06' end
   def ordinality; 10_434 end
-  def percentile; 96.94 end
+  def population; 293_287 end
 
   A = [1, 1,  3,  2,  5,  3]
   B = [1, 0, -1, -1, -3, -2]

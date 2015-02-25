@@ -16,7 +16,7 @@ class Problem_0085
 
   def completed_on; '2013-12-31' end
   def ordinality; 12_247 end
-  def percentile; 96.88 end
+  def population; 360_043 end
 
   def solve( n = 2_000_000 )
     counts = Hash.new( 0 )

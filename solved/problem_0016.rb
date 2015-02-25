@@ -10,11 +10,11 @@ class Problem_0016
 
   def refs; [] end
   def solution; 1_366 end
-  def best_time; 0.0003679 end
+  def best_time; 0.0001931 end
 
   def completed_on; '2013-02-01' end
   def ordinality; 84_937 end
-  def percentile; 72.59 end
+  def population; 277_405 end
 
   def solve( n = 1_000 )
     (2**n).sum_digits

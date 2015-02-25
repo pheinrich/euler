@@ -15,11 +15,11 @@ class Problem_0009
   
   def refs; [] end
   def solution; 31_875_000 end
-  def best_time; 0.00005722 end
+  def best_time; 0.00001383 end
 
   def completed_on; '2013-01-26' end
   def ordinality; 116_174 end
-  def percentile; 59.31 end
+  def population; 275_916 end
 
   def solve( n = 1_000 )
     # Euclid's formula for generating Pythagorean triples says that for

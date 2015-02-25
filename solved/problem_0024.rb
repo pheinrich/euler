@@ -20,7 +20,7 @@ class Problem_0024
 
   def completed_on; '2013-02-08' end
   def ordinality; 44_270 end
-  def percentile; 85.92 end
+  def population; 279_142 end
 
   def solve( n = 1_000_000 )
     # Worst kind of brute force...

@@ -20,11 +20,11 @@ class Problem_0073
 
   def refs; [] end
   def solution; 7_295_372 end
-  def best_time; 3.659 end
+  def best_time; 2.422 end
 
   def completed_on; '2013-12-19' end
   def ordinality; 12_842 end
-  def percentile; 96.76 end
+  def population; 357_065 end
 
   def solve( n = 12_000 )
     a, b, c, d = 0, 1, 1, n

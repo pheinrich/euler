@@ -31,7 +31,7 @@ class Problem_0069
 
   def completed_on; '2013-12-16' end
   def ordinality; 16_665 end
-  def percentile; 95.73 end
+  def population; 356_321 end
 
   def solve( n = 1_000_000 )
     s = n.totient_sieve

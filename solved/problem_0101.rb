@@ -47,11 +47,11 @@ class Problem_0101
 
   def refs; [] end
   def solution; 37_076_114_526 end
-  def best_time; 0.0003009 end
+  def best_time; 0.0002670 end
 
   def completed_on; '2015-01-07' end
   def ordinality; 6_047 end
-  def percentile; 98.66 end
+  def population; 361_780 end
 
   def solve( coeffs = [1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1] )
     # Compute the first n terms in the polynomial sequence defined by the co-

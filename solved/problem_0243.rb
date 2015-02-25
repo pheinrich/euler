@@ -21,11 +21,11 @@ class Problem_0243
 
   def refs; [] end
   def solution; 892_371_480 end
-  def best_time; 0.0001271 end
+  def best_time; 0.00008440 end
 
   def completed_on; '2014-01-06' end
   def ordinality; 4_488 end
-  def percentile; 98.80 end
+  def population; 361_532 end
 
   def solve( numer = 15_499, denom = 94_744 )
     # R(d) is simply φ(d)/(d - 1).  Since φ(d) = d·∏[p|d] (1 - 1/p), that

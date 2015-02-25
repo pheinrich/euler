@@ -15,11 +15,11 @@ class Problem_0015
 
   def refs; [] end
   def solution; 137_846_528_820 end
-  def best_time; 0.00008702 end
+  def best_time; 0.00003386 end
 
   def completed_on; '2013-01-30' end
   def ordinality; 63_274 end
-  def percentile; 78.02 end
+  def population; 276_908 end
 
   def solve( n = 20 )
     # Working backward from the lower right point, it's clear that its two

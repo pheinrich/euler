@@ -20,7 +20,7 @@ class Problem_0205
 
   def completed_on; '2015-01-23' end
   def ordinality; 8_914 end
-  def percentile; 98.04 end
+  def population; 456_331 end
 
   def roll( dice, sides, array, total )
     # Recursively roll dice and tally the frequency of each possible result.

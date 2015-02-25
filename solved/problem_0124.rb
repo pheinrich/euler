@@ -34,7 +34,7 @@ class Problem_0124
 
   def completed_on; '2015-01-18' end
   def ordinality; 8_527 end
-  def percentile; 98.12 end
+  def population; 455_090 end
 
   def solve( n = 100_000, k = 10_000 )
     (n + 1).radical_sieve.map.with_index {|x, i| [x, i]}.sort[k][1]

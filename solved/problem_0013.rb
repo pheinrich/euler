@@ -110,11 +110,11 @@ class Problem_0013
 
   def refs; [] end
   def solution; 5_537_376_230 end
-  def best_time; 0.0001070 end
+  def best_time; 0.00007010 end
 
   def completed_on; '2013-01-26' end
   def ordinality; 74_171 end
-  def percentile; 73.19 end
+  def population; 275_916 end
 
   def solve( n = 10 )
     # Cheating with Ruby's big number support.

@@ -32,7 +32,7 @@ class Problem_0127
 
   def completed_on; '2015-01-18' end
   def ordinality; 3_433 end
-  def percentile; 99.24 end
+  def population; 455_090 end
 
   def solve( max = 120_000 )
     # Since a, b, c are pairwise coprime, they don't share any prime factors.

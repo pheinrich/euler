@@ -34,11 +34,11 @@ class Problem_0108
 
   def refs; [] end
   def solution; 180_180 end
-  def best_time; 0.00008321 end
+  def best_time; 0.00004411 end
 
   def completed_on; '2015-01-27' end
   def ordinality; 7_736 end
-  def percentile; 98.30 end
+  def population; 457_323 end
 
   def solve( sols = 1_000 )
     #        1        1        1
@@ -81,8 +81,8 @@ class Problem_0108
 
     # The prime factors of min represent α, β, ..., γ (excess 1). Minimize the
     # N by substituting the first (lowest) primes into the equation above.
-    # Take a shortcut to n = √n^2 by dividing the subtracting the excess from
-    # each factor and dividing by 2.
+    # Take a shortcut to n = √n^2 by subtracting the excess from each factor
+    # and dividing by 2.
     pf.each_with_index.reduce( 1 ) {|acc, (e, i)| acc * P[i]**e}
   end
 end

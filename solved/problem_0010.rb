@@ -10,11 +10,11 @@ class Problem_0010
 
   def refs; [] end
   def solution; 142_913_828_922 end
-  def best_time; 0.8394 end
+  def best_time; 0.4803 end
 
   def completed_on; '2013-01-26' end
   def ordinality; 104_986 end
-  def percentile; 62.67 end
+  def population; 275_916 end
 
   def solve( n = 2_000_000 )
     n.prime_sieve.inject( :+ )

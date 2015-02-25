@@ -93,11 +93,11 @@ class Problem_0064
 
   def refs; [] end
   def solution; 1_322 end
-  def best_time; 3.606 end
+  def best_time; 1.880 end
   
   def completed_on; '2013-12-12' end
   def ordinality; 10_094 end
-  def percentile; 97.31 end
+  def population; 355_328 end
 
   def solve( n = 10_000 )
     (0..n).select {|i| i.sqrt_cf.count % 2 == 0}.count

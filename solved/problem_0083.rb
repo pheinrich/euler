@@ -27,7 +27,7 @@ class Problem_0083
 
   def completed_on; '2013-12-29' end
   def ordinality; 8_699 end
-  def percentile; 97.74 end
+  def population; 359_547 end
 
   def solve
     rows = File.readlines( 'resources/0081_matrix.txt' )

@@ -39,11 +39,11 @@ class Problem_0018
 
   def refs; [] end
   def solution; 1_074 end
-  def best_time; 0.0001690 end
+  def best_time; 0.00008297 end
 
   def completed_on; '2013-02-05' end
   def ordinality; 52_918 end
-  def percentile; 82.37 end
+  def population; 278_397 end
 
   def solve
     N.tree_sum

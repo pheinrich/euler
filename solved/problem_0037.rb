@@ -16,11 +16,11 @@ class Problem_0037
 
   def refs; [] end
   def solution; 748_317 end
-  def best_time; 0.4998 end
+  def best_time; 0.3105 end
 
   def completed_on; '2013-02-19' end
   def ordinality; 28_582 end
-  def percentile; 90.91 end
+  def population; 281_872 end
 
   def solve
     p = 1_000_000.prime_sieve.map( &:to_s ).select {|s| s =~ /^[25]?[1379]*$/ }

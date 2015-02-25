@@ -12,11 +12,11 @@ class Problem_0052
 
   def refs; [] end
   def solution; 142_857 end
-  def best_time; 0.6866 end
+  def best_time; 0.3779 end
 
   def completed_on; '2013-03-15' end
   def ordinality; 26_359 end
-  def percentile; 91.64 end
+  def population; 287_828 end
 
   def solve( n = 6 )
     1.upto( 999_999 ) do |i|

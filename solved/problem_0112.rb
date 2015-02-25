@@ -30,7 +30,7 @@ class Problem_0112
 
   def completed_on; '2015-01-12' end
   def ordinality; 14_269 end
-  def percentile; 96.85 end
+  def population; 453_601 end
 
   def solve( n = 99 )
     type = [0, 0, 0, 0]

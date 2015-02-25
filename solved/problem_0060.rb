@@ -18,11 +18,11 @@ class Problem_0060
 
   def refs; [] end
   def solution; 26033 end
-  def best_time; 343.7 end
+  def best_time; 208.3 end
 
   def completed_on; '2013-11-25' end
   def ordinality; 11_429 end
-  def percentile; 96.93 end
+  def population; 351_109 end
 
   def check( hash, array, n, result )
     return true if 0 == n

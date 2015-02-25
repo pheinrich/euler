@@ -32,7 +32,7 @@ class Problem_0093
 
   def completed_on; '2014-01-11' end
   def ordinality; 5_426 end
-  def percentile; 98.60 end
+  def population; 362_773 end
 
   GROUPS = %w[(%0.1f%c%0.1f)%c%0.1f%c%0.1f    %0.1f%c(%0.1f%c%0.1f)%c%0.1f
               %0.1f%c%0.1f%c(%0.1f%c%0.1f)    (%0.1f%c%0.1f)%c(%0.1f%c%0.1f)

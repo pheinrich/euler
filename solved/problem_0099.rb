@@ -23,7 +23,7 @@ class Problem_0099
 
   def completed_on; '2014-01-11' end
   def ordinality; 15_315 end
-  def percentile; 96.11 end
+  def population; 362_773 end
 
   def compare( tuples, i, j )
     a, x = tuples[i][0], tuples[i][1]

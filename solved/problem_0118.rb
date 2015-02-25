@@ -17,7 +17,7 @@ class Problem_0118
 
   def completed_on; '2015-01-31' end
   def ordinality; 3_826 end
-  def percentile; 99.16 end
+  def population; 458_316 end
 
   def fill( current, primes, succ, sets )
     set = current.join

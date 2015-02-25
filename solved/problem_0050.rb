@@ -19,11 +19,11 @@ class Problem_0050
 
   def refs; [] end
   def solution; 997_651 end
-  def best_time; 0.5725 end
+  def best_time; 0.3705 end
 
   def completed_on; '2013-03-12' end
   def ordinality; 23_891 end
-  def percentile; 92.50 end
+  def population; 287_083 end
 
   def solve( n = 1_000_000 )
     h = Hash.new

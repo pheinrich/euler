@@ -14,13 +14,13 @@ class Problem_0035
 
   def refs; [] end
   def solution; 55 end
-  def best_time; 7.234 end
+  def best_time; 4.673 end
 
   def completed_on; '2013-02-15' end
   def ordinality; 33_914 end
-  def percentile; 89.30 end
+  def population; 280_879 end
 
-  def solve( n = 1_000_000)
+  def solve( n = 1_000_000 )
     total = 0
 
     (2...n).each do |i|

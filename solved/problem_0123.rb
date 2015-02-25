@@ -19,7 +19,7 @@ class Problem_0123
 
   def completed_on; '2015-01-17' end
   def ordinality; 6_988 end
-  def percentile; 98.46 end
+  def population; 454_842 end
 
   def get_n_primes( n )
     lnn = Math.log( n )

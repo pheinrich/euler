@@ -28,7 +28,7 @@ class Problem_0121
 
   def completed_on; '2015-01-15' end
   def ordinality; 5_667 end
-  def percentile; 98.76 end
+  def population; 458_564 end
 
   def solve( n = 15 )
     prob, lim, n = 0, (1 << n) - 1, n - 1

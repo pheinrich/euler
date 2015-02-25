@@ -42,7 +42,7 @@ class Problem_0090
 
   def completed_on; '2014-01-09' end
   def ordinality; 5_162 end
-  def percentile; 98.68 end
+  def population; 362_277 end
 
   def check_squares?( d1, d2 )
     ((d1.include?( 0 ) && d2.include?( 1 )) || (d2.include?( 0 ) && d1.include?( 1 ))) &&

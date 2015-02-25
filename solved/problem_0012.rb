@@ -31,11 +31,11 @@ class Problem_0012
 
   def refs; [] end
   def solution; 76_576_500 end
-  def best_time; 6.240 end
+  def best_time; 5.405 end
 
   def completed_on; '2013-01-26' end
   def ordinality; 69_659 end
-  def percentile; 74.64 end
+  def population; 275_916 end
 
   def solve( n = 500 )
     i = t = f = 0

@@ -17,11 +17,11 @@ class Problem_0031
 
   def refs; [] end
   def solution; 73_682 end
-  def best_time; 0.6955 end
+  def best_time; 0.4587 end
 
   def completed_on; '2013-02-14' end
   def ordinality; 29_529 end
-  def percentile; 89.94 end
+  def population; 280_631 end
 
   def fit( n, denoms, sum = 0, index = 0, total = 0 )
     if index < denoms.length

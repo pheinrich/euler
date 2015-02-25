@@ -17,11 +17,11 @@ class Problem_0080
 
   def refs; ["http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Decimal_.28base_10.29"] end
   def solution; 40_886 end
-  def best_time; 0.2013 end
+  def best_time; 0.1995 end
 
   def completed_on; '2013-12-28' end
   def ordinality; 9_575 end
-  def percentile; 97.53 end
+  def population; 359_299 end
 
   def solve( n = 100, figs = 100 )
     sum = 0

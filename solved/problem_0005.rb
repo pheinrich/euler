@@ -12,11 +12,11 @@ class Problem_0005
   
   def refs; [] end
   def solution; 232_792_560 end
-  def best_time; 0.00006294 end
+  def best_time; 0.00001693 end
 
   def completed_on; '2013-01-23' end
   def ordinality; 151_793 end
-  def percentile; 45.79 end
+  def population; 275_191 end
 
   def solve( n = 20 )
     (2..n).inject {|acc, i| acc.lcm( i )}

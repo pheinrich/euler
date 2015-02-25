@@ -20,7 +20,7 @@ class Problem_0091
 
   def completed_on; '2014-01-10' end
   def ordinality; 7_570 end
-  def percentile; 98.07 end
+  def population; 362_525 end
 
   def solve( w = 50, h = 50 )
     # Trivially countable triangles with right angle at origin, on x-axis, or

@@ -35,7 +35,7 @@ class Problem_0107
 
   def completed_on; '2015-01-12' end
   def ordinality; 6_327 end
-  def percentile; 98.60 end
+  def population; 453_601 end
 
   def solve
     rows = File.readlines( 'resources/0107_network.txt' )

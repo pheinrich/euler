@@ -14,11 +14,11 @@ class Problem_0002
 
   def refs; [] end
   def solution; 4_613_732 end
-  def best_time; 0.00003100 end
+  def best_time; 0.000008822 end
 
   def completed_on; '2013-01-21' end
   def ordinality; 222_745 end
-  def percentile; 22.07 end
+  def population; 274_675 end
 
   def solve( n = 4_000_000 )
     # The first m terms sum to F[m+2] - 1.  Call this sum S.  Note that every

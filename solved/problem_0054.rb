@@ -55,11 +55,11 @@ class Problem_0054
 
   def refs; [] end
   def solution; 376 end
-  def best_time; 0.06298 end
+  def best_time; 0.03837 end
 
   def completed_on; '2013-03-16' end
   def ordinality; 11_936 end
-  def percentile; 95.75 end
+  def population; 288_076 end
 
   def solve
     deals = File.readlines( 'resources/0054_poker.txt' ).map {|l| l.split}

@@ -20,11 +20,11 @@ class Problem_0070
 
   def refs; [] end
   def solution; 8_319_823 end
-  def best_time; 20.32 end
+  def best_time; 12.68 end
 
   def completed_on; '2013-12-17' end
   def ordinality; 10_787 end
-  def percentile; 97.22 end
+  def population; 356_569 end
 
   def solve( n = 10_000_000 )
     # To minimize n/φ(n), maximize denominator. φ(n) = n ∏(p - 1/p) over p|n.

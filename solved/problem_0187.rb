@@ -19,7 +19,7 @@ class Problem_0187
 
   def completed_on; '2015-01-24' end
   def ordinality; 6_876 end
-  def percentile; 98.49 end
+  def population; 456_579 end
 
   def solve( n = 100_000_000 )
     p = (n / 2).prime_sieve

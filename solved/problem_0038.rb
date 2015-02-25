@@ -22,11 +22,11 @@ class Problem_0038
 
   def refs; [] end
   def solution; 932_718_654 end
-  def best_time; 0.8128 end
+  def best_time; 0.7031 end
 
   def completed_on; '2013-03-08' end
   def ordinality; 25_455 end
-  def percentile; 92.27 end
+  def population; 286_091 end
 
   def solve
     d = %w(1 2 3 4 5 6 7 8 9).permutation.map {|i| i.join}.select {|i| i >= '918273645'}.reverse

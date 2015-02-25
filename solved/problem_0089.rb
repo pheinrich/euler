@@ -38,7 +38,7 @@ class Problem_0089
 
   def completed_on; '2014-01-09' end
   def ordinality; 10_791 end
-  def percentile; 97.20 end
+  def population; 362_277 end
 
   def solve
     t = IO.read( 'resources/0089_roman.txt' ).split.map do |line|

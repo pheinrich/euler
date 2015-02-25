@@ -19,11 +19,11 @@ class Problem_0049
 
   def refs; [] end
   def solution; 296_962_999_629 end
-  def best_time; 0.04348 end
+  def best_time; 0.02731 end
   
   def completed_on; '2013-03-11' end
   def ordinality; 20_996 end
-  def percentile; 93.01 end
+  def population; 286_835 end
   
   def solve
     P.each do |p|

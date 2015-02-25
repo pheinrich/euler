@@ -29,7 +29,7 @@ class Problem_0102
 
   def completed_on; '2014-01-12' end
   def ordinality; 10_992 end
-  def percentile; 97.23 end
+  def population; 363_021 end
 
   def ccw?( p1, p2 )
     # >0 if line p1-p2 moves counterclockwise around origin

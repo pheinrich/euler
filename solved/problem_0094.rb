@@ -21,7 +21,7 @@ class Problem_0094
 
   def completed_on; '2014-02-12' end
   def ordinality; 5_799 end
-  def percentile; 98.54 end
+  def population; 370_714 end
 
   def solve( n = 1_000_000_000 )
     # Since the area of a triangle is A = (bh)/2, we know that an integer area

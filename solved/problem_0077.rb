@@ -18,11 +18,11 @@ class Problem_0077
 
   def refs; [] end
   def solution; 71 end
-  def best_time; 0.001203 end
+  def best_time; 0.0005162 end
 
   def completed_on; '2013-12-25' end
   def ordinality; 8_833 end
-  def percentile; 97.68 end
+  def population; 358_554 end
 
   def solve( n = 5_000 )
     # From observation, brute force.

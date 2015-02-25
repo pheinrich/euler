@@ -44,7 +44,7 @@ class Problem_0111
 
   def completed_on; '2015-01-29' end
   def ordinality; 4_161 end
-  def percentile; 99.09 end
+  def population; 457_820 end
 
   def s_of_nd( len, digit )
     primes = {}

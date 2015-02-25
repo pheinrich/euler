@@ -13,7 +13,7 @@ class Problem_0206
 
   def completed_on; '2015-01-18' end
   def ordinality; 12_886 end
-  def percentile; 97.16 end
+  def population; 455_090 end
 
   def solve
     # Since any square number that ends in '0' must end in '00', we know the

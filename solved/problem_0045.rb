@@ -17,11 +17,11 @@ class Problem_0045
 
   def refs; [] end
   def solution; 1_533_776_805 end
-  def best_time; 0.004272 end
+  def best_time; 0.003481 end
 
   def completed_on; '2013-03-09' end
   def ordinality; 29_787 end
-  def percentile; 90.97 end
+  def population; 286_339 end
 
   def solve( t = 285, p = 165, h = 143 )
     # Every hexagonal number is also triangular, so just look for numbers

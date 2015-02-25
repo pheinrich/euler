@@ -17,11 +17,11 @@ class Problem_0017
 
   def refs; [] end
   def solution; 21_124 end
-  def best_time; 0.005430 end
+  def best_time; 0.003458 end
 
   def completed_on; '2013-02-03' end
   def ordinality; 52_844 end
-  def percentile; 81.91 end
+  def population; 277_901 end
 
   def solve( n = 1_000 )
     (1..n).inject( 0 ) {|sum, i| sum + i.in_words.delete(' -').length}

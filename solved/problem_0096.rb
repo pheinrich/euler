@@ -33,7 +33,7 @@ class Problem_0096
 
   def completed_on; '2014-02-16' end
   def ordinality; 8_339 end
-  def percentile; 97.92 end
+  def population; 371_707 end
 
   def solve
     # Parse data file into an array of puzzles, each of which is an array of

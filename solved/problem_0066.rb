@@ -31,11 +31,11 @@ class Problem_0066
 
   def refs; ["http://www.numbertheory.org/pdfs/talk_2004.pdf"] end
   def solution; 661 end
-  def best_time; 0.08464 end
+  def best_time; 0.03741 end
   
   def completed_on; '2013-12-13' end
   def ordinality; 9_009 end
-  def percentile; 97.62 end
+  def population; 355_576 end
 
   def solve( n = 1_000 )
     # Minimal solution comes from one of the convergents of the continued

@@ -20,11 +20,11 @@ class Problem_0006
 
   def refs; [] end
   def solution; 25_164_150 end
-  def best_time; 0.00003624 end
+  def best_time; 0.00001001 end
 
   def completed_on; '2013-01-24' end
   def ordinality; 157_925 end
-  def percentile; 45.39 end
+  def population; 275_419 end
 
   def solve( n = 100 )
     # Sum of squares is given by n(n + 1)(2n + 1) / 6, while square of sums

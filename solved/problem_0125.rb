@@ -21,7 +21,7 @@ class Problem_0125
 
   def completed_on; '2015-01-11' end
   def ordinality; 8_087 end
-  def percentile; 98.12 end
+  def population; 453_353 end
 
   def solve( n = 100_000_000 )
     # Assuming the largest valid sum of squares is S = a^2 + (a - 1)^2 < n,

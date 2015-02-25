@@ -19,11 +19,11 @@ class Problem_0042
 
   def refs; [] end
   def solution; 162 end
-  def best_time; 0.01971 end
+  def best_time; 0.01396 end
 
   def completed_on; '2013-02-17' end
   def ordinality; 31_032 end
-  def percentile; 90.48 end
+  def population; 281_375 end
 
   def solve
     # Strip quotes and split comma-separated values into a sorted array.

@@ -15,11 +15,11 @@ class Problem_0036
 
   def refs; [] end
   def solution; 872_187 end
-  def best_time; 0.8722 end
+  def best_time; 0.5548 end
 
   def completed_on; '2013-02-17' end
   def ordinality; 36_697 end
-  def percentile; 88.65 end
+  def population; 280_631 end
 
   def solve( n = 1_000_000 )
     (0...n).select {|i| i.to_s.palindromic? && i.to_s( 2 ).palindromic?}.reduce( :+ )

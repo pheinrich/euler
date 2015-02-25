@@ -20,11 +20,11 @@ class Problem_0072
 
   def refs; [] end
   def solution; 303_963_552_391 end
-  def best_time; 1.581 end
+  def best_time; 1.484 end
 
   def completed_on; '2013-12-19' end
   def ordinality; 10_806 end
-  def percentile; 97.23 end
+  def population; 357_065 end
 
   def solve( n = 1_000_000 )
     n.farey_length - 2

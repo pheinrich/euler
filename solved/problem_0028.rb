@@ -20,11 +20,11 @@ class Problem_0028
 
   def refs; [] end
   def solution; 669_171_001 end
-  def best_time; 0.0002179 end
+  def best_time; 0.00006700 end
 
   def completed_on; '2013-02-13' end
   def ordinality; 46_228 end
-  def percentile; 86.11 end
+  def population; 280_383 end
 
   def solve( n = 1_001 )
     # For each enclosing rectangle, index 0 < i < (n - 1)/2, the corner values

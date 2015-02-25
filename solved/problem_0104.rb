@@ -23,7 +23,7 @@ class Problem_0104
 
   def completed_on; '2015-01-15' end
   def ordinality; 9_567 end
-  def percentile; 97.88 end
+  def population; 452_608 end
 
   def solve
     k, curr, succ = 2749, 1, 0

@@ -20,7 +20,7 @@ class Problem_0097
 
   def completed_on; '2014-01-10' end
   def ordinality; 25_048 end
-  def percentile; 93.90 end
+  def population; 362_525 end
 
   def solve( n = 10 )
     mod = 10**n

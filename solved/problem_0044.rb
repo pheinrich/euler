@@ -18,11 +18,11 @@ class Problem_0044
 
   def refs; [] end
   def solution; 5_482_660 end
-  def best_time; 5.936 end
+  def best_time; 3.353 end
 
   def completed_on; '2013-03-08' end
   def ordinality; 20_619 end
-  def percentile; 93.10 end
+  def population; 286_091 end
 
   def solve
     # Assume a large D to start.

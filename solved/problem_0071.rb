@@ -21,11 +21,11 @@ class Problem_0071
 
   def refs; ["http://en.wikipedia.org/wiki/Farey_sequence#Next_term"] end
   def solution; 428_570 end
-  def best_time; 0.03006 end
+  def best_time; 0.02593 end
 
   def completed_on; '2013-12-19' end
   def ordinality; 14_078 end
-  def percentile; 96.42 end
+  def population; 357_065 end
 
   def solve( n = 1_000_000, numer = 3, denom = 7 )
     a, b, c, d = 0, 1, 1, denom

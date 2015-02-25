@@ -13,11 +13,11 @@ class Problem_0062
 
   def refs; [] end
   def solution; 127_035_954_683 end
-  def best_time; 27.51 end
+  def best_time; 14.94 end
   
   def completed_on; '2013-11-22' end
   def ordinality; 14_140 end
-  def percentile; 96.22 end
+  def population; 350_365 end
 
   def solve( n = 5 )
     # Sort cube digits.

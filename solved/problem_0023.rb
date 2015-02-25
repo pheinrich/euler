@@ -25,11 +25,11 @@ class Problem_0023
 
   def refs; [] end
   def solution; 4_179_871 end
-  def best_time; 3.038 end
+  def best_time; 1.751 end
 
   def completed_on; '2013-02-07' end
   def ordinality; 35_028 end
-  def percentile; 87.66 end
+  def population; 278_894 end
 
   def solve( n = 28_123 )
     # Precompute the abundant numbers below the max.

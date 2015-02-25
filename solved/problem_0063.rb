@@ -11,11 +11,11 @@ class Problem_0063
 
   def refs; [] end
   def solution; 49 end
-  def best_time; 0.0001099 end
+  def best_time; 0.00004101 end
   
   def completed_on; '2013-10-31' end
   def ordinality; 20_359 end
-  def percentile; 94.63 end
+  def population; 344_905 end
 
   def count_matches( n )
     i = 1

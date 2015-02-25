@@ -29,11 +29,11 @@ class Problem_0025
 
   def refs; [] end
   def solution; 4_782 end
-  def best_time; 0.03577 end
+  def best_time; 0.02421 end
 
   def completed_on; '2013-02-07' end
   def ordinality; 59_579 end
-  def percentile; 80.91 end
+  def population; 278_894 end
 
   def solve( n = 1_000 )
     term = 1

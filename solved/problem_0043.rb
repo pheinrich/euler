@@ -23,11 +23,11 @@ class Problem_0043
 
   def refs; [] end
   def solution; 16_695_334_890 end
-  def best_time; 1.814 end
+  def best_time; 1.206 end
 
   def completed_on; '2013-02-19' end
   def ordinality; 21_574 end
-  def percentile; 92.83 end
+  def population; 281_872 end
 
   def chain( maps, candidate = "", index = 0, sum = 0 )
     if index < maps.length

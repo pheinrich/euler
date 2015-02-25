@@ -14,11 +14,11 @@ class Problem_0120
 
   def refs; [] end
   def solution; 333_082_500 end
-  def best_time; 0.0001509 end
+  def best_time; 0.0001409 end
 
   def completed_on; '2015-01-16' end
   def ordinality; 8_257 end
-  def percentile; 98.18 end
+  def population; 454_494 end
 
   def solve( n = 1_000 )
     # We're looking for [(a-1)^n + (a+1)^n] mod a^2, which is equivalent to

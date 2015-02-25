@@ -77,11 +77,11 @@ class Problem_0084
 
   def refs; [] end
   def solution; 101_524 end
-  def best_time; 0.3130 end
+  def best_time; 0.1896 end
 
   def completed_on; '2013-12-30' end
   def ordinality; 5_887 end
-  def percentile; 98.49 end
+  def population; 359_795 end
 
   NUM_SQUARES  = 40
   NUM_CC_CARDS = 16

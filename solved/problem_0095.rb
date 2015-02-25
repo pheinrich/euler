@@ -25,11 +25,11 @@ class Problem_0095
 
   def refs; [] end
   def solution; 14_316 end
-  def best_time; 9.751 end
+  def best_time; 9.352 end
 
   def completed_on; '2014-02-14' end
   def ordinality; 6_859 end
-  def percentile; 98.27 end
+  def population; 371_211 end
 
   def solve( n = 1_000_000 )
     # Compute the sum of all factors for each number less than n.

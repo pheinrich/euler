@@ -25,11 +25,11 @@ class Problem_0026
 
   def refs; [] end
   def solution; 983 end
-  def best_time; 0.7733 end
+  def best_time; 0.5504 end
 
   def completed_on; '2013-02-07' end
   def ordinality; 30_742 end
-  def percentile; 89.93 end
+  def population; 278_894 end
 
   def solve( n = 1_000 )
     # Divide 1 by every number up to n, recording the length of repeating

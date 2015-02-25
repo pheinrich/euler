@@ -13,11 +13,11 @@ class Problem_0039
 
   def refs; [] end
   def solution; 8 end
-  def best_time; 0.001001 end
+  def best_time; 0.0001709 end
 
   def completed_on; '2013-03-06' end
   def ordinality; 28_841 end
-  def percentile; 91.03 end
+  def population; 285_594 end
 
   def solve( n = 1_000 )
     counts = n.pytriple_sieve

@@ -19,11 +19,11 @@ class Problem_0032
 
   def refs; [] end
   def solution; 45_228 end
-  def best_time; 2.703 end
+  def best_time; 1.992 end
 
   def completed_on; '2013-02-14' end
   def ordinality; 26_994 end
-  def percentile; 91.38 end
+  def population; 280_631 end
 
   def solve
     perms = (1..9).to_a.permutation.map {|p| p.join}

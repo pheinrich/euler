@@ -18,11 +18,11 @@ class Problem_0087
 
   def refs; [] end
   def solution; 1_097_343 end
-  def best_time; 1.351 end
+  def best_time; 0.8029 end
 
   def completed_on; '2014-01-05' end
   def ordinality; 10_109 end
-  def percentile; 97.40 end
+  def population; 361_284 end
 
   def solve( n = 50_000_000 )
     terms = (2..4).map {|root| (1 + n**(1.0 / root)).to_i.prime_sieve}

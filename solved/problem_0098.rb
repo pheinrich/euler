@@ -22,11 +22,11 @@ class Problem_0098
 
   def refs; [] end
   def solution; 18_769 end
-  def best_time; 1.228 end
+  def best_time; 1.199 end
 
   def completed_on; '2014-02-14' end
   def ordinality; 5_299 end
-  def percentile; 98.66 end
+  def population; 371_211 end
 
   def solve
     # Load the word list and remove commas and quotes.

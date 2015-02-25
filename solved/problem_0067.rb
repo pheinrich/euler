@@ -25,11 +25,11 @@ class Problem_0067
 
   def refs; [] end
   def solution; 7_273 end
-  def best_time; 0.005959 end
+  def best_time; 0.004417 end
   
   def completed_on; '2013-02-15' end
   def ordinality; 41_780 end
-  def percentile; 87.53 end
+  def population; 278_397 end
 
   def solve
     t = IO.read( 'resources/0067_triangle.txt' ).split.map(&:to_i)

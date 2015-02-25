@@ -41,11 +41,11 @@ class Problem_0059
 
   def refs; [] end
   def solution; 107_359 end
-  def best_time; 2.626 end
+  def best_time; 2.045 end
 
   def completed_on; '2013-04-03' end
   def ordinality; 16_950 end
-  def percentile; 94.74 end
+  def population; 292_543 end
 
   def solve
     orig = IO.read( 'resources/0059_cipher1.txt' ).split( ',' ).map( &:to_i )

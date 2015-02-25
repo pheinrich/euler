@@ -15,11 +15,11 @@ class Problem_0117
 
   def refs; [] end
   def solution; 100_808_458_960_497 end
-  def best_time; 0.0006001 end
+  def best_time; 0.0005738 end
 
   def completed_on; '2015-01-16' end
   def ordinality; 6_404 end
-  def percentile; 98.59 end
+  def population; 454_594 end
 
   def fill( lens, row, memo )
     return memo[row] if memo[row]

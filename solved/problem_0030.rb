@@ -20,11 +20,11 @@ class Problem_0030
 
   def refs; [] end
   def solution; 443_839 end
-  def best_time; 2_932 end
+  def best_time; 2.458 end
 
   def completed_on; '2013-02-13' end
   def ordinality; 39_261 end
-  def percentile; 86.51 end
+  def population; 280_383 end
 
   def solve( n = 5 )
     p = (0..9).map {|i| i**n}

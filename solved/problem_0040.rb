@@ -18,11 +18,11 @@ class Problem_0040
 
   def refs; [] end
   def solution; 210 end
-  def best_time; 0.0001292 end
+  def best_time; 0.00008106 end
 
   def completed_on; '2013-03-07' end
   def ordinality; 32_151 end
-  def percentile; 89.99 end
+  def population; 285_842 end
 
   def solve( offsets = [1, 10, 100, 1000, 10000, 100000, 1000000] )
     # Count of tuples         Relevant offsets     Expression    

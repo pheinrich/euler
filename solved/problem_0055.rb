@@ -36,11 +36,11 @@ class Problem_0055
 
   def refs; [] end
   def solution; 249 end
-  def best_time; 0.07033 end
+  def best_time; 0.04874 end
 
   def completed_on; '2013-03-17' end
   def ordinality; 22_687 end
-  def percentile; 93.16 end
+  def population; 288_324 end
 
   def solve( n = 10_000 )
     5.upto( n - 1 ).count {|i| i.lychrel?}

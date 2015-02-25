@@ -29,7 +29,7 @@ class Problem_0110
 
   def completed_on; '2015-01-27' end
   def ordinality; 4_851 end
-  def percentile; 98.94 end
+  def population; 457_323 end
 
   def limit( root, max )
     # Starting at the root provided, step forward until we find one with

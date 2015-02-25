@@ -25,11 +25,11 @@ class Problem_0100
   end
 
   def solution; 756_872_327_473 end
-  def best_time; 0.00001192 end
+  def best_time; 0.00001001 end
 
   def completed_on; '2015-01-09' end
   def ordinality; 8_868 end
-  def percentile; 98.04 end
+  def population; 362_277 end
 
   def solve( n = 1_000_000_000_000 )
     # We are looking for x and y that satisfy the relationship:

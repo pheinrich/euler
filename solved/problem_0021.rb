@@ -17,11 +17,11 @@ class Problem_0021
 
   def refs; [] end
   def solution; 31_626 end
-  def best_time; 0.3024 end
+  def best_time; 0.2043 end
 
   def completed_on; '2013-02-05' end
   def ordinality; 54_309 end
-  def percentile; 82.49 end
+  def population; 278_397 end
 
   def solve( n = 10_000 )
     (1..n).select {|i| i.amicable?}.reduce( :+ )

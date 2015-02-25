@@ -17,11 +17,11 @@ class Problem_0079
 
   def refs; [] end
   def solution; 73_162_890 end
-  def best_time; 0.0004969 end
+  def best_time; 0.0002661 end
 
   def completed_on; '2013-12-27' end
   def ordinality; 23_596 end
-  def percentile; 94.18 end
+  def population; 359_051 end
 
   def solve
     # Read lines and split into start-end pairs.

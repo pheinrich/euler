@@ -25,7 +25,7 @@ class Problem_0113
 
   def completed_on; '2015-01-13' end
   def ordinality; 6_664 end
-  def percentile; 98.53 end
+  def population; 453_849 end
 
   def solve( log10 = 100 )
     total = 0

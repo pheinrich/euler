@@ -34,7 +34,7 @@ class Problem_0088
 
   def completed_on; '2014-01-05' end
   def ordinality; 5_178 end
-  def percentile; 98.85 end
+  def population; 361_284 end
 
   def prodSum( sum, prod, last )
     # Compute final term satisfying N = ∑a_i = ∏a_i. If it's an integer, use

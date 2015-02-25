@@ -27,7 +27,7 @@ class Problem_0116
 
   def completed_on; '2015-01-14' end
   def ordinality; 6_967 end
-  def percentile; 98.46 end
+  def population; 454_097 end
 
   def fill( len, row, memo )
     return memo[row] if memo[row]

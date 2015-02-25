@@ -18,11 +18,11 @@ class Problem_0076
 
   def refs; [] end
   def solution; 190_569_291 end
-  def best_time; 0.0006421 end
+  def best_time; 0.0002010 end
 
   def completed_on; '2013-12-24' end
   def ordinality; 14_159 end
-  def percentile; 96.41 end
+  def population; 358_306 end
 
   def solve( n = 100 )
     n.partition_sieve[-1] - 1

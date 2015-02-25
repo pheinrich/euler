@@ -21,7 +21,7 @@ class Problem_0134
 
   def completed_on; '2015-01-20' end
   def ordinality; 4_108 end
-  def percentile; 99.10 end
+  def population; 455_586 end
 
   def solve( min = 5, max = 1_000_000 )
     # Extend the range of our prime sieve slightly to ensure we include the

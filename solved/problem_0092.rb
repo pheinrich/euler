@@ -24,7 +24,7 @@ class Problem_0092
 
   def completed_on; '2014-01-09' end
   def ordinality; 20_668 end
-  def percentile; 94.67 end
+  def population; 362_277 end
 
   def solve( n = 10_000_000 )
     sum = Array.new( n, 0 )
