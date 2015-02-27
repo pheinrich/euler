@@ -471,7 +471,9 @@ describe Numeric do
 
   describe "#modular_power" do
     it "performs exponentiation over a modulus" do
+      expect( 887.modular_power( 66283, 191 ) ).to eq( 71 )
       expect( 1234.modular_power( 567, 890 ) ).to eq( 304 )
+      expect( 99152.modular_power( 9923, 19982 ) ).to eq( 3698 )
     end
   end
 end

@@ -364,6 +364,31 @@ class Integer
     true
   end
 
+  def miller_rabin?( witness )
+    s, d = 0, self - 1
+    s, d = s + 1, d >> 1 while 0 == d & 1 && s < 32
+
+    aToPower = witness.modular_power( d, self )
+    return true if 1 == aToPower
+
+    (0...s-1).each do |i|
+      return true if self - 1 == aToPower
+      aToPower = aToPower.modular_power( 2, self )
+    end
+
+    return true if self - 1 == aToPower
+    false
+  end
+
+  def prime2?
+    return true if 2 == self
+    return false if 2 > self || 0 == self % 2
+    return true if self.miller_rabin?( 2 ) &&
+                   (self <= 7 || self.miller_rabin?( 7 )) &&
+                   (self <= 61 || self.miller_rabin?( 61 ))
+    false
+  end
+
   # Determine if this number is coprime with another.
   #
   # Problems:  127
@@ -745,11 +770,19 @@ class Integer
 end
 
 class Numeric
-  # Perform exponentiation over a modulus, returning (b^e) % m.
+  # Perform exponentiation over a modulus, returning (b^e) % m. The exponent
+  # e must be an integer with no more than 32 bits.
   #
   # Problems:  48, 97
   def modular_power( e, m )
-    (1..e).inject( 1 ) {|c| (c * self) % m}
+    result = 1;
+
+    31.downto( 0 ).each do |i|
+      result = (result * result) % m
+      result = (result * self) % m if 0 != (e & (1 << i))
+    end
+
+    result
   end
 end
 
