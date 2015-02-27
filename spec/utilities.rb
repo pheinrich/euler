@@ -89,6 +89,15 @@ describe Integer do
     end
   end
 
+  describe "#hamming" do
+    it "computes the number of set bits in a 32-bit number" do
+      expect( 0.hamming ).to eq( 0 )
+      expect( 15.hamming ).to eq( 4 )
+      expect( 9872344.hamming ).to eq( 12 )
+      expect( -15.hamming ).to eq( 29 )
+    end
+  end
+
   describe "#multichoose" do
     it "counts the k-multisubsets possible with n items" do
       expect( 0.multichoose( 2 ) ).to eq( 0 )
@@ -513,6 +522,53 @@ module ProjectEuler
             # Output string has format similar to "0.4105238914s\n"
           end
         }.to output( a_string_matching( /\d+\.\d{10}s\n/ ) ).to_stdout
+      end
+    end
+  end
+
+  describe BitField do
+    it "represents an array of bit-packed boolean values" do; end
+
+    before( :all ) do
+      @bitfield = BitField.new( 145 )
+      @bitfield[9] = 1
+      @bitfield[19] = 1
+      @bitfield[100] = 1
+    end
+
+    describe "#new" do
+      it "creates a BitField object" do
+        expect( @bitfield ).to be_an_instance_of( BitField )
+      end
+    end
+
+    describe "#[]=" do
+      it "sets the value of a specific bit in the field" do
+        @bitfield[115] = 1
+        expect( @bitfield.field ).to eq( [524800, 0, 0, 524304, 0] )
+        @bitfield[115] = 0
+        expect( @bitfield.field ).to eq( [524800, 0, 0, 16, 0] )
+      end
+    end
+
+    describe "#[]" do
+      it "retrieves the value of a specific bit in the field" do
+        expect( @bitfield[9] ).to eq( 1 )
+        expect( @bitfield[19] ).to eq( 1 )
+        expect( @bitfield[115] ).to eq( 0 )
+      end
+    end
+
+    describe "#each" do
+      it "iterates over all bits in the field" do
+        expect( @bitfield.reduce( 0 ) {|acc, i| acc + 2*i} ).to eq( 6 )
+        expect( @bitfield.each_with_index.reject {|b, i| 0 == b}.map {|v| v[1]} ).to eq( [9, 19, 100] )
+      end
+    end
+
+    describe "#hamming" do
+      it "computes the Hamming weight of the entire field" do
+        expect( @bitfield.hamming ).to eq( 3 )
       end
     end
   end

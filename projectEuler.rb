@@ -141,6 +141,15 @@ class Integer
     (self - k + 1).upto( self ).inject( :* ) / k.fact
   end
 
+  # Returns the Hamming weight (the number of set bits) in an integer.
+  # The integer should fit in 32 bits.
+  def hamming
+    val = self - ((self >> 1) & 0x55555555)
+    val = (val & 0x33333333) + ((val >> 2) & 0x33333333)
+    val = ((val + (val >> 4)) & 0x0f0f0f0f) * 0x01010101
+    (val >> 24) & 0x3f
+  end
+
   # Counts k-multisubsets (k-subsets allowing for replacement but without re-
   # gard for order).
   def multichoose( k )
@@ -795,6 +804,39 @@ module ProjectEuler
     start = Time.now.to_f
     yield
     puts "%.10f%s" % [Time.now.to_f - start, 's']
+  end
+
+  # A class representing a bit-packed array of boolean values.
+  class BitField
+    include Enumerable
+    attr_reader :size, :field
+
+    BITWIDTH_LOG2 = 5
+    BITWIDTH_MASK = (1 << BITWIDTH_LOG2) - 1
+
+    def initialize( size, field = nil )
+      @size = size
+      @field = field || Array.new( 1 + (size - 1 >> BITWIDTH_LOG2), 0 )
+    end
+
+    def []=( pos, val )
+      idx, bit = pos >> BITWIDTH_LOG2, 1 << (pos & BITWIDTH_MASK)
+
+      @field[idx] |= bit if 0 != val
+      @field[idx] &= ~bit if 0 == val
+    end
+
+    def []( pos )
+      @field[pos >> BITWIDTH_LOG2] >> (pos & BITWIDTH_MASK) & 1
+    end
+
+    def each( &block )
+      @size.times {|pos| yield self[pos]}
+    end
+
+    def hamming
+      @field.reduce( 0 ) {|acc, i| acc + i.hamming}
+    end
   end
 
   # A class representing vertices and the edges between them.
