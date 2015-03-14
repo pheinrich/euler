@@ -454,7 +454,7 @@ class Integer
   # segmented Sieve of Eratosthenes to generate the array.
   #
   # Problems:  10, 27, 37, 49, 50, 51, 60, 70, 87, 108, 110, 118, 123, 134,
-  #            187, 234, 243
+  #            187, 234, 243, 357
   def prime_sieve( window = 65535 )
     max = Math.sqrt( self )
     smallPrimes = Array.new( 1 + max ) {|i| i & 1}
