@@ -451,24 +451,65 @@ class Integer
   end
 
   # Return an array of prime numbers less than the maximum specified.  Use the
-  # Sieve of Eratosthenes to generate the array.
+  # segmented Sieve of Eratosthenes to generate the array.
   #
   # Problems:  10, 27, 37, 49, 50, 51, 60, 70, 87, 108, 110, 118, 123, 134,
   #            187, 234, 243
-  def prime_sieve
-    s = Array.new( self ) {|i| i}
-    s[0] = s[1] = nil
-
+  def prime_sieve( window = 65535 )
     max = Math.sqrt( self )
-    i = 2
+    smallPrimes = Array.new( 1 + max ) {|i| i & 1}
 
-    while i < max
-      (2*i...self).step( i ) {|j| s[j] = nil}
-      i += 1
-      i += 1 while max > i && !s[i]
+    smallPrimes[2] = 1
+    i, ii, dii = 3, 9, 16
+
+    # Identify small primes up to the square root of the upper bound.
+    while ii <= max
+      ii.step( max, i ).each {|j| smallPrimes[j] = 0} if 0 < smallPrimes[i]
+      i, ii, dii = i + 2, ii + dii, dii + 8
     end
-    
-    s.compact!
+
+    currset, nextset, primes = [], [], [2]
+    i, ii, dii = 2, 4, 5
+    last = 3
+
+    # Identify primes one sliding window at a time.
+    0.step( self, window ) do |low|
+      sieve = Array.new( window, 1 )
+      high = [low + window - 1, self].min
+
+      # Incrementally generate primes up to the square root of the current
+      # upper bound of the current window. These are the primes we'll need
+      # for sieving this window.
+      while ii <= high
+        if 0 < smallPrimes[i]
+          currset << i
+          nextset << (ii - low)
+        end
+
+        i, ii, dii = i + 1, ii + dii, dii + 2
+      end
+
+      # Sieve the current window
+      (1...currset.length).each do |i|
+        j = nextset[i]
+        k = currset[i]*2
+
+        while j < window
+          sieve[j] = 0
+          j += k
+        end
+
+        nextset[i] = j - window
+      end
+
+      # Collect all the identified primes in the current window.
+      while last <= high
+        primes << last if 0 < sieve[last - low]
+        last += 2
+      end
+    end
+
+    primes
   end
 
   # Return the sum of prime factors for each number less than n.

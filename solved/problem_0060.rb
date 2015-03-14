@@ -18,7 +18,7 @@ class Problem_0060
 
   def refs; [] end
   def solution; 26033 end
-  def best_time; 208.3 end
+  def best_time; 184.8 end
 
   def completed_on; '2013-11-25' end
   def ordinality; 11_429 end

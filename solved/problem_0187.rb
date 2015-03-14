@@ -15,7 +15,7 @@ class Problem_0187
 
   def refs; ["http://mathworld.wolfram.com/Semiprime.html"] end
   def solution; 17_427_258 end
-  def best_time; 11.95 end
+  def best_time; 3.398 end
 
   def completed_on; '2015-01-24' end
   def ordinality; 6_876 end

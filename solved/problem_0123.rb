@@ -15,7 +15,7 @@ class Problem_0123
 
   def refs; ["http://en.wikipedia.org/wiki/Prime-counting_function#Inequalities"] end
   def solution; 21_035 end
-  def best_time; 0.06736 end
+  def best_time; 0.02109 end
 
   def completed_on; '2015-01-17' end
   def ordinality; 6_988 end
