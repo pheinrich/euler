@@ -146,6 +146,17 @@ describe Integer do
     end
   end
 
+  describe "#harshad?" do
+    it "returns true if a number is divisible by the sum of its digits" do
+      expect( 195 ).to be_harshad
+      expect( 24786 ).to be_harshad
+      expect( 486001082800 ).to be_harshad
+      
+      expect( 0 ).to_not be_harshad
+      expect( 8462 ).to_not be_harshad
+    end
+  end
+
   describe "#inverse" do
     it "returns the multiplicative inverse for a specific modulus" do
       expect( 3.inverse( 11 ) ).to eq( 4 )

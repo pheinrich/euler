@@ -216,6 +216,11 @@ class Integer
     succ
   end
 
+  # Returns true if this number is divisible by the some of its digits.
+  def harshad?( base = 10 )
+    0 < self && 0 == self % sum_digits( base )
+  end
+
   # Returns the multiplicative inverse if it exists for a specific modulus.
   # The result will satisfy the congruence a·t ≡ 1 (mod n). This is just a
   # slightly modified extgcd(), detecting the case when a and n are not
@@ -1225,6 +1230,9 @@ module ProjectEuler
     end
   end
 
+  # A simple tree structure representing parent and child nodes.
+  #
+  # Problems:  122, 387
   class Tree
     attr_accessor :value, :parent, :children
 
