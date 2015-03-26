@@ -18,31 +18,31 @@ class Problem_0301
   # and n3 then there is a simple function X(n1,n2,n3) — that you may look up
   # or attempt to deduce for yourself — that returns:
   #
-  #   - zero if, with perfect strategy, the player about to move will event-
+  #   * zero if, with perfect strategy, the player about to move will event-
   #     ually lose; or
-  #   - non-zero if, with perfect strategy, the player about to move will
+  #   * non-zero if, with perfect strategy, the player about to move will
   #     eventually win.
   #
   # For example X(1,2,3) = 0 because, no matter what the current player does,
   # his opponent can respond with a move that leaves two heaps of equal size,
-  # at which point every move by the current player can be mirrored by his op-
-  # ponent until no stones remain; so the current player loses. To illustrate:
-  #
+  # at which point every move by the current player can be mirrored by his
+  # opponent until no stones remain; so the current player loses. To illu-
+  # strate:
   #   - current player moves to (1,2,1)
   #   - opponent moves to (1,0,1)
   #   - current player moves to (0,0,1)
   #   - opponent moves to (0,0,0), and so wins.
   #
-  # For how many positive integers n ≤ 230 does X(n,2n,3n) = 0 ?
+  # For how many positive integers n ≤ 2^30 does X(n,2n,3n) = 0 ?
 
   def refs; [] end
   def solution; end
   def best_time; end
 
-  def completed_on; '2015-??-??' end
+  def completed_on; '2013-01-21' end
   def ordinality; end
-  def percentile; end
+  def population; end
 
-  def solve( n = 230 )
+  def solve( n )
   end
 end
