@@ -3,7 +3,6 @@ require 'projectEuler'
 # 
 class Problem_0103
   def title; 'Special subset sums: optimum' end
-  def solution;  end
 
   # Let S(A) represent the sum of elements in set A of size n. We shall call
   # it a special sum set if for any two non-empty disjoint subsets, B and C,
@@ -35,6 +34,22 @@ class Problem_0103
   #
   # NOTE: This problem is related to Problem 105 and Problem 106.
 
+  def refs; [] end
+  def solution; end
+  def best_time; end
+
+  def completed_on; '2016-01-01' end
+  def ordinality; end
+  def population; end
+
   def solve( n = 7 )
+    # A few observations following directly from properties i and ii (assume
+    # w.l.o.g. that A is ordered):
+    #
+    #   1. ai must be unique, so an >= a1 + n - 1.
+    #   2. a1 + a2 > an, so a1 + a2 >= a1 + n - 1 ==> a2 >= n - 1.
+    #   3. a2 >= n - 1 ==> a2 - a1 >= n - 1 - a1
+    #   3. ai + aj != ak ∀ i, j, k, so ak - aj ∉ A for any j, k.
+    #   4. 
   end
 end
