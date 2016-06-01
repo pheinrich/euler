@@ -12,7 +12,7 @@ class Problem_0000
 
   def completed_on; '2013-01-21' end
   def ordinality; end
-  def percentile; end
+  def population; end
 
   def solve( n )
   end
