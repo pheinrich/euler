@@ -1035,6 +1035,104 @@ module ProjectEuler
     end
   end
 
+  # A class representing a cost or profit matrix on which we can call the
+  # Kuhn-Munkres (aka the Hungarian algorithm) to solve the Assignment
+  # Problem.
+  #
+  # Problems:  345
+  class KuhnMunkres < Array
+    attr_reader :pairs
+
+    def initialize( matrix )
+      super( matrix )
+      @pairs = nil
+
+      # Pad the matrix if necessary (it should be square).
+      self.map! {|row| row + [0] * (matrix.length - row.length)}
+    end
+
+    def minimize_cost
+      @matrix = self.map( &:dup )
+
+      # Reduce each row by its minimum value.
+      @matrix.map! do |row|
+        min = row.min
+        row.map {|c| c - min}
+      end
+
+      # Reduce each column by its minimum value.
+      @matrix = @matrix.transpose.map do |col|
+        min = col.min
+        col.map {|c| c - min}
+      end.transpose
+
+      # Find the number of lines necessary to cover all zeros in the matrix.
+      # As soon as that number equals the matrix rank, we have an optimal
+      # arrangement.
+      while cover() < self.length
+        min = @matrix.flatten.max
+
+        # Find the minimum of all the values not covered by any line.
+        for i in @matrix.each_index
+          next if @rowMark[i]
+          for j in @matrix.each_index
+            next if @colMark[j]
+            min = [min, @matrix[i][j]].min
+          end
+        end
+
+        # Subtract the minimum from all uncovered elements and add it to all
+        # elements covered by two lines.
+        for i in @matrix.each_index
+          for j in @matrix.each_index
+            if @rowMark[i] && @colMark[j]
+              @matrix[i][j] += min
+            elsif !(@rowMark[i] || @colMark[j])
+              @matrix[i][j] -= min
+            end  
+          end
+        end
+      end
+
+      puts @matrix.inspect
+      total( @pairs )
+    end
+
+    def maximize_profit
+      # Convert each element from an edge weight to an edge cost. 
+      max = self.flatten.max
+      self.map! {|row| row.map {|c| max - c}}
+
+      minimize_cost()
+    end
+
+    def total( pairs )
+      pairs && pairs.reduce( 0 ) {|acc, (i, j)| acc + self[i][j]}
+    end
+
+    protected
+
+    def cover
+      @rowMark, @colMark = [], []
+
+      # Count the total number of zeros in each row and column.
+      rowZ = @matrix.map {|row| row.count( 0 )}
+      colZ = @matrix.transpose.map {|col| col.count( 0 )}
+
+      # For each zero in the matrix, cover its row or column depending on
+      # which one has more total zeros.
+      for i in @matrix.each_index
+        next if @rowMark[i]
+        for j in @matrix.each_index
+          next if @colMark[j] || 0 != @matrix[i][j]
+          rowZ[i] < colZ[j] ? @colMark[j] = true : @rowMark[i] = true
+        end
+      end
+
+      @rowMark.count( true ) + @colMark.count( true )      
+    end
+  end
+
   # A class representing card hands used in Poker.
   #
   # Problems:  54
