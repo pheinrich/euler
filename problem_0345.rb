@@ -58,9 +58,7 @@ class Problem_0345
   def population; 473_729 end
 
   def solve( w = 5 )
-    #m = [[1, 2, 3], [2, 4, 6], [3, 6, 9]]
     km = ProjectEuler::KuhnMunkres.new( N )
-#    puts km.minimize_cost.inspect
-    puts km.maximize_profit
+    puts km.minimize_cost.inspect
   end
 end

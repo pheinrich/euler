@@ -941,13 +941,24 @@ module ProjectEuler
     end
 
     def connect( src, dst, fwd, back = nil )
-      self[src] << [dst, fwd]
-      self[dst] << [src, back] if back
+      edge = self[src].find {|edge| edge[0] == dst}
+      if edge then edge[1] = fwd else self[src] << [dst, fwd] end
+
+      if back
+        edge = self[dst].find {|edge| edge[0] == src}
+        if edge then edge[1] = back else self[dst] << [src, back] end
+      end
+
       self
     end
 
     def biconnect( src, dst, len )
       connect( src, dst, len, len )
+    end
+
+    def disconnect( src, dst )
+      self[src].delete_if {|edge| dst == edge[0]}
+      self
     end
 
     def neighbors( src )
@@ -1033,6 +1044,98 @@ module ProjectEuler
     def total_weight
       self.values.reduce( 0 ) {|acc, v| acc + (v.transpose[1] || [0]).reduce( :+ )}
     end
+
+    # Return the maximum flow from src to dst, where the forward and backward
+    # weights indicate flow capacity between nodes.
+    def ford_fulkerson( src, dst )
+      nodes = self.keys
+      src = nodes.index( src )
+      dst = nodes.index( dst )
+
+      # Short-circuit if one or both of src/dst aren't even in the network.
+      return 0 if src.nil? || dst.nil?
+
+      # Start with a matrix representation of all the edges, for simplicity.
+      residual = Array.new( nodes.size ) do |i|
+        Array.new( nodes.size ) do |j|
+          d = self.len( nodes[i], nodes[j] )
+          Float::INFINITY == d ? 0 : d
+        end
+      end
+
+      puts residual.inspect
+
+      path = {}
+      maxFlow = 0
+
+      while( reachable?( src, dst, residual, path ) )
+        flow = Float::INFINITY
+
+        # Find the minimum residual capacity of all the edges along the path
+        # discovered in our search.
+        node = dst
+        while node != src
+          parent = path[node]
+          flow = [flow, residual[parent][node]].min
+          node = parent
+        end
+
+        puts path.inspect
+        puts flow
+
+        # Reduce the residual capacity of each edge along the discovered path
+        # by the minimum we just found.
+        node = dst
+        while node != src
+          parent = path[node]
+          residual[parent][node] -= flow
+          residual[node][parent] += flow
+          node = parent
+        end
+
+        puts residual.inspect
+        
+        # Add the flow for this path to the total.
+        maxFlow += flow
+      end
+
+      maxFlow
+    end
+
+    protected
+
+    # Return true if there is a path from the source node to the destination
+    # node. If so, path may be used to collect nodes along the way.
+    def reachable?( src, dst, residual, path )
+      puts "reachable?"
+      queue = [src]
+      path[src] = nil
+
+      # Keep track of all visited nodes.
+      visited = residual.each_index.map {|i| i == src}
+
+      puts visited.inspect
+
+      node = src
+      while node
+        puts "  bfs: #{node}"
+        # Traverse the graph breadth-first.
+        residual.each_index do |i|
+          next if visited[i] || 0 == residual[node][i]
+
+          puts "  non-zero: residual[#{node}][#{i}] = #{residual[node][i]}"
+          queue << i
+          visited[i] = true
+          path[i] = node
+        end
+
+        puts "  visited: #{visited.inspect}"
+        node = queue.shift
+      end
+
+      # Return true if we found a path from src to dst.
+      visited[dst]
+    end
   end
 
   # A class representing a cost or profit matrix on which we can call the
@@ -1060,11 +1163,15 @@ module ProjectEuler
         row.map {|c| c - min}
       end
 
+      puts @matrix.inspect
+
       # Reduce each column by its minimum value.
       @matrix = @matrix.transpose.map do |col|
         min = col.min
         col.map {|c| c - min}
       end.transpose
+
+      puts @matrix.inspect
 
       # Find the number of lines necessary to cover all zeros in the matrix.
       # As soon as that number equals the matrix rank, we have an optimal
@@ -1081,6 +1188,8 @@ module ProjectEuler
           end
         end
 
+        puts "min uncovered: #{min}"
+
         # Subtract the minimum from all uncovered elements and add it to all
         # elements covered by two lines.
         for i in @matrix.each_index
@@ -1092,6 +1201,8 @@ module ProjectEuler
             end  
           end
         end
+
+        puts @matrix.inspect
       end
 
       puts @matrix.inspect
@@ -1115,21 +1226,33 @@ module ProjectEuler
     def cover
       @rowMark, @colMark = [], []
 
-      # Count the total number of zeros in each row and column.
-      rowZ = @matrix.map {|row| row.count( 0 )}
-      colZ = @matrix.transpose.map {|col| col.count( 0 )}
+      # For each row and column taken alone, see how many perpendicular lines
+      # would be required for complete coverage.
+      rowCount, colCount, lines = [], [], []
+      (0...@matrix.size).each do |i|
+        rowMask = Array.new( @matrix.size, true )
+        colMask = Array.new( @matrix.size, true )
 
-      # For each zero in the matrix, cover its row or column depending on
-      # which one has more total zeros.
-      for i in @matrix.each_index
-        next if @rowMark[i]
-        for j in @matrix.each_index
-          next if @colMark[j] || 0 != @matrix[i][j]
-          rowZ[i] < colZ[j] ? @colMark[j] = true : @rowMark[i] = true
+        (0...@matrix.size).each do |ii|
+          next if i == ii
+          rowMask.map!.with_index {|col, j| col & (0 < @matrix[ii][j])}
+          colMask.map!.with_index {|row, j| row & (0 < @matrix[j][ii])}
         end
+
+# puts "i = #{i}:"
+# puts "  rowMask: #{rowMask.inspect}"
+# puts "  colMask: #{colMask.inspect}"
+
+        lines << []
+        colCount[i] = rowMask.count( false );
+        rowCount[i] = colMask.count( false );
       end
 
-      @rowMark.count( true ) + @colMark.count( true )      
+# puts "colCount: #{colCount.inspect}"
+# puts "rowCount: #{rowCount.inspect}"
+
+#      @rowMark.count( true ) + @colMark.count( true )
+      return @matrix.size
     end
   end
 
