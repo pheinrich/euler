@@ -46,7 +46,7 @@ class Problem_0345
      "http://www.mathcs.emory.edu/~cheung/Courses/323/Syllabus/Assignment/algorithm.html",
      "http://csclab.murraystate.edu/bob.pilgrim/445/munkres.html",
      "https://github.com/pdamer/munkres",
-     "https://code.google.com/p/or-tools/source/browse/trunk/src/algorithms/hungarian.cc",
+     "https://github.com/google/or-tools/blob/master/src/algorithms/hungarian.cc",
      "https://www.ri.cmu.edu/pub_files/pub4/mills_tettey_g_ayorkor_2007_3/mills_tettey_g_ayorkor_2007_3.pdf"]
   end
  
@@ -60,5 +60,24 @@ class Problem_0345
   def solve( w = 5 )
     km = ProjectEuler::KuhnMunkres.new( N )
     puts km.minimize_cost.inspect
+   
+#    g = ProjectEuler::Graph.new
+#    r = ProjectEuler::Graph.new
+
+#    g.connect(0,1,16).connect(0,2,13)
+#    g.connect(1,2,10,4).connect(1,3,12)
+#    g.connect(2,4,14)
+#    g.connect(3,2,9).connect(3,5,20)
+#    g.connect(4,3,7).connect(4,5,4)
+#    g.add(5)
+
+#    g.connect(0,1,1).connect(0,2,1).connect(0,3,1).connect(0,4,1)
+#    g.connect(1,7,1).connect(2,6,1).connect(3,7,1).connect(4,5,1).connect(4,8,1)
+#    g.connect(5,9,1).connect(6,9,1).connect(7,9,1).connect(8,9,1)
+#    g.add(9)
+#    
+#    puts g.inspect
+#    g.ford_fulkerson(0,9,r)
+#    puts r.dijkstra(0).inspect
   end
 end

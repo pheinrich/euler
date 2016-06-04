@@ -590,18 +590,19 @@ module ProjectEuler
     it "represents a set of vertices and the directed edges between them" do; end
 
     before( :all ) do
-      @matrix = m = [[nil,  16,  12,  21, nil, nil, nil],
-                     [ 16, nil, nil,  17,  20, nil, nil],
-                     [ 12, nil, nil,  28, nil,  31, nil],
-                     [ 21,  17,  28, nil,  18, nil,  23],
-                     [nil,  20, nil,  18, nil, nil,  11],
-                     [nil, nil,  31, nil, nil, nil,  27],
-                     [nil, nil, nil,  23,  11,  27, nil]]
+      @matrix = [[nil,  16,  12,  21, nil, nil, nil],
+                 [ 16, nil, nil,  17,  20, nil, nil],
+                 [ 12, nil, nil,  28, nil,  31,  19],
+                 [ 21,  17,  28, nil,  18, nil,  23],
+                 [nil,  20, nil,  18, nil, nil,  11],
+                 [nil, nil,  31, nil, nil, nil,  27],
+                 [nil, nil, nil,  23,  11,  27, nil]]
 
       @graph = Graph.new( @matrix )
       @graph.add( 10 ).add( 11 ).add( 12 )
       @graph.connect( 1, 10, 17 ).connect( 2, 11, 6, 8 )
       @graph.biconnect( 5, 3, 19 )
+      @graph.disconnect( 6, 2 )
     end
 
     describe "#new" do
@@ -633,6 +634,12 @@ module ProjectEuler
       end
     end
 
+    describe "#disconnect" do
+      it "removes an edge between two nodes, if one exists" do
+        expect( @graph.len( 6, 2 ) ).to eq( Float::INFINITY )
+      end
+    end
+    
     describe "#neighbors" do
       it "returns the nodes reachable from another" do
         expect( @graph.neighbors( 2 ) ).to eq( [0, 3, 5, 11] )
@@ -670,6 +677,18 @@ module ProjectEuler
     describe "#total_weight" do
       it "returns the sum of all edge weights" do
         expect( @graph.total_weight ).to eq( 517 )
+      end
+    end
+    
+    describe "#ford_fulkerson" do
+      it "computes the maximum flow possible between two nodes" do
+        expect( @graph.ford_fulkerson( 0, 10 ) ).to eq( 17 )
+        expect( @graph.ford_fulkerson( 2, 19 ) ).to eq( 0 )
+        
+        res = ProjectEuler::Graph.new
+        @graph.ford_fulkerson( 0, 10, res )
+        expect( res.total_weight ).to eq( 517 )
+        expect( res.dijkstra( 0, 5 ) ).to eq( 39 )
       end
     end
   end

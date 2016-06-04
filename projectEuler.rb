@@ -1047,7 +1047,7 @@ module ProjectEuler
 
     # Return the maximum flow from src to dst, where the forward and backward
     # weights indicate flow capacity between nodes.
-    def ford_fulkerson( src, dst )
+    def ford_fulkerson( src, dst, residue = nil )
       nodes = self.keys
       src = nodes.index( src )
       dst = nodes.index( dst )
@@ -1062,8 +1062,6 @@ module ProjectEuler
           Float::INFINITY == d ? 0 : d
         end
       end
-
-      puts residual.inspect
 
       path = {}
       maxFlow = 0
@@ -1080,9 +1078,6 @@ module ProjectEuler
           node = parent
         end
 
-        puts path.inspect
-        puts flow
-
         # Reduce the residual capacity of each edge along the discovered path
         # by the minimum we just found.
         node = dst
@@ -1093,12 +1088,20 @@ module ProjectEuler
           node = parent
         end
 
-        puts residual.inspect
-        
         # Add the flow for this path to the total.
         maxFlow += flow
       end
 
+      # Create a graph representing the residual, if requested.
+      if residue
+        for src in residual.each_index
+          for dst in residual.each_index
+            capacity = residual[src][dst]
+            residue.connect( nodes[src], nodes[dst], capacity ) if 0 < capacity
+          end
+        end
+      end
+ 
       maxFlow
     end
 
@@ -1107,29 +1110,23 @@ module ProjectEuler
     # Return true if there is a path from the source node to the destination
     # node. If so, path may be used to collect nodes along the way.
     def reachable?( src, dst, residual, path )
-      puts "reachable?"
       queue = [src]
       path[src] = nil
 
       # Keep track of all visited nodes.
       visited = residual.each_index.map {|i| i == src}
 
-      puts visited.inspect
-
       node = src
       while node
-        puts "  bfs: #{node}"
         # Traverse the graph breadth-first.
         residual.each_index do |i|
           next if visited[i] || 0 == residual[node][i]
 
-          puts "  non-zero: residual[#{node}][#{i}] = #{residual[node][i]}"
           queue << i
           visited[i] = true
           path[i] = node
         end
 
-        puts "  visited: #{visited.inspect}"
         node = queue.shift
       end
 
@@ -1163,15 +1160,11 @@ module ProjectEuler
         row.map {|c| c - min}
       end
 
-      puts @matrix.inspect
-
       # Reduce each column by its minimum value.
       @matrix = @matrix.transpose.map do |col|
         min = col.min
         col.map {|c| c - min}
       end.transpose
-
-      puts @matrix.inspect
 
       # Find the number of lines necessary to cover all zeros in the matrix.
       # As soon as that number equals the matrix rank, we have an optimal
@@ -1188,8 +1181,6 @@ module ProjectEuler
           end
         end
 
-        puts "min uncovered: #{min}"
-
         # Subtract the minimum from all uncovered elements and add it to all
         # elements covered by two lines.
         for i in @matrix.each_index
@@ -1201,11 +1192,12 @@ module ProjectEuler
             end  
           end
         end
-
-        puts @matrix.inspect
       end
 
       puts @matrix.inspect
+      
+      pairs = optimi
+      
       total( @pairs )
     end
 
@@ -1224,35 +1216,44 @@ module ProjectEuler
     protected
 
     def cover
-      @rowMark, @colMark = [], []
+      # Find the minimum number of lines necessary to cover all zero entries
+      # by solving a max bipartite matching problem. For details, see
+      # http://bit.ly/1U2OTmU.
+      g = ProjectEuler::Graph.new
+      sink = (@matrix.size << 1) + 1
+      g.add( sink )
 
-      # For each row and column taken alone, see how many perpendicular lines
-      # would be required for complete coverage.
-      rowCount, colCount, lines = [], [], []
-      (0...@matrix.size).each do |i|
-        rowMask = Array.new( @matrix.size, true )
-        colMask = Array.new( @matrix.size, true )
+      # Every row and column is represented by its own node.
+      rows, cols = (1..@matrix.size), (1+@matrix.size...sink)
+      rows.each do |row|
+        # Connect every row to the source.
+        g.connect( 0, row, 1 )
 
-        (0...@matrix.size).each do |ii|
-          next if i == ii
-          rowMask.map!.with_index {|col, j| col & (0 < @matrix[ii][j])}
-          colMask.map!.with_index {|row, j| row & (0 < @matrix[j][ii])}
+        cols.each do |col|
+          # Connect every column to the sink. 
+          g.connect( col, sink, 1 )
+          
+          # Connect each row/column pair that shares a 0.
+          weight = @matrix[row - rows.begin][col - cols.begin]
+          g.connect( row, col, 1 ) if weight && 0 == weight
         end
-
-# puts "i = #{i}:"
-# puts "  rowMask: #{rowMask.inspect}"
-# puts "  colMask: #{colMask.inspect}"
-
-        lines << []
-        colCount[i] = rowMask.count( false );
-        rowCount[i] = colMask.count( false );
       end
 
-# puts "colCount: #{colCount.inspect}"
-# puts "rowCount: #{rowCount.inspect}"
+      # Now solve the matching problem and determine which rows and columns
+      # are reachable from the source.
+      res = ProjectEuler::Graph.new
+      maxFlow = g.ford_fulkerson( 0, sink, res )
+      dist = res.dijkstra( 0 )
 
-#      @rowMark.count( true ) + @colMark.count( true )
-      return @matrix.size
+      # Mark every row that isn't reachable and every column that is.
+      @rowMark = rows.map {|row| Float::INFINITY == dist[row]}
+      @colMark = cols.map {|col| Float::INFINITY != dist[col]}
+
+      puts "  cover: #{res.inspect}"
+      maxFlow
+    end
+    
+    def make_assignments
     end
   end
 
