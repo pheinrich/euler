@@ -1,0 +1,117 @@
+class Munkres < Array
+  def initialize( matrix )
+    super( matrix )
+
+    # Pad the matrix if necessary (it should be square).
+    self.map! {|row| row + [0] * (matrix.length - row.length)}
+      
+    @matchJobByWorker = Array.new( @matrix.size, -1 )
+    @matchWorkerByJob = Array.new( @matrix.size, -1 )
+  end
+
+  # https://github.com/KevinStern/software-and-algorithms/blob/master/src/main/java/blogspot/software_and_algorithms/stern_library/optimization/HungarianAlgorithm.java
+  def execute
+    reduce
+    compute_initial_feasible_solution
+    greedy_match
+    
+    w = fetch_unmatched_worker
+    while w < self.size
+      initialize_phase( w )
+      execute_phase
+      w = fetch_unmatched_worker
+    end
+    
+    @matchJobByWorker.map {|x| x < cols ? x : -1}
+  end
+  
+  # Update labels with the specified slack by adding the slack value for
+  # committed workers and by subtracting the slack value for committed jobs.
+  # In addition, update the minimum slack values appropriately.
+  def update_labeling( slack )
+    @committedWorkers.each_with_index {|busy, w| @labelByWorker[w] += slack if busy}
+    @parentWorkerByCommittedJob.each_with_index do |parent, j|
+      if parent
+        @labelByJob[j] -= slack
+    else
+        @minSlackValueByJob[j] -= slack
+    end
+  end
+  
+  # Execute a single phase of the algorithm. A phase of the Hungarian
+  # algorithm consists of building a set of committed workers and a set of
+  # committed jobs from a root unmatched worker by following alternating
+  # unmatched/matched zero-slack edges. If an unmatched job is encountered,
+  # then an augmenting path has been found and the matching is grown. If the
+  # connected zero-slack edges have been exhausted, the labels of committed
+  # workers are increased by the minimum slack among committed workers and
+  # non-committed jobs to create more zero-slack edges (the labels of
+  # committed jobs are simultaneously decreased by the same amount in order to
+  # maintain a feasible labeling).
+  #
+  # The runtime of a single phase of the algorithm is O(n^2), where n is the
+  # dimension of the internal square cost matrix, since each edge is visited
+  # at most once and since increasing the labeling is accomplished in time
+  # O(n) by maintaining the minimum slack values among non-committed jobs.
+  # When a phase completes, the matching will have increased in size.
+  def execute_phase
+  end
+  
+  # Initialize the next phase of the algorithm by clearing the committed
+  # workers and jobs sets and by initializing the slack arrays to the values
+  # corresponding to the specified root worker.
+  def initialize_phase( w )
+    @committedWorkers = (0...@matrix.size).map {|idx| idx == w}
+    @parentWorkerByCommittedJob = @matrix.map {-1}
+    @minSlackValueByJob = (0...@matrix.size).map {|j| @matrix[w][j] - @labelByWorker[w] - @labelByJob[j]}
+    @minSlackWorkerByJob = @matrix.map {w}
+  end
+
+  # Return the first unmatched worker or @matrix.size if none.
+  def fetch_unmatched_worker
+    @matchJobByWorker.index( -1 )
+  end
+  
+  # Helper method to record a matching between worker w and job j.
+  def match( w, j )
+    @matchJobByWorker[w] = j
+    @matchWorkerByJob[j] = w
+  end
+
+  # Find a valid matching by greedily selecting among zero-cost matchings.
+  # This is a heuristic to jump-start the augmentation algorithm.
+  def greed_match
+    self.each_index do |w|
+      self.each_index do |j|
+        match( w, j ) if -1 == @matchJobByWorker[w] &&
+                         -1 == @matchWorkerByJob[j] &&
+                          0 == @matrix[w][j] - @labelByWorker[w] - @labelByJob[j]
+      end
+    end
+  end
+  
+  # Compute an initial feasible solution by assigning zero labels to the
+  # workers and by assigning to each job a label equal to the minimum cost
+  # among its incident edges.
+  def compute_initial_feasible_solution
+    @labelByJob = @matrix.map {|row| row.min}
+  end
+
+  # Reduce the cost matrix by subtracting the smallest element of each row
+  # from all elements of the row as well as the smallest element of each
+  # column from all elements of the column. Note that an optimal assignment
+  # for a reduced cost matrix is optimal for the original cost matrix.
+  def reduce
+    # Reduce each row by its minimum value.
+    @matrix.map! do |row|
+      min = row.min
+      row.map {|c| c - min}
+    end
+
+    # Reduce each column by its minimum value.
+    @matrix = @matrix.transpose.map do |col|
+      min = col.min
+      col.map {|c| c - min}
+    end.transpose
+  end
+end

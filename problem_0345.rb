@@ -1,4 +1,5 @@
 require 'projectEuler'
+require 'munkres'
 
 # 
 class Problem_0345
@@ -47,7 +48,9 @@ class Problem_0345
      "http://csclab.murraystate.edu/bob.pilgrim/445/munkres.html",
      "https://github.com/pdamer/munkres",
      "https://github.com/google/or-tools/blob/master/src/algorithms/hungarian.cc",
-     "https://www.ri.cmu.edu/pub_files/pub4/mills_tettey_g_ayorkor_2007_3/mills_tettey_g_ayorkor_2007_3.pdf"]
+     "https://www.ri.cmu.edu/pub_files/pub4/mills_tettey_g_ayorkor_2007_3/mills_tettey_g_ayorkor_2007_3.pdf",
+     "https://www.topcoder.com/community/data-science/data-science-tutorials/maximum-flow-section-1/",
+     "https://www.topcoder.com/community/data-science/data-science-tutorials/maximum-flow-section-2/"]
   end
  
   def solution; 13_938 end
