@@ -12,33 +12,19 @@ class Munkres < Array
   # https://github.com/KevinStern/software-and-algorithms/blob/master/src/main/java/blogspot/software_and_algorithms/stern_library/optimization/HungarianAlgorithm.java
   def execute
     @matrix = self.map( &:dup )
-    puts "matrix: #{@matrix.inspect}"
     
     reduce
-    puts "reduce: #{@matrix.inspect}"
-    
     compute_initial_feasible_solution
-    puts "init sol (by job):    #{@labelByJob.inspect}"
-    puts "init sol (by worker): #{@labelByWorker.inspect}"
-    
     greedy_match
-    puts "after match (worker): #{@matchJobByWorker.inspect}"
-    puts "after match (job):    #{@matchWorkerByJob.inspect}"
     
     w = fetch_unmatched_worker
-    while w < self.size
-      puts "  unmatched worker: #{w}"
+    while w
       initialize_phase( w )
-      puts "  init (committed workers): #{@committedWorkers.inspect}"
-      puts "  init (parent workers):    #{@parentWorkerByCommittedJob.inspect}"
-      puts "  init (min slack value):   #{@minSlackValueByJob.inspect}"
-      puts "  init (min slack worker):  #{@minSlackWorkerByJob.inspect}"
-      
       execute_phase
       w = fetch_unmatched_worker
     end
     
-    @matchJobByWorker.map {|x| x < @matrix.size ? x : -1}.inspect
+    @matchJobByWorker.map {|x| x < @matrix.size ? x : -1}.each_with_index.reduce( 0 ) {|acc, (j, i)| acc + self[i][j]}
   end
   
   # Update labels with the specified slack by adding the slack value for
@@ -76,7 +62,7 @@ class Munkres < Array
       minSlackWorker = -1
       minSlackJob = -1
       minSlackValue = Float::INFINITY
- 
+
       @parentWorkerByCommittedJob.each_with_index do |parent, j|
         if -1 == parent && @minSlackValueByJob[j] < minSlackValue
           minSlackValue = @minSlackValueByJob[j]
@@ -87,7 +73,7 @@ class Munkres < Array
       
       update_labeling( minSlackValue ) if 0 < minSlackValue
       @parentWorkerByCommittedJob[minSlackJob] = minSlackWorker;
-      
+
       if -1 == @matchWorkerByJob[minSlackJob]
         # An augmenting path has been found.
         committedJob = minSlackJob
@@ -114,6 +100,7 @@ class Munkres < Array
             @minSlackWorkerByJob[j] = worker
           end
         end
+        
       end
     end
   end
@@ -128,9 +115,9 @@ class Munkres < Array
     @minSlackWorkerByJob = @matrix.map {w}
   end
 
-  # Return the first unmatched worker or @matrix.size if none.
+  # Return the first unmatched worker or nil if none.
   def fetch_unmatched_worker
-    @matchJobByWorker.index( -1 ) || @matrix.size
+    @matchJobByWorker.index( -1 )
   end
   
   # Helper method to record a matching between worker w and job j.
