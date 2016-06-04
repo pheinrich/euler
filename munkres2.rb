@@ -1,18 +1,11 @@
-class Munkres2 < Array
+class Munkres2
   Label = Struct.new( :job, :worker )
   Match = Struct.new( :job, :worker )
   Slack = Struct.new( :value, :worker )
 
-  def initialize( matrix )
-    super( matrix )
-
-    # Pad the matrix if necessary (it should be square).
-    self.map! {|row| row + [0] * (matrix.length - row.length)}
-  end
-
   # https://github.com/KevinStern/software-and-algorithms/blob/master/src/main/java/blogspot/software_and_algorithms/stern_library/optimization/HungarianAlgorithm.java
-  def minimize_cost( matrix = nil )
-    @matrix = matrix || self.map( &:dup )
+  def minimize_cost( matrix )
+    @matrix = matrix.map( &:dup )
     
     # Reduce each row by its minimum value.
     @matrix.map! do |row|
@@ -29,75 +22,77 @@ class Munkres2 < Array
     # Compute an initial feasible solution by assigning zero labels to the
     # workers and by assigning to each job a label equal to the minimum cost
     # among its incident edges.
-    @match = Array.new( self.size ) {Match.new( -1, -1 )}
     @label = @matrix.map {|row| Label.new( row.min, 0 )} 
 
     # Find a valid matching by greedily selecting among zero-cost matchings.
     # This is a heuristic to jump-start the augmentation algorithm.
-    self.each_index do |w|
-      self.each_index do |j|
+    @match = @matrix.map {Match.new( -1, -1 )}
+    @matrix.each_index do |w|
+      @matrix.each_index do |j|
         @match[w].job, @match[j].worker = j, w if -1 == @match[w].job &&
                                                   -1 == @match[j].worker &&
                                                    0 == @matrix[w][j] - @label[w].worker - @label[j].job
       end
     end
-  
+ 
+    # While there are still unassigned workers, try to find augmenting paths
+    # that will allow better assignments.  
     w = @match.index {|m| -1 == m.job}
     while w
-      @committedWorkers = (0...@matrix.size).map {|idx| idx == w}
-      @parentWorkerByCommittedJob = @matrix.map {-1}
-      @minSlack = (0...@matrix.size).map {|j| Slack.new( @matrix[w][j] - @label[w].worker - @label[j].job, w)}
-
-      find_matching
+      find_matching( w )
+      
+      # Keep going as long as there are unassigned workers.
       w = @match.index {|m| -1 == m.job}
     end
-    
-    @match.each_with_index.reduce( 0 ) {|acc, (j, i)| acc + self[i][j.job]}
+
+    @match.map {|m| m.job}
   end
   
-  def maximize_profit
+  def maximize_profit( matrix )
     # Convert each element from an edge weight to an edge cost. 
-    max = self.flatten.max
-    minimize_cost( self.map {|row| row.map {|c| max - c}} )
+    max = matrix.flatten.max
+    minimize_cost( matrix.map {|row| row.map {|c| max - c}} )
   end
     
   protected
-  
-  # Update labels with the specified slack by adding the slack value for
-  # committed workers and by subtracting the slack value for committed jobs.
-  # In addition, update the minimum slack values appropriately.
-  def update_labeling( slack )
-    @committedWorkers.each_with_index {|busy, w| @label[w].worker += slack if busy}
-    @parentWorkerByCommittedJob.each_with_index do |parent, j|
-      if -1 == parent
-        @minSlack[j].value -= slack
-      else
-        @label[j].job -= slack
-      end
-    end
-  end
-  
-  def find_matching
+
+  def find_matching( w )
+    committedWorkers = (0...@matrix.size).map {|idx| idx == w}
+    parentWorkerByCommittedJob = @matrix.map {-1}
+    minSlack = (0...@matrix.size).map {|j| Slack.new( @matrix[w][j] - @label[w].worker - @label[j].job, w)}
+
     while true do
-      minSlack = Slack.new( Float::INFINITY, -1 )
-      minSlackJob = -1
+      slack = Slack.new( Float::INFINITY, -1 )
+      job = -1
  
-      @parentWorkerByCommittedJob.each_with_index do |parent, j|
-        if -1 == parent && @minSlack[j].value < minSlack.value
-          minSlack.value = @minSlack[j].value
-          minSlack.worker = @minSlack[j].worker
-          minSlackJob = j
+      parentWorkerByCommittedJob.each_with_index do |parent, j|
+        if -1 == parent && minSlack[j].value < slack.value
+          slack = minSlack[j].dup
+          job = j
         end 
       end
       
-      update_labeling( minSlack.value ) if 0 < minSlack.value
-      @parentWorkerByCommittedJob[minSlackJob] = minSlack.worker;
+      if 0 < slack.value
+        # Update labels with the specified slack by adding the slack value for
+        # committed workers and by subtracting the slack value for committed jobs.
+        # In addition, update the minimum slack values appropriately.
+        committedWorkers.each_with_index {|busy, w| @label[w].worker += slack.value if busy}
+        parentWorkerByCommittedJob.each_with_index do |parent, j|
+          if -1 == parent
+            minSlack[j].value -= slack.value
+          else
+            @label[j].job -= slack.value
+          end
+        end
+      end
 
-      if -1 == @match[minSlackJob].worker
+      parentWorkerByCommittedJob[job] = slack.worker;
+
+      if -1 == @match[job].worker
         # An augmenting path has been found.
-        committedJob = minSlackJob
+        committedJob = job
         while -1 != committedJob
-          parentWorker = @parentWorkerByCommittedJob[committedJob]
+          parentWorker = parentWorkerByCommittedJob[committedJob]
           temp = @match[parentWorker].job
 
           @match[parentWorker].job = committedJob
@@ -109,14 +104,14 @@ class Munkres2 < Array
       else
         # Update slack values since we increased the size of the committed
         # workers set.
-        worker = @match[minSlackJob].worker
-        @committedWorkers[worker] = true
+        worker = @match[job].worker
+        committedWorkers[worker] = true
         
-        @parentWorkerByCommittedJob.each_with_index do |parent, j|
+        parentWorkerByCommittedJob.each_with_index do |parent, j|
           next if -1 != parent
           
-          slack = @matrix[worker][j] - @label[worker].worker - @label[j].job
-          @minSlack[j] = Slack.new( slack, worker ) if @minSlack[j].value > slack
+          value = @matrix[worker][j] - @label[worker].worker - @label[j].job
+          minSlack[j] = Slack.new( value, worker ) if minSlack[j].value > value
         end
       end
     end
