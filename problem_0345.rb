@@ -61,8 +61,12 @@ class Problem_0345
   def population; 473_729 end
 
   def solve( w = 5 )
-    km = ProjectEuler::KuhnMunkres.new( N )
-    puts km.minimize_cost.inspect
+    m = Munkres.new( N )
+    puts m.inspect
+    m.execute
+    
+#    km = ProjectEuler::KuhnMunkres.new( N )
+#    puts km.minimize_cost.inspect
    
 #    g = ProjectEuler::Graph.new
 #    r = ProjectEuler::Graph.new

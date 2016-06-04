@@ -4,25 +4,41 @@ class Munkres < Array
 
     # Pad the matrix if necessary (it should be square).
     self.map! {|row| row + [0] * (matrix.length - row.length)}
-      
-    @matchJobByWorker = Array.new( @matrix.size, -1 )
-    @matchWorkerByJob = Array.new( @matrix.size, -1 )
+    
+    @matchJobByWorker = Array.new( self.size, -1 )
+    @matchWorkerByJob = Array.new( self.size, -1 )
   end
 
   # https://github.com/KevinStern/software-and-algorithms/blob/master/src/main/java/blogspot/software_and_algorithms/stern_library/optimization/HungarianAlgorithm.java
   def execute
+    @matrix = self.map( &:dup )
+    puts "matrix: #{@matrix.inspect}"
+    
     reduce
+    puts "reduce: #{@matrix.inspect}"
+    
     compute_initial_feasible_solution
+    puts "init sol (by job):    #{@labelByJob.inspect}"
+    puts "init sol (by worker): #{@labelByWorker.inspect}"
+    
     greedy_match
+    puts "after match (worker): #{@matchJobByWorker.inspect}"
+    puts "after match (job):    #{@matchWorkerByJob.inspect}"
     
     w = fetch_unmatched_worker
     while w < self.size
+      puts "  unmatched worker: #{w}"
       initialize_phase( w )
+      puts "  init (committed workers): #{@committedWorkers.inspect}"
+      puts "  init (parent workers):    #{@parentWorkerByCommittedJob.inspect}"
+      puts "  init (min slack value):   #{@minSlackValueByJob.inspect}"
+      puts "  init (min slack worker):  #{@minSlackWorkerByJob.inspect}"
+      
       execute_phase
       w = fetch_unmatched_worker
     end
     
-    @matchJobByWorker.map {|x| x < cols ? x : -1}
+    @matchJobByWorker.map {|x| x < @matrix.size ? x : -1}.inspect
   end
   
   # Update labels with the specified slack by adding the slack value for
@@ -31,10 +47,11 @@ class Munkres < Array
   def update_labeling( slack )
     @committedWorkers.each_with_index {|busy, w| @labelByWorker[w] += slack if busy}
     @parentWorkerByCommittedJob.each_with_index do |parent, j|
-      if parent
-        @labelByJob[j] -= slack
-    else
+      if -1 == parent
         @minSlackValueByJob[j] -= slack
+      else
+        @labelByJob[j] -= slack
+      end
     end
   end
   
@@ -55,6 +72,50 @@ class Munkres < Array
   # O(n) by maintaining the minimum slack values among non-committed jobs.
   # When a phase completes, the matching will have increased in size.
   def execute_phase
+    while true do
+      minSlackWorker = -1
+      minSlackJob = -1
+      minSlackValue = Float::INFINITY
+ 
+      @parentWorkerByCommittedJob.each_with_index do |parent, j|
+        if -1 == parent && @minSlackValueByJob[j] < minSlackValue
+          minSlackValue = @minSlackValueByJob[j]
+          minSlackWorker = @minSlackWorkerByJob[j]
+          minSlackJob = j
+        end 
+      end
+      
+      update_labeling( minSlackValue ) if 0 < minSlackValue
+      @parentWorkerByCommittedJob[minSlackJob] = minSlackWorker;
+      
+      if -1 == @matchWorkerByJob[minSlackJob]
+        # An augmenting path has been found.
+        committedJob = minSlackJob
+        while -1 != committedJob
+          parentWorker = @parentWorkerByCommittedJob[committedJob]
+          temp = @matchJobByWorker[parentWorker]
+          match( parentWorker, committedJob )
+          committedJob = temp
+        end
+        
+        return
+      else
+        # Update slack values since we increased the size of the committed
+        # workers set.
+        worker = @matchWorkerByJob[minSlackJob]
+        @committedWorkers[worker] = true
+        
+        @parentWorkerByCommittedJob.each_with_index do |parent, j|
+          next if -1 != parent
+          
+          slack = @matrix[worker][j] - @labelByWorker[worker] - @labelByJob[j]
+          if @minSlackValueByJob[j] > slack
+            @minSlackValueByJob[j] = slack
+            @minSlackWorkerByJob[j] = worker
+          end
+        end
+      end
+    end
   end
   
   # Initialize the next phase of the algorithm by clearing the committed
@@ -69,7 +130,7 @@ class Munkres < Array
 
   # Return the first unmatched worker or @matrix.size if none.
   def fetch_unmatched_worker
-    @matchJobByWorker.index( -1 )
+    @matchJobByWorker.index( -1 ) || @matrix.size
   end
   
   # Helper method to record a matching between worker w and job j.
@@ -80,7 +141,7 @@ class Munkres < Array
 
   # Find a valid matching by greedily selecting among zero-cost matchings.
   # This is a heuristic to jump-start the augmentation algorithm.
-  def greed_match
+  def greedy_match
     self.each_index do |w|
       self.each_index do |j|
         match( w, j ) if -1 == @matchJobByWorker[w] &&
@@ -95,6 +156,7 @@ class Munkres < Array
   # among its incident edges.
   def compute_initial_feasible_solution
     @labelByJob = @matrix.map {|row| row.min}
+    @labelByWorker = @matrix.map {0}
   end
 
   # Reduce the cost matrix by subtracting the smallest element of each row
