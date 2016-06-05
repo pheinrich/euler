@@ -1,8 +1,6 @@
 require 'projectEuler'
-require 'munkres2'
-require 'munkres'
 
-# 0.0004437s (3/27/15, #2306)
+# 0.0004370s (3/27/15, #2306)
 class Problem_0345
   def title; 'Matrix Sum' end
 
@@ -34,11 +32,6 @@ class Problem_0345
       ' 34 124   4 878 450 476 712 914 838 669 875 299 823 329 699 ' \
       '815 559 813 459 522 788 168 586 966 232 308 833 251 631 107 ' \
       '813 883 451 509 615  77 281 613 459 205 380 274 302  35 805'.split.map( &:to_i ).each_slice( 15 ).to_a
-#  N = '  7  53 183 439 863 ' \
-#      '497 383 563  79 973 ' \
-#      '287  63 343 169 583 ' \
-#      '627 343 773 959 943 ' \
-#      '767 473 103 699 303'.split.map( &:to_i ).each_slice( 5 ).to_a
 
   def refs
     ["http://en.wikipedia.org/wiki/Assignment_problem",
@@ -54,14 +47,14 @@ class Problem_0345
   end
  
   def solution; 13_938 end
-  def best_time; 0.0004437 end
+  def best_time; 0.0004370 end
 
   def completed_on; '2015-03-27' end
   def ordinality; 2_306 end
   def population; 473_729 end
 
   def solve
-    m = Munkres2.new( N )
-    m.maximize_profit
+    assignments = ProjectEuler::KuhnMunkres.maximize_profit( N );
+    ProjectEuler::KuhnMunkres.total( N, assignments )
   end
 end
