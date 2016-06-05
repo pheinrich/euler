@@ -693,6 +693,52 @@ module ProjectEuler
     end
   end
 
+  describe KuhnMunkres do
+    it "encapsulates the Hungarian Algorithm for assignment" do; end
+      
+    before( :all ) do
+      @mat1 = [[  7,  53, 183, 439, 863],
+               [497, 383, 563,  79, 973],
+               [287,  63, 343, 169, 583],
+               [627, 343, 773, 959, 943],
+               [767, 473, 103, 699, 303]]
+
+      @mat2 = [[19, 56, 76, 95, 53, 65, 13, 92, 88],
+               [46, 75,  6,  9, 59, 84, 94, 97, 40],
+               [31, 79, 62, 51, 98, 88, 16, 52, 48],
+               [54, 77, 33, 88, 73, 58, 34, 39, 20],
+               [57, 78, 62, 76, 77, 73, 96, 68, 16],
+               [89, 39, 18, 19, 57, 94, 20, 45, 11],
+               [74, 22, 72, 92, 60, 80, 10, 40, 40],
+               [84,  2, 54, 83, 76, 76,  9, 90, 70],
+               [21, 23,  2, 48, 49, 98,  2,  1, 86]]
+    end
+    
+    describe ".minimize_cost" do
+      it "optimizes for least cost" do
+        expect( KuhnMunkres.minimize_cost( @mat1 ) ).to eq( [0, 3, 2, 1, 4] )
+        expect( KuhnMunkres.minimize_cost( @mat2 ) ).to eq( [4, 2, 0, 5, 8, 3, 6, 1, 7] )
+      end
+    end
+    
+    describe ".maximize_profit" do
+      it "optimizes for greatest profit" do
+        expect( KuhnMunkres.maximize_profit( @mat1 ) ).to eq( [4, 1, 2, 3, 0] )
+        expect( KuhnMunkres.maximize_profit( @mat2 ) ).to eq( [2, 7, 4, 1, 6, 5, 3, 0, 8] )
+      end
+    end
+    
+    describe ".total" do
+      it "computes the sum of indexed entries" do
+        expect( KuhnMunkres.total( @mat1, [0, 3, 2, 1, 4] ) ).to eq( 1075 )
+        expect( KuhnMunkres.total( @mat2, [4, 2, 0, 5, 8, 3, 6, 1, 7] ) ).to eq( 196 )
+
+        expect( KuhnMunkres.total( @mat1, [4, 1, 2, 3, 0] ) ).to eq( 3315 )
+        expect( KuhnMunkres.total( @mat2, [2, 7, 4, 1, 6, 5, 3, 0, 8] ) ).to eq( 800 )
+      end
+    end
+  end
+
   describe PokerHand do
     it "represents a set of five playing cards" do; end
   

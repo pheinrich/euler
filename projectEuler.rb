@@ -1137,123 +1137,135 @@ module ProjectEuler
 
   # A class representing a cost or profit matrix on which we can call the
   # Kuhn-Munkres (aka the Hungarian algorithm) to solve the Assignment
-  # Problem.
+  # Problem. Modelled directly on http://bit.ly/22Fxrai.
   #
   # Problems:  345
-  class KuhnMunkres < Array
-    attr_reader :pairs
+  class KuhnMunkres
+    Label = Struct.new( :job, :worker )
+    Match = Struct.new( :job, :worker )
+    Slack = Struct.new( :value, :worker )
 
-    def initialize( matrix )
-      super( matrix )
-      @pairs = nil
-
-      # Pad the matrix if necessary (it should be square).
-      self.map! {|row| row + [0] * (matrix.length - row.length)}
-    end
-
-    def minimize_cost
-      @matrix = self.map( &:dup )
-
+    # Return an array of job indices corresponding to the optimal assignment
+    # by worker to minimize total cost.   
+    def self.minimize_cost( matrix )
+      @matrix = matrix.map( &:dup )
+      
       # Reduce each row by its minimum value.
       @matrix.map! do |row|
         min = row.min
         row.map {|c| c - min}
       end
-
+  
       # Reduce each column by its minimum value.
       @matrix = @matrix.transpose.map do |col|
         min = col.min
         col.map {|c| c - min}
       end.transpose
-
-      # Find the number of lines necessary to cover all zeros in the matrix.
-      # As soon as that number equals the matrix rank, we have an optimal
-      # arrangement.
-      while cover() < self.length
-        min = @matrix.flatten.max
-
-        # Find the minimum of all the values not covered by any line.
-        for i in @matrix.each_index
-          next if @rowMark[i]
-          for j in @matrix.each_index
-            next if @colMark[j]
-            min = [min, @matrix[i][j]].min
-          end
-        end
-
-        # Subtract the minimum from all uncovered elements and add it to all
-        # elements covered by two lines.
-        for i in @matrix.each_index
-          for j in @matrix.each_index
-            if @rowMark[i] && @colMark[j]
-              @matrix[i][j] += min
-            elsif !(@rowMark[i] || @colMark[j])
-              @matrix[i][j] -= min
-            end  
-          end
+  
+      # Compute an initial feasible solution by assigning zero labels to the
+      # workers and by assigning to each job a label equal to the minimum cost
+      # among its incident edges.
+      @label = @matrix.map {|row| Label.new( row.min, 0 )} 
+      @match = @matrix.map {Match.new( -1, -1 )}
+  
+      @matrix.each_index do |w|
+        @matrix.each_index do |j|
+          # Find a valid matching by greedily selecting among zero-cost matchings.
+          # This is a heuristic to jump-start the augmentation algorithm.
+          @match[w].job, @match[j].worker = j, w if -1 == @match[w].job &&
+                                                    -1 == @match[j].worker &&
+                                                     0 == @matrix[w][j] - @label[w].worker - @label[j].job
         end
       end
-
-      puts @matrix.inspect
-      
-      pairs = optimi
-      
-      total( @pairs )
+   
+      # While there are still unassigned workers, try to find augmenting paths
+      # that will allow better assignments.  
+      w = @match.index {|m| -1 == m.job}
+      while w
+        find_matching( w )
+        
+        # Keep going as long as there are unassigned workers.
+        w = @match.index {|m| -1 == m.job}
+      end
+  
+      @match.map {|m| m.job}
     end
-
-    def maximize_profit
+    
+    # Return an array of job indices corresponding to the optimal assignment
+    # by worker to maximize total profit.   
+    def self.maximize_profit( matrix )
       # Convert each element from an edge weight to an edge cost. 
-      max = self.flatten.max
-      self.map! {|row| row.map {|c| max - c}}
-
-      minimize_cost()
+      max = matrix.flatten.max
+      minimize_cost( matrix.map {|row| row.map {|c| max - c}} )
     end
 
-    def total( pairs )
-      pairs && pairs.reduce( 0 ) {|acc, (i, j)| acc + self[i][j]}
+    # Computes the total cost (or profit) for the array of worker job assign-
+    # ments specified.
+    def self.total( matrix, assignments )
+      assignments.each_with_index.reduce( 0 ) {|acc, (j, i)| acc + matrix[i][j]}
     end
 
     protected
-
-    def cover
-      # Find the minimum number of lines necessary to cover all zero entries
-      # by solving a max bipartite matching problem. For details, see
-      # http://bit.ly/1U2OTmU.
-      g = ProjectEuler::Graph.new
-      sink = (@matrix.size << 1) + 1
-      g.add( sink )
-
-      # Every row and column is represented by its own node.
-      rows, cols = (1..@matrix.size), (1+@matrix.size...sink)
-      rows.each do |row|
-        # Connect every row to the source.
-        g.connect( 0, row, 1 )
-
-        cols.each do |col|
-          # Connect every column to the sink. 
-          g.connect( col, sink, 1 )
+  
+    def self.find_matching( w )
+      committedWorkers = (0...@matrix.size).map {|idx| idx == w}
+      parentWorkerByCommittedJob = @matrix.map {-1}
+      minSlack = (0...@matrix.size).map {|j| Slack.new( @matrix[w][j] - @label[w].worker - @label[j].job, w)}
+  
+      while true do
+        slack = Slack.new( Float::INFINITY, -1 )
+        job = -1
+   
+        parentWorkerByCommittedJob.each_with_index do |parent, j|
+          if -1 == parent && minSlack[j].value < slack.value
+            slack = minSlack[j].dup
+            job = j
+          end 
+        end
+        
+        if 0 < slack.value
+          # Update labels with the specified slack by adding the slack value for
+          # committed workers and by subtracting the slack value for committed jobs.
+          # In addition, update the minimum slack values appropriately.
+          committedWorkers.each_with_index {|busy, w| @label[w].worker += slack.value if busy}
+          parentWorkerByCommittedJob.each_with_index do |parent, j|
+            if -1 == parent
+              minSlack[j].value -= slack.value
+            else
+              @label[j].job -= slack.value
+            end
+          end
+        end
+  
+        parentWorkerByCommittedJob[job] = slack.worker;
+  
+        if -1 == @match[job].worker
+          # An augmenting path has been found.
+          committedJob = job
+          while -1 != committedJob
+            parentWorker = parentWorkerByCommittedJob[committedJob]
+            temp = @match[parentWorker].job
+  
+            @match[parentWorker].job = committedJob
+            @match[committedJob].worker = parentWorker
+            committedJob = temp
+          end
           
-          # Connect each row/column pair that shares a 0.
-          weight = @matrix[row - rows.begin][col - cols.begin]
-          g.connect( row, col, 1 ) if weight && 0 == weight
+          return
+        else
+          # Update slack values since we increased the size of the committed
+          # workers set.
+          worker = @match[job].worker
+          committedWorkers[worker] = true
+          
+          parentWorkerByCommittedJob.each_with_index do |parent, j|
+            next if -1 != parent
+            
+            value = @matrix[worker][j] - @label[worker].worker - @label[j].job
+            minSlack[j] = Slack.new( value, worker ) if minSlack[j].value > value
+          end
         end
       end
-
-      # Now solve the matching problem and determine which rows and columns
-      # are reachable from the source.
-      res = ProjectEuler::Graph.new
-      maxFlow = g.ford_fulkerson( 0, sink, res )
-      dist = res.dijkstra( 0 )
-
-      # Mark every row that isn't reachable and every column that is.
-      @rowMark = rows.map {|row| Float::INFINITY == dist[row]}
-      @colMark = cols.map {|col| Float::INFINITY != dist[col]}
-
-      puts "  cover: #{res.inspect}"
-      maxFlow
-    end
-    
-    def make_assignments
     end
   end
 
