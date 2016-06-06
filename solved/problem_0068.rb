@@ -3,6 +3,7 @@ require 'projectEuler'
 # 2.017s (12/17/13, #~9558)
 class Problem_0068
   def title; 'Magic 5-gon ring' end
+  def difficulty; 25 end
 
   # Consider the following "magic" 3-gon ring, filled with the numbers 1 to 6,
   # and each line adding to nine.
@@ -50,14 +51,6 @@ class Problem_0068
   #     ( )   ( )-( )--( )
   #            \
   #            ( )
-
-  def refs; [] end
-  def solution; 6_531_031_914_842_725 end
-  def best_time; 1.427 end
-  
-  def completed_on; '2013-12-17' end
-  def ordinality; 9_558 end
-  def population; 356_569 end
 
   def solve( n = 16 )
     max = 0
@@ -111,4 +104,14 @@ class Problem_0068
 
     max
   end
+
+  def solution; 6_531_031_914_842_725 end
+  def best_time; 1.427 end
+  def effort; 35 end
+  
+  def completed_on; '2013-12-17' end
+  def ordinality; 9_558 end
+  def population; 356_569 end
+
+  def refs; [] end
 end

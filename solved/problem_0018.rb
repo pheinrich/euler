@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.0001690s (2/5/13, #~52918)
 class Problem_0018
   def title; 'Maximum path sum I' end
+  def difficulty; 5 end
 
   # By starting at the top of the triangle below and moving to adjacent
   # numbers on the row below, the maximum total from top to bottom is 23.
@@ -37,15 +38,17 @@ class Problem_0018
   # triangle containing one-hundred rows; it cannot be solved by brute force,
   # and requires a clever method! ;o)
 
-  def refs; [] end
+  def solve
+    N.tree_sum
+  end
+
   def solution; 1_074 end
   def best_time; 0.00008297 end
+  def effort; 10 end
 
   def completed_on; '2013-02-05' end
   def ordinality; 52_918 end
   def population; 278_397 end
 
-  def solve
-    N.tree_sum
-  end
+  def refs; [] end
 end

@@ -3,20 +3,13 @@ require 'projectEuler'
 # 1.943s (2/17/13, #27095)
 class Problem_0041
   def title; 'Pandigital prime' end
+  def difficulty; 5 end
 
   # We shall say that an n-digit number is pandigital if it makes use of all
   # the digits 1 to n exactly once. For example, 2143 is a 4-digit pandigital
   # and is also prime.
   #
   # What is the largest n-digit pandigital prime that exists?
-
-  def refs; [] end
-  def solution; 7_652_413 end
-  def best_time; 1.708 end
-
-  def completed_on; '2013-02-17' end
-  def ordinality; 27_095 end
-  def population; 281_375 end
 
   def solve
     max = nil
@@ -29,4 +22,14 @@ class Problem_0041
     
     max
   end
+
+  def solution; 7_652_413 end
+  def best_time; 1.708 end
+  def effort; 5 end
+
+  def completed_on; '2013-02-17' end
+  def ordinality; 27_095 end
+  def population; 281_375 end
+
+  def refs; [] end
 end

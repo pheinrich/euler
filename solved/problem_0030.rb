@@ -3,6 +3,7 @@ require 'projectEuler'
 # 2.932s (2/13/13, #~39261)
 class Problem_0030
   def title; 'Digit fifth powers' end
+  def difficulty; 5 end
 
   # Surprisingly there are only three numbers that can be written as the sum
   # of fourth powers of their digits:
@@ -18,14 +19,6 @@ class Problem_0030
   # Find the sum of all the numbers that can be written as the sum of fifth
   # powers of their digits.
 
-  def refs; [] end
-  def solution; 443_839 end
-  def best_time; 2.458 end
-
-  def completed_on; '2013-02-13' end
-  def ordinality; 39_261 end
-  def population; 280_383 end
-
   def solve( n = 5 )
     p = (0..9).map {|i| i**n}
 
@@ -37,4 +30,14 @@ class Problem_0030
     # Brute force every number with that many digits or fewer.
     (2..lim).select {|i| i == i.to_s.chars.inject( 0 ) {|a, x| a + p[x.to_i]}}.reduce( :+ )
   end
+
+  def solution; 443_839 end
+  def best_time; 2.458 end
+  def effort; 10 end
+    
+  def completed_on; '2013-02-13' end
+  def ordinality; 39_261 end
+  def population; 280_383 end
+  
+  def refs; [] end
 end

@@ -19,7 +19,7 @@ class Problem_0113
   #
   # How many numbers below a googol (10^100) are not bouncy?
 
-  def refs; [] end
+  def refs; ["https://oeis.org/A204692"] end
   def solution; 51_161_058_134_250 end
   def best_time; 0.001681 end
 

@@ -3,6 +3,7 @@ require 'projectEuler'
 # 3.038s (2/7/13, #~35028)
 class Problem_0023
   def title; 'Non-abundant sums' end
+  def difficulty; 5 end
 
   # A perfect number is a number for which the sum of its proper divisors is
   # exactly equal to the number. For example, the sum of the proper divisors of
@@ -22,14 +23,6 @@ class Problem_0023
   #
   # Find the sum of all the positive integers which cannot be written as the
   # sum of two abundant numbers.
-
-  def refs; [] end
-  def solution; 4_179_871 end
-  def best_time; 1.751 end
-
-  def completed_on; '2013-02-07' end
-  def ordinality; 35_028 end
-  def population; 278_894 end
 
   def solve( n = 28_123 )
     # Precompute the abundant numbers below the max.
@@ -53,4 +46,14 @@ class Problem_0023
     # Add up all the numbers not identified as sums.
     notsum.reduce( :+ )
   end
+
+  def solution; 4_179_871 end
+  def best_time; 1.751 end
+  def effort; 5 end
+    
+  def completed_on; '2013-02-07' end
+  def ordinality; 35_028 end
+  def population; 278_894 end
+
+  def refs; ["https://oeis.org/A005101"] end
 end

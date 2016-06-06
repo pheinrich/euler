@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.04348s (3/11/13, #~20996)
 class Problem_0049
   def title; 'Prime permutations' end
+  def difficulty; 5 end
 
   # The arithmetic sequence, 1487, 4817, 8147, in which each of the terms
   # increases by 3330, is unusual in two ways: (i) each of the three terms are
@@ -17,14 +18,6 @@ class Problem_0049
   # sequence?
   P = 10_000.prime_sieve.reject {|i| 1_000 > i}.map {|i| [i, i.to_s.chars.sort.join]}
 
-  def refs; [] end
-  def solution; 296_962_999_629 end
-  def best_time; 0.02520 end
-  
-  def completed_on; '2013-03-11' end
-  def ordinality; 20_996 end
-  def population; 286_835 end
-  
   def solve
     P.each do |p|
       m = P.select {|q| q[1] == p[1]}.map {|q| q[0]}
@@ -41,4 +34,14 @@ class Problem_0049
       end
     end
   end
+
+  def solution; 296_962_999_629 end
+  def best_time; 0.02520 end
+  def effort; 25 end
+  
+  def completed_on; '2013-03-11' end
+  def ordinality; 20_996 end
+  def population; 286_835 end
+
+  def refs; [] end
 end

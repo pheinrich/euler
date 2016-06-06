@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.03006s (12/19/13, #~14078)
 class Problem_0071
   def title; 'Ordered fractions' end
+  def difficulty; 10 end
 
   # Consider the fraction, n/d, where n and d are positive integers. If n<d
   # and HCF(n,d)=1, it is called a reduced proper fraction.
@@ -18,14 +19,6 @@ class Problem_0071
   # By listing the set of reduced proper fractions for d ≤ 1,000,000 in
   # ascending order of size, find the numerator of the fraction immediately
   # to the left of 3/7.
-
-  def refs; ["http://en.wikipedia.org/wiki/Farey_sequence#Next_term"] end
-  def solution; 428_570 end
-  def best_time; 0.02593 end
-
-  def completed_on; '2013-12-19' end
-  def ordinality; 14_078 end
-  def population; 357_065 end
 
   def solve( n = 1_000_000, numer = 3, denom = 7 )
     a, b, c, d = 0, 1, 1, denom
@@ -50,4 +43,14 @@ class Problem_0071
 
     a # puts "#{a}/#{b}"
   end
+
+  def solution; 428_570 end
+  def best_time; 0.02593 end
+  def effort; 20 end
+
+  def completed_on; '2013-12-19' end
+  def ordinality; 14_078 end
+  def population; 357_065 end
+
+  def refs; ["http://en.wikipedia.org/wiki/Farey_sequence#Next_term"] end
 end

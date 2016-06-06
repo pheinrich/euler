@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.2075s (2/9/13, #~33154)
 class Problem_0027
   def title; 'Quadratic primes' end
+  def difficulty; 5 end
 
   # Euler published the remarkable quadratic formula:
   #
@@ -29,14 +30,6 @@ class Problem_0027
   # values of n, starting with n = 0.
 
   P = 1_000.prime_sieve
-
-  def refs; [] end
-  def solution; -59_231 end
-  def best_time; 0.1042 end
-
-  def completed_on; '2013-02-09' end
-  def ordinality; 33_154 end
-  def population; 279_390 end
 
   def solve( u = 1_000, v = 1_000 )
     max, i, j = 0, 0, 0
@@ -75,5 +68,18 @@ class Problem_0027
     end
 
     i * j # puts "%d = %d x %d, length %d" % [i*j, i, j, max]
+  end
+
+  def solution; -59_231 end
+  def best_time; 0.1042 end
+  def effort; 15 end
+
+  def completed_on; '2013-02-09' end
+  def ordinality; 33_154 end
+  def population; 279_390 end
+
+  def refs
+    ["https://en.wikipedia.org/wiki/Lucky_numbers_of_Euler",
+     "https://oeis.org/A014556"]
   end
 end

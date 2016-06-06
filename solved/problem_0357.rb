@@ -10,14 +10,6 @@ class Problem_0357
   # Find the sum of all positive integers n not exceeding 100 000 000
   # such that for every divisor d of n, d+n/d is prime.
 
-  def refs; ["https://oeis.org/A080715" ] end
-  def solution; 1_739_023_853_137 end
-  def best_time; 31.75 end
-
-  def completed_on; '2015-03-13' end
-  def ordinality; 2_807 end
-  def percentile; 469_765 end
-
   def solve( n = 100_000_000 )
     # Observe that:
     #   1. n must be 1 or even
@@ -48,5 +40,18 @@ class Problem_0357
     # Add one since it isn't included in the primes array. Adjust down to
     # account for each n = p-1.
     1 + primes.reduce( :+ ) - primes.length
+  end
+
+  def solution; 1_739_023_853_137 end
+  def best_time; 31.75 end
+  def effort; 20 end
+  
+  def completed_on; '2015-03-13' end
+  def ordinality; 2_807 end
+  def percentile; 469_765 end
+
+  def refs
+    ["https://oeis.org/A080715",
+     "https://oeis.org/A268403"]
   end
 end

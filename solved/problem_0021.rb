@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.3024s (2/5/13, #~54309)
 class Problem_0021
   def title; 'Amicable numbers' end
+  def difficulty; 5 end
 
   # Let d(n) be defined as the sum of proper divisors of n (numbers less than
   # n which divide evenly into n).  If d(a) = b and d(b) = a, where a != b,
@@ -15,15 +16,17 @@ class Problem_0021
   #
   # Evaluate the sum of all the amicable numbers under 10000.
 
-  def refs; [] end
+  def solve( n = 10_000 )
+    (1..n).select {|i| i.amicable?}.reduce( :+ )
+  end
+
   def solution; 31_626 end
   def best_time; 0.2043 end
+  def effort; 0 end
 
   def completed_on; '2013-02-05' end
   def ordinality; 54_309 end
   def population; 278_397 end
 
-  def solve( n = 10_000 )
-    (1..n).select {|i| i.amicable?}.reduce( :+ )
-  end
+  def refs; ["https://oeis.org/A063990"] end
 end

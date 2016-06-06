@@ -3,6 +3,7 @@ require 'projectEuler'
 # 1.880s (12/16/13, ~16665)
 class Problem_0069
   def title; 'Totient maximum' end
+  def difficulty; 10 end
 
   # Euler's Totient function, φ(n) [sometimes called the phi function], is
   # used to determine the number of numbers less than n which are relatively
@@ -25,17 +26,22 @@ class Problem_0069
   #
   # Find the value of n <= 1,000,000 for which n/φ(n) is a maximum.
 
-  def refs; [] end
-  def solution; 510_510 end
-  def best_time; 0.8761 end
-
-  def completed_on; '2013-12-16' end
-  def ordinality; 16_665 end
-  def population; 356_321 end
-
   def solve( n = 1_000_000 )
     s = n.totient_sieve
     s[0] = 1
     s.each_with_index.max_by {|i, j| j.to_f / i}[1]
+  end
+
+  def solution; 510_510 end
+  def best_time; 0.8761 end
+  def effort; 15 end
+  
+  def completed_on; '2013-12-16' end
+  def ordinality; 16_665 end
+  def population; 356_321 end
+
+  def refs
+    ["https://en.wikipedia.org/wiki/Euler%27s_totient_function",
+     "https://oeis.org/A000010"]
   end
 end

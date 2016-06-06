@@ -3,6 +3,7 @@ require 'projectEuler'
 # 39.26s (2/15/13, #~38022)
 class Problem_0034
   def title; 'Digit factorials' end
+  def difficulty; 5 end
 
   # 145 is a curious number, as 1! + 4! + 5! = 1 + 24 + 120 = 145.
   #
@@ -10,14 +11,6 @@ class Problem_0034
   # their digits.
   #
   # Note: as 1! = 1 and 2! = 2 are not sums they are not included.
-
-  def refs; [] end
-  def solution; 40_730 end
-  def best_time; 27.76 end
-
-  def completed_on; '2013-02-15' end
-  def ordinality; 38_022 end
-  def population; 280_879 end
 
   def solve()
     f = (0..9).map( &:fact )
@@ -30,4 +23,14 @@ class Problem_0034
     # Brute force every number with that many digits or fewer.
     (3..lim).select {|i| i == i.to_s.chars.inject( 0 ) {|a, x| a + f[x.to_i]}}.reduce( :+ )
   end
+
+  def solution; 40_730 end
+  def best_time; 27.76 end
+  def effort; 10 end
+  
+  def completed_on; '2013-02-15' end
+  def ordinality; 38_022 end
+  def population; 280_879 end
+
+  def refs; ["https://oeis.org/A014080"] end
 end

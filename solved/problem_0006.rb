@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.00003624s (1/24/13, #~157925)
 class Problem_0006
   def title; 'Sum square difference' end
+  def difficulty; 5 end
   
   # The sum of the squares of the first ten natural numbers is,
   #
@@ -18,18 +19,20 @@ class Problem_0006
   # Find the difference between the sum of the squares of the first one
   # hundred natural numbers and the square of the sum.
 
-  def refs; [] end
-  def solution; 25_164_150 end
-  def best_time; 0.00001001 end
-
-  def completed_on; '2013-01-24' end
-  def ordinality; 157_925 end
-  def population; 275_419 end
-
   def solve( n = 100 )
     # Sum of squares is given by n(n + 1)(2n + 1) / 6, while square of sums
     # is [n(n + 1)][n(n + 1)] / 4.  Subtracting and simplifying the result
     # gives n(n + 1)(n - 1)(3n + 2) / 12.
     n * (n + 1) * (n - 1) * (3*n + 2) / 12
   end
+
+  def solution; 25_164_150 end
+  def best_time; 0.00001001 end
+  def effort; 0 end
+
+  def completed_on; '2013-01-24' end
+  def ordinality; 157_925 end
+  def population; 275_419 end
+
+  def refs; [] end
 end

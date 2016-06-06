@@ -31,19 +31,6 @@ class Problem_0387
   # Find the sum of the strong, right truncatable Harshad primes less than
   # 10^14.
 
-  def refs
-    ["http://en.wikipedia.org/wiki/Harshad_number",
-     "http://oeis.org/A005349",
-     "http://oeis.org/A097569"]
-  end
-
-  def solution; 696_067_597_313_468 end
-  def best_time; 4.343 end
-
-  def completed_on; '2015-03-15' end
-  def ordinality; 1_183 end
-  def percentile; 470_129 end
-
   def build( node, depth, max, strong )
     # Exit if we've built the tree deep enough.
     return if max < depth
@@ -87,5 +74,19 @@ class Problem_0387
     end
 
     total
+  end
+
+  def solution; 696_067_597_313_468 end
+  def best_time; 4.343 end
+  def effort; 75 end
+  
+  def completed_on; '2015-03-15' end
+  def ordinality; 1_183 end
+  def percentile; 470_129 end
+  
+  def refs
+    ["http://en.wikipedia.org/wiki/Harshad_number",
+     "http://oeis.org/A005349",
+     "http://oeis.org/A097569"]
   end
 end

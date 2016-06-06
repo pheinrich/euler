@@ -3,6 +3,7 @@ require 'projectEuler'
 # 38.37s (2/12/14, #5799)
 class Problem_0094
   def title; 'Almost equilateral triangles' end
+  def difficulty; 35 end
 
   # It is easily proved that no equilateral triangle exists with integral
   # length sides and integral area. However, the almost equilateral triangle
@@ -14,14 +15,6 @@ class Problem_0094
   # Find the sum of the perimeters of all almost equilateral triangles with
   # integral side lengths and area and whose perimeters do not exceed one
   # billion (1,000,000,000).
-
-  def refs; [] end
-  def solution; 518_408_346 end
-  def best_time; 38.37 end
-
-  def completed_on; '2014-02-12' end
-  def ordinality; 5_799 end
-  def population; 370_714 end
 
   def solve( n = 1_000_000_000 )
     # Since the area of a triangle is A = (bh)/2, we know that an integer area
@@ -75,4 +68,14 @@ class Problem_0094
 
     sum
   end
+
+  def solution; 518_408_346 end
+  def best_time; 38.37 end
+  def effort; 35 end
+
+  def completed_on; '2014-02-12' end
+  def ordinality; 5_799 end
+  def population; 370_714 end
+
+  def refs; [] end
 end

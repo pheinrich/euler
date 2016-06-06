@@ -3,6 +3,7 @@ require 'projectEuler'
 # 7.365s (12/20/13, #~12923)
 class Problem_0074
   def title; 'Digital factorial chains' end
+  def difficulty; 15 end
 
   # The number 145 is well known for the property that the sum of the
   # factorial of its digits is equal to 145:
@@ -32,14 +33,6 @@ class Problem_0074
   # sixty non-repeating terms?
 
   F = (0..9).map( &:fact )
-
-  def refs; [] end
-  def solution; 402 end
-  def best_time; 6.395 end
-
-  def completed_on; '2013-12-20' end
-  def ordinality; 12_923 end
-  def population; 357_313 end
 
   def solve( limit = 1_000_000, length = 60 )
     count = 0
@@ -80,5 +73,18 @@ class Problem_0074
     end
     
     count
+  end
+
+  def solution; 402 end
+  def best_time; 6.395 end
+  def effort; 20 end
+    
+  def completed_on; '2013-12-20' end
+  def ordinality; 12_923 end
+  def population; 357_313 end
+  
+  def refs
+    ["https://oeis.org/A061602",
+     "https://oeis.org/A214285"]
   end
 end

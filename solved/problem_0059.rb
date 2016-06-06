@@ -3,6 +3,7 @@ require 'projectEuler'
 # 2.626s (4/3/13, #~16950)
 class Problem_0059
   def title; 'XOR decryption' end
+  def difficulty; 5 end
 
   # Each character on a computer is assigned a unique code and the preferred
   # standard is ASCII (American Standard Code for Information Interchange).
@@ -39,14 +40,6 @@ class Problem_0059
              its over think also back after use two how our work first well
              way even new want because any these give day most us)
 
-  def refs; [] end
-  def solution; 107_359 end
-  def best_time; 2.045 end
-
-  def completed_on; '2013-04-03' end
-  def ordinality; 16_950 end
-  def population; 292_543 end
-
   def solve
     orig = IO.read( 'resources/0059_cipher1.txt' ).split( ',' ).map( &:to_i )
     repeat = 1 + orig.length / 3
@@ -62,4 +55,14 @@ class Problem_0059
       key.next
     end
   end
+
+  def solution; 107_359 end
+  def best_time; 2.045 end
+  def effort; 15 end
+  
+  def completed_on; '2013-04-03' end
+  def ordinality; 16_950 end
+  def population; 292_543 end
+  
+  def refs; ["https://en.wikipedia.org/wiki/Most_common_words_in_English"] end
 end

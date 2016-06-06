@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.5725s (3/12/13, #~23891)
 class Problem_0050
   def title; 'Consecutive prime sum' end
+  def difficulty; 5 end
 
   # The prime 41 can be written as the sum of six consecutive primes:
   #
@@ -16,14 +17,6 @@ class Problem_0050
   #
   # Which prime, below one-million, can be written as the sum of the most
   # consecutive primes?
-
-  def refs; [] end
-  def solution; 997_651 end
-  def best_time; 0.1621 end
-
-  def completed_on; '2013-03-12' end
-  def ordinality; 23_891 end
-  def population; 287_083 end
 
   def solve( n = 1_000_000 )
     h = Hash.new
@@ -44,4 +37,14 @@ class Problem_0050
 
     max # puts "%d (%d primes)" % [max, 1 + run]
   end
+
+  def solution; 997_651 end
+  def best_time; 0.1621 end
+  def effort; 5 end
+  
+  def completed_on; '2013-03-12' end
+  def ordinality; 23_891 end
+  def population; 287_083 end
+
+  def refs; [] end
 end

@@ -3,6 +3,7 @@ require 'projectEuler'
 # 7.234s (2/15/13, #~33914)
 class Problem_0035
   def title; 'Circular primes' end
+  def difficulty; 5 end
 
   # The number, 197, is called a circular prime because all rotations of the
   # digits: 197, 971, and 719, are themselves prime.
@@ -11,14 +12,6 @@ class Problem_0035
   # 71, 73, 79, and 97.
   #
   # How many circular primes are there below one million?
-
-  def refs; [] end
-  def solution; 55 end
-  def best_time; 4.673 end
-
-  def completed_on; '2013-02-15' end
-  def ordinality; 33_914 end
-  def population; 280_879 end
 
   def solve( n = 1_000_000 )
     total = 0
@@ -40,4 +33,14 @@ class Problem_0035
 
     total
   end
+
+  def solution; 55 end
+  def best_time; 4.673 end
+  def effort; 5 end
+
+  def completed_on; '2013-02-15' end
+  def ordinality; 33_914 end
+  def population; 280_879 end
+
+  def refs; [] end
 end

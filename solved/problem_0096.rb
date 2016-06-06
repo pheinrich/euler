@@ -3,6 +3,7 @@ require 'projectEuler'
 # 1.360s (2/16/14, #8339)
 class Problem_0096
   def title; 'Su Doku' end
+  def difficulty; 25 end
 
   # Su Doku (Japanese meaning number place) is the name given to a popular
   # puzzle concept. Its origin is unclear, but credit must be attributed to
@@ -27,14 +28,6 @@ class Problem_0096
   # the top left corner of each solution grid; for example, 483 is the 3-digit
   # number found in the top left corner of the solution grid above.
 
-  def refs; [] end
-  def solution; 24_702 end
-  def best_time; 1.360 end
-
-  def completed_on; '2014-02-16' end
-  def ordinality; 8_339 end
-  def population; 371_707 end
-
   def solve
     # Parse data file into an array of puzzles, each of which is an array of
     # rows, each of which is an array of values.
@@ -50,4 +43,14 @@ class Problem_0096
     # each solved puzzle.
     grids.inject( 0 ) {|acc, g| acc + g[0][0, 3].join.to_i}
   end
+
+  def solution; 24_702 end
+  def best_time; 1.360 end
+  def effort; 25 end
+  
+  def completed_on; '2014-02-16' end
+  def ordinality; 8_339 end
+  def population; 371_707 end
+
+  def refs; [] end
 end

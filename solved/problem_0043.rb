@@ -3,6 +3,7 @@ require 'projectEuler'
 # 1.814s (2/19/13, #~21574)
 class Problem_0043
   def title; 'Sub-string divisibility' end
+  def difficulty; 5 end
 
   # The number 1406357289 is a 0 to 9 pandigital number because it is made up
   # of each of the digits 0 to 9 in some order, but it also has a rather
@@ -20,14 +21,6 @@ class Problem_0043
   #     d[8]d[9]d[10] = 289 is divisible by 17
   #
   # Find the sum of all 0 to 9 pandigital numbers with this property.
-
-  def refs; [] end
-  def solution; 16_695_334_890 end
-  def best_time; 1.206 end
-
-  def completed_on; '2013-02-19' end
-  def ordinality; 21_574 end
-  def population; 281_872 end
 
   def chain( maps, candidate = "", index = 0, sum = 0 )
     if index < maps.length
@@ -61,4 +54,14 @@ class Problem_0043
     maps = divisors.map {|i| (12..987).reject {|j| 0 != j % i || "%03d" % j =~ /([0-9]).*\1/}.map {|k| "%03d" % k}}
     chain( maps )
   end
+
+  def solution; 16_695_334_890 end
+  def best_time; 1.206 end
+  def effort; 20 end
+
+  def completed_on; '2013-02-19' end
+  def ordinality; 21_574 end
+  def population; 281_872 end
+
+  def refs; [] end
 end

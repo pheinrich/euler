@@ -3,6 +3,7 @@ require 'projectEuler'
 # 2.703s (2/14/13, #~26994)
 class Problem_0032
   def title; 'Pandigital products' end
+  def difficulty; 5 end
 
   # We shall say that an n-digit number is pandigital if it makes use of all
   # the digits 1 to n exactly once; for example, the 5-digit number, 15234, is
@@ -17,14 +18,6 @@ class Problem_0032
   # HINT: Some products can be obtained in more than one way so be sure to
   # only include it once in your sum.
 
-  def refs; [] end
-  def solution; 45_228 end
-  def best_time; 1.992 end
-
-  def completed_on; '2013-02-14' end
-  def ordinality; 26_994 end
-  def population; 280_631 end
-
   def solve
     perms = (1..9).to_a.permutation.map {|p| p.join}
     prods = []
@@ -38,4 +31,14 @@ class Problem_0032
     
     prods.uniq.reduce( :+ )
   end
+
+  def solution; 45_228 end
+  def best_time; 1.992 end
+  def effort; 10 end
+    
+  def completed_on; '2013-02-14' end
+  def ordinality; 26_994 end
+  def population; 280_631 end
+  
+  def refs; [] end
 end

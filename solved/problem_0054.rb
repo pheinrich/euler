@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.06298s (3/16/13, #~11936)
 class Problem_0054
   def title; 'Poker hands' end
+  def difficulty; 10 end
 
   # In the card game poker, a hand consists of five cards and are ranked, from
   # lowest to highest, in the following way:
@@ -53,16 +54,18 @@ class Problem_0054
   #
   # How many hands does Player 1 win?
 
-  def refs; [] end
-  def solution; 376 end
-  def best_time; 0.03837 end
-
-  def completed_on; '2013-03-16' end
-  def ordinality; 11_936 end
-  def population; 288_076 end
-
   def solve
     deals = File.readlines( 'resources/0054_poker.txt' ).map {|l| l.split}
     deals.count {|d| ProjectEuler::PokerHand.new( d[0, 5] ) > ProjectEuler::PokerHand.new( d[5, 5] )}
   end
+
+  def solution; 376 end
+  def best_time; 0.03837 end
+  def effort; 15 end
+  
+  def completed_on; '2013-03-16' end
+  def ordinality; 11_936 end
+  def population; 288_076 end
+  
+  def refs; [] end
 end

@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.03066s (3/18/13, #~15448)
 class Problem_0057
   def title; 'Square root convergents' end
+  def difficulty; 5 end
 
   # It is possible to show that the square root of two can be expressed as an
   # infinite continued fraction.
@@ -23,14 +24,6 @@ class Problem_0057
   # In the first one-thousand expansions, how many fractions contain a
   # numerator with more digits than denominator?
 
-  def refs; [] end
-  def solution; 153 end
-  def best_time; 0.01277 end
-
-  def completed_on; '2013-03-18' end
-  def ordinality; 15_448 end
-  def population; 288_572 end
-
   def solve( n = 1_000 )
     count = 0
     a, b = 2, 1
@@ -41,5 +34,19 @@ class Problem_0057
     end
 
     count
+  end
+
+  def solution; 153 end
+  def best_time; 0.01277 end
+  def effort; 20 end
+
+  def completed_on; '2013-03-18' end
+  def ordinality; 15_448 end
+  def population; 288_572 end
+
+  def refs
+    ["https://en.wikipedia.org/wiki/Continued_fraction",
+     "https://oeis.org/A000129",
+     "https://oeis.org/A001333"]
   end
 end

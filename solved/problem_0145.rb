@@ -14,7 +14,7 @@ class Problem_0145
   #
   # How many reversible numbers are there below one-billion (10^9)?
 
-  def refs; [] end
+  def refs; ["https://oeis.org/A135739"] end
   def solution; 608_720 end
   def best_time; 0.00004792 end
 

@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.00008702s (1/30/13, #~63274)
 class Problem_0015
   def title; 'Lattice paths' end
+  def difficulty; 5 end
 
   # Starting in the top left corner of a 2 x 2 grid, there are 6 routes
   # (without backtracking) to the bottom right corner.
@@ -12,14 +13,6 @@ class Problem_0015
   #     . . v    . . V    . |.>    . . V    . |.>    |...>   
   #
   # How many routes are there through a 20 x 20 grid?
-
-  def refs; [] end
-  def solution; 137_846_528_820 end
-  def best_time; 0.00003386 end
-
-  def completed_on; '2013-01-30' end
-  def ordinality; 63_274 end
-  def population; 276_908 end
 
   def solve( n = 20 )
     # Working backward from the lower right point, it's clear that its two
@@ -36,4 +29,14 @@ class Problem_0015
     # where nCk = n! / (k! * (n - k)!).
     (n << 1).fact / (n.fact * n.fact)
   end
+
+  def solution; 137_846_528_820 end
+  def best_time; 0.00003386 end
+  def effort; 20 end
+
+  def completed_on; '2013-01-30' end
+  def ordinality; 63_274 end
+  def population; 276_908 end
+
+  def refs; ["https://oeis.org/A007318"] end
 end

@@ -3,6 +3,7 @@ require 'projectEuler'
 # 10.37s (12/29/13, #17059)
 class Problem_0081
   def title; 'Path sum: two ways' end
+  def difficulty; 10 end
 
   # In the 5 by 5 matrix below, the minimal path sum from the top left to the
   # bottom right, by only moving to the right and down, is indicated and is
@@ -17,14 +18,6 @@ class Problem_0081
   # Find the minimal path sum, in 0081_matrix.txt, a 31K text file containing
   # an 80 by 80 matrix, from the top left to the bottom right by only moving
   # right and down.
-
-  def refs; [] end
-  def solution; 427_337 end
-  def best_time; 10.37 end
-
-  def completed_on; '2013-12-29' end
-  def ordinality; 17_059 end
-  def population; 359_547 end
 
   def solve
     rows = File.readlines( 'resources/0081_matrix.txt' )
@@ -54,4 +47,14 @@ class Problem_0081
     # Add the weight of the first node, since it isn't included in the total.
     rows[0][0] + g.dijkstra( 0, w*h - 1 )
   end
+
+  def solution; 427_337 end
+  def best_time; 10.37 end
+  def effort; 30 end
+  
+  def completed_on; '2013-12-29' end
+  def ordinality; 17_059 end
+  def population; 359_547 end
+  
+  def refs; [] end
 end

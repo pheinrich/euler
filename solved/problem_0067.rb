@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.005959s (2/5/13, #~41780)
 class Problem_0067
   def title; 'Maximum path sum II' end
+  def difficulty; 5 end
 
   # By starting at the top of the triangle below and moving to adjacent
   # numbers on the row below, the maximum total from top to bottom is 23.
@@ -23,16 +24,18 @@ class Problem_0067
   # would take over twenty billion years to check them all. There is an
   # efficient algorithm to solve it. ;o)
 
-  def refs; [] end
+  def solve
+    t = IO.read( 'resources/0067_triangle.txt' ).split.map(&:to_i)
+    t.tree_sum
+  end
+
   def solution; 7_273 end
   def best_time; 0.004417 end
+  def effort; 0 end
   
   def completed_on; '2013-02-15' end
   def ordinality; 41_780 end
   def population; 278_397 end
 
-  def solve
-    t = IO.read( 'resources/0067_triangle.txt' ).split.map(&:to_i)
-    t.tree_sum
-  end
+  def refs; [] end
 end

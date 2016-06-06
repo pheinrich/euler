@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.00005722s (1/26/13, #~116174)
 class Problem_0009
   def title; 'Special Pythagorean triplet' end
+  def difficulty; 5 end
 
   # A Pythagorean triplet is a set of three natural numbers, a < b < c, for
   # which,
@@ -13,14 +14,6 @@ class Problem_0009
   # There exists exactly one Pythagorean triplet for which a + b + c = 1000.
   # Find the product a * b * c.
   
-  def refs; [] end
-  def solution; 31_875_000 end
-  def best_time; 0.00001383 end
-
-  def completed_on; '2013-01-26' end
-  def ordinality; 116_174 end
-  def population; 275_916 end
-
   def solve( n = 1_000 )
     # Euclid's formula for generating Pythagorean triples says that for
     # integers u and v, a = 2uv, b = u^2 - v^2, and c = u^2 + v^2.  Knowing
@@ -35,4 +28,14 @@ class Problem_0009
       return (v * u**5 - u * v**5) << 1 if u > v && n == (2*u) * (u + v)
     end
   end
+
+  def solution; 31_875_000 end
+  def best_time; 0.00001383 end
+  def effort; 20 end
+
+  def completed_on; '2013-01-26' end
+  def ordinality; 116_174 end
+  def population; 275_916 end
+
+  def refs; ["https://en.wikipedia.org/wiki/Pythagorean_triple"] end
 end

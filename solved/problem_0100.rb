@@ -3,7 +3,7 @@ require 'projectEuler'
 # 0.00001192s, (1/9/15, #8868)
 class Problem_0100
   def title; 'Arranged probability' end
-  def solution; 756_872_327_473 end
+  def difficulty; 30 end
 
   # If a box contains twenty-one coloured discs, composed of fifteen blue
   # discs and six red discs, and two discs were taken at random, it can be
@@ -18,18 +18,6 @@ class Problem_0100
   # By finding the first arrangement to contain over 10^12 = 1,000,000,000,000
   # discs in total, determine the number of blue discs that the box would
   # contain.
-
-  def refs
-    [ "http://www.alpertron.com.ar/METHODS.HTM",
-      "http://www.alpertron.com.ar/QUAD.HTM" ]
-  end
-
-  def solution; 756_872_327_473 end
-  def best_time; 0.00001001 end
-
-  def completed_on; '2015-01-09' end
-  def ordinality; 8_868 end
-  def population; 362_277 end
 
   def solve( n = 1_000_000_000_000 )
     # We are looking for x and y that satisfy the relationship:
@@ -53,5 +41,18 @@ class Problem_0100
     end
 
     x
+  end
+
+  def solution; 756_872_327_473 end
+  def best_time; 0.00001001 end
+  def effort; 20 end
+
+  def completed_on; '2015-01-09' end
+  def ordinality; 8_868 end
+  def population; 362_277 end
+
+  def refs
+    [ "http://www.alpertron.com.ar/METHODS.HTM",
+      "http://www.alpertron.com.ar/QUAD.HTM" ]
   end
 end

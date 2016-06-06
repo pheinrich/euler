@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.8722s (2/17/13, #~36697)
 class Problem_0036
   def title; 'Double-base palindromes' end
+  def difficulty; 5 end
 
   # The decimal number, 585 = 1001001001 (binary), is palindromic in both
   # bases.
@@ -13,15 +14,17 @@ class Problem_0036
   # (Please note that the palindromic number, in either base, may not include
   # leading zeros.)
 
-  def refs; [] end
+  def solve( n = 1_000_000 )
+    (0...n).select {|i| i.to_s.palindromic? && i.to_s( 2 ).palindromic?}.reduce( :+ )
+  end
+
   def solution; 872_187 end
   def best_time; 0.5548 end
+  def effort; 0 end
 
   def completed_on; '2013-02-17' end
   def ordinality; 36_697 end
   def population; 280_631 end
 
-  def solve( n = 1_000_000 )
-    (0...n).select {|i| i.to_s.palindromic? && i.to_s( 2 ).palindromic?}.reduce( :+ )
-  end
+  def refs; [] end
 end

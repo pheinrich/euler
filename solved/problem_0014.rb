@@ -3,6 +3,7 @@ require 'projectEuler'
 # 22.94s (1/27/13, #~73172)
 class Problem_0014
   def title; 'Longest Collatz sequence' end
+  def difficulty; 5 end
 
   # The following iterative sequence is defined for the set of positive
   # integers:
@@ -23,14 +24,6 @@ class Problem_0014
   #
   # NOTE: Once the chain starts the terms are allowed to go above one million.
 
-  def refs; [] end
-  def solution; 837_799 end
-  def best_time; 11.54 end
-
-  def completed_on; '2013-01-27' end
-  def ordinality; 73_172 end
-  def population; 276_164 end
-
   def solve( n = 1_000_000 )
     m = 1
     max = 1
@@ -44,5 +37,18 @@ class Problem_0014
     end
 
     m
+  end
+
+  def solution; 837_799 end
+  def best_time; 11.54 end
+  def effort; 0 end
+
+  def completed_on; '2013-01-27' end
+  def ordinality; 73_172 end
+  def population; 276_164 end
+
+  def refs
+    ["https://en.wikipedia.org/wiki/Collatz_conjecture",
+     "https://oeis.org/A006577"]
   end
 end

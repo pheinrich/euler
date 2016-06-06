@@ -3,6 +3,7 @@ require 'projectEuler'
 # 343.7s (11/25/13, #~11429)
 class Problem_0060
   def title; 'Prime pair sets' end
+  def difficulty; 20 end
 
   # The primes 3, 7, 109, and 673, are quite remarkable. By taking any two
   # primes and concatenating them in any order the result will always be
@@ -15,14 +16,6 @@ class Problem_0060
 
   POWER = 8
   P = (10**POWER).prime_sieve
-
-  def refs; [] end
-  def solution; 26033 end
-  def best_time; 184.8 end
-
-  def completed_on; '2013-11-25' end
-  def ordinality; 11_429 end
-  def population; 351_109 end
 
   def check( hash, array, n, result )
     return true if 0 == n
@@ -59,4 +52,14 @@ class Problem_0060
     check( h, h.keys(), n, result )
     result.reduce( :+ )
   end
+
+  def solution; 26033 end
+  def best_time; 184.8 end
+  def effort; 35 end
+  
+  def completed_on; '2013-11-25' end
+  def ordinality; 11_429 end
+  def population; 351_109 end
+  
+  def refs; [] end
 end

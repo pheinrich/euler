@@ -3,6 +3,7 @@ require 'projectEuler'
 # 33.41s (3/25/13, #~12457)
 class Problem_0051
   def title; 'Prime digit replacements' end
+  def difficulty; 15 end
 
   # By replacing the 1st digit of *3, it turns out that six of the nine
   # possible values: 13, 23, 43, 53, 73, and 83, are all prime.
@@ -16,14 +17,6 @@ class Problem_0051
   # Find the smallest prime which, by replacing part of the number (not
   # necessarily adjacent digits) with the same digit, is part of an eight
   # prime value family.
-
-  def refs; [] end
-  def solution; 121_313 end
-  def best_time; 21.15 end
-
-  def completed_on; '2013-03-25' end
-  def ordinality; 12_457 end
-  def population; 290_309 end
 
   def solve( n = 8 )
     max = 1_000_000
@@ -64,4 +57,14 @@ class Problem_0051
 
     arr[0].to_i # puts arr.inspect
   end
+
+  def solution; 121_313 end
+  def best_time; 21.15 end
+  def effort; 50 end
+  
+  def completed_on; '2013-03-25' end
+  def ordinality; 12_457 end
+  def population; 290_309 end
+  
+  def refs; [] end
 end

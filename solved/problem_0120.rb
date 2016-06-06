@@ -12,7 +12,8 @@ class Problem_0120
   #
   # For 3 ≤ a ≤ 1000, find ∑ r[max].
 
-  def refs; [] end
+  def refs; ["https://oeis.org/A159469",
+    "https://oeis.org/A176974"] end
   def solution; 333_082_500 end
   def best_time; 0.0001409 end
 

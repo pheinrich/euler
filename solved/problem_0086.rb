@@ -3,6 +3,7 @@ require 'projectEuler'
 # 1.418s (1/4/14, #6000)
 class Problem_0086
   def title; 'Cuboid route' end
+  def difficulty; 35 end
 
   # A spider, S, sits in one corner of a cuboid room, measuring 6 by 5 by 3,
   # and a fly, F, sits in the opposite corner. By travelling on the surfaces
@@ -21,14 +22,6 @@ class Problem_0086
   # Find the least value of M such that the number of solutions first exceeds
   # one million.
 
-  def refs; [] end
-  def solution; 1_818 end
-  def best_time; 1.392 end
-
-  def completed_on; '2014-01-04' end
-  def ordinality; 6_000 end
-  def population; 361_036 end
-
   def solve( n = 1_000_000 )
     sum = limit = 0
     
@@ -43,5 +36,18 @@ class Problem_0086
     end
 
     limit
+  end
+
+  def solution; 1_818 end
+  def best_time; 1.392 end
+  def effort; 100 end
+
+  def completed_on; '2014-01-04' end
+  def ordinality; 6_000 end
+  def population; 361_036 end
+
+  def refs
+    ["https://oeis.org/A143714",
+     "https://oeis.org/A143715"]
   end
 end

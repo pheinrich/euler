@@ -21,7 +21,7 @@ class Problem_0116
   #
   # NOTE: This is related to Problem 117.
 
-  def refs; [] end
+  def refs; ["https://oeis.org/A244281"] end
   def solution; 20_492_570_929 end
   def best_time; 0.0005181 end
 

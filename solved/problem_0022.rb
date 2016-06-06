@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.01374s (2/5/13, #~48926)
 class Problem_0022
   def title; 'Names scores' end
+  def difficulty; 5 end
 
   # Using 0022_names.txt, a 46K text file containing over five-thousand first
   # names, begin by sorting it into alphabetical order. Then working out the
@@ -15,14 +16,6 @@ class Problem_0022
   #
   # What is the total of all the name scores in the file?
 
-  def refs; [] end
-  def solution; 871_198_282 end
-  def best_time; 0.01029 end
-
-  def completed_on; '2013-02-05' end
-  def ordinality; 48_926 end
-  def population; 278_397 end
-
   def solve
     # Strip quotes and split comma-separated values into a sorted array.
     names = IO.read( 'resources/0022_names.txt' ).delete( '\"' ).split( ',' ).sort
@@ -33,4 +26,14 @@ class Problem_0022
     # Weight each name score according to its list position and add together.
     names.each_with_index.inject( 0 ) {|sum, (n, i)| sum + n*(1 + i)}
   end
+
+  def solution; 871_198_282 end
+  def best_time; 0.01029 end
+  def effort; 0 end
+
+  def completed_on; '2013-02-05' end
+  def ordinality; 48_926 end
+  def population; 278_397 end
+
+  def refs; [] end
 end

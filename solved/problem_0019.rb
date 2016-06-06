@@ -4,6 +4,7 @@ require 'projectEuler'
 # 0.002950s (2/5/13, #~48603)
 class Problem_0019
   def title; 'Counting Sundays' end
+  def difficulty; 5 end
 
   # You are given the following information, but you may prefer to do some
   # research for yourself.
@@ -21,14 +22,6 @@ class Problem_0019
   # How many Sundays fell on the first of the month during the twentieth
   # century (1 Jan 1901 to 31 Dec 2000)?
 
-  def refs; [] end
-  def solution; 171 end
-  def best_time; 0.006172 end
-
-  def completed_on; '2013-02-05' end
-  def ordinality; 48_603 end
-  def population; 278_397 end
-
   def solve( start = Date.new( 1901, 1, 1 ), stop = Date.new( 2000, 12, 31 ) )
     total = 0
     
@@ -43,4 +36,14 @@ class Problem_0019
 
     total
   end
+
+  def solution; 171 end
+  def best_time; 0.006172 end
+  def effort; 5 end
+
+  def completed_on; '2013-02-05' end
+  def ordinality; 48_603 end
+  def population; 278_397 end
+
+  def refs; [] end
 end

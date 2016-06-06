@@ -19,14 +19,6 @@ class Problem_0234
   #
   # What is the sum of all semidivisible numbers not exceeding 999966663333?
 
-  def refs; [] end
-  def solution; 1_259_187_438_574_927_161 end
-  def best_time; 4.794 end
-
-  def completed_on; '2015-01-23' end
-  def ordinality; 2_198 end
-  def population; 456_331 end
-
   def solve( n = 999966663333 )
     # Extend the range of our prime sieve slightly to ensure we include the
     # prime just on the other side of our upper bound.
@@ -54,6 +46,16 @@ class Problem_0234
     semis.select! {|k, v| 1 == v && k < n}
     semis.keys.reduce( :+ )
   end
+
+  def solution; 1_259_187_438_574_927_161 end
+  def best_time; 4.794 end
+  def effort; 50 end
+  
+  def completed_on; '2015-01-23' end
+  def ordinality; 2_198 end
+  def population; 456_331 end
+
+  def refs; ["https://oeis.org/A157939"] end
 
   # Pattern discovery:
   #    r = 2              3                                               5
