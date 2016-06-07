@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.00005198s (2/23/15, #705)
 class Problem_0493
   def title; 'Under The Rainbow' end
+  def difficulty; 10 end
 
   # 70 colored balls are placed in an urn, 10 for each of the seven rainbow
   # colors.
@@ -11,18 +12,6 @@ class Problem_0493
   # balls?
   #
   # Give your answer with nine digits after the decimal point (a.bcdefghij).
-
-  def refs
-    ["http://www.albany.edu/~mark/classes/367/e2s99sol.pdf",
-     "http://en.wikipedia.org/wiki/Hypergeometric_distribution"]
-  end
-
-  def solution; 6.818741802 end
-  def best_time; 0.00004124 end
-
-  def completed_on; '2015-02-23' end
-  def ordinality; 705 end
-  def population; 464_166 end
 
   def solve( colors = 7, count = 10, drawn = 20 )
     # If X = the number of colors drawn, we're looking for its expected value,
@@ -43,5 +32,18 @@ class Problem_0493
     total = colors * count
     expy = (total - count).choose( drawn ).to_f / total.choose( drawn )
     "%.9f" % [colors * (1 - expy)]
+  end
+
+  def solution; 6.818741802 end
+  def best_time; 0.00004124 end
+  def effort; 35 end
+    
+  def completed_on; '2015-02-23' end
+  def ordinality; 705 end
+  def population; 464_166 end
+  
+  def refs
+    ["http://www.albany.edu/~mark/classes/367/e2s99sol.pdf",
+     "http://en.wikipedia.org/wiki/Hypergeometric_distribution"]
   end
 end

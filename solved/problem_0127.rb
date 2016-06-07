@@ -3,6 +3,7 @@ require 'projectEuler'
 # 142.6s (1/18/15, #3433)
 class Problem_0127
   def title; 'abc-hits' end
+  def difficulty; 50 end
 
   # The radical of n, rad(n), is the product of distinct prime factors of n.
   # For example, 504 = 2^3 × 3^2 × 7, so rad(504) = 2 × 3 × 7 = 42.
@@ -26,14 +27,6 @@ class Problem_0127
   #
   # Find ∑c for c < 120000.
 
-  def refs; ["http://en.wikipedia.org/wiki/Abc_conjecture"] end
-  def solution; 18_407_904 end
-  def best_time; 142.6 end
-
-  def completed_on; '2015-01-18' end
-  def ordinality; 3_433 end
-  def population; 455_090 end
-
   def solve( max = 120_000 )
     # Since a, b, c are pairwise coprime, they don't share any prime factors.
     # That means that rad(abc) = rad(a)rad(b)rad(c). We know rad(abc) < c,
@@ -53,4 +46,14 @@ class Problem_0127
 
     sum
   end
+
+  def solution; 18_407_904 end
+  def best_time; 142.6 end
+  def effort; 40 end
+  
+  def completed_on; '2015-01-18' end
+  def ordinality; 3_433 end
+  def population; 455_090 end
+  
+  def refs; ["http://en.wikipedia.org/wiki/Abc_conjecture"] end
 end

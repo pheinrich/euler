@@ -3,17 +3,10 @@ require 'projectEuler'
 # 5.978s (1/18/15, #12886)
 class Problem_0206
   def title; 'Concealed Square' end
+  def difficulty; 5 end
 
   # Find the unique positive integer whose square has the form
   # 1_2_3_4_5_6_7_8_9_0, where each "_" is a single digit.
-
-  def refs; [] end
-  def solution; 1_389_019_170 end
-  def best_time; 5.978 end
-
-  def completed_on; '2015-01-18' end
-  def ordinality; 12_886 end
-  def population; 455_090 end
 
   def solve
     # Since any square number that ends in '0' must end in '00', we know the
@@ -44,4 +37,14 @@ class Problem_0206
     # Don't forget to account for the 100 we factored out.
     10 * min
   end
+
+  def solution; 1_389_019_170 end
+  def best_time; 5.978 end
+  def effort; 35 end
+
+  def completed_on; '2015-01-18' end
+  def ordinality; 12_886 end
+  def population; 455_090 end
+
+  def refs; [] end
 end

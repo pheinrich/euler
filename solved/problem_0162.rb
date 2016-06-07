@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.00002980s (3/9/2105, #3358) 
 class Problem_0162
   def title; 'Hexadecimal numbers' end
+  def difficulty; 45 end
 
   # In the hexadecimal number system numbers are represented using 16 diff-
   # erent digits:
@@ -23,14 +24,6 @@ class Problem_0162
   # (A,B,C,D,E and F in upper case, without any leading or trailing code that
   # marks the number as hexadecimal and without leading zeroes, e.g. 1A3F and
   # not: 1a3f and not 0x1a3f and not $1A3F and not #1A3F and not 0000001A3F)
-
-  def refs; [] end
-  def solution; '3D58725572C62302' end
-  def best_time; 0.00002980 end
-
-  def completed_on; '2015-03-09' end
-  def ordinality; 3_358 end
-  def population; 468_395 end
 
   def solve( n = 16 )
     # Finding all numbers with each of three digits repeated at least once
@@ -93,4 +86,14 @@ class Problem_0162
       acc + u - v + w - x
     end.to_s( 16 ).upcase
   end
+
+  def solution; '3D58725572C62302' end
+  def best_time; 0.00002980 end
+  def effort; 35 end
+
+  def completed_on; '2015-03-09' end
+  def ordinality; 3_358 end
+  def population; 468_395 end
+
+  def refs; [] end
 end

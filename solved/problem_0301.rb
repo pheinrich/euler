@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.00001502s (5/31/16, #3874)
 class Problem_0301
   def title; 'Nim' end
+  def difficulty; 15 end
 
   # Nim is a game played with heaps of stones, where two players take it in
   # turn to remove any number of stones from any heap until no stones remain.
@@ -35,14 +36,6 @@ class Problem_0301
   #
   # For how many positive integers n ≤ 230 does X(n,2n,3n) = 0 ?
 
-  def refs; ["https://en.wikipedia.org/wiki/Nim"] end
-  def solution; 2_178_309 end
-  def best_time; 0.00001502 end
-
-  def completed_on; '2016-05-31' end
-  def ordinality; 3_874 end
-  def population; 566_837 end
-
   def solve( exp = 30 )
     # According to Wikipedia, in normal Nim play, "the winning strategy is to
     # finish every move with a nim-sum of 0" (where nim-sum is the XOR of all
@@ -54,4 +47,14 @@ class Problem_0301
     # (count computed as the number of i ≤ n where i^(2*i)^(3*i) == 0.)
     (exp + 2).fib
   end
+
+  def solution; 2_178_309 end
+  def best_time; 0.00001502 end
+  def effort; 5 end
+
+  def completed_on; '2016-05-31' end
+  def ordinality; 3_874 end
+  def population; 566_837 end
+
+  def refs; ["https://en.wikipedia.org/wiki/Nim"] end
 end

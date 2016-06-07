@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.0004370s (3/27/15, #2306)
 class Problem_0345
   def title; 'Matrix Sum' end
+  def difficulty; 15 end
 
   # We define the Matrix Sum of a matrix as the maximum sum of matrix elements
   # with each element being the only one in his row and column. For example,
@@ -33,6 +34,19 @@ class Problem_0345
       '815 559 813 459 522 788 168 586 966 232 308 833 251 631 107 ' \
       '813 883 451 509 615  77 281 613 459 205 380 274 302  35 805'.split.map( &:to_i ).each_slice( 15 ).to_a
 
+  def solve
+    assignments = ProjectEuler::KuhnMunkres.maximize_profit( N );
+    ProjectEuler::KuhnMunkres.total( N, assignments )
+  end
+
+  def solution; 13_938 end
+  def best_time; 0.0004370 end
+  def effort; 50 end
+
+  def completed_on; '2015-03-27' end
+  def ordinality; 2_306 end
+  def population; 473_729 end
+
   def refs
     ["http://en.wikipedia.org/wiki/Assignment_problem",
      "http://en.wikipedia.org/wiki/Hungarian_algorithm",
@@ -44,17 +58,5 @@ class Problem_0345
      "https://www.ri.cmu.edu/pub_files/pub4/mills_tettey_g_ayorkor_2007_3/mills_tettey_g_ayorkor_2007_3.pdf",
      "https://www.topcoder.com/community/data-science/data-science-tutorials/maximum-flow-section-1/",
      "https://www.topcoder.com/community/data-science/data-science-tutorials/maximum-flow-section-2/"]
-  end
- 
-  def solution; 13_938 end
-  def best_time; 0.0004370 end
-
-  def completed_on; '2015-03-27' end
-  def ordinality; 2_306 end
-  def population; 473_729 end
-
-  def solve
-    assignments = ProjectEuler::KuhnMunkres.maximize_profit( N );
-    ProjectEuler::KuhnMunkres.total( N, assignments )
-  end
+  end 
 end

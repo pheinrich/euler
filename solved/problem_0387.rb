@@ -3,6 +3,7 @@ require 'projectEuler'
 # 4.343s (3/15/15, #1183)
 class Problem_0387
   def title; 'Harshad Numbers' end
+  def difficulty; 10 end
 
   # A Harshad or Niven number is a number that is divisible by the sum of its
   # digits. 201 is a Harshad number because it is divisible by 3 (the sum of
@@ -78,7 +79,7 @@ class Problem_0387
 
   def solution; 696_067_597_313_468 end
   def best_time; 4.343 end
-  def effort; 75 end
+  def effort; 40 end
   
   def completed_on; '2015-03-15' end
   def ordinality; 1_183 end

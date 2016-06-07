@@ -3,6 +3,7 @@ require 'projectEuler'
 # 31.75s (3/13/15, #2807)
 class Problem_0357
   def title; 'Prime generating integers' end
+  def difficulty; 10 end
 
   # Consider the divisors of 30: 1,2,3,5,6,10,15,30.
   # It can be seen that for every divisor d of 30, d+30/d is prime.
