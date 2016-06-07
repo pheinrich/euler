@@ -3,6 +3,7 @@ require 'projectEuler'
 # 21.35s (1/8/15, #9567)
 class Problem_0104
   def title; 'Pandigital Fibonacci ends' end
+  def difficulty; 25 end
 
   # The Fibonacci sequence is defined by the recurrence relation:
   # 

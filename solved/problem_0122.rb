@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.7574s (2/16/15, #4447)
 class Problem_0122
   def title; 'Efficient exponentiation' end
+  def difficulty; 40 end
 
   # The most naive way of computing n^15 requires fourteen multiplications:
   #
@@ -29,21 +30,6 @@ class Problem_0122
   # compute n^k; for example m(15) = 5.
   #
   # For 1 ≤ k ≤ 200, find ∑ m(k).
-
-  def refs
-    ["http://en.wikipedia.org/wiki/Addition-chain_exponentiation",
-     "https://oeis.org/A003313",
-     "http://cr.yp.to/papers/pippenger.pdf",
-     "http://wwwhomes.uni-bielefeld.de/achim/ac.ps.gz",
-     "http://wwwhomes.uni-bielefeld.de/achim/addition_chain.html"]
-  end
-
-  def solution; 1_582 end
-  def best_time; 0.6977 end
-
-  def completed_on; '2015-02-16' end
-  def ordinality; 4_447 end
-  def population; 462_287 end
 
   def build( node, depth, max, memo )
     # Exit if we've built the tree deep enough.
@@ -83,5 +69,21 @@ class Problem_0122
     # Drop observed minimum depths for values beyond the upper bound, k,
     # then sum those remaining.
     memo.reject {|h, v| h > k}.reduce( 0 ) {|acc, (h, v)| acc + 1 + v}
+  end
+
+  def solution; 1_582 end
+  def best_time; 0.6977 end
+  def effort; 40 end
+  
+  def completed_on; '2015-02-16' end
+  def ordinality; 4_447 end
+  def population; 462_287 end
+  
+  def refs
+    ["http://en.wikipedia.org/wiki/Addition-chain_exponentiation",
+     "https://oeis.org/A003313",
+     "http://cr.yp.to/papers/pippenger.pdf",
+     "http://wwwhomes.uni-bielefeld.de/achim/ac.ps.gz",
+     "http://wwwhomes.uni-bielefeld.de/achim/addition_chain.html"]
   end
 end

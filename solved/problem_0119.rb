@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.005718s (1/31/15, #7181)
 class Problem_0119
   def title; 'Digit power sum' end
+  def difficulty; 30 end
 
   # The number 512 is interesting because it is equal to the sum of its digits
   # raised to some power: 5 + 1 + 2 = 8, and 8^3 = 512. Another example of a
@@ -14,14 +15,6 @@ class Problem_0119
   # You are given that a[2] = 512 and a[10] = 614656.
   #
   # Find a[30].
-
-  def refs; [] end
-  def solution; 248_155_780_267_521 end
-  def best_time; 0.005290 end
-
-  def completed_on; '2015-01-31' end
-  def ordinality; 7_181 end
-  def population; 458_316 end
 
   def solve( n = 30 )
     term = nil
@@ -38,4 +31,14 @@ class Problem_0119
 
     term
   end
+
+  def solution; 248_155_780_267_521 end
+  def best_time; 0.005290 end
+  def effort; 25 end
+
+  def completed_on; '2015-01-31' end
+  def ordinality; 7_181 end
+  def population; 458_316 end
+
+  def refs; [] end
 end

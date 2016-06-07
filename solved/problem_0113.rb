@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.001681s (1/13/15, #6664)
 class Problem_0113
   def title; 'Non-bouncy numbers' end
+  def difficulty; 30 end
 
   # Working from left-to-right if no digit is exceeded by the digit to its
   # left it is called an increasing number; for example, 134468.
@@ -18,14 +19,6 @@ class Problem_0113
   # and only 277032 non-bouncy numbers below 10^10.
   #
   # How many numbers below a googol (10^100) are not bouncy?
-
-  def refs; ["https://oeis.org/A204692"] end
-  def solution; 51_161_058_134_250 end
-  def best_time; 0.001681 end
-
-  def completed_on; '2015-01-13' end
-  def ordinality; 6_664 end
-  def population; 453_849 end
 
   def solve( log10 = 100 )
     total = 0
@@ -49,4 +42,14 @@ class Problem_0113
     # Adjust total to avoid double-counting the flats.
     total - 9*log10
   end
+
+  def solution; 51_161_058_134_250 end
+  def best_time; 0.001681 end
+  def effort; 15 end
+  
+  def completed_on; '2015-01-13' end
+  def ordinality; 6_664 end
+  def population; 453_849 end
+
+  def refs; ["https://oeis.org/A204692"] end
 end

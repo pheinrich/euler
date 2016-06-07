@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.00008321s (1/27/15, #7736)
 class Problem_0108
   def title; 'Diophantine reciprocals I' end
+  def difficulty; 30 end
 
   # In the following equation x, y, and n are positive integers.
   #
@@ -31,14 +32,6 @@ class Problem_0108
   # advised that you solve this one first.
 
   P = 100.prime_sieve
-
-  def refs; [] end
-  def solution; 180_180 end
-  def best_time; 0.00003719 end
-
-  def completed_on; '2015-01-27' end
-  def ordinality; 7_736 end
-  def population; 457_323 end
 
   def solve( sols = 1_000 )
     #        1        1        1
@@ -85,4 +78,14 @@ class Problem_0108
     # and dividing by 2.
     pf.each_with_index.reduce( 1 ) {|acc, (e, i)| acc * P[i]**e}
   end
+
+  def solution; 180_180 end
+  def best_time; 0.00003719 end
+  def effort; 25 end
+
+  def completed_on; '2015-01-27' end
+  def ordinality; 7_736 end
+  def population; 457_323 end
+  
+  def refs; [] end
 end

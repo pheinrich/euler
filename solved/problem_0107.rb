@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.003449s (1/12/15, #6327)
 class Problem_0107
   def title; 'Minimal network' end
+  def difficulty; 35 end
 
   # The undirected network depicted by problem_0107_1.gif consists of seven
   # vertices and twelve edges with a total weight of 243.
@@ -29,14 +30,6 @@ class Problem_0107
   # achieved by removing redundant edges whilst ensuring that the network
   # remains connected.
 
-  def refs; [] end
-  def solution; 259_679 end
-  def best_time; 0.003449 end
-
-  def completed_on; '2015-01-12' end
-  def ordinality; 6_327 end
-  def population; 453_601 end
-
   def solve
     rows = File.readlines( 'resources/0107_network.txt' )
     rows.map! {|row| row.scan( /[-\d]+/ ).map {|s| '-' == s ? nil : s.to_i}}
@@ -49,4 +42,14 @@ class Problem_0107
     # ected (which it isn't, in this case).
     (g.total_weight - g.min_span.total_weight) >> 1
   end
+
+  def solution; 259_679 end
+  def best_time; 0.003449 end
+  def effort; 25 end
+
+  def completed_on; '2015-01-12' end
+  def ordinality; 6_327 end
+  def population; 453_601 end
+
+  def refs; [] end
 end

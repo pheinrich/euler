@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.0003009s (1/7/14, #6047)
 class Problem_0101
   def title; 'Optimum polynomial' end
+  def difficulty; 35 end
 
   # If we are presented with the first k terms of a sequence it is impossible
   # to say with certainty the value of the next term, as there are infinitely
@@ -45,14 +46,6 @@ class Problem_0101
   #
   # Find the sum of FITs for the BOPs.
 
-  def refs; [] end
-  def solution; 37_076_114_526 end
-  def best_time; 0.0002670 end
-
-  def completed_on; '2015-01-07' end
-  def ordinality; 6_047 end
-  def population; 361_780 end
-
   def solve( coeffs = [1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1] )
     # Compute the first n terms in the polynomial sequence defined by the co-
     # efficients specified. Treat them as points along the x axis so we can
@@ -68,4 +61,14 @@ class Problem_0101
 
     fits.reduce( :+ ).to_i
   end
+
+  def solution; 37_076_114_526 end
+  def best_time; 0.0002670 end
+  def effort; 35 end
+  
+  def completed_on; '2015-01-07' end
+  def ordinality; 6_047 end
+  def population; 361_780 end
+  
+  def refs; [] end
 end

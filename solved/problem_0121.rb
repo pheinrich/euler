@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.02194s, (2/1/15, #5667)
 class Problem_0121
   def title; 'Disc game prize fund' end
+  def difficulty; 35 end
 
   # A bag contains one red disc and one blue disc. In a game of chance a
   # player takes a disc at random and its colour is noted. After each turn the
@@ -21,14 +22,6 @@ class Problem_0121
   #
   # Find the maximum prize fund that should be allocated to a single game in
   # which fifteen turns are played.
-
-  def refs; [] end
-  def solution; 2_269 end
-  def best_time; 0.02194 end
-
-  def completed_on; '2015-01-15' end
-  def ordinality; 5_667 end
-  def population; 458_564 end
 
   def solve( n = 15 )
     prob, lim, n = 0, (1 << n) - 1, n - 1
@@ -78,4 +71,14 @@ class Problem_0121
     # cations above, (n + 1)!. (Adjust n since we reduced it, above.) 
     (n + 2).fact / (prob + 1)
   end
+
+  def solution; 2_269 end
+  def best_time; 0.02194 end
+  def effort; 30 end
+
+  def completed_on; '2015-01-15' end
+  def ordinality; 5_667 end
+  def population; 458_564 end
+
+  def refs; [] end
 end

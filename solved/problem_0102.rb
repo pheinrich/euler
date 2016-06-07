@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.003856s (1/12/14, #10992)
 class Problem_0102
   def title; 'Triangle containment' end
+  def difficulty; 15 end
 
   # Three distinct points are plotted at random on a Cartesian plane, for
   # which -1000 ≤ x, y ≤ 1000, such that a triangle is formed.
@@ -22,14 +23,6 @@ class Problem_0102
   #
   # NOTE: The first two examples in the file represent the triangles in the
   # example given above.
-
-  def refs; [] end
-  def solution; 228 end
-  def best_time; 0.003856 end
-
-  def completed_on; '2014-01-12' end
-  def ordinality; 10_992 end
-  def population; 363_021 end
 
   def ccw?( p1, p2 )
     # >0 if line p1-p2 moves counterclockwise around origin
@@ -59,4 +52,14 @@ class Problem_0102
     tris = IO.read( 'resources/0102_triangles.txt' ).split( /,|\s/ ).map( &:to_i )
     tris.each_slice( 2 ).each_slice( 3 ).count {|tri| 0 != winding( tri )}
   end
+
+  def solution; 228 end
+  def best_time; 0.003856 end
+  def effort; 20 end
+  
+  def completed_on; '2014-01-12' end
+  def ordinality; 10_992 end
+  def population; 363_021 end
+  
+  def refs; [] end
 end

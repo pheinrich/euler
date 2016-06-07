@@ -3,6 +3,7 @@ require 'projectEuler'
 # 19.43s (1/31/15, #3826)
 class Problem_0118
   def title; 'Pandigital prime sets' end
+  def difficulty; 45 end
 
   # Using all of the digits 1 through 9 and concatenating them freely to form
   # decimal integers, different sets can be formed. Interestingly with the set
@@ -10,14 +11,6 @@ class Problem_0118
   #
   # How many distinct sets containing each of the digits one through nine
   # exactly once contain only prime elements?
-
-  def refs; [] end
-  def solution; 44_680 end
-  def best_time; 19.43 end
-
-  def completed_on; '2015-01-31' end
-  def ordinality; 3_826 end
-  def population; 458_316 end
 
   def fill( current, primes, succ, sets )
     set = current.join
@@ -71,4 +64,14 @@ class Problem_0118
 
     sets.count
   end
+
+  def solution; 44_680 end
+  def best_time; 19.43 end
+  def effort; 35 end
+  
+  def completed_on; '2015-01-31' end
+  def ordinality; 3_826 end
+  def population; 458_316 end
+  
+  def refs; [] end
 end

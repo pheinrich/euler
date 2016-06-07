@@ -3,6 +3,7 @@ require 'projectEuler'
 # 0.8618s (1/12/15, #14269)
 class Problem_0112
   def title; 'Bouncy numbers' end
+  def difficulty; 15 end
 
   # Working from left-to-right if no digit is exceeded by the digit to its
   # left it is called an increasing number; for example, 134468.
@@ -24,14 +25,6 @@ class Problem_0112
   # Find the least number for which the proportion of bouncy numbers is ex-
   # actly 99%.
 
-  def refs; [] end
-  def solution; 1_587_000 end
-  def best_time; 0.8618 end
-
-  def completed_on; '2015-01-12' end
-  def ordinality; 14_269 end
-  def population; 453_601 end
-
   def solve( n = 99 )
     type = [0, 0, 0, 0]
     x, limit = 0, 0
@@ -48,4 +41,14 @@ class Problem_0112
 
     x
   end
+
+  def solution; 1_587_000 end
+  def best_time; 0.8618 end
+  def effort; 20 end
+    
+  def completed_on; '2015-01-12' end
+  def ordinality; 14_269 end
+  def population; 453_601 end
+  
+  def refs; [] end
 end
