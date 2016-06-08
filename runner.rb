@@ -3,7 +3,7 @@ require 'ruby-prof'
 
 $LOAD_PATH.unshift File.expand_path( './../solved', __FILE__ )
 
-for i in [122]
+for i in [103]
 #for i in [158, 164, 172, 191, 345]
   require "problem_%04d" % i
  
