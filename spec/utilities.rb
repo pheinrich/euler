@@ -303,6 +303,18 @@ describe Integer do
     end
   end
 
+  describe "#straddle?" do
+    it "determines if every bit has a matching higher twin" do
+      expect( 9 ).to be_straddle( 6 )
+      expect( 548 ).to be_straddle( 448 )
+      expect( 17726 ).to be_straddle( 14040 )
+      
+      expect( 9 ).to_not be_straddle( 18 )
+      expect( 548 ).to_not be_straddle( 146 )
+      expect( 17726 ).to_not be_straddle( 4767 )
+    end
+  end
+
   describe "#totatives" do
     it "returns the reduced residue of a number" do
       expect { -13.totatives }.to raise_error( ArgumentError )

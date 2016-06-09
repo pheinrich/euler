@@ -98,7 +98,7 @@ class Integer
   # Returns the next larger integer having the same number of set bits.
   #
   # http://hackersdelight.org/hdcodetxt/snoob.c.txt
-  # Problems:  111, 121
+  # Problems:  106, 111, 121
   def bitseq
     return 0 if 0 == self 
 
@@ -603,6 +603,31 @@ class Integer
     end
   
     s
+  end
+
+  # Returns true if at least one bit in our binary representation can't be
+  # associated with a matching, higher bit in the comparand.
+  #
+  # Problems:  106
+  def straddle?( n )
+    m, u, v = self, 0, 0
+  
+    while 0 < m || 0 < n
+      if 1 == m & 1
+        u += 1
+        v -= 1 if 0 < v
+      end
+      
+      if 1 == n & 1
+        u -= 1 if 0 < u
+        v += 1
+      end
+      
+      m >>= 1
+      n >>= 1
+    end
+    
+    0 < u && 0 < v
   end
 
   # Returns the reduced residue of an integer (i.e. numbers less than n that
