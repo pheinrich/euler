@@ -21,6 +21,30 @@ describe Array do
     end
   end
 
+  describe "#dissociated?" do
+    it "determines if subset sums are unique" do
+      expect( [157, 150, 164, 119, 79, 159, 161, 139, 158] ).to be_dissociated
+      expect( [354, 370, 362, 384, 359, 324, 360, 180, 350, 270] ).to be_dissociated
+      expect( [41, 88, 82, 85, 61, 74, 83, 81] ).to be_dissociated
+      
+      expect( [673, 465, 569, 603, 629, 592, 584, 300, 601, 599, 600] ).to_not be_dissociated
+      expect( [90, 85, 83, 84, 65, 87, 76, 46] ).to_not be_dissociated
+      expect( [224, 275, 278, 249, 277, 279, 289, 295, 139] ).to_not be_dissociated
+    end
+  end
+
+  describe "#domcard?" do
+    it "identifies sets where subset cardinality dominates subset sums" do
+      expect( [81, 88, 75, 42, 87, 84, 86, 65] ).to be_domcard
+      expect( [157, 150, 164, 119, 79, 159, 161, 139, 158] ).to be_domcard
+      expect( [165, 168, 169, 190, 162, 85, 176, 167, 127] ).to be_domcard
+      
+      expect( [3, 26, 4, 14, 7, 1] ).to_not be_domcard
+      expect( [72, 76, 4, 38, 20, 74, 144, 58, 117, 4] ).to_not be_domcard
+      expect( [3629, 272, 1106, 2945, 1663, 4867, 4393, 193] ).to_not be_domcard
+    end
+  end
+  
   describe "#lagrange_interp_func" do
     it "creates a Lagrange Polynomial interpolation function" do
       f = [[1, 1], [2, 8], [5, 125], [9, 729]].lagrange_interp_func
@@ -300,6 +324,18 @@ describe Integer do
       expect( 10.radical_sieve ).to eq( [1, 1, 2, 3, 2, 5, 6, 7, 2, 3] )
       expect( 7736.radical_sieve[775, 4] ).to eq( [155, 194, 777, 778] )
       expect( 10099.radical_sieve.reduce( :+ ) ).to eq( 35924862 )
+    end
+  end
+
+  describe "#straddle?" do
+    it "determines if every bit has a matching higher twin" do
+      expect( 9 ).to be_straddle( 6 )
+      expect( 548 ).to be_straddle( 448 )
+      expect( 17726 ).to be_straddle( 14040 )
+      
+      expect( 9 ).to_not be_straddle( 18 )
+      expect( 548 ).to_not be_straddle( 146 )
+      expect( 17726 ).to_not be_straddle( 4767 )
     end
   end
 
