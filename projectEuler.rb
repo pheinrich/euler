@@ -43,6 +43,78 @@ class Array
     Rational( p[0], q[0] )
   end
 
+  # Return true if no two subsets of an array sum to the same value. The
+  # optional polys parameter allows for precomputation of intermediate values
+  # (to optimize multiple calls on sets of similar size). If an empty array is
+  # passed in, this method will initialize it as necessary so it can be
+  # reused on subsequent calls.
+  #
+  # Problems:  103
+  def dissociated?( polys = nil )
+    arr = self.sort
+    polys ||= []
+  
+    # Precompute (if necessary) which subsets should be pairwise compared to
+    # guarantee that this ordered set is dissociated.
+    unless 0 < polys.size
+      max = 1 << arr.size
+  
+      (arr.size >> 1).times do |hw|
+        # Start with the smallest polynomial having h bits.
+        base = (2 << hw) - 1
+  
+        while base < max
+          # Compare the base to every similar-weighted polynomial up to the limit.
+          cmp = base.bitseq
+    
+          while cmp < max
+            # Only consider sets sharing no bits.
+            polys << [base, cmp] if 0 == base & cmp && base.straddle?( cmp )
+            cmp = cmp.bitseq
+          end
+    
+          base = base.bitseq
+        end
+      end
+    end
+  
+    sums = {}
+  
+    # Pairwise compare the subsets identified above.    
+    for p, q in polys
+      # For each set bit in the binary polynomials, add the corresponding
+      # array entry. Memoize the sums so we calculate it only once for any
+      # given polynomial.
+      sums[p] = arr.each_with_index.map {|a, i| 1 == (p >> i) & 1 ? a : 0}.reduce( :+ ) unless sums[p]
+      sums[q] = arr.each_with_index.map {|a, i| 1 == (q >> i) & 1 ? a : 0}.reduce( :+ ) unless sums[q]
+    
+      # If we found sets that are pairwise equal, short circuit.
+      return false if sums[p] == sums[q] 
+    end
+    
+    # All subset sums are unique.
+    true
+  end
+  
+  # Given that S(A) is the sum of all elements in A, return true if for
+  # subsets B and C, S(B) > S(C) whenever |B| > |C|. This method assumes the
+  # elements are presorted in ascending order.
+  #
+  # Problems:  103
+  def domcard?
+    arr = self.sort
+
+    # The sum of the smallest n elements should always be greater than the sum
+    # of the n - 1 largest elements.
+    1.upto( arr.size >> 1 ).each do |n|
+      return false unless arr[0, n + 1].reduce( :+ ) > arr[-n, n].reduce( :+ ) 
+    end
+  
+    # Subsets of higher cardinality will sum higher than subsets of lower
+    # cardinality.
+    true
+  end
+
   # Create a Lagrange Polynomial interpolation function for the points in this
   # array. Its order will equal the length of the array (caution: large arrays
   # may suffer ringing). Array elements are expected to be (x, y) 2-tuples.
@@ -92,6 +164,13 @@ class Array
   
     from[0]
   end
+end
+
+class Fixnum
+  # Ruby uses one bit for sign and one bit to identify integer values (as
+  # opposed to pointers to objects). 
+  MAX = (1 << (0.size << 3) - 2) - 1
+  MIN = -(1 << (0.size << 3) - 2)
 end
 
 class Integer
@@ -608,7 +687,7 @@ class Integer
   # Returns true if at least one bit in our binary representation can't be
   # associated with a matching, higher bit in the comparand.
   #
-  # Problems:  106
+  # Problems:  103, 105, 106
   def straddle?( n )
     m, u, v = self, 0, 0
   
