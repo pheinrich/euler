@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 0.2966s (6/9/16, #4183)
+# 0.3050s (6/9/16, #4183)
 class Problem_0106
   def title; 'Special subset sums: meta-testing' end
   def difficulty; 50 end
@@ -24,30 +24,6 @@ class Problem_0106
   # to be tested for equality?
   #
   # NOTE: This problem is related to Problem 103 and Problem 105.
-
-  # Compare all binary polynomials having a particular Hamming weight (number
-  # of set bits), up to a maximum value.
-  def count_hamming( h, max )
-    total = 0
-
-    # Start with the smallest polynomial having h bits.
-    base = (1 << h) - 1
-
-    while base < max
-      # Compare the base to every similar-weighted polynomial up to the limit.
-      cmp = base.bitseq
-
-      while cmp < max
-        # Only count sets sharing no bits.
-        total += 1 if 0 == base & cmp && base.straddle?( cmp )
-        cmp = cmp.bitseq
-      end
-
-      base = base.bitseq
-    end
-    
-    total
-  end
 
   def solve( n = 12 )
     # Without loss of generality, assume that A is ordered, so we know that
@@ -75,13 +51,14 @@ class Problem_0106
     # Subsets of A can have between 1 and n items, but we're concerned only
     # with subset comparisons in which the subsets have equal sizes. For each
     # subset size up to n / 2, then, we need to count straddling subsets.
-    max = 1 << n
-    (n >> 1).times.map {|i| count_hamming( i + 1, max )}.reduce( :+ )
+    polys = []
+    [*1..n].dissociated?( polys )
+    polys.size
   end
 
   def solution; 21_384 end
-  def best_time; 0.2966 end
-  def effort; 30 end
+  def best_time; 0.3050 end
+  def effort; 40 end
 
   def completed_on; '2016-06-09' end
   def ordinality; 4_183 end
