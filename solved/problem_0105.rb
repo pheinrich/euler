@@ -67,9 +67,7 @@ class Problem_0105
 
   def solve
     sets = IO.read( 'resources/0105_sets.txt' ).split.map {|line| line.split( ',' ).map( &:to_i )}
-    sets.each {|s| puts s.inspect unless s.domcard?}
-      nil
-#    sets.select {|s| special?( s )}.flatten.reduce( :+ )
+    sets.select {|s| special?( s )}.flatten.reduce( :+ )
   end
 
   def solution; 73_702 end
