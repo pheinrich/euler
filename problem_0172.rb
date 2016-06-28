@@ -3,23 +3,74 @@ require 'projectEuler'
 # 
 class Problem_0172
   def title; 'Investigating numbers with few repeated digits' end
+  def difficulty; 55 end
 
   # How many 18-digit numbers n (without leading zeros) are there such that no
   # digit occurs more than three times in n?
 
-  def refs
-    ["http://en.wikipedia.org/wiki/Algebra_of_sets",
-     "http://math.stackexchange.com/questions/122384/venn-diagram-3-set#122417"]
+  def brute_force( len = 5, max = 3 )
+    limit = 10**len
+    total = 0
+
+    (1...limit).each do |i|
+      count = Array.new( 10 ) { 0 }
+      i.to_s.each_char {|c| count[c.hex] += 1}
+      total += 1 unless count.index {|n| n > max}
+    end
+    
+    total
   end
 
-  def solution; end
-  def best_time; end
+  def brute_force2( dig = 1, len = 5, max = 3 )
+    lower = 10**(len - 1)
+    upper = 10**len - 1
+    total = 0
 
-  def completed_on; '2015-01-21' end
-  def ordinality; end
-  def population; end
+    (lower..upper).each do |i|
+      count = Array.new( 10 ) {0}
+      i.to_s.each_char {|c| count[c.hex] += 1}
+      total += 1 if count[dig] == max
+    end
+    
+    total
+  end
 
-  def solve( len = 5, max = 1 )
+  def brute_force3( dig = 1, len = 5, max = 3 )
+    if dig == 0
+      (len-1).choose(max)*9**(len-max)
+    else
+      (len-1).choose(max)*8*9**(len-max-1) + (len.choose(max)-(len-1).choose(max))*9**(len-max)
+    end
+  end
+
+  def brute_force4_compl( len, max )
+    total = 0
+    max1 = max + 1
+
+    if len >= max1
+      total += 9 * ((len.choose(max1) - (len-1).choose(max1)) * 9**(len-max1))
+
+      if len-1 >= max1
+        t = (len-1).choose(max1) * 8 * 9**(len-max1-1)
+        total += 10 * t
+      end
+    end
+    
+    total
+  end
+
+  def recurse( len, max, memo )
+  end
+
+  def solve( len = 5, max = 3 )
+    memo = {}
+    recurse( len, max, memo )
+#    total = 10**len - 1
+#    total -= brute_force4_compl( len, max )
+#    total
+  end
+
+  def solve2( len = 5, max = 1 )
     # Divide the numbers having len digits into ten overlapping subsets, one
     # for each numeral i, such that subset S_i contains all numbers in which
     # i appears more than max times. This question is asking us to compute the
@@ -75,6 +126,17 @@ class Problem_0172
     range - 9 * (max..len).reduce( 0 ) {|add, i| add + len.choose( i ) * 9**(len - i)}
   end
   
+  def solution; end
+  def best_time; end
+  def effort; end
+
+  def completed_on; '2015-01-21' end
+  def ordinality; end
+  def population; end
+
   # 227485267000992000
-  # 809_395_012_528_478_910
+  def refs
+    ["http://en.wikipedia.org/wiki/Algebra_of_sets",
+     "http://math.stackexchange.com/questions/122384/venn-diagram-3-set#122417"]
+  end
 end
