@@ -60,14 +60,16 @@ class Problem_0172
   end
 
   def recurse( len, max, memo )
+    total = 0
+    if len > 0
+      total  = 10**len - 1
+      total -= recurse( len - 1, max, memo )
+    end
+    total
   end
 
   def solve( len = 5, max = 3 )
-    memo = {}
-    recurse( len, max, memo )
-#    total = 10**len - 1
-#    total -= brute_force4_compl( len, max )
-#    total
+    brute_force3( 0, 18, 16 )
   end
 
   def solve2( len = 5, max = 1 )
