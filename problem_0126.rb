@@ -25,7 +25,43 @@ class Problem_0126
   #
   # Find the least value of n for which C(n) = 1000.
 
+  def cover( x, y, z, n )
+    total  = 2 * (x*y + y*z + z*x)
+    total += (n << 2) * (x + y + z)
+    total += (n*n - n) << 2
+  end
+  
+  def cover2( x, y, z, n )
+    2*(x*y + y*z + z*x) + 4*n*(x + y + z) + 4*n*(n - 1)
+  end
+
+  def cover3( x, y, z, max, memo )
+    a = (x*y + y*z + z*x) << 1
+    b = (x + y + z) << 2
+    
+    (0..max).each do |n|
+      t = a + n*b + ((n*n - n) << 2)
+#      puts "(#{x}, #{y}, #{z}) = #{t} (level #{n})"
+      memo[t] += 1
+    end
+  end
+
   def solve( n = 1_000 )
+    max = 150
+    memo = Hash.new {0}
+
+    (1..max).each do |x|
+      (x..max).each do |y|
+        (y..max).each do |z|
+          cover3( x, y, z, 50, memo )
+        end
+      end
+    end
+
+    puts "memo.size = #{memo.keys.size}"
+    puts "memo.max = #{memo.max_by {|k, v| v}}"
+    puts memo.keys.select {|k| memo[k] == 1000}.sort.inspect
+    nil
   end
 
   def solution; end
