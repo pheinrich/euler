@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 
+# 8.667s (6/30/16, #3052)
 class Problem_0126
   def title; 'Cuboid layers' end
   def difficulty; 55 end
@@ -25,42 +25,38 @@ class Problem_0126
   #
   # Find the least value of n for which C(n) = 1000.
 
-  def cover2( x, y, z, n )
-    2*(x*y + y*z + z*x) + 4*n*(x + y + z) + 4*n*(n - 1)
+  def max_x( n )
+    (Math.sqrt( 6*n ) / 6).to_i
   end
 
-  def c_of_n( n )
-    total = 0
-    x, y, z, d = 1, 1, 1, 0
+  def max_y( x, n )
+    (-x + Math.sqrt( x*x + n/2 )).to_i
+  end
+  
+  def max_z( x, y, n )
+    (n - 2*x*y) / (2*x + 2*y)
+  end
 
-    sum = (x*y + y*z + z*x) << 1
-    while sum <= n
-      total += 1 if sum == n
-
-      sum += (x + y + z + 2*d) << 2
-      d += 1
+  def populate( n, memo )
+    mx = max_x( n )
+    (1..mx).each do |x|
       
-      if sum > n
-        z += 1
-        d = 0
-        sum = (x*y + y*z + z*x) << 1
-        
-        if sum > n
-          y += 1
-          z = y
+      my = max_y( x, n )
+      (x..my).each do |y|
+
+        mz = max_z( x, y, n )
+        (y..mz).each do |z|
           sum = (x*y + y*z + z*x) << 1
-          
-          if sum > n
-            x += 1
-            y = x
-            z = y
-            sum = (x*y + y*z + z*x) << 1
+          d = 0
+
+          while sum <= n
+            memo[[x, y, z, d]] = sum
+            sum += (x + y + z + 2*d) << 2
+            d += 1
           end
         end
       end
     end
-    
-    total
   end
 
   # From the problem description provided, it's clear that the number of cubes
@@ -71,42 +67,66 @@ class Problem_0126
   #   N = 2(xy + yz + zx) + 4d(x + y + z) + 4d(d - 1)
   #
   # The problem is to find the lowest N with exactly 1,000 unique solutions
-  # [x, y, z, d], with x, y, z >= 1, d >= 0, all integers. We could try a
-  # brute-force search (calculate N for all values of x, y, z, d in some
-  # range) and count collisions, but it's unclear how we would limit the
-  # search.
+  # [x, y, z, d], with x, y, z >= 1, d >= 0, all integers. We could solve the
+  # Diophantine equation above for progressively larger values of N, stopping
+  # as soon as the solution count reaches 1,000, but it turns out this takes
+  # too much time. We could compute N for every x, y, z, d in some range, but
+  # we need to choose the ranges correctly to be time-efficient.
   #
-  # Alternatively, we could work to find valid solutions for each N, instead.
-  # Since we're dealing with a Diophantine equation, our strategy involves
-  # substituting reasonable values for enough unknowns to leave an equation of
-  # only one variable, which we can then solve for. How we choose "reasonable"
-  # values and knowing when to stop depend on the equation.
+  # Given N, we can compute the theoretical maximum value for x, assuming y
+  # and z are at least the same size and d = 0:
   #
-  # We can infer several facts from the equation above:
+  #   N = 2(xy + yz + zx) + 4d(x + y + z) + 4d(d - 1)
+  #     = 2(xx + xx + xx)
+  #     = 6x^2
+  #   x = √6N / 6
   #
-  #   1) N >= 2(xy + yz + zx), N >= 4d(x + y + z), N >= 4d(d - 1)
-  #   2) N/2 - xy - 2dx - 2dy - 2d^2 + 2d must be a positive integer
-  #   3) All of the terms in 1) must be integers
-  #   4) N/2, being an integer, implies that N is even
-  #   5) Since x, y >= 1, the minimum value of (x + y + 2d) is 2
-  #   6) N/2 - xy - 2dx - 2dy - 2d^2 + 2d >= x + y + 2d >= 2
-  #   7) N/2 >= xy + 2dx + 2dy + 2d^2 - 2d + 2 => N >= 6
-  #   8) N/2 - xy - 2dx - 2dy - 2d^2 + 2d is a multiple of x + y + 2d
-  # 
-  def solve( c = 100 )
-    n = 6
-    n += 2 until c == c_of_n( n )
-    puts "c_of_n( #{n} ) = #{c_of_n( n )}"
-    n 
+  # Similarly, we can compute the maximum value of y for each x when z is
+  # at least as great as y, and d = 0:
+  #
+  #   N = 2(xy + yz + zx) + 4d(x + y + z) + 4d(d - 1)
+  #     = 2(xy + yy + xy)
+  #     = 2(y^2 + xy)
+  #   2y^2 + 4xy - N = 0
+  #   y = [-4x ± √(16x^2 + 8N)] / 4
+  #     = [-4x ± √16√(x^2 + N/2)] / 4
+  #     = -x ± √(x^2 + N/2)
+  #
+  # And finally, given x and y, we can find the largest possible z when d = 0:
+  #
+  #   N = 2(xy + yz + zx) + 4d(x + y + z) + 4d(d - 1)
+  #     = 2(xy + yz + zx)
+  #     = 2[xy + z(x + y)]
+  #   N/2 - xy = z(x + y)
+  #   z = (N - 2xy) / 2(x + y)
+  #
+  # Now for some arbitrary N, we can compute the values of x, y, z that will
+  # yield a result too large when substituted into the closed-form expression
+  # above. We assume that calculating the sums for all x, y, z valid for N
+  # will also generate sums for N - 1, N - 2, etc. By memo-izing those sums
+  # we can then look for the first value to appear 1,000 times. 
+  def solve( c = 1_000 )
+    memo = {}
+
+    # Make a best-guess estimate of how large N must be before we'll find
+    # enough sums. 
+    populate( 20*c, memo )
+
+    # Count all the unique sums we encountered.
+    counts = Hash.new {0}
+    memo.values.each {|v| counts[v] += 1}
+
+    # Assume at least one sum appeared c times. If not -> nil error.
+    counts.select {|k, v| v == c}.sort[0][0]
   end
 
-  def solution; end
-  def best_time; end
-  def effort; end
+  def solution; 18_522 end
+  def best_time; 8.667 end
+  def effort; 35 end
 
-  def completed_on; '2013-01-21' end
-  def ordinality; end
-  def population; end
+  def completed_on; '2016-06-30' end
+  def ordinality; 3_052 end
+  def population; 574_728 end
 
   def refs
     ["https://en.wikipedia.org/wiki/Diophantine_equation",
