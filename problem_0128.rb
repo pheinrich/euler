@@ -29,96 +29,13 @@ class Problem_0128
   #
   # Find the 2000th tile in this sequence.
 
-  def fill_coords( max, map )
-    # * = [0, 0]
-    # {*} -> N
-    # {*} -> {SW} -> {S} -> {SE} -> {NE} -> {N} -> NW -> N
-    # {*} -> {SW} -> {SW} -> {S} -> {S} -> {SE} -> {SE} -> {NE} -> {NE} -> {N} -> {N} -> {NW} -> NW -> N
-    # {*} -> {SW} -> {SW} -> {SW} -> {S} -> {S} -> {S} -> {SE} -> {SE} -> {SE} -> {NE} -> {NE} -> {NE} -> {N} -> {N} -> {N} -> {NW} -> {NW} -> NW -> N
-    map[[0, 0]] = 1
-      
-    x, y = 0, -1
-    n = 2
-    run = 1
-    
-    while n < max
-      map[[x, y]] = n
-
-      # Southwest
-      run.times do
-        x -= 1
-        y += 1
-        n += 1
-        map[[x, y]] = n
-      end
-      
-      # South
-      run.times do
-        y += 1
-        n += 1
-        map[[x, y]] = n
-      end
-      
-      # Southeast
-      run.times do
-        x += 1
-        n += 1
-        map[[x, y]] = n
-      end
-
-      # Northeast
-      run.times do
-        x += 1
-        y -= 1
-        n += 1
-        map[[x, y]] = n
-      end
-      
-      # North
-      run.times do
-        y -= 1
-        n += 1
-        map[[x, y]] = n
-      end
-      
-      # Northwest
-      (run - 1).times do
-        x -= 1
-        n += 1
-        map[[x, y]] = n
-      end
-      
-      n += 1
-      x -= 1
-      y -= 1
-      run += 1
-    end
-
-    # Return the number of complete rings.
-    return (y + 2).abs
-  end
-
-  def fill_diffs( rings, coords, diffs )
-    (-rings..rings).each do |x|
-      (-rings..rings).each do |y|
-        next unless (x + y).abs <= rings
- 
-        n = coords[[x, y]]
-        pd = 0
-        
-        pd += 1 if (n - coords[[x, y - 1]]).abs.prime?
-        pd += 1 if (n - coords[[x - 1, y]]).abs.prime?
-        pd += 1 if (n - coords[[x - 1, y + 1]]).abs.prime?
-        pd += 1 if (n - coords[[x, y + 1]]).abs.prime?
-        pd += 1 if (n - coords[[x + 1, y]]).abs.prime?
-        pd += 1 if (n - coords[[x + 1, y - 1]]).abs.prime?
-
-#        puts "#{n}:[#{x}, #{y}] -> #{pd}"
-        diffs << n if 3 == pd
-      end
-    end
-  end
-
+  # We can classify every tile according to its angular position around the
+  # unit circle, setting position 0 at the top since that's where each row
+  # starts in the problem statement. Positions 1-5 then follow every 60° as we
+  # work our way counter-clockwise. Depending on which of these positions each
+  # tile falls (or between which pair of positions), we use different formulae
+  # to calculate its six neighbors to the N, NW, SW, S, SE, and NE:
+  # 
   # Pos 0: n even = fho
   #   N  = n + cr (g)            S  = n - cr + 6 (a)
   #   NW = n + cr + 1 (h)        SE = n + cr - 1 (f)
@@ -184,6 +101,16 @@ class Problem_0128
   #   NW = n - cr + 1 (f)        SE = n - 1
   #   SW = n - (cr + cr - 7) (n) NE = n + cr + 5 (l)
   #
+  # From these formula, we can derive the difference between a tile and each
+  # of its neighbors. If we arrange all potential differences in ascending
+  # order, it becomes obvious that for n even or odd, some deltas will always
+  # be even, and thus can never be prime (>2).
+  #
+  # Furthermore, we can see that only in certain positions will a tile ever
+  # differ from three neighbors by odd amounts (position 0 and just to the
+  # right of position 0). In all other cases, at most two deltas will be odd,
+  # meaning PD(n) will be 2 or less.
+  #
   #                n even      n odd
   # a = cr - 6    even              a
   # b = cr - 5          b     even
@@ -200,48 +127,39 @@ class Problem_0128
   # m = cr + 6    even              m
   # n = 2cr - 7         n           n
   # o = 2cr + 5         o           o
-  
-  def walk( n )
+  #
+  def solve( n = 2_000 )
     pd3 = [1, 2]
-    cr = 12
-    base = 8
+    base, ring = 8, 12
     
     while pd3.size < n
-      fp = (cr - 1).prime?
-      hp = (cr + 1).prime?
-      op = (2*cr + 5).prime?
+      # Only at position 0 and one tile to the right will there ever be three
+      # odd deltas, so those are the only ones we have to check for primality.
+      # Both share a delta of f = cr - 1.
+      if (ring - 1).prime?
+        # Check the other odd deltas for position 0. 
+        pd3 << base if (ring + 1).prime? && (2*ring + 5).prime?
 
-      lp = (cr + 5).prime?
-      np = (2*cr - 7).prime?
-      
-      pd3 << base if fp && hp && op
-      pd3 << base + cr - 1 if fp && lp && np
+        # Check the other odd deltas for one tile to the right of position 0.
+        pd3 << base + ring - 1 if (ring + 5).prime? && (2*ring - 7).prime?
+      end
 
-#      puts "#{base}: #{pd3.inspect}"
-            
-      base += cr
-      cr += 6
+      # Advance the first tile of the current ring (base), and the number of
+      # tiles it contains (cr). 
+      base += ring
+      ring += 6
     end
-    
-    pd3
+
+    pd3[-1]
   end
 
-  def solve( n = 2_000 )
-    walk( n )[-1]
-#    coords = {}
-#    rings = fill_coords( 500, coords )
-#    diffs = []
-#    fill_diffs( rings, coords, diffs )
-#    puts diffs.sort.inspect
-  end
+  def solution; 14_516_824_220 end
+  def best_time; 0.4107 end
+  def effort; 30 end
 
-  def solution; end
-  def best_time; end
-  def effort; end
-
-  def completed_on; '2013-01-21' end
-  def ordinality; end
-  def population; end
+  def completed_on; '2016-01-21' end
+  def ordinality; 3_254 end
+  def population; 575_438 end
 
   def refs
     ["http://www.redblobgames.com/grids/hexagons/#coordinates"]
