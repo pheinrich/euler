@@ -119,14 +119,120 @@ class Problem_0128
     end
   end
 
-  def solve( n = 2_000 )
-    coords = {}
-    rings = fill_coords( 5000000, coords )
-
-    diffs = []
-    fill_diffs( rings, coords, diffs )
+  # Pos 0: n even = fho
+  #   N  = n + cr (g)            S  = n - cr + 6 (a)
+  #   NW = n + cr + 1 (h)        SE = n + cr - 1 (f)
+  #   SW = n + 1                 NE = n + cr + cr + 5 (o)
+  #
+  # Pos 0-1: n even = bh, n odd = ag 
+  #   N  = n + cr (g)            S  = n - cr + 6 (a)
+  #   NW = n + cr + 1 (h)        SE = n - cr + 5 (b)
+  #   SW = n + 1                 NE = n - 1
+  #
+  # Pos 1: n even = bh, n odd = gi
+  #   N  = n + cr (g)            S  = n + 1
+  #   NW = n + cr + 1 (h)        SE = n - cr + 5 (b)
+  #   SW = n + cr + 2 (i)        NE = n - 1
+  #
+  # Pos 1-2: n even = bh, n odd = ci
+  #   N  = n - 1                 S  = n + 1
+  #   NW = n + cr + 1 (h)        SE = n - cr + 5 (b)
+  #   SW = n + cr + 2 (i)        NE = n - cr + 4 (c)
+  #
+  # Pos 2: n even = hj
+  #   N  = n - 1                 S  = n + cr + 3 (j)
+  #   NW = n + cr + 1 (h)        SE = n + 1
+  #   SW = n + cr + 2 (i)        NE = n - cr + 4 (c)
+  #
+  # Pos 2-3: n even = dj, n odd = ci
+  #   N  = n - cr + 3 (d)        S  = n + cr + 3 (j)
+  #   NW = n - 1                 SE = n + 1
+  #   SW = n + cr + 2 (i)        NE = n - cr + 4 (c)
+  #
+  # Pos 3: n even = dj, n odd = ik
+  #   N  = n - cr + 3 (d)        S  = n + cr + 3 (j)
+  #   NW = n - 1                 SE = n + cr + 4 (k)
+  #   SW = n + cr + 2 (i)        NE = n + 1
+  #
+  # Pos 3-4: n even = dj, n odd = ek
+  #   N  = n - cr + 3 (d)        S  = n + cr + 3 (j)
+  #   NW = n - cr + 2 (e)        SE = n + cr + 4 (k)
+  #   SW = n - 1                 NE = n + 1
+  #
+  # Pos 4: n even = jl
+  #   N  = n + 1                 S  = n + cr + 3 (j)
+  #   NW = n - cr + 2 (e)        SE = n + cr + 4 (k)
+  #   SW = n - 1                 NE = n + cr + 5 (l)
+  #
+  # Pos 4-5: n even = fl, n odd = ek
+  #   N  = n + 1                 S  = n - 1
+  #   NW = n - cr + 2 (e)        SE = n + cr + 4 (k)
+  #   SW = n - cr + 1 (f)        NE = n + cr + 5 (l)
+  #
+  # Pos 5: n even = fl, n odd = km
+  #   N  = n + cr + 6 (m)        S  = n - 1
+  #   NW = n + 1                 SE = n + cr + 4 (k)
+  #   SW = n - cr + 1 (f)        NE = n + cr + 5 (l)
+  #
+  # Pos 5-0*: n even = fl, n odd = gm
+  #   N  = n + cr + 6 (m)        S  = n - cr (g)
+  #   NW = n + 1                 SE = n - 1
+  #   SW = n - cr + 1 (f)        NE = n + cr + 5 (l)
+  #
+  # Pos 5-0**: n even = fln, n odd = gmn
+  #   N  = n + cr + 6 (m)        S  = n - cr (g)
+  #   NW = n - cr + 1 (f)        SE = n - 1
+  #   SW = n - (cr + cr - 7) (n) NE = n + cr + 5 (l)
+  #
+  #                n even      n odd
+  # a = cr - 6    even              a
+  # b = cr - 5          b     even
+  # c = cr - 4    even              c
+  # d = cr - 3          d     even
+  # e = cr - 2    even              e
+  # f = cr - 1          f     even
+  # g = cr        even              g
+  # h = cr + 1          h     even
+  # i = cr + 2    even              i
+  # j = cr + 3          j     even
+  # k = cr + 4    even              k
+  # l = cr + 5          l     even
+  # m = cr + 6    even              m
+  # n = 2cr - 7         n           n
+  # o = 2cr + 5         o           o
+  
+  def walk( n )
+    pd3 = [1, 2]
+    cr = 12
+    base = 8
     
-    puts diffs.count
+    while pd3.size < n
+      fp = (cr - 1).prime?
+      hp = (cr + 1).prime?
+      op = (2*cr + 5).prime?
+
+      lp = (cr + 5).prime?
+      np = (2*cr - 7).prime?
+      
+      pd3 << base if fp && hp && op
+      pd3 << base + cr - 1 if fp && lp && np
+
+#      puts "#{base}: #{pd3.inspect}"
+            
+      base += cr
+      cr += 6
+    end
+    
+    pd3
+  end
+
+  def solve( n = 2_000 )
+    walk( n )[-1]
+#    coords = {}
+#    rings = fill_coords( 500, coords )
+#    diffs = []
+#    fill_diffs( rings, coords, diffs )
+#    puts diffs.sort.inspect
   end
 
   def solution; end
