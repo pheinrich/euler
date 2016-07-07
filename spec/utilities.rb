@@ -31,6 +31,15 @@ describe Array do
     end
   end
 
+  describe "#multpoly" do
+    it "multiplies two polynomials whose coefficients are array entries" do
+      f = [1, 2, 3]
+      expect( f.multpoly( f ) ).to eq( [1, 4, 10, 12, 9] )
+      expect( f.multpoly( f ).multpoly( f ) ).to eq( [1, 6, 21, 44, 63, 54, 27] )
+      expect( f.multpoly( [Rational( 3, 17 ), Rational( 7, 11 ), Rational( 19, 4 )] )[2] ).to eq( Rational( 4901, 748 ) )
+    end
+  end
+
   describe "#poly_gen_func" do
     it "creates a polynomial generating function from coefficients" do
       # f(x) = x^3

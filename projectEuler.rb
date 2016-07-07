@@ -62,6 +62,22 @@ class Array
     }
   end
 
+  # Multiply two polynomials whose coefficients are represented by the entries
+  # in two arrays.
+  #
+  # Problems:  172
+  def multpoly( poly )
+    result = Array.new( self.size + poly.size - 1, 0 )
+
+    self.each_with_index do |ai, i|
+      poly.each_with_index do |bj, j|
+        result[i + j] += ai * bj
+      end
+    end
+
+    result
+  end
+
   # Create a polynomial generating function from an array of coefficients. For
   # example, the array [0, 0, 0, 1] corresponds to f(x) = x^3, since
   # x^3 = (0)(x^0) + (0)(x^1) + (0)(x^2) + (1)(x^3). Similarly, the array
@@ -139,6 +155,12 @@ class Integer
     return 0 if 0 > k || k > self
     return 1 if 0 == k
     (self - k + 1).upto( self ).inject( :* ) / k.fact
+  end
+
+  def stirling( k )
+    return 0 if 0 > k || k > self
+    return 1 if 1 == k || k == self
+    (0..k).inject( 0 ) {|acc, j| acc + (-1)**(k - j) * k.choose( j ) * j**self} / k.fact
   end
 
   # Returns the Hamming weight (the number of set bits) in an integer.
