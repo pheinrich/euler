@@ -17,7 +17,25 @@ class Problem_0129
   #
   # Find the least value of n for which A(n) first exceeds one-million.
 
-  def solve( n = 1_000_000 )
+  R = (1..15).map {|i| (10**i - 1) / 9}
+
+  def aofn( n )
+    R.find {|r| 0 == r % n}.to_s.size
+  end
+
+  def solve( max = 1_000_000 )
+    # To clarify, A(n) identifies the smallest repunit divisible by n. Looking
+    # at the first few a_n:
+    #
+    #     n   1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20 21
+    #   A(n)  1  0  3  0  0  0  6  0  9  0  2  0  6  0  0  0 16  0 18  0  6
+    #
+    # It's clear the first A(n) > 10 is for n = 17. The problem statement is
+    # to find the first n where A(n) > 1M. We are given that only values that
+    # are coprime with 10 must be considered.
+    #
+    # A(n) <= n, so 1M < A(n) <= n.
+    #
   end
 
   def solution; end
@@ -28,5 +46,9 @@ class Problem_0129
   def ordinality; end
   def population; end
 
-  def refs; [] end
+  def refs
+    ["https://oeis.org/A002275",
+     "https://en.wikipedia.org/wiki/Repunit",
+     "https://en.wikipedia.org/wiki/Repunit#Factorization_of_decimal_repunits"]
+  end
 end
