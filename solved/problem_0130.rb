@@ -53,5 +53,7 @@ class Problem_0130
   def ordinality; 4_029 end
   def population; 579_023 end
 
-  def refs; [] end
+  def refs
+    ["http://oeis.org/A000864"]
+  end
 end
