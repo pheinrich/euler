@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 
+# 37.08s (7/17/16, #4029)
 class Problem_0130
   def title; 'Composites with prime repunit property' end
   def difficulty; 45 end
@@ -22,16 +22,36 @@ class Problem_0130
   # Find the sum of the first twenty-five composite values of n for which
   # GCD(n, 10) = 1 and n − 1 is divisible by A(n).
 
-  def solve( n = 25 )
+  def aofn( n )
+    return 0 if 0 == n % 2 || 0 == n % 5
+
+    m, n = 1, 9*n
+    m += 1 while 1 != 10.modular_power( m, n )
+    m
   end
 
-  def solution; end
-  def best_time; end
-  def effort; end
+  def solve( count = 25 )
+    max = count * 1000
+    p = [*2..max] - max.prime_sieve
+    sols = []
 
-  def completed_on; '2013-01-21' end
-  def ordinality; end
-  def population; end
+    p.each do |n|
+      a = aofn( n )
+      sols << n if 0 < a && 0 == (n - 1) % a
+      break if sols.count == count
+    end      
+    
+    puts sols.inspect
+    sols.reduce( :+ )
+  end
+
+  def solution; 149_253 end
+  def best_time; 37.08 end
+  def effort; 5 end
+
+  def completed_on; '2016-07-17' end
+  def ordinality; 4_029 end
+  def population; 579_023 end
 
   def refs; [] end
 end
