@@ -1,6 +1,6 @@
 require 'projectEuler'
 
-# 
+# 11.66s (7/17/16, #4293)
 class Problem_0129
   def title; 'Repunit divisibility' end
   def difficulty; 45 end
@@ -17,10 +17,12 @@ class Problem_0129
   #
   # Find the least value of n for which A(n) first exceeds one-million.
 
-  R = (1..15).map {|i| (10**i - 1) / 9}
-
   def aofn( n )
-    R.find {|r| 0 == r % n}.to_s.size
+    return 0 if 0 == n % 2 || 0 == n % 5
+
+    m, n = 1, 9*n
+    m += 1 while 1 != 10.modular_power( m, n )
+    m
   end
 
   def solve( max = 1_000_000 )
@@ -34,20 +36,32 @@ class Problem_0129
     # to find the first n where A(n) > 1M. We are given that only values that
     # are coprime with 10 must be considered.
     #
-    # A(n) <= n, so 1M < A(n) <= n.
-    #
+    # A(n) <= n, so 1M < A(n) <= n. From the first few terms above, we can
+    # use OEIS to discover A084681, which describes itself as the sequence of
+    # least m such that 10^m = 1 (mod 9n). Therefore, we are looking for the
+    # first number n for which 10^m mod 9n = 1 for some m.
+    n = max
+    n += 1 until n.coprime?( 10 )
+    
+    until max < aofn( n )
+      n += 2
+      n += 2 until n.coprime?( 10 )
+    end
+    
+    n
   end
 
-  def solution; end
-  def best_time; end
-  def effort; end
+  def solution; 1_000_023 end
+  def best_time; 11.61 end
+  def effort; 35 end
 
-  def completed_on; '2013-01-21' end
-  def ordinality; end
-  def population; end
+  def completed_on; '2016-07-17' end
+  def ordinality; 4_293 end
+  def population; 578_999 end
 
   def refs
     ["https://oeis.org/A002275",
+     "https://oeis.org/A084681",
      "https://en.wikipedia.org/wiki/Repunit",
      "https://en.wikipedia.org/wiki/Repunit#Factorization_of_decimal_repunits"]
   end

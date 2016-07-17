@@ -945,7 +945,7 @@ class Numeric
   # Perform exponentiation over a modulus, returning (b^e) % m. The exponent
   # e must be an integer with no more than 32 bits.
   #
-  # Problems:  48, 97
+  # Problems:  48, 97, 129
   def modular_power( e, m )
     result = 1;
 
