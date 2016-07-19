@@ -32,7 +32,7 @@ class Problem_0130
 
   def solve( count = 25 )
     max = count * 1000
-    p = [*2..max] - max.prime_sieve
+    p = [*91..max] - max.prime_sieve
     sols = []
 
     p.each do |n|
@@ -41,7 +41,6 @@ class Problem_0130
       break if sols.count == count
     end      
     
-    puts sols.inspect
     sols.reduce( :+ )
   end
 
