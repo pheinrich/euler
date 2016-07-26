@@ -317,7 +317,7 @@ class Integer
     succ
   end
 
-  # Returns true if this number is divisible by the some of its digits.
+  # Returns true if this number is divisible by the sum of its digits.
   def harshad?( base = 10 )
     0 < self && 0 == self % sum_digits( base )
   end
