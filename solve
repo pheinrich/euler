@@ -18,7 +18,8 @@ ruby -I. -Isolved <<EOF
   puts "  Solved on #{problem.completed_on}, \##{problem.ordinality} of #{problem.population} (%0.6f percentile)" % [percentile]
 
   ProjectEuler.time do
-    solution = problem.solve
-    puts "  Solution: #{solution} (%sVerified)" % [solution.to_s == problem.solution.to_s ? '' : 'NOT ']
+    solution = problem.solve.to_s
+    obfuscated = [solution].pack( 'm0' )
+    puts "  Solution: #{solution} (%s, %sVerified)" % [obfuscated, obfuscated == problem.solution.to_s ? '' : 'NOT ']
   end
 EOF

@@ -3,7 +3,7 @@ require 'ruby-prof'
 
 $LOAD_PATH.unshift File.expand_path( './../solved', __FILE__ )
 
-for i in [172]
+for i in [129]
 #for i in [158, 164, 172, 191, 345]
   require "problem_%04d" % i
  
@@ -12,7 +12,8 @@ for i in [172]
 
   ProjectEuler.time do
 #    result = RubyProf.profile do
-      puts problem.solve
+      sol = problem.solve.to_s
+      puts "#{sol} (#{[sol].pack( 'm0' )})"
 #    end
 
 #    printer = RubyProf::GraphPrinter.new( result )
