@@ -10,16 +10,20 @@ elif [ "$PROB" = "" ]; then
 fi
 
 ruby -I. -Isolved <<EOF
-  require "problem_%04d.rb" % $PROB
+  begin
+    require "problem_%04d.rb" % $PROB
 
-  problem = Object::const_get( "Problem_%04d" % $PROB ).new
-  percentile = 100 * (1.0 - problem.ordinality.to_f / problem.population)
-  puts "Problem %d: %s" % [$PROB, problem.title]
-  puts "  Solved on #{problem.completed_on}, \##{problem.ordinality} of #{problem.population} (%0.6f percentile)" % [percentile]
+    problem = Object::const_get( "Problem_%04d" % $PROB ).new
+    percentile = 100 * (1.0 - problem.ordinality.to_f / problem.population)
+    puts "Problem #{$PROB}: #{problem.title}"
+    puts "  Solved on #{problem.completed_on}, \##{problem.ordinality} of #{problem.population} (%0.6f percentile)" % [percentile]
 
-  ProjectEuler.time do
-    solution = problem.solve.to_s
-    obfuscated = [solution].pack( 'm0' )
-    puts "  Solution: #{solution} (%s, %sVerified)" % [obfuscated, obfuscated == problem.solution.to_s ? '' : 'NOT ']
+    ProjectEuler.time do
+      solution = problem.solve.to_s
+      obfuscated = [solution].pack( 'm0' )
+      puts "  Solution: #{solution} (%s, %sVerified)" % [obfuscated, obfuscated == problem.solution.to_s ? '' : 'NOT ']
+    end
+  rescue LoadError
+    puts "Could not find problem #{$PROB} — skipping"
   end
 EOF
