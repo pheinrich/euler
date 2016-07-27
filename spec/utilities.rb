@@ -142,6 +142,7 @@ describe Integer do
 
   describe "#digital_root" do
     it "repeatedly sums digits until a single digit is generated" do
+      expect( 0.digital_root ).to eq( 0 )
       expect( 9876.digital_root ).to eq( 3 )
       expect( 2873112.digital_root ).to eq( 6 )
       expect( 8899889989898775.digital_root ).to eq( 3 )

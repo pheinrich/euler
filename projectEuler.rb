@@ -260,7 +260,7 @@ class Integer
   # Sum the digits, then the digits of the result, repeating the process until
   # a single digit is generated.
   def digital_root
-    1 + (self - 1) % 9
+    0 == self ? 0 : 1 + (self - 1) % 9
   end
 
   # Solves Bézout's identity for known a and b: ax + by = gcd(a, b). This
