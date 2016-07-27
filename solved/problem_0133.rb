@@ -70,7 +70,7 @@ class Problem_0133
   def best_time; 17.80 end
   def effort; 15 end
 
-  def completed_on; '2013-01-21' end
+  def completed_on; '2016-07-27' end
   def ordinality; 3_757 end
   def population; 581_299 end
 
