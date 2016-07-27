@@ -18,7 +18,21 @@ class Problem_0133
   # Find the sum of all the primes below one-hundred thousand that will never
   # be a factor of R(10^n).
 
+  def aofn( n )
+    return 0 if 0 == n % 2 || 0 == n % 5
+
+    m, n = 1, 9*n
+    m += 1 while 1 != 10.modular_power( m, n )
+    m
+  end
+
   def solve( n = 100_000 )
+    # OEIS.org shows that the sequence described above, starting with [11, 17,
+    # 41, 73] (A178070), contains primes such that the multiplicative order of
+    # 10 (mod p) takes the form 2^i * 5^j, with i,j >= 0. The multiplicative
+    # order is the smallest power k such that 10^k ≣ 1 (mod p), which is the
+    # same as saying 10^k % p = 1.
+    p = n.prime_sieve
   end
 
   def solution; end
@@ -29,5 +43,7 @@ class Problem_0133
   def ordinality; end
   def population; end
 
-  def refs; [] end
+  def refs
+    ["http://oeis.org/A178070"]
+  end
 end
