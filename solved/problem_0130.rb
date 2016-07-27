@@ -22,12 +22,24 @@ class Problem_0130
   # Find the sum of the first twenty-five composite values of n for which
   # GCD(n, 10) = 1 and n − 1 is divisible by A(n).
 
-  def aofn( n )
+  def aofn2( n )
     return 0 if 0 == n % 2 || 0 == n % 5
 
     m, n = 1, 9*n
     m += 1 while 1 != 10.modular_power( m, n )
     m
+  end
+
+  def aofn( n )
+    return 0 unless n.coprime?( 10 )
+
+    x, k = 1, 1
+    until 0 == x
+      x = (10*x + 1) % n
+      k += 1
+    end
+
+    k
   end
 
   def solve( count = 25 )
@@ -45,7 +57,7 @@ class Problem_0130
   end
 
   def solution; 149_253 end
-  def best_time; 37.08 end
+  def best_time; 0.4604 end
   def effort; 5 end
 
   def completed_on; '2016-07-17' end

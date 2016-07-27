@@ -18,11 +18,16 @@ class Problem_0129
   # Find the least value of n for which A(n) first exceeds one-million.
 
   def aofn( n )
-    return 0 if 0 == n % 2 || 0 == n % 5
+# Guaranteed in this context...
+#    return 0 unless n.coprime?( 10 )
 
-    m, n = 1, 9*n
-    m += 1 while 1 != 10.modular_power( m, n )
-    m
+    x, k = 1, 1
+    until 0 == x
+      x = (10*x + 1) % n
+      k += 1
+    end
+
+    k
   end
 
   def solve( max = 1_000_000 )
@@ -52,7 +57,7 @@ class Problem_0129
   end
 
   def solution; 1_000_023 end
-  def best_time; 11.61 end
+  def best_time; 0.1384 end
   def effort; 35 end
 
   def completed_on; '2016-07-17' end
