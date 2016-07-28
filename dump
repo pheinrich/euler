@@ -1,0 +1,12 @@
+#!/bin/bash
+
+ruby -I. -Isolved <<EOF
+  for i in [*1..566]
+    begin
+      require "problem_%04d" % i
+      problem = Object::const_get( "Problem_%04d" % i ).new
+      puts "#{i}, #{problem.completed_on}, #{problem.population}"
+    rescue LoadError, NoMethodError
+    end
+  end
+EOF
