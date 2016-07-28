@@ -38,7 +38,7 @@ class Problem_0134
   
   def completed_on; '2015-01-20' end
   def ordinality; 4_108 end
-  def population; 455_586 end
+  def population; 483_455 end
   
   def refs
     ['https://en.wikipedia.org/wiki/Chinese_remainder_theorem']

@@ -44,7 +44,7 @@ class Problem_0055
 
   def completed_on; '2013-03-17' end
   def ordinality; 22_687 end
-  def population; 288_324 end
+  def population; 305_961 end
 
   def refs
     ['https://en.wikipedia.org/wiki/Lychrel_number',

@@ -43,7 +43,7 @@ class Problem_0131
 
   def completed_on; '2016-07-26' end
   def ordinality; 5_074 end
-  def population; 581_183 end
+  def population; 616_735 end
 
   def refs
     ['http://burningmath.blogspot.com/2013/09/how-to-know-or-check-if-number-is.html',

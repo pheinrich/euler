@@ -49,7 +49,7 @@ class Problem_0071
 
   def completed_on; '2013-12-19' end
   def ordinality; 14_078 end
-  def population; 357_065 end
+  def population; 378_907 end
 
   def refs
     ['http://en.wikipedia.org/wiki/Farey_sequence#Next_term']

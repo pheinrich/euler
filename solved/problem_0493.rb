@@ -39,7 +39,7 @@ class Problem_0493
     
   def completed_on; '2015-02-23' end
   def ordinality; 705 end
-  def population; 464_166 end
+  def population; 492_560 end
   
   def refs
     ['http://www.albany.edu/~mark/classes/367/e2s99sol.pdf',

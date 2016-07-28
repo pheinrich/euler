@@ -88,7 +88,7 @@ class Problem_0065
   
   def completed_on; '2013-12-12' end
   def ordinality; 14_097 end
-  def population; 355_328 end
+  def population; 377_064 end
 
   def refs
     ['https://en.wikipedia.org/wiki/Generalized_continued_fraction']

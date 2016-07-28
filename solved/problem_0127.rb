@@ -52,7 +52,7 @@ class Problem_0127
   
   def completed_on; '2015-01-18' end
   def ordinality; 3_433 end
-  def population; 455_090 end
+  def population; 489_929 end
   
   def refs
     ['http://en.wikipedia.org/wiki/Abc_conjecture']

@@ -81,7 +81,7 @@ class Problem_0059
   
   def completed_on; '2013-04-03' end
   def ordinality; 16_950 end
-  def population; 292_543 end
+  def population; 310_438 end
   
   def refs
     ['https://en.wikipedia.org/wiki/Most_common_words_in_English']

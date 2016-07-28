@@ -91,7 +91,7 @@ class Problem_0549
   
   def completed_on; '2016-07-08' end
   def ordinality; 688 end
-  def population; 576_755 end
+  def population; 612_036 end
 
   def refs
     ['http://blog.janmr.com/2010/10/prime-factors-of-factorial-numbers.html',

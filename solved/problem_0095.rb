@@ -53,7 +53,7 @@ class Problem_0095
   
   def completed_on; '2014-02-14' end
   def ordinality; 6_859 end
-  def population; 371_211 end
+  def population; 393_919 end
 
   def refs
     ['https://en.wikipedia.org/wiki/Sociable_number']

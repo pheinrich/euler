@@ -55,7 +55,7 @@ class Problem_0080
 
   def completed_on; '2013-12-28' end
   def ordinality; 9_575 end
-  def population; 359_299 end
+  def population; 381_278 end
 
   def refs
     ['http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Decimal_.28base_10.29']

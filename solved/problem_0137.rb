@@ -62,7 +62,7 @@ class Problem_0137
 
   def completed_on; '2016-07-13' end
   def ordinality; 3_648 end
-  def population; 578_139 end
+  def population; 613_505 end
 
   def refs
     ['http://math.stackexchange.com/a/114809',

@@ -108,7 +108,7 @@ class Problem_0103
 
   def completed_on; '2016-06-10' end
   def ordinality; 5_217 end
-  def population; 569_448 end
+  def population; 604_282 end
 
   def refs
     ['http://people.maths.ox.ac.uk/greenbj/papers/bourgain-sumset.pdf',

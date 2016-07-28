@@ -34,7 +34,7 @@ class Problem_0009
 
   def completed_on; '2013-01-26' end
   def ordinality; 116_174 end
-  def population; 275_916 end
+  def population; 292_794 end
 
   def refs
     ['https://en.wikipedia.org/wiki/Pythagorean_triple']

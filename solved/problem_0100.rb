@@ -48,7 +48,7 @@ class Problem_0100
 
   def completed_on; '2015-01-09' end
   def ordinality; 8_868 end
-  def population; 362_277 end
+  def population; 384_438 end
 
   def refs
     [ 'http://www.alpertron.com.ar/METHODS.HTM',

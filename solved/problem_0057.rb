@@ -41,7 +41,7 @@ class Problem_0057
 
   def completed_on; '2013-03-18' end
   def ordinality; 15_448 end
-  def population; 288_572 end
+  def population; 306_224 end
 
   def refs
     ['https://en.wikipedia.org/wiki/Continued_fraction',

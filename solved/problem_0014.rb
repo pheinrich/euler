@@ -44,7 +44,7 @@ class Problem_0014
 
   def completed_on; '2013-01-27' end
   def ordinality; 73_172 end
-  def population; 276_164 end
+  def population; 293_057 end
 
   def refs
     ['https://en.wikipedia.org/wiki/Collatz_conjecture',

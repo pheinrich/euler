@@ -78,7 +78,7 @@ class Problem_0088
   
   def completed_on; '2014-01-05' end
   def ordinality; 5_178 end
-  def population; 361_284 end
+  def population; 383_384 end
   
   def refs
     ['http://www-users.mat.umk.pl/~anow/ps-dvi/si-krl-a.pdf',

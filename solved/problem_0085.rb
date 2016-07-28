@@ -29,7 +29,7 @@ class Problem_0085
   
   def completed_on; '2013-12-31' end
   def ordinality; 12_247 end
-  def population; 360_043 end
+  def population; 382_067 end
   
   def refs
     ['http://www.gottfriedville.net/mathprob/comb-subrect.html']

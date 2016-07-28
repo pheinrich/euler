@@ -76,7 +76,7 @@ class Problem_0122
   
   def completed_on; '2015-02-16' end
   def ordinality; 4_447 end
-  def population; 462_287 end
+  def population; 490_566 end
   
   def refs
     ['http://en.wikipedia.org/wiki/Addition-chain_exponentiation',

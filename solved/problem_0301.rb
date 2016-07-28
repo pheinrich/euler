@@ -53,7 +53,7 @@ class Problem_0301
 
   def completed_on; '2016-05-31' end
   def ordinality; 3_874 end
-  def population; 566_837 end
+  def population; 601_511 end
 
   def refs
     ['https://en.wikipedia.org/wiki/Nim']

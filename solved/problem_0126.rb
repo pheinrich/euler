@@ -125,7 +125,7 @@ class Problem_0126
 
   def completed_on; '2016-06-30' end
   def ordinality; 3_052 end
-  def population; 574_728 end
+  def population; 609_885 end
 
   def refs
     ['https://en.wikipedia.org/wiki/Diophantine_equation',

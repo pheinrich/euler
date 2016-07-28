@@ -35,7 +35,7 @@ class Problem_0187
   
   def completed_on; '2015-01-24' end
   def ordinality; 6_876 end
-  def population; 456_579 end
+  def population; 484_509 end
   
   def refs; ['http://mathworld.wolfram.com/Semiprime.html'] end
 end

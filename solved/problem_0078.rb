@@ -30,7 +30,7 @@ class Problem_0078
 
   def completed_on; '2013-12-24' end
   def ordinality; 7_757 end
-  def population; 358_306 end
+  def population; 380_224 end
 
   def refs
     ['https://en.wikipedia.org/wiki/Partition_problem']

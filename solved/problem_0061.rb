@@ -66,7 +66,7 @@ class Problem_0061
   
   def completed_on; '2013-04-06' end
   def ordinality; 10_434 end
-  def population; 293_287 end
+  def population; 311_228 end
   
   def refs
     ['http://oeis.org/A000217',
@@ -74,7 +74,6 @@ class Problem_0061
      'http://oeis.org/A000326',
      'http://oeis.org/A000384',
      'http://oeis.org/A000566',
-     'http://oeis.org/A000567'
-    ]
+     'http://oeis.org/A000567']
   end
 end

@@ -75,7 +75,7 @@ class Problem_0027
 
   def completed_on; '2013-02-09' end
   def ordinality; 33_154 end
-  def population; 279_390 end
+  def population; 296_481 end
 
   def refs
     ['https://en.wikipedia.org/wiki/Lucky_numbers_of_Euler',

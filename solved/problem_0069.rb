@@ -37,7 +37,7 @@ class Problem_0069
   
   def completed_on; '2013-12-16' end
   def ordinality; 16_665 end
-  def population; 356_321 end
+  def population; 378_118 end
 
   def refs
     ['https://en.wikipedia.org/wiki/Euler%27s_totient_function',

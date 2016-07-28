@@ -44,7 +44,7 @@ class Problem_0345
 
   def completed_on; '2015-03-27' end
   def ordinality; 2_306 end
-  def population; 473_729 end
+  def population; 502_708 end
 
   def refs
     ['http://en.wikipedia.org/wiki/Assignment_problem',

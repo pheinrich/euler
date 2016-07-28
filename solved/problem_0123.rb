@@ -42,7 +42,7 @@ class Problem_0123
   
   def completed_on; '2015-01-17' end
   def ordinality; 6_988 end
-  def population; 454_842 end
+  def population; 482_665 end
   
   def refs
     ['http://en.wikipedia.org/wiki/Prime-counting_function#Inequalities']

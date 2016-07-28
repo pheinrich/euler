@@ -38,7 +38,7 @@ class Problem_0124
   
   def completed_on; '2015-01-18' end
   def ordinality; 8_527 end
-  def population; 455_090 end
+  def population; 482_929 end
 
   def refs; [] end
 end

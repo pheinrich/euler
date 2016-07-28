@@ -101,7 +101,7 @@ class Problem_0064
 
   def completed_on; '2013-12-12' end
   def ordinality; 10_094 end
-  def population; 355_328 end
+  def population; 377_064 end
 
   def refs
     ['https://en.wikipedia.org/wiki/Generalized_continued_fraction']

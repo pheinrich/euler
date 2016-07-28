@@ -26,7 +26,7 @@ class Problem_0007
 
   def completed_on; '2013-01-24' end
   def ordinality; 129_002 end
-  def population; 275_419 end
+  def population; 292_267 end
 
   def refs
     ['https://oeis.org/A000040']

@@ -53,7 +53,7 @@ class Problem_0172
 
   def completed_on; '2016-07-06' end
   def ordinality; 2_583 end
-  def population; 576_237 end
+  def population; 611_486 end
 
   def refs
     ['http://en.wikipedia.org/wiki/Algebra_of_sets',

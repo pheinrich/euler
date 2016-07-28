@@ -28,7 +28,7 @@ class Problem_0072
 
   def completed_on; '2013-12-19' end
   def ordinality; 10_806 end
-  def population; 357_065 end
+  def population; 378_907 end
 
   def refs
     ['https://en.wikipedia.org/wiki/Farey_sequence']

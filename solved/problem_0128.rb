@@ -157,7 +157,7 @@ class Problem_0128
 
   def completed_on; '2016-07-03' end
   def ordinality; 3_254 end
-  def population; 575_438 end
+  def population; 610_638 end
 
   def refs
     ['http://www.redblobgames.com/grids/hexagons/#coordinates']
