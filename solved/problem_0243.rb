@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.0001271s (1/6/14, #4488)
 class Problem_0243
   def title; 'Resilience' end
   def difficulty; 35 end
@@ -44,7 +43,7 @@ class Problem_0243
     d
   end
 
-  def solution; 892_371_480 end
+  def solution; 'ODkyMzcxNDgw' end
   def best_time; 0.00008440 end
   def effort; 45 end
   

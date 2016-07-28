@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.4998s (2/19/13, #28582)
 class Problem_0037
   def title; 'Truncatable primes' end
   def difficulty; 5 end
@@ -30,7 +29,7 @@ class Problem_0037
     sum
   end
 
-  def solution; 748_317 end
+  def solution; 'NzQ4MzE3' end
   def best_time; 0.1284 end
   def effort; 10 end
   

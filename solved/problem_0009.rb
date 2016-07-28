@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.00005722s (1/26/13, #~116174)
 class Problem_0009
   def title; 'Special Pythagorean triplet' end
   def difficulty; 5 end
@@ -29,7 +28,7 @@ class Problem_0009
     end
   end
 
-  def solution; 31_875_000 end
+  def solution; 'MzE4NzUwMDA=' end
   def best_time; 0.00001383 end
   def effort; 20 end
 
@@ -37,5 +36,7 @@ class Problem_0009
   def ordinality; 116_174 end
   def population; 275_916 end
 
-  def refs; ["https://en.wikipedia.org/wiki/Pythagorean_triple"] end
+  def refs
+    ['https://en.wikipedia.org/wiki/Pythagorean_triple']
+  end
 end

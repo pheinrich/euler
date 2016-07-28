@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.06504s (1/28/15, #4577)
 class Problem_0109
   def title; 'Darts' end
   def difficulty; 45 end
@@ -108,7 +107,7 @@ class Problem_0109
     co.count {|k, v| n > v}
   end
 
-  def solution; 38_182 end
+  def solution; 'MzgxODI=' end
   def best_time; 0.06504 end
   def effort; 25 end
 

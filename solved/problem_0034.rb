@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 39.26s (2/15/13, #~38022)
 class Problem_0034
   def title; 'Digit factorials' end
   def difficulty; 5 end
@@ -24,7 +23,7 @@ class Problem_0034
     (3..lim).select {|i| i == i.to_s.chars.inject( 0 ) {|a, x| a + f[x.to_i]}}.reduce( :+ )
   end
 
-  def solution; 40_730 end
+  def solution; 'NDA3MzA=' end
   def best_time; 27.76 end
   def effort; 10 end
   
@@ -32,5 +31,7 @@ class Problem_0034
   def ordinality; 38_022 end
   def population; 280_879 end
 
-  def refs; ["https://oeis.org/A014080"] end
+  def refs
+    ['https://oeis.org/A014080']
+  end
 end

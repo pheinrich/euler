@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 1.943s (2/17/13, #27095)
 class Problem_0041
   def title; 'Pandigital prime' end
   def difficulty; 5 end
@@ -23,7 +22,7 @@ class Problem_0041
     max
   end
 
-  def solution; 7_652_413 end
+  def solution; 'NzY1MjQxMw==' end
   def best_time; 1.708 end
   def effort; 5 end
 

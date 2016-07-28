@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.0005181s (1/14/15, #6967)
 class Problem_0116
   def title; 'Red, green or blue tiles' end
   def difficulty; 30 end
@@ -40,13 +39,15 @@ class Problem_0116
     len.map {|l| fill( l, n, {} )}.reduce( :+ )
   end
 
-  def solution; 20_492_570_929 end
-  def best_time; 0.0005181 end
+  def solution; 'MjA0OTI1NzA5Mjk=' end
+  def best_time; 0.0005019 end
   def effort; 25 end
   
   def completed_on; '2015-01-14' end
   def ordinality; 6_967 end
   def population; 454_097 end
   
-  def refs; ["https://oeis.org/A244281"] end
+  def refs
+    ['https://oeis.org/A244281']
+  end
 end

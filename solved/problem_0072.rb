@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 1.581s (12/19/13, #~10806)
 class Problem_0072
   def title; 'Counting fractions' end
   def difficulty; 20 end
@@ -23,13 +22,15 @@ class Problem_0072
     n.farey_length - 2
   end
 
-  def solution; 303_963_552_391 end
-  def best_time; 1.484 end
+  def solution; 'MzAzOTYzNTUyMzkx' end
+  def best_time; 0.6572 end
   def effort; 0 end
 
   def completed_on; '2013-12-19' end
   def ordinality; 10_806 end
   def population; 357_065 end
 
-  def refs; ["https://en.wikipedia.org/wiki/Farey_sequence"] end
+  def refs
+    ['https://en.wikipedia.org/wiki/Farey_sequence']
+  end
 end

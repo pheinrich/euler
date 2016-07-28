@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 66.57s (7/8/16, #688) 
 class Problem_0549
   def title; 'Divisibility of factorials' end
   def difficulty; 10 end
@@ -86,7 +85,7 @@ class Problem_0549
     s.reduce( :+ ) - 1
   end
 
-  def solution; 476_001_479_068_717 end
+  def solution; 'NDc2MDAxNDc5MDY4NzE3' end
   def best_time; 66.57 end
   def effort; 75 end
   
@@ -95,9 +94,9 @@ class Problem_0549
   def population; 576_755 end
 
   def refs
-    ["http://blog.janmr.com/2010/10/prime-factors-of-factorial-numbers.html",
-     "http://www.cut-the-knot.org/blue/LegendresTheorem.shtml",
-     "http://math.stackexchange.com/a/229327",
-     "http://codereview.stackexchange.com/a/129868"]
+    ['http://blog.janmr.com/2010/10/prime-factors-of-factorial-numbers.html',
+     'http://www.cut-the-knot.org/blue/LegendresTheorem.shtml',
+     'http://math.stackexchange.com/a/229327',
+     'http://codereview.stackexchange.com/a/129868']
   end
 end

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.2075s (2/9/13, #~33154)
 class Problem_0027
   def title; 'Quadratic primes' end
   def difficulty; 5 end
@@ -70,8 +69,8 @@ class Problem_0027
     i * j # puts "%d = %d x %d, length %d" % [i*j, i, j, max]
   end
 
-  def solution; -59_231 end
-  def best_time; 0.1042 end
+  def solution; 'LTU5MjMx' end
+  def best_time; 0.1018 end
   def effort; 15 end
 
   def completed_on; '2013-02-09' end
@@ -79,7 +78,7 @@ class Problem_0027
   def population; 279_390 end
 
   def refs
-    ["https://en.wikipedia.org/wiki/Lucky_numbers_of_Euler",
-     "https://oeis.org/A014556"]
+    ['https://en.wikipedia.org/wiki/Lucky_numbers_of_Euler',
+     'https://oeis.org/A014556']
   end
 end

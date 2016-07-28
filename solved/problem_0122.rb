@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.7574s (2/16/15, #4447)
 class Problem_0122
   def title; 'Efficient exponentiation' end
   def difficulty; 40 end
@@ -71,7 +70,7 @@ class Problem_0122
     memo.reject {|h, v| h > k}.reduce( 0 ) {|acc, (h, v)| acc + 1 + v}
   end
 
-  def solution; 1_582 end
+  def solution; 'MTU4Mg==' end
   def best_time; 0.6977 end
   def effort; 40 end
   
@@ -80,10 +79,10 @@ class Problem_0122
   def population; 462_287 end
   
   def refs
-    ["http://en.wikipedia.org/wiki/Addition-chain_exponentiation",
-     "https://oeis.org/A003313",
-     "http://cr.yp.to/papers/pippenger.pdf",
-     "http://wwwhomes.uni-bielefeld.de/achim/ac.ps.gz",
-     "http://wwwhomes.uni-bielefeld.de/achim/addition_chain.html"]
+    ['http://en.wikipedia.org/wiki/Addition-chain_exponentiation',
+     'https://oeis.org/A003313',
+     'http://cr.yp.to/papers/pippenger.pdf',
+     'http://wwwhomes.uni-bielefeld.de/achim/ac.ps.gz',
+     'http://wwwhomes.uni-bielefeld.de/achim/addition_chain.html']
   end
 end

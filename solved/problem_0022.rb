@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.01374s (2/5/13, #~48926)
 class Problem_0022
   def title; 'Names scores' end
   def difficulty; 5 end
@@ -27,8 +26,8 @@ class Problem_0022
     names.each_with_index.inject( 0 ) {|sum, (n, i)| sum + n*(1 + i)}
   end
 
-  def solution; 871_198_282 end
-  def best_time; 0.01029 end
+  def solution; 'ODcxMTk4Mjgy' end
+  def best_time; 0.008969 end
   def effort; 0 end
 
   def completed_on; '2013-02-05' end

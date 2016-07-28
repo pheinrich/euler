@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.00008321s (1/27/15, #7736)
 class Problem_0108
   def title; 'Diophantine reciprocals I' end
   def difficulty; 30 end
@@ -79,8 +78,8 @@ class Problem_0108
     pf.each_with_index.reduce( 1 ) {|acc, (e, i)| acc * P[i]**e}
   end
 
-  def solution; 180_180 end
-  def best_time; 0.00003719 end
+  def solution; 'MTgwMTgw' end
+  def best_time; 0.00003386 end
   def effort; 25 end
 
   def completed_on; '2015-01-27' end

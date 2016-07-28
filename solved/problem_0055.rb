@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.07033s (3/17/13, #~22687)
 class Problem_0055
   def title; 'Lychrel numbers' end
   def difficulty; 5 end
@@ -39,7 +38,7 @@ class Problem_0055
     5.upto( n - 1 ).count {|i| i.lychrel?}
   end
 
-  def solution; 249 end
+  def solution; 'MjQ5' end
   def best_time; 0.04874 end
   def effort; 5 end
 
@@ -48,7 +47,7 @@ class Problem_0055
   def population; 288_324 end
 
   def refs
-    ["https://en.wikipedia.org/wiki/Lychrel_number",
-     "https://oeis.org/A023108"]
+    ['https://en.wikipedia.org/wiki/Lychrel_number',
+     'https://oeis.org/A023108']
   end
 end

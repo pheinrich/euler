@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.8214s (12/21/13, #~8409)
 class Problem_0075
   def title; 'Singular integer right triangles' end
   def difficulty; 25 end
@@ -31,8 +30,8 @@ class Problem_0075
     n.pytriple_sieve.count( 1 )
   end
 
-  def solution; 161_667 end
-  def best_time; 0.4612 end
+  def solution; 'MTYxNjY3' end
+  def best_time; 0.4533 end
   def effort; 15 end
 
   def completed_on; '2013-12-21' end
@@ -40,7 +39,7 @@ class Problem_0075
   def population; 357_562 end
 
   def refs
-    ["https://en.wikipedia.org/wiki/Pythagorean_triple",
-     "https://oeis.org/A098714"]
+    ['https://en.wikipedia.org/wiki/Pythagorean_triple',
+     'https://oeis.org/A098714']
   end
 end

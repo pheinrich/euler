@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.09701s (7/26/16, #5074)
 class Problem_0131
   def title; 'Prime cube partnership' end
   def difficulty; 40 end
@@ -38,8 +37,8 @@ class Problem_0131
     end
   end
 
-  def solution; 173 end
-  def best_time; 0.08028 end
+  def solution; 'MTcz' end
+  def best_time; 0.07971 end
   def effort; 20 end
 
   def completed_on; '2016-07-26' end
@@ -47,8 +46,8 @@ class Problem_0131
   def population; 581_183 end
 
   def refs
-    ["http://burningmath.blogspot.com/2013/09/how-to-know-or-check-if-number-is.html",
-     "http://www.mathgoodies.com/articles/numbers.html",
-     "http://oeis.org/A002407"]
+    ['http://burningmath.blogspot.com/2013/09/how-to-know-or-check-if-number-is.html',
+     'http://www.mathgoodies.com/articles/numbers.html',
+     'http://oeis.org/A002407']
   end
 end

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.001001s (3/6/13, #28841)
 class Problem_0039
   def title; 'Integer right triangles' end
   def difficulty; 5 end
@@ -17,7 +16,7 @@ class Problem_0039
     counts.max # puts "#{counts.index( counts.max )}"
   end
 
-  def solution; 8 end
+  def solution; 'OA==' end
   def best_time; 0.0001709 end
   def effort; 10 end
 

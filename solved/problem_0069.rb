@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 1.880s (12/16/13, ~16665)
 class Problem_0069
   def title; 'Totient maximum' end
   def difficulty; 10 end
@@ -32,7 +31,7 @@ class Problem_0069
     s.each_with_index.max_by {|i, j| j.to_f / i}[1]
   end
 
-  def solution; 510_510 end
+  def solution; 'NTEwNTEw' end
   def best_time; 0.8761 end
   def effort; 15 end
   
@@ -41,7 +40,7 @@ class Problem_0069
   def population; 356_321 end
 
   def refs
-    ["https://en.wikipedia.org/wiki/Euler%27s_totient_function",
-     "https://oeis.org/A000010"]
+    ['https://en.wikipedia.org/wiki/Euler%27s_totient_function',
+     'https://oeis.org/A000010']
   end
 end

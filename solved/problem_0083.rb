@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 10.20s (12/29/13, #8699)
 class Problem_0083
   def title; 'Path sum: four ways' end
   def difficulty; 25 end
@@ -50,7 +49,7 @@ class Problem_0083
     rows[0][0] + g.dijkstra( 0, w*h - 1 )
   end
   
-  def solution; 425_185 end
+  def solution; 'NDI1MTg1' end
   def best_time; 10.20 end
   def effort; 15 end
     

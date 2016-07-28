@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.6012s (3/17/13, #~23371)
 class Problem_0056
   def title; 'Powerful digit sum' end
   def difficulty; 5 end
@@ -24,7 +23,7 @@ class Problem_0056
     max
   end
 
-  def solution; 972 end
+  def solution; 'OTcy' end
   def best_time; 0.4690 end
   def effort; 0 end
 
@@ -32,5 +31,7 @@ class Problem_0056
   def ordinality; 23_371 end
   def population; 288_324 end
 
-  def refs; ["https://oeis.org/A135740"] end
+  def refs
+    ['https://oeis.org/A135740']
+  end
 end

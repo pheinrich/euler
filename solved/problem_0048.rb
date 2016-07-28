@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.8499s (1/25/13, #~50546)
 class Problem_0048
   def title; 'Self powers' end
   def difficulty; 5 end
@@ -14,7 +13,7 @@ class Problem_0048
     ((1..n).inject {|s, x| s + x.modular_power( x, m )}.to_s[-d, d]).to_i
   end
 
-  def solution; 9_110_846_700 end
+  def solution; 'OTExMDg0NjcwMA==' end
   def best_time; 0.005943 end
   def effort; 0 end
 

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 20.32s (12/17/13, #~10787)
 class Problem_0070
   def title; 'Totient permutation' end
   def difficulty; 20 end
@@ -47,7 +46,7 @@ class Problem_0070
     match
   end
 
-  def solution; 8_319_823 end
+  def solution; 'ODMxOTgyMw==' end
   def best_time; 10.54 end
   def effort; 20 end
     
@@ -56,8 +55,8 @@ class Problem_0070
   def population; 356_569 end
   
   def refs
-    ["https://en.wikipedia.org/wiki/Euler%27s_totient_function",
-     "https://oeis.org/A000010",
-     "https://oeis.org/A102018"]
+    ['https://en.wikipedia.org/wiki/Euler%27s_totient_function',
+     'https://oeis.org/A000010',
+     'https://oeis.org/A102018']
   end
 end

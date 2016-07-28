@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.6329s (1/20/15, #4108)
 class Problem_0134
   def title; 'Prime pair connection' end
   def difficulty; 45 end
@@ -33,7 +32,7 @@ class Problem_0134
     end
   end
 
-  def solution; 18_613_426_663_617_118 end
+  def solution; 'MTg2MTM0MjY2NjM2MTcxMTg=' end
   def best_time; 0.4069 end
   def effort; 40 end
   
@@ -41,5 +40,7 @@ class Problem_0134
   def ordinality; 4_108 end
   def population; 455_586 end
   
-  def refs; ["https://en.wikipedia.org/wiki/Chinese_remainder_theorem"] end
+  def refs
+    ['https://en.wikipedia.org/wiki/Chinese_remainder_theorem']
+  end
 end

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.0004370s (3/27/15, #2306)
 class Problem_0345
   def title; 'Matrix Sum' end
   def difficulty; 15 end
@@ -39,7 +38,7 @@ class Problem_0345
     ProjectEuler::KuhnMunkres.total( N, assignments )
   end
 
-  def solution; 13_938 end
+  def solution; 'MTM5Mzg=' end
   def best_time; 0.0004370 end
   def effort; 50 end
 
@@ -48,15 +47,15 @@ class Problem_0345
   def population; 473_729 end
 
   def refs
-    ["http://en.wikipedia.org/wiki/Assignment_problem",
-     "http://en.wikipedia.org/wiki/Hungarian_algorithm",
-     "http://www.hungarianalgorithm.com/solve.php",
-     "http://www.mathcs.emory.edu/~cheung/Courses/323/Syllabus/Assignment/algorithm.html",
-     "http://csclab.murraystate.edu/bob.pilgrim/445/munkres.html",
-     "https://github.com/pdamer/munkres",
-     "https://github.com/google/or-tools/blob/master/src/algorithms/hungarian.cc",
-     "https://www.ri.cmu.edu/pub_files/pub4/mills_tettey_g_ayorkor_2007_3/mills_tettey_g_ayorkor_2007_3.pdf",
-     "https://www.topcoder.com/community/data-science/data-science-tutorials/maximum-flow-section-1/",
-     "https://www.topcoder.com/community/data-science/data-science-tutorials/maximum-flow-section-2/"]
+    ['http://en.wikipedia.org/wiki/Assignment_problem',
+     'http://en.wikipedia.org/wiki/Hungarian_algorithm',
+     'http://www.hungarianalgorithm.com/solve.php',
+     'http://www.mathcs.emory.edu/~cheung/Courses/323/Syllabus/Assignment/algorithm.html',
+     'http://csclab.murraystate.edu/bob.pilgrim/445/munkres.html',
+     'https://github.com/pdamer/munkres',
+     'https://github.com/google/or-tools/blob/master/src/algorithms/hungarian.cc',
+     'https://www.ri.cmu.edu/pub_files/pub4/mills_tettey_g_ayorkor_2007_3/mills_tettey_g_ayorkor_2007_3.pdf',
+     'https://www.topcoder.com/community/data-science/data-science-tutorials/maximum-flow-section-1/',
+     'https://www.topcoder.com/community/data-science/data-science-tutorials/maximum-flow-section-2/']
   end 
 end

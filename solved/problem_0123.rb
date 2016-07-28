@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.06736s (1/17/15, #6988)
 class Problem_0123
   def title; 'Prime square remainders' end
   def difficulty; 30 end
@@ -37,13 +36,15 @@ class Problem_0123
     1 + ProjectEuler.bsearch( 0, est, lambda {|n| limit > 2*n*p[n-1]})
   end
 
-  def solution; 21_035 end
-  def best_time; 0.02109 end
+  def solution; 'MjEwMzU=' end
+  def best_time; 0.01991 end
   def effort; 30 end
   
   def completed_on; '2015-01-17' end
   def ordinality; 6_988 end
   def population; 454_842 end
   
-  def refs; ["http://en.wikipedia.org/wiki/Prime-counting_function#Inequalities"] end
+  def refs
+    ['http://en.wikipedia.org/wiki/Prime-counting_function#Inequalities']
+  end
 end

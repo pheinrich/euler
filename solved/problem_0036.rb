@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.8722s (2/17/13, #~36697)
 class Problem_0036
   def title; 'Double-base palindromes' end
   def difficulty; 5 end
@@ -18,7 +17,7 @@ class Problem_0036
     (0...n).select {|i| i.to_s.palindromic? && i.to_s( 2 ).palindromic?}.reduce( :+ )
   end
 
-  def solution; 872_187 end
+  def solution; 'ODcyMTg3' end
   def best_time; 0.5548 end
   def effort; 0 end
 

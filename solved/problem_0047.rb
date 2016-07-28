@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 2.478s (3/9/13, #~22517)
 class Problem_0047
   def title; 'Distinct primes factors' end
   def difficulty; 5 end
@@ -36,8 +35,8 @@ class Problem_0047
     arr[0]
   end
 
-  def solution; 134_043 end
-  def best_time; 1.706 end
+  def solution; 'MTM0MDQz' end
+  def best_time; 1.589 end
   def effort; 0 end
     
   def completed_on; '2013-03-09' end

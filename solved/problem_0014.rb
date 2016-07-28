@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 22.94s (1/27/13, #~73172)
 class Problem_0014
   def title; 'Longest Collatz sequence' end
   def difficulty; 5 end
@@ -39,8 +38,8 @@ class Problem_0014
     m
   end
 
-  def solution; 837_799 end
-  def best_time; 11.54 end
+  def solution; 'ODM3Nzk5' end
+  def best_time; 10.93 end
   def effort; 0 end
 
   def completed_on; '2013-01-27' end
@@ -48,7 +47,7 @@ class Problem_0014
   def population; 276_164 end
 
   def refs
-    ["https://en.wikipedia.org/wiki/Collatz_conjecture",
-     "https://oeis.org/A006577"]
+    ['https://en.wikipedia.org/wiki/Collatz_conjecture',
+     'https://oeis.org/A006577']
   end
 end

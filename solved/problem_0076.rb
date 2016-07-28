@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.0006421 (12/24/13, #14159)
 class Problem_0076
   def title; 'Counting summations' end
   def difficulty; 10 end
@@ -21,7 +20,7 @@ class Problem_0076
     n.partition_sieve[-1] - 1
   end
 
-  def solution; 190_569_291 end
+  def solution; 'MTkwNTY5Mjkx' end
   def best_time; 0.0002010 end
   def effort; 30 end
 

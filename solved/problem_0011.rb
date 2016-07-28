@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.001548s (1/26/13, #~78198)
 class Problem_0011
   def title; 'Largest product in a grid' end
   def difficulty; 5 end
@@ -70,8 +69,8 @@ class Problem_0011
     max
   end
   
-  def solution; 70_600_674 end
-  def best_time; 0.001503 end
+  def solution; 'NzA2MDA2NzQ=' end
+  def best_time; 0.001074 end
   def effort; 10 end
   
   def completed_on; '2013-01-26' end

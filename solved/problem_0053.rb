@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.01498s (3/15/13, #~25682)
 class Problem_0053
   def title; 'Combinatoric selections' end
   def difficulty; 5 end
@@ -30,8 +29,8 @@ class Problem_0053
     count
   end
 
-  def solution; 4_075 end
-  def best_time; 0.01148 end
+  def solution; 'NDA3NQ==' end
+  def best_time; 0.01017 end
   def effort; 10 end
 
   def completed_on; '2013-03-15' end

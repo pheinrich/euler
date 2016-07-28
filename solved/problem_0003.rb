@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.1960s (1/21/13, #~158901)
 class Problem_0003
   def title; 'Largest prime factor' end
   def difficulty; 5 end
@@ -13,7 +12,7 @@ class Problem_0003
     n.prime_factors[-1]
   end
 
-  def solution; 67_679 end
+  def solution; 'Njc2Nzk=' end
   def best_time; 0.1092 end
   def effort; 0 end
 

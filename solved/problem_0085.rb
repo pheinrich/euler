@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.01387s (12/31/13, #12247)
 class Problem_0085
   def title; 'Counting rectangles' end
   def difficulty; 15 end
@@ -24,13 +23,15 @@ class Problem_0085
     counts.min_by {|k, v| (n - v).abs}[0].inject( :* )
   end
 
-  def solution; 2_772 end
-  def best_time; 0.01387 end
+  def solution; 'Mjc3Mg==' end
+  def best_time; 0.01266 end
   def effort; 25 end
   
   def completed_on; '2013-12-31' end
   def ordinality; 12_247 end
   def population; 360_043 end
   
-  def refs; ["http://www.gottfriedville.net/mathprob/comb-subrect.html"] end
+  def refs
+    ['http://www.gottfriedville.net/mathprob/comb-subrect.html']
+  end
 end

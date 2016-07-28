@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.03577s (2/7/13, #~59579)
 class Problem_0025
   def title; '1000-digit Fibonacci number' end
   def difficulty; 5 end
@@ -42,13 +41,15 @@ class Problem_0025
     term
   end
 
-  def solution; 4_782 end
-  def best_time; 0.02421 end
+  def solution; 'NDc4Mg==' end
+  def best_time; 0.02287 end
   def effort; 0 end
 
   def completed_on; '2013-02-07' end
   def ordinality; 59_579 end
   def population; 278_894 end
 
-  def refs; ["https://oeis.org/A000045"] end
+  def refs
+    ['https://oeis.org/A000045']
+  end
 end

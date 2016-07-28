@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.00001192s, (1/9/15, #8868)
 class Problem_0100
   def title; 'Arranged probability' end
   def difficulty; 30 end
@@ -43,7 +42,7 @@ class Problem_0100
     x
   end
 
-  def solution; 756_872_327_473 end
+  def solution; 'NzU2ODcyMzI3NDcz' end
   def best_time; 0.00001001 end
   def effort; 20 end
 
@@ -52,7 +51,7 @@ class Problem_0100
   def population; 362_277 end
 
   def refs
-    [ "http://www.alpertron.com.ar/METHODS.HTM",
-      "http://www.alpertron.com.ar/QUAD.HTM" ]
+    [ 'http://www.alpertron.com.ar/METHODS.HTM',
+      'http://www.alpertron.com.ar/QUAD.HTM' ]
   end
 end

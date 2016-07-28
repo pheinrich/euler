@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.003449s (1/12/15, #6327)
 class Problem_0107
   def title; 'Minimal network' end
   def difficulty; 35 end
@@ -43,7 +42,7 @@ class Problem_0107
     (g.total_weight - g.min_span.total_weight) >> 1
   end
 
-  def solution; 259_679 end
+  def solution; 'MjU5Njc5' end
   def best_time; 0.003449 end
   def effort; 25 end
 

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 4.126s (4/3/13, #~15930)
 class Problem_0058
   def title; 'Spiral primes' end
   def difficulty; 5 end
@@ -44,7 +43,7 @@ class Problem_0058
     len
   end
 
-  def solution; 26_241 end
+  def solution; 'MjYyNDE=' end
   def best_time; 2.683 end
   def effort; 15 end
 
@@ -53,7 +52,7 @@ class Problem_0058
   def population; 292_543 end
 
   def refs
-    ["https://en.wikipedia.org/wiki/Ulam_spiral",
-     "https://oeis.org/A200975"]
+    ['https://en.wikipedia.org/wiki/Ulam_spiral',
+     'https://oeis.org/A200975']
   end
 end

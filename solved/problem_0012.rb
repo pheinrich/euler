@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 6.2399s (1/26/13, #~69659)
 class Problem_0012
   def title; 'Highly divisible triangular number' end
   def difficulty; 5 end
@@ -42,8 +41,8 @@ class Problem_0012
     t
   end
 
-  def solution; 76_576_500 end
-  def best_time; 5.405 end
+  def solution; 'NzY1NzY1MDA=' end
+  def best_time; 4.757 end
   def effort; 0 end
 
   def completed_on; '2013-01-26' end
@@ -51,7 +50,7 @@ class Problem_0012
   def population; 275_916 end
 
   def refs
-    ["https://en.wikipedia.org/wiki/Triangular_number",
-     "https://oeis.org/A000217"]
+    ['https://en.wikipedia.org/wiki/Triangular_number',
+     'https://oeis.org/A000217']
   end
 end

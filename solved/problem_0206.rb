@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 5.978s (1/18/15, #12886)
 class Problem_0206
   def title; 'Concealed Square' end
   def difficulty; 5 end
@@ -38,7 +37,7 @@ class Problem_0206
     10 * min
   end
 
-  def solution; 1_389_019_170 end
+  def solution; 'MTM4OTAxOTE3MA==' end
   def best_time; 5.978 end
   def effort; 35 end
 

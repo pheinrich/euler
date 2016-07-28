@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 9.751s (2/14/14, #6859)
 class Problem_0095
   def title; 'Amicable chains' end
   def difficulty; 30 end
@@ -48,13 +47,15 @@ class Problem_0095
     longest[0]
   end
 
-  def solution; 14_316 end
-  def best_time; 9.352 end
+  def solution; 'MTQzMTY=' end
+  def best_time; 8.905 end
   def effort; 10 end
   
   def completed_on; '2014-02-14' end
   def ordinality; 6_859 end
   def population; 371_211 end
 
-  def refs; ["https://en.wikipedia.org/wiki/Sociable_number"] end
+  def refs
+    ['https://en.wikipedia.org/wiki/Sociable_number']
+  end
 end

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 1.351s (1/5/14, #10109)
 class Problem_0087
   def title; 'Prime power triples' end
   def difficulty; 20 end
@@ -34,7 +33,7 @@ class Problem_0087
     sums.keys.count
   end
   
-  def solution; 1_097_343 end
+  def solution; 'MTA5NzM0Mw==' end
   def best_time; 0.7744 end
   def effort; 10 end
   

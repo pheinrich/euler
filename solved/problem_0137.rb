@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.00002313s (7/13/16, #3648) 
 class Problem_0137
   def title; 'Fibonacci golden nuggets' end
   def difficulty; 50 end
@@ -57,7 +56,7 @@ class Problem_0137
     n.fib * (n + 1).fib
   end
 
-  def solution; 1_120_149_658_760 end
+  def solution; 'MTEyMDE0OTY1ODc2MA==' end
   def best_time; 0.00002003 end
   def effort; 20 end
 
@@ -66,8 +65,8 @@ class Problem_0137
   def population; 578_139 end
 
   def refs
-    ["http://math.stackexchange.com/a/114809",
-     "http://functions.wolfram.com/IntegerFunctions/Fibonacci/23/02/",
-     "http://oeis.org/A081018"]
+    ['http://math.stackexchange.com/a/114809',
+     'http://functions.wolfram.com/IntegerFunctions/Fibonacci/23/02/',
+     'http://oeis.org/A081018']
   end
 end

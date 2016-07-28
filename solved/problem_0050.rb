@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.5725s (3/12/13, #~23891)
 class Problem_0050
   def title; 'Consecutive prime sum' end
   def difficulty; 5 end
@@ -38,8 +37,8 @@ class Problem_0050
     max # puts "%d (%d primes)" % [max, 1 + run]
   end
 
-  def solution; 997_651 end
-  def best_time; 0.1621 end
+  def solution; 'OTk3NjUx' end
+  def best_time; 0.1574 end
   def effort; 5 end
   
   def completed_on; '2013-03-12' end

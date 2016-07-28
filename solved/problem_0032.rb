@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 2.703s (2/14/13, #~26994)
 class Problem_0032
   def title; 'Pandigital products' end
   def difficulty; 5 end
@@ -32,8 +31,8 @@ class Problem_0032
     prods.uniq.reduce( :+ )
   end
 
-  def solution; 45_228 end
-  def best_time; 1.992 end
+  def solution; 'NDUyMjg=' end
+  def best_time; 1.746 end
   def effort; 10 end
     
   def completed_on; '2013-02-14' end

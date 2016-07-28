@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 4.343s (3/15/15, #1183)
 class Problem_0387
   def title; 'Harshad Numbers' end
   def difficulty; 10 end
@@ -77,7 +76,7 @@ class Problem_0387
     total
   end
 
-  def solution; 696_067_597_313_468 end
+  def solution; 'Njk2MDY3NTk3MzEzNDY4' end
   def best_time; 4.343 end
   def effort; 40 end
   
@@ -86,8 +85,8 @@ class Problem_0387
   def percentile; 470_129 end
   
   def refs
-    ["http://en.wikipedia.org/wiki/Harshad_number",
-     "http://oeis.org/A005349",
-     "http://oeis.org/A097569"]
+    ['http://en.wikipedia.org/wiki/Harshad_number',
+     'http://oeis.org/A005349',
+     'http://oeis.org/A097569']
   end
 end

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.00004792s (1/20/15, #9591)
 class Problem_0145
   def title; 'How many reversible numbers are there below one-billion?' end
   def difficulty; 20 end
@@ -31,15 +30,15 @@ class Problem_0145
     sum.reduce( :+ )
   end
 
-  def solution; 608_720 end
-  def best_time; 0.00004792 end
+  def solution; 'NjA4NzIw' end
+  def best_time; 0.00004292 end
   def effort; 30 end
 
   def completed_on; '2015-01-20' end
   def ordinality; 9_591 end
   def population; 455_586 end
 
-  def refs; ["https://oeis.org/A135739"] end
+  def refs; ['https://oeis.org/A135739'] end
 end
 
 # Pattern discovery:

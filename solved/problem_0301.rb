@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.00001502s (5/31/16, #3874)
 class Problem_0301
   def title; 'Nim' end
   def difficulty; 15 end
@@ -48,7 +47,7 @@ class Problem_0301
     (exp + 2).fib
   end
 
-  def solution; 2_178_309 end
+  def solution; 'MjE3ODMwOQ==' end
   def best_time; 0.00001502 end
   def effort; 5 end
 
@@ -56,5 +55,7 @@ class Problem_0301
   def ordinality; 3_874 end
   def population; 566_837 end
 
-  def refs; ["https://en.wikipedia.org/wiki/Nim"] end
+  def refs
+    ['https://en.wikipedia.org/wiki/Nim']
+  end
 end

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.0008409s (7/6/16, #2583)
 class Problem_0172
   def title; 'Investigating numbers with few repeated digits' end
   def difficulty; 55 end
@@ -48,7 +47,7 @@ class Problem_0172
     total.to_i
   end
 
-  def solution; 227_485_267_000_992_000 end
+  def solution; 'MjI3NDg1MjY3MDAwOTkyMDAw' end
   def best_time; 0.0007138 end
   def effort; 45 end
 
@@ -57,10 +56,10 @@ class Problem_0172
   def population; 576_237 end
 
   def refs
-    ["http://en.wikipedia.org/wiki/Algebra_of_sets",
-     "http://math.stackexchange.com/questions/122384/venn-diagram-3-set#122417",
-     "http://blog.janmr.com/2008/12/twelve-ways-of-counting.html",
-     "http://math.stackexchange.com/a/1803794",
-     "https://en.wikipedia.org/wiki/Enumerative_combinatorics#Generating_functions"]
+    ['http://en.wikipedia.org/wiki/Algebra_of_sets',
+     'http://math.stackexchange.com/questions/122384/venn-diagram-3-set#122417',
+     'http://blog.janmr.com/2008/12/twelve-ways-of-counting.html',
+     'http://math.stackexchange.com/a/1803794',
+     'https://en.wikipedia.org/wiki/Enumerative_combinatorics#Generating_functions']
   end
 end

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 19.43s (1/31/15, #3826)
 class Problem_0118
   def title; 'Pandigital prime sets' end
   def difficulty; 45 end
@@ -65,7 +64,7 @@ class Problem_0118
     sets.count
   end
 
-  def solution; 44_680 end
+  def solution; 'NDQ2ODA=' end
   def best_time; 19.43 end
   def effort; 35 end
   

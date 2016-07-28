@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 52.76s (7/12/16, #2354)
 class Problem_0155
   def title; 'Counting Capacitor Circuits' end
   def difficulty; 60 end
@@ -93,7 +92,7 @@ class Problem_0155
     seen.reduce( 0 ) {|acc, h| acc + h.size}
   end
 
-  def solution; 3_857_447 end
+  def solution; 'Mzg1NzQ0Nw==' end
   def best_time; 50.98 end
   def effort; 25 end
 
@@ -102,9 +101,9 @@ class Problem_0155
   def population; 577_682 end
 
   def refs
-    ["https://oeis.org/A048211",
-     "https://oeis.org/A153588",
-     "https://oeis.org/A226909",
-     "http://arxiv.org/pdf/1004.3346v1.pdf"]
+    ['https://oeis.org/A048211',
+     'https://oeis.org/A153588',
+     'https://oeis.org/A226909',
+     'http://arxiv.org/pdf/1004.3346v1.pdf']
   end
 end

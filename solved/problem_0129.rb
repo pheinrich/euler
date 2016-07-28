@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 11.66s (7/17/16, #4293)
 class Problem_0129
   def title; 'Repunit divisibility' end
   def difficulty; 45 end
@@ -56,8 +55,8 @@ class Problem_0129
     n
   end
 
-  def solution; 1_000_023 end
-  def best_time; 0.1384 end
+  def solution; 'MTAwMDAyMw==' end
+  def best_time; 0.1165 end
   def effort; 35 end
 
   def completed_on; '2016-07-17' end
@@ -65,9 +64,9 @@ class Problem_0129
   def population; 578_999 end
 
   def refs
-    ["https://oeis.org/A002275",
-     "https://oeis.org/A084681",
-     "https://en.wikipedia.org/wiki/Repunit",
-     "https://en.wikipedia.org/wiki/Repunit#Factorization_of_decimal_repunits"]
+    ['https://oeis.org/A002275',
+     'https://oeis.org/A084681',
+     'https://en.wikipedia.org/wiki/Repunit',
+     'https://en.wikipedia.org/wiki/Repunit#Factorization_of_decimal_repunits']
   end
 end

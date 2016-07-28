@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.02194s, (2/1/15, #5667)
 class Problem_0121
   def title; 'Disc game prize fund' end
   def difficulty; 35 end
@@ -72,7 +71,7 @@ class Problem_0121
     (n + 2).fact / (prob + 1)
   end
 
-  def solution; 2_269 end
+  def solution; 'MjI2OQ==' end
   def best_time; 0.02194 end
   def effort; 30 end
 

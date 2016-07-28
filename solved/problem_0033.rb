@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.02876s (2/15/13, #~27603)
 class Problem_0033
   def title; 'Digit canceling fractions' end
   def difficulty; 5 end
@@ -51,8 +50,8 @@ class Problem_0033
     prod.denominator
   end
 
-  def solution; 100 end
-  def best_time; 0.01549 end
+  def solution; 'MTAw' end
+  def best_time; 0.01164 end
   def effort; 10 end
     
   def completed_on; '2013-02-15' end

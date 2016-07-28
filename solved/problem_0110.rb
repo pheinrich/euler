@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.0005360.s (1/27/15, #4851)
 class Problem_0110
   def title; 'Diophantine reciprocals II' end
   def difficulty; 40 end
@@ -58,7 +57,7 @@ class Problem_0110
     min
   end
 
-  def solution; 9_350_130_049_860_600 end
+  def solution; 'OTM1MDEzMDA0OTg2MDYwMA==' end
   def best_time; 0.0005360 end
   def effort; 35 end
   

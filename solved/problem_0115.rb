@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.01049s (1/14/15, #5756)
 class Problem_0115
   def title; 'Counting block combinations II' end
   def difficulty; 35 end
@@ -56,7 +55,7 @@ class Problem_0115
     ProjectEuler.bsearch( low, high, lambda {|x| thresh > fill( m, x, {} )} )
   end
 
-  def solution; 168 end
+  def solution; 'MTY4' end
   def best_time; 0.01049 end
   def effort; 35 end
   

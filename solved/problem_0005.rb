@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.00006294s (1/23/13, #~151793)
 class Problem_0005
   def title; 'Smallest multiple' end
   def difficulty; 5 end
@@ -15,7 +14,7 @@ class Problem_0005
     (2..n).inject {|acc, i| acc.lcm( i )}
   end
 
-  def solution; 232_792_560 end
+  def solution; 'MjMyNzkyNTYw' end
   def best_time; 0.00001693 end
   def effort; 0 end
 

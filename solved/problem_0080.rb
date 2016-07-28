@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.2013s (12/28/13, #9575)
 class Problem_0080
   def title; 'Square root digital expansion' end
   def difficulty; 20 end
@@ -50,13 +49,15 @@ class Problem_0080
     sum
   end
 
-  def solution; 40_886 end
-  def best_time; 0.1995 end
+  def solution; 'NDA4ODY=' end
+  def best_time; 0.1382 end
   def effort; 40 end
 
   def completed_on; '2013-12-28' end
   def ordinality; 9_575 end
   def population; 359_299 end
 
-  def refs; ["http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Decimal_.28base_10.29"] end
+  def refs
+    ['http://en.wikipedia.org/wiki/Methods_of_computing_square_roots#Decimal_.28base_10.29']
+  end
 end

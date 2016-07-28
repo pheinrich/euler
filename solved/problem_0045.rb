@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.004272s (3/9/13, #~29787)
 class Problem_0045
   def title; 'Triangular, pentagonal, and hexagonal' end
   def difficulty; 5 end
@@ -37,8 +36,8 @@ class Problem_0045
     p
   end
 
-  def solution; 1_533_776_805 end
-  def best_time; 0.003481 end
+  def solution; 'MTUzMzc3NjgwNQ==' end
+  def best_time; 0.002225 end
   def effort; 5 end
 
   def completed_on; '2013-03-09' end

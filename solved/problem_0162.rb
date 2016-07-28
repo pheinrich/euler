@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.00002980s (3/9/2105, #3358) 
 class Problem_0162
   def title; 'Hexadecimal numbers' end
   def difficulty; 45 end
@@ -87,7 +86,7 @@ class Problem_0162
     end.to_s( 16 ).upcase
   end
 
-  def solution; '3D58725572C62302' end
+  def solution; 'M0Q1ODcyNTU3MkM2MjMwMg==' end
   def best_time; 0.00002980 end
   def effort; 35 end
 

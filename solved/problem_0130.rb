@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 37.08s (7/17/16, #4029)
 class Problem_0130
   def title; 'Composites with prime repunit property' end
   def difficulty; 45 end
@@ -56,8 +55,8 @@ class Problem_0130
     sols.reduce( :+ )
   end
 
-  def solution; 149_253 end
-  def best_time; 0.4604 end
+  def solution; 'MTQ5MjUz' end
+  def best_time; 0.4069 end
   def effort; 5 end
 
   def completed_on; '2016-07-17' end
@@ -65,6 +64,6 @@ class Problem_0130
   def population; 579_023 end
 
   def refs
-    ["http://oeis.org/A000864"]
+    ['http://oeis.org/A000864']
   end
 end

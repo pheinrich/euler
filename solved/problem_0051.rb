@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 33.41s (3/25/13, #~12457)
 class Problem_0051
   def title; 'Prime digit replacements' end
   def difficulty; 15 end
@@ -58,8 +57,8 @@ class Problem_0051
     arr[0].to_i # puts arr.inspect
   end
 
-  def solution; 121_313 end
-  def best_time; 21.15 end
+  def solution; 'MTIxMzEz' end
+  def best_time; 20.93 end
   def effort; 50 end
   
   def completed_on; '2013-03-25' end

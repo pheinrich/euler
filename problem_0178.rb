@@ -21,6 +21,6 @@ class Problem_0178
   def ordinality; end
   def percentile; end
 
-  def solve( n )
+  def solve( n = 40 )
   end
 end

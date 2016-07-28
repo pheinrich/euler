@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 4.794s (1/23/15, #2198)
 class Problem_0234
   def title; 'Semidivisible numbers' end
   def difficulty; 50 end
@@ -48,15 +47,17 @@ class Problem_0234
     semis.keys.reduce( :+ )
   end
 
-  def solution; 1_259_187_438_574_927_161 end
-  def best_time; 4.794 end
+  def solution; 'MTI1OTE4NzQzODU3NDkyNzE2MQ==' end
+  def best_time; 4.720 end
   def effort; 40 end
   
   def completed_on; '2015-01-23' end
   def ordinality; 2_198 end
   def population; 456_331 end
 
-  def refs; ["https://oeis.org/A157939"] end
+  def refs
+    ['https://oeis.org/A157939']
+  end
 
   # Pattern discovery:
   #    r = 2              3                                               5

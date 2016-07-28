@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 2.932s (2/13/13, #~39261)
 class Problem_0030
   def title; 'Digit fifth powers' end
   def difficulty; 5 end
@@ -31,7 +30,7 @@ class Problem_0030
     (2..lim).select {|i| i == i.to_s.chars.inject( 0 ) {|a, x| a + p[x.to_i]}}.reduce( :+ )
   end
 
-  def solution; 443_839 end
+  def solution; 'NDQzODM5' end
   def best_time; 2.458 end
   def effort; 10 end
     

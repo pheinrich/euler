@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.03006s (12/19/13, #~14078)
 class Problem_0071
   def title; 'Ordered fractions' end
   def difficulty; 10 end
@@ -44,13 +43,15 @@ class Problem_0071
     a # puts "#{a}/#{b}"
   end
 
-  def solution; 428_570 end
-  def best_time; 0.02593 end
+  def solution; 'NDI4NTcw' end
+  def best_time; 0.01799 end
   def effort; 20 end
 
   def completed_on; '2013-12-19' end
   def ordinality; 14_078 end
   def population; 357_065 end
 
-  def refs; ["http://en.wikipedia.org/wiki/Farey_sequence#Next_term"] end
+  def refs
+    ['http://en.wikipedia.org/wiki/Farey_sequence#Next_term']
+  end
 end

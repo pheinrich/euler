@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.0006001s (1/16/15, #6404)
 class Problem_0117
   def title; 'Red, green, and blue tiles' end
   def difficulty; 35 end
@@ -34,7 +33,7 @@ class Problem_0117
     1 + fill( lens, n, {} )
   end
 
-  def solution; 100_808_458_960_497 end
+  def solution; 'MTAwODA4NDU4OTYwNDk3' end
   def best_time; 0.0005738 end
   def effort; 15 end
   

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.0001070s (1/26/13, #~74171)
 class Problem_0013
   def title; 'Large sum' end
   def difficulty; 5 end
@@ -114,7 +113,7 @@ class Problem_0013
     N.inject( :+ ).to_s[0...n].to_i
   end
 
-  def solution; 5_537_376_230 end
+  def solution; 'NTUzNzM3NjIzMA==' end
   def best_time; 0.00007010 end
   def effort; 0 end
   

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.2029s (6/10/16, #5250)
 class Problem_0105
   def title; 'Special subset sums: testing' end
   def difficulty; 45 end
@@ -70,7 +69,7 @@ class Problem_0105
     sets.select {|s| special?( s )}.flatten.reduce( :+ )
   end
 
-  def solution; 73_702 end
+  def solution; 'NzM3MDI=' end
   def best_time; 0.2029 end
   def effort; 15 end
 

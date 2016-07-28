@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 1.360s (2/16/14, #8339)
 class Problem_0096
   def title; 'Su Doku' end
   def difficulty; 25 end
@@ -44,7 +43,7 @@ class Problem_0096
     grids.inject( 0 ) {|acc, g| acc + g[0][0, 3].join.to_i}
   end
 
-  def solution; 24_702 end
+  def solution; 'MjQ3MDI=' end
   def best_time; 1.360 end
   def effort; 25 end
   

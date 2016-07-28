@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.0002179s (2/13/13, #~46228)
 class Problem_0028
   def title; 'Number spiral diagonals' end
   def difficulty; 5 end
@@ -47,7 +46,7 @@ class Problem_0028
     total - 3
   end
 
-  def solution; 669_171_001 end
+  def solution; 'NjY5MTcxMDAx' end
   def best_time; 0.00006700 end
   def effort; 5 end
 
@@ -56,7 +55,7 @@ class Problem_0028
   def population; 280_383 end
 
   def refs
-    ["https://oeis.org/A114254",
-     "https://oeis.org/A200975"]
+    ['https://oeis.org/A114254',
+     'https://oeis.org/A200975']
   end
 end

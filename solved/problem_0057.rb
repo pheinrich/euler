@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.03066s (3/18/13, #~15448)
 class Problem_0057
   def title; 'Square root convergents' end
   def difficulty; 5 end
@@ -36,8 +35,8 @@ class Problem_0057
     count
   end
 
-  def solution; 153 end
-  def best_time; 0.01277 end
+  def solution; 'MTUz' end
+  def best_time; 0.01148 end
   def effort; 20 end
 
   def completed_on; '2013-03-18' end
@@ -45,8 +44,8 @@ class Problem_0057
   def population; 288_572 end
 
   def refs
-    ["https://en.wikipedia.org/wiki/Continued_fraction",
-     "https://oeis.org/A000129",
-     "https://oeis.org/A001333"]
+    ['https://en.wikipedia.org/wiki/Continued_fraction',
+     'https://oeis.org/A000129',
+     'https://oeis.org/A001333']
   end
 end

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.0001292s (3/7/13, #32151)
 class Problem_0040
   def title; 'Champernowne\'s constant' end
   def difficulty; 5 end
@@ -41,7 +40,7 @@ class Problem_0040
     product
   end
 
-  def solution; 210 end
+  def solution; 'MjEw' end
   def best_time; 0.00008106 end
   def effort; 20 end
   

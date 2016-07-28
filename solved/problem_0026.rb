@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.7733s (2/7/13, #~30742)
 class Problem_0026
   def title; 'Reciprocal cycles' end
   def difficulty; 5 end
@@ -51,13 +50,15 @@ class Problem_0026
     2 + lens.each_with_index.max[1]
   end
 
-  def solution; 983 end
-  def best_time; 0.5504 end
+  def solution; 'OTgz' end
+  def best_time; 0.5241 end
   def effort; 10 end
   
   def completed_on; '2013-02-07' end
   def ordinality; 30_742 end
   def population; 278_894 end
 
-  def refs; ["https://oeis.org/A051626"] end
+  def refs
+    ['https://oeis.org/A051626']
+  end
 end

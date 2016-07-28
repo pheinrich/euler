@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 8.667s (6/30/16, #3052)
 class Problem_0126
   def title; 'Cuboid layers' end
   def difficulty; 55 end
@@ -120,7 +119,7 @@ class Problem_0126
     counts.select {|k, v| v == c}.sort[0][0]
   end
 
-  def solution; 18_522 end
+  def solution; 'MTg1MjI=' end
   def best_time; 8.667 end
   def effort; 35 end
 
@@ -129,9 +128,9 @@ class Problem_0126
   def population; 574_728 end
 
   def refs
-    ["https://en.wikipedia.org/wiki/Diophantine_equation",
-     "http://mathforum.org/library/drmath/view/61325.html",
-     "http://stackoverflow.com/questions/5513129/solving-a-linear-diophantine-equationsee-description-for-examples/6704483#6704483",
-     "http://stackoverflow.com/questions/10620461/efficient-algorithm-to-generate-all-solutions-of-a-linear-diophantine-equation-w"]
+    ['https://en.wikipedia.org/wiki/Diophantine_equation',
+     'http://mathforum.org/library/drmath/view/61325.html',
+     'http://stackoverflow.com/questions/5513129/solving-a-linear-diophantine-equationsee-description-for-examples/6704483#6704483',
+     'http://stackoverflow.com/questions/10620461/efficient-algorithm-to-generate-all-solutions-of-a-linear-diophantine-equation-w']
   end
 end

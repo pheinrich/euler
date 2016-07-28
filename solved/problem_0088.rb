@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 543.8s (1/5/14, #5178)
 class Problem_0088
   def title; 'Product-sum numbers' end
   def difficulty; 40 end
@@ -73,7 +72,7 @@ class Problem_0088
     mins.uniq.reduce( :+ )
   end
 
-  def solution; 7_587_457 end
+  def solution; 'NzU4NzQ1Nw==' end
   def best_time; 543.8 end
   def effort; 80 end
   
@@ -82,7 +81,7 @@ class Problem_0088
   def population; 361_284 end
   
   def refs
-    ["http://www-users.mat.umk.pl/~anow/ps-dvi/si-krl-a.pdf",
-     "https://oeis.org/A104173"]
+    ['http://www-users.mat.umk.pl/~anow/ps-dvi/si-krl-a.pdf',
+     'https://oeis.org/A104173']
   end
 end

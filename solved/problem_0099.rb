@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.002644s (1/11/14, #15315)
 class Problem_0099
   def title; 'Largest exponential' end
   def difficulty; 10 end
@@ -34,7 +33,7 @@ class Problem_0099
     1 + max
   end
   
-  def solution; 709 end
+  def solution; 'NzA5' end
   def best_time; 0.002644 end
   def effort; 10 end
   

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.005430s (2/3/13, #52844)
 class Problem_0017
   def title; 'Number letter counts' end
   def difficulty; 5 end
@@ -20,7 +19,7 @@ class Problem_0017
     (1..n).inject( 0 ) {|sum, i| sum + i.in_words.delete(' -').length}
   end
 
-  def solution; 21_124 end
+  def solution; 'MjExMjQ=' end
   def best_time; 0.003458 end
   def effort; 15 end
 

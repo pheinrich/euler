@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.0002527s (1/21/13, #~274675)
 class Problem_0001
   def title;'Multiples of 3 and 5' end
   def difficulty; 5 end
@@ -15,7 +14,7 @@ class Problem_0001
     (0...n).select {|x| 0 == x % a || 0 == x % b}.inject( :+ )
   end
 
-  def solution; 233_168 end
+  def solution; 'MjMzMTY4' end
   def best_time; 0.0001531 end
   def effort; 0 end
 
@@ -23,5 +22,7 @@ class Problem_0001
   def ordinality; 274_675 end
   def population; 274_675 end
 
-  def refs; ["https://oeis.org/A126592"] end
+  def refs
+    ['https://oeis.org/A126592']
+  end
 end

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.06298s (3/16/13, #~11936)
 class Problem_0054
   def title; 'Poker hands' end
   def difficulty; 10 end
@@ -59,8 +58,8 @@ class Problem_0054
     deals.count {|d| ProjectEuler::PokerHand.new( d[0, 5] ) > ProjectEuler::PokerHand.new( d[5, 5] )}
   end
 
-  def solution; 376 end
-  def best_time; 0.03837 end
+  def solution; 'Mzc2' end
+  def best_time; 0.03781 end
   def effort; 15 end
   
   def completed_on; '2013-03-16' end

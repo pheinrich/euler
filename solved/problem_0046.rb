@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.01969s (3/9/13, #~21965)
 class Problem_0046
   def title; 'Goldbach\'s other conjecture' end
   def difficulty; 5 end
@@ -39,8 +38,8 @@ class Problem_0046
     n
   end
 
-  def solution; 5_777 end
-  def best_time; 0.01174 end
+  def solution; 'NTc3Nw==' end
+  def best_time; 0.009201 end
   def effort; 15 end
 
   def completed_on; '2013-03-09' end

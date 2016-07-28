@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.00008702s (1/30/13, #~63274)
 class Problem_0015
   def title; 'Lattice paths' end
   def difficulty; 5 end
@@ -30,7 +29,7 @@ class Problem_0015
     (n << 1).fact / (n.fact * n.fact)
   end
 
-  def solution; 137_846_528_820 end
+  def solution; 'MTM3ODQ2NTI4ODIw' end
   def best_time; 0.00003386 end
   def effort; 20 end
 
@@ -38,5 +37,7 @@ class Problem_0015
   def ordinality; 63_274 end
   def population; 276_908 end
 
-  def refs; ["https://oeis.org/A007318"] end
+  def refs
+    ['https://oeis.org/A007318']
+  end
 end

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 7.365s (12/20/13, #~12923)
 class Problem_0074
   def title; 'Digital factorial chains' end
   def difficulty; 15 end
@@ -75,8 +74,8 @@ class Problem_0074
     count
   end
 
-  def solution; 402 end
-  def best_time; 6.395 end
+  def solution; 'NDAy' end
+  def best_time; 5.835 end
   def effort; 20 end
     
   def completed_on; '2013-12-20' end
@@ -84,7 +83,7 @@ class Problem_0074
   def population; 357_313 end
   
   def refs
-    ["https://oeis.org/A061602",
-     "https://oeis.org/A214285"]
+    ['https://oeis.org/A061602',
+     'https://oeis.org/A214285']
   end
 end

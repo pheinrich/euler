@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 343.7s (11/25/13, #~11429)
 class Problem_0060
   def title; 'Prime pair sets' end
   def difficulty; 20 end
@@ -53,7 +52,7 @@ class Problem_0060
     result.reduce( :+ )
   end
 
-  def solution; 26033 end
+  def solution; 'MjYwMzM=' end
   def best_time; 184.8 end
   def effort; 35 end
   

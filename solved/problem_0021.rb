@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.3024s (2/5/13, #~54309)
 class Problem_0021
   def title; 'Amicable numbers' end
   def difficulty; 5 end
@@ -20,7 +19,7 @@ class Problem_0021
     (1..n).select {|i| i.amicable?}.reduce( :+ )
   end
 
-  def solution; 31_626 end
+  def solution; 'MzE2MjY=' end
   def best_time; 0.2043 end
   def effort; 0 end
 
@@ -28,5 +27,7 @@ class Problem_0021
   def ordinality; 54_309 end
   def population; 278_397 end
 
-  def refs; ["https://oeis.org/A063990"] end
+  def refs
+    ['https://oeis.org/A063990']
+  end
 end

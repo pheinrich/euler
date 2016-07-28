@@ -1,7 +1,6 @@
 require 'date'
 require 'projectEuler'
 
-# 0.002950s (2/5/13, #~48603)
 class Problem_0019
   def title; 'Counting Sundays' end
   def difficulty; 5 end
@@ -37,8 +36,8 @@ class Problem_0019
     total
   end
 
-  def solution; 171 end
-  def best_time; 0.006172 end
+  def solution; 'MTcx' end
+  def best_time; 0.004648 end
   def effort; 5 end
 
   def completed_on; '2013-02-05' end

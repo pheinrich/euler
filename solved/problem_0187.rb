@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 11.95s (1/24/15, #6876)
 class Problem_0187
   def title; 'Semiprimes' end
   def difficulty; 25 end
@@ -30,13 +29,13 @@ class Problem_0187
     sum
   end
 
-  def solution; 17_427_258 end
-  def best_time; 3.398 end
+  def solution; 'MTc0MjcyNTg=' end
+  def best_time; 3.355 end
   def effort; 40 end
   
   def completed_on; '2015-01-24' end
   def ordinality; 6_876 end
   def population; 456_579 end
   
-  def refs; ["http://mathworld.wolfram.com/Semiprime.html"] end
+  def refs; ['http://mathworld.wolfram.com/Semiprime.html'] end
 end

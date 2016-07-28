@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.00005198s (2/23/15, #705)
 class Problem_0493
   def title; 'Under The Rainbow' end
   def difficulty; 10 end
@@ -34,7 +33,7 @@ class Problem_0493
     "%.9f" % [colors * (1 - expy)]
   end
 
-  def solution; 6.818741802 end
+  def solution; 'Ni44MTg3NDE4MDI=' end
   def best_time; 0.00004124 end
   def effort; 35 end
     
@@ -43,7 +42,7 @@ class Problem_0493
   def population; 464_166 end
   
   def refs
-    ["http://www.albany.edu/~mark/classes/367/e2s99sol.pdf",
-     "http://en.wikipedia.org/wiki/Hypergeometric_distribution"]
+    ['http://www.albany.edu/~mark/classes/367/e2s99sol.pdf',
+     'http://en.wikipedia.org/wiki/Hypergeometric_distribution']
   end
 end

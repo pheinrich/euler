@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 21.35s (1/8/15, #9567)
 class Problem_0104
   def title; 'Pandigital Fibonacci ends' end
   def difficulty; 25 end
@@ -32,7 +31,7 @@ class Problem_0104
     k
   end
 
-  def solution; 329_468 end
+  def solution; 'MzI5NDY4' end
   def best_time; 21.35 end
   def effort; 0 end
 
@@ -41,7 +40,7 @@ class Problem_0104
   def population; 452_608 end
 
   def refs
-    ["https://oeis.org/A216488",
-     "https://oeis.org/A216489"]
+    ['https://oeis.org/A216488',
+     'https://oeis.org/A216489']
   end
 end

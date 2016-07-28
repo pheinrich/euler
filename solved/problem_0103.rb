@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.8445s (6/10/16, #5217)
 class Problem_0103
   def title; 'Special subset sums: optimum' end
   def difficulty; 45 end
@@ -103,7 +102,7 @@ class Problem_0103
     seeds[ n - 1 ].reduce( '' ) {|acc, a| acc + a.to_s}
   end
 
-  def solution; 20_313_839_404_245 end
+  def solution; 'MjAzMTM4Mzk0MDQyNDU=' end
   def best_time; 0.08445 end
   def effort; 50 end
 
@@ -112,8 +111,8 @@ class Problem_0103
   def population; 569_448 end
 
   def refs
-    ["http://people.maths.ox.ac.uk/greenbj/papers/bourgain-sumset.pdf",
-     "http://math.haifa.ac.il/~seva/Papers/DisBases.pdf",
-     "http://mathoverflow.net/a/56175"]
+    ['http://people.maths.ox.ac.uk/greenbj/papers/bourgain-sumset.pdf',
+     'http://math.haifa.ac.il/~seva/Papers/DisBases.pdf',
+     'http://mathoverflow.net/a/56175']
   end
 end

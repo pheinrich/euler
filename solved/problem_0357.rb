@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 31.75s (3/13/15, #2807)
 class Problem_0357
   def title; 'Prime generating integers' end
   def difficulty; 10 end
@@ -43,7 +42,7 @@ class Problem_0357
     1 + primes.reduce( :+ ) - primes.length
   end
 
-  def solution; 1_739_023_853_137 end
+  def solution; 'MTczOTAyMzg1MzEzNw==' end
   def best_time; 31.75 end
   def effort; 20 end
   
@@ -52,7 +51,7 @@ class Problem_0357
   def percentile; 469_765 end
 
   def refs
-    ["https://oeis.org/A080715",
-     "https://oeis.org/A268403"]
+    ['https://oeis.org/A080715',
+     'https://oeis.org/A268403']
   end
 end

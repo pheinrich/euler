@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 2.017s (12/17/13, #~9558)
 class Problem_0068
   def title; 'Magic 5-gon ring' end
   def difficulty; 25 end
@@ -105,8 +104,8 @@ class Problem_0068
     max
   end
 
-  def solution; 6_531_031_914_842_725 end
-  def best_time; 1.427 end
+  def solution; 'NjUzMTAzMTkxNDg0MjcyNQ==' end
+  def best_time; 1.353 end
   def effort; 35 end
   
   def completed_on; '2013-12-17' end

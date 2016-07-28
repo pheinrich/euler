@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.3130s (12/30/13, #5887)
 class Problem_0084
   def title; 'Monopoly odds' end
   def difficulty; 35 end
@@ -147,8 +146,8 @@ class Problem_0084
     count.each_with_index.sort.reverse[0, 3].inject( "" ) {|acc, c| acc + ("%02d" % c[1])}.to_i
   end
 
-  def solution; 101_524 end
-  def best_time; 0.1896 end
+  def solution; 'MTAxNTI0' end
+  def best_time; 0.1765 end
   def effort; 20 end
 
   def completed_on; '2013-12-30' end

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 37.63s (1/11/14, #5426)
 class Problem_0093
   def title; 'Arithmetic expressions' end
   def difficulty; 35 end
@@ -75,7 +74,7 @@ class Problem_0093
     result.join.to_i
   end
 
-  def solution; 1_258 end
+  def solution; 'MTI1OA==' end
   def best_time; 37.63 end
   def effort; 20 end
   

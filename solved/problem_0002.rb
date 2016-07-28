@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.00003100s (1/21/13, #~222745)
 class Problem_0002
   def title; 'Even Fibonacci numbers' end
   def difficulty; 5 end
@@ -41,7 +40,7 @@ class Problem_0002
     (succ - 1)/2
   end
 
-  def solution; 4_613_732 end
+  def solution; 'NDYxMzczMg==' end
   def best_time; 0.000008822 end
   def effort; 5 end
 
@@ -49,5 +48,7 @@ class Problem_0002
   def ordinality; 222_745 end
   def population; 274_675 end
 
-  def refs; [] end
+  def refs
+    ['http://oeis.org/A000045']
+  end
 end

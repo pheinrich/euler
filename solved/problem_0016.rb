@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.0003679s (2/1/13, #~84937)
 class Problem_0016
   def title; 'Power digit sum' end
   def difficulty; 5 end
@@ -13,7 +12,7 @@ class Problem_0016
     (2**n).sum_digits
   end
 
-  def solution; 1_366 end
+  def solution; 'MTM2Ng==' end
   def best_time; 0.0001931 end
   def effort; 0 end
 

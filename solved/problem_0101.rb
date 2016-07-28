@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.0003009s (1/7/14, #6047)
 class Problem_0101
   def title; 'Optimum polynomial' end
   def difficulty; 35 end
@@ -62,7 +61,7 @@ class Problem_0101
     fits.reduce( :+ ).to_i
   end
 
-  def solution; 37_076_114_526 end
+  def solution; 'MzcwNzYxMTQ1MjY=' end
   def best_time; 0.0002670 end
   def effort; 35 end
   

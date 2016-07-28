@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.00003624s (1/24/13, #~157925)
 class Problem_0006
   def title; 'Sum square difference' end
   def difficulty; 5 end
@@ -26,8 +25,8 @@ class Problem_0006
     n * (n + 1) * (n - 1) * (3*n + 2) / 12
   end
 
-  def solution; 25_164_150 end
-  def best_time; 0.00001001 end
+  def solution; 'MjUxNjQxNTA=' end
+  def best_time; 0.000008348 end
   def effort; 0 end
 
   def completed_on; '2013-01-24' end

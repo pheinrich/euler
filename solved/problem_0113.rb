@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.001681s (1/13/15, #6664)
 class Problem_0113
   def title; 'Non-bouncy numbers' end
   def difficulty; 30 end
@@ -43,13 +42,15 @@ class Problem_0113
     total - 9*log10
   end
 
-  def solution; 51_161_058_134_250 end
-  def best_time; 0.001681 end
+  def solution; 'NTExNjEwNTgxMzQyNTA=' end
+  def best_time; 0.001663 end
   def effort; 15 end
   
   def completed_on; '2015-01-13' end
   def ordinality; 6_664 end
   def population; 453_849 end
 
-  def refs; ["https://oeis.org/A204692"] end
+  def refs
+    ['https://oeis.org/A204692']
+  end
 end

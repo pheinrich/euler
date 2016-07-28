@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.02242s (2/13/13, #~38399)
 class Problem_0029
   def title; 'Distinct powers' end
   def difficulty; 5 end
@@ -28,13 +27,15 @@ class Problem_0029
     arr.uniq!.length
   end
 
-  def solution; 9_183 end
-  def best_time; 0.02153 end
+  def solution; 'OTE4Mw==' end
+  def best_time; 0.01685 end
   def effort; 0 end
 
   def completed_on; '2013-02-13' end
   def ordinality; 38_399 end
   def population; 280_383 end
 
-  def refs; ["https://oeis.org/A126255"] end
+  def refs
+    ['https://oeis.org/A126255']
+  end
 end

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 1.418s (1/4/14, #6000)
 class Problem_0086
   def title; 'Cuboid route' end
   def difficulty; 35 end
@@ -38,8 +37,8 @@ class Problem_0086
     limit
   end
 
-  def solution; 1_818 end
-  def best_time; 1.392 end
+  def solution; 'MTgxOA==' end
+  def best_time; 1.328 end
   def effort; 100 end
 
   def completed_on; '2014-01-04' end
@@ -47,7 +46,7 @@ class Problem_0086
   def population; 361_036 end
 
   def refs
-    ["https://oeis.org/A143714",
-     "https://oeis.org/A143715"]
+    ['https://oeis.org/A143714',
+     'https://oeis.org/A143715']
   end
 end

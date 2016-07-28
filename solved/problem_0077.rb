@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.001203s (12/25/13, #8833)
 class Problem_0077
   def title; 'Prime summations' end
   def difficulty; 25 end
@@ -23,7 +22,7 @@ class Problem_0077
     limit.primepartition_sieve.find_index {|i| i > n}
   end
 
-  def solution; 71 end
+  def solution; 'NzE=' end
   def best_time; 0.0005162 end
   def effort; 30 end
 

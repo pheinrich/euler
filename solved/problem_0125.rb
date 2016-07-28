@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.1936s (1/11/15, #8087)
 class Problem_0125
   def title; 'Palindromic sums' end
   def difficulty; 25 end
@@ -47,7 +46,7 @@ class Problem_0125
     seen.uniq.reduce( :+ )
   end
 
-  def solution; 2_906_969_179 end
+  def solution; 'MjkwNjk2OTE3OQ==' end
   def best_time; 0.1936 end
   def effort; 20 end
     

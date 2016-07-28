@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.8128s (3/8/13, #25455)
 class Problem_0038
   def title; 'Pandigital multiples' end
   def difficulty; 5 end
@@ -39,7 +38,7 @@ class Problem_0038
     end
   end
 
-  def solution; 932_718_654 end
+  def solution; 'OTMyNzE4NjU0' end
   def best_time; 0.7031 end
   def effort; 5 end
   

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.03446s (1/9/14, #5162)
 class Problem_0090
   def title; 'Cube digit pairs' end
   def difficulty; 40 end
@@ -61,8 +60,8 @@ class Problem_0090
     sum
   end
 
-  def solution; 1_217 end
-  def best_time; 0.03446 end
+  def solution; 'MTIxNw==' end
+  def best_time; 0.02992 end
   def effort; 30 end
   
   def completed_on; '2014-01-09' end

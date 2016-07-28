@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 3.038s (2/7/13, #~35028)
 class Problem_0023
   def title; 'Non-abundant sums' end
   def difficulty; 5 end
@@ -47,13 +46,15 @@ class Problem_0023
     notsum.reduce( :+ )
   end
 
-  def solution; 4_179_871 end
-  def best_time; 1.751 end
+  def solution; 'NDE3OTg3MQ==' end
+  def best_time; 1.700 end
   def effort; 5 end
     
   def completed_on; '2013-02-07' end
   def ordinality; 35_028 end
   def population; 278_894 end
 
-  def refs; ["https://oeis.org/A005101"] end
+  def refs
+    ['https://oeis.org/A005101']
+  end
 end

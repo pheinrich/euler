@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.3965s (7/3/16, #3254)
 class Problem_0128
   def title; 'Hexagonal tile differences' end
   def difficulty; 55 end
@@ -152,7 +151,7 @@ class Problem_0128
     pd3[-1]
   end
 
-  def solution; 14_516_824_220 end
+  def solution; 'MTQ1MTY4MjQyMjA=' end
   def best_time; 0.3965 end
   def effort; 30 end
 
@@ -161,6 +160,6 @@ class Problem_0128
   def population; 575_438 end
 
   def refs
-    ["http://www.redblobgames.com/grids/hexagons/#coordinates"]
+    ['http://www.redblobgames.com/grids/hexagons/#coordinates']
   end
 end

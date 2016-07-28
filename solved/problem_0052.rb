@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.6866s (3/15/13, #~26359)
 class Problem_0052
   def title; 'Permuted multiples' end
   def difficulty; 5 end
@@ -21,8 +20,8 @@ class Problem_0052
     end
   end
 
-  def solution; 142_857 end
-  def best_time; 0.3779 end
+  def solution; 'MTQyODU3' end
+  def best_time; 0.3619 end
   def effort; 20 end
 
   def completed_on; '2013-03-15' end

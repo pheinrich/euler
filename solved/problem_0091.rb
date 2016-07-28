@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.002537s, (1/10/14, #7570)
 class Problem_0091
   def title; 'Right triangles with integer coordinates' end
   def difficulty; 25 end
@@ -40,13 +39,15 @@ class Problem_0091
     tris
   end
 
-  def solution; 14_234 end
-  def best_time; 0.002537 end
+  def solution; 'MTQyMzQ=' end
+  def best_time; 0.001917 end
   def effort; 35 end
   
   def completed_on; '2014-01-10' end
   def ordinality; 7_570 end
   def population; 362_525 end
 
-  def refs; ["https://oeis.org/A155154"] end
+  def refs
+    ['https://oeis.org/A155154']
+  end
 end

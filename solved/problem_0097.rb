@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.7888s (1/10/14, #25048)
 class Problem_0097
   def title; 'Large non-Mersenne prime' end
   def difficulty; 5 end
@@ -20,8 +19,8 @@ class Problem_0097
     (1 + 28433 * 2.modular_power( 7830457, mod )) % mod
   end
 
-  def solution; 8_739_992_577 end
-  def best_time; 0.00004196 end
+  def solution; 'ODczOTk5MjU3Nw==' end
+  def best_time; 0.00002193 end
   def effort; 0 end
 
   def completed_on; '2014-01-10' end

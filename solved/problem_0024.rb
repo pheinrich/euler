@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 8.196s (2/8/13, #~44270)
 class Problem_0024
   def title; 'Lexicographic permutations' end
   def difficulty; 5 end
@@ -20,7 +19,7 @@ class Problem_0024
     (%w(0 1 2 3 4 5 6 7 8 9).permutation( 10 ).to_a.map! {|a| a.join}.sort![n - 1]).to_i
   end
 
-  def solution; 2_783_915_460 end
+  def solution; 'Mjc4MzkxNTQ2MA==' end
   def best_time; 8.196 end
   def effort; 0 end
     

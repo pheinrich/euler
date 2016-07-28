@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 2.626s (4/3/13, #~16950)
 class Problem_0059
   def title; 'XOR decryption' end
   def difficulty; 5 end
@@ -76,13 +75,15 @@ class Problem_0059
     end
   end
 
-  def solution; 107_359 end
-  def best_time; 2.045 end
+  def solution; 'MTA3MzU5' end
+  def best_time; 1.802 end
   def effort; 15 end
   
   def completed_on; '2013-04-03' end
   def ordinality; 16_950 end
   def population; 292_543 end
   
-  def refs; ["https://en.wikipedia.org/wiki/Most_common_words_in_English"] end
+  def refs
+    ['https://en.wikipedia.org/wiki/Most_common_words_in_English']
+  end
 end

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.5559s (7/26/16, #4358)
 class Problem_0132
   def title; 'Large repunit factors' end
   def difficulty; 45 end
@@ -40,7 +39,7 @@ class Problem_0132
     factors[0...n].reduce( :+ )
   end
 
-  def solution; 843_296 end
+  def solution; 'ODQzMjk2' end
   def best_time; 0.5300 end
   def effort; 10 end
 
@@ -49,6 +48,6 @@ class Problem_0132
   def population; 581_231 end
 
   def refs
-    ["http://oeis.org/A002275"]
+    ['http://oeis.org/A002275']
   end
 end

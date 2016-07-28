@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.8618s (1/12/15, #14269)
 class Problem_0112
   def title; 'Bouncy numbers' end
   def difficulty; 15 end
@@ -42,8 +41,8 @@ class Problem_0112
     x
   end
 
-  def solution; 1_587_000 end
-  def best_time; 0.8618 end
+  def solution; 'MTU4NzAwMA==' end
+  def best_time; 0.7786 end
   def effort; 20 end
     
   def completed_on; '2015-01-12' end

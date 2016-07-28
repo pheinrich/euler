@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 49.05s (12/24/13, #7757)
 class Problem_0078
   def title; 'Coin partitions' end
   def difficulty; 30 end
@@ -25,7 +24,7 @@ class Problem_0078
     limit.partition_sieve.find_index {|i| 0 == (i % n)}
   end
 
-  def solution; 55_374 end
+  def solution; 'NTUzNzQ=' end
   def best_time; 40.22 end
   def effort; 30 end
 
@@ -33,5 +32,7 @@ class Problem_0078
   def ordinality; 7_757 end
   def population; 358_306 end
 
-  def refs; ["https://en.wikipedia.org/wiki/Partition_problem"] end
+  def refs
+    ['https://en.wikipedia.org/wiki/Partition_problem']
+  end
 end

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.2758s (1/29/15, #4161)
 class Problem_0111
   def title; 'Primes with runs' end
   def difficulty; 45 end
@@ -94,7 +93,7 @@ class Problem_0111
     (0..9).reduce( 0 ) {|acc, d| acc + s_of_nd( n, d )}
   end
 
-  def solution; 612_407_567_715 end
+  def solution; 'NjEyNDA3NTY3NzE1' end
   def best_time; 0.2758 end
   def effort; 25 end
     

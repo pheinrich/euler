@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.002269s (1/13/15, #6267)
 class Problem_0114
   def title; 'Counting block combinations I' end
   def difficulty; 35 end
@@ -39,7 +38,7 @@ class Problem_0114
     1 + fill( min, n, {} )
   end
 
-  def solution; 16_475_640_049 end
+  def solution; 'MTY0NzU2NDAwNDk=' end
   def best_time; 0.002159 end
   def effort; 25 end
 

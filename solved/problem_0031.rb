@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.6955s (2/14/13, #29529)
 class Problem_0031
   def title; 'Coin sums' end
   def difficulty; 5 end
@@ -32,8 +31,8 @@ class Problem_0031
     fit( n, denoms )
   end
 
-  def solution; 73_682 end
-  def best_time; 0.4587 end
+  def solution; 'NzM2ODI=' end
+  def best_time; 0.4142 end
   def effort; 20 end
     
   def completed_on; '2013-02-14' end

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 5.936s (3/8/13, #~20619)
 class Problem_0044
   def title; 'Pentagon numbers' end
   def difficulty; 5 end
@@ -53,8 +52,8 @@ class Problem_0044
     min
   end
 
-  def solution; 5_482_660 end
-  def best_time; 3.353 end
+  def solution; 'NTQ4MjY2MA==' end
+  def best_time; 3.258 end
   def effort; 10 end
 
   def completed_on; '2013-03-08' end

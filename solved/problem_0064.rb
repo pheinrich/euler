@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 3.606s (12/12/13, #~10094)
 class Problem_0064
   def title; 'Odd period square roots' end
   def difficulty; 20 end
@@ -96,13 +95,15 @@ class Problem_0064
     (0..n).select {|i| i.sqrt_cf.count % 2 == 0}.count
   end
 
-  def solution; 1_322 end
-  def best_time; 1.880 end
+  def solution; 'MTMyMg==' end
+  def best_time; 1.702 end
   def effort; 35 end
 
   def completed_on; '2013-12-12' end
   def ordinality; 10_094 end
   def population; 355_328 end
 
-  def refs; ["https://en.wikipedia.org/wiki/Generalized_continued_fraction"] end
+  def refs
+    ['https://en.wikipedia.org/wiki/Generalized_continued_fraction']
+  end
 end

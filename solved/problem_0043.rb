@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 1.814s (2/19/13, #~21574)
 class Problem_0043
   def title; 'Sub-string divisibility' end
   def difficulty; 5 end
@@ -55,7 +54,7 @@ class Problem_0043
     chain( maps )
   end
 
-  def solution; 16_695_334_890 end
+  def solution; 'MTY2OTUzMzQ4OTA=' end
   def best_time; 1.206 end
   def effort; 20 end
 

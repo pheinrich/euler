@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 1.228s (2/14/14, #5299)
 class Problem_0098
   def title; 'Anagramic squares' end
   def difficulty; 35 end
@@ -66,7 +65,7 @@ class Problem_0098
     max
   end
 
-  def solution; 18_769 end
+  def solution; 'MTg3Njk=' end
   def best_time; 1.199 end
   def effort; 20 end
     

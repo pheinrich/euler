@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.3050s (6/9/16, #4183)
 class Problem_0106
   def title; 'Special subset sums: meta-testing' end
   def difficulty; 50 end
@@ -56,7 +55,7 @@ class Problem_0106
     polys.size
   end
 
-  def solution; 21_384 end
+  def solution; 'MjEzODQ=' end
   def best_time; 0.3050 end
   def effort; 40 end
 

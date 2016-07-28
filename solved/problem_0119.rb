@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.005718s (1/31/15, #7181)
 class Problem_0119
   def title; 'Digit power sum' end
   def difficulty; 30 end
@@ -32,7 +31,7 @@ class Problem_0119
     term
   end
 
-  def solution; 248_155_780_267_521 end
+  def solution; 'MjQ4MTU1NzgwMjY3NTIx' end
   def best_time; 0.005290 end
   def effort; 25 end
 

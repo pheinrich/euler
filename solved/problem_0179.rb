@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 15.59s (1/10/15, #6991)
 class Problem_0179
   def title; 'Consecutive positive divisors' end
   def difficulty; 25 end
@@ -26,7 +25,7 @@ class Problem_0179
     (2...n).count {|i| f[i] == f[i+1]}
   end
 
-  def solution; 986_262 end
+  def solution; 'OTg2MjYy' end
   def best_time; 15.59 end
   def effort; 20 end
   

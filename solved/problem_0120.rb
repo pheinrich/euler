@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.0002120s (1/16/15, #8257)
 class Problem_0120
   def title; 'Square remainders' end
   def difficulty; 25 end
@@ -59,7 +58,7 @@ class Problem_0120
     (3..n).reduce( 0 ) {|acc, a| acc + a*(a - 1 & ~1)} 
   end
 
-  def solution; 333_082_500 end
+  def solution; 'MzMzMDgyNTAw' end
   def best_time; 0.0001409 end
   def effort; 30 end
 
@@ -68,7 +67,7 @@ class Problem_0120
   def population; 454_494 end
 
   def refs
-    ["https://oeis.org/A159469",
-     "https://oeis.org/A176974"]
+    ['https://oeis.org/A159469',
+     'https://oeis.org/A176974']
   end
 end

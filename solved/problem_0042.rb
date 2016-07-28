@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.01971s (2/17/13, #~31032)
 class Problem_0042
   def title; 'Coded triangle numbers' end
   def difficulty; 5 end
@@ -34,8 +33,8 @@ class Problem_0042
     words.count {|i| t.include?( i )}
   end
 
-  def solution; 162 end
-  def best_time; 0.01396 end
+  def solution; 'MTYy' end
+  def best_time; 0.01269 end
   def effort; 0 end
 
   def completed_on; '2013-02-17' end

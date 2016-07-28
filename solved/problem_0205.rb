@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.07074s (1/23/15, #8914)
 class Problem_0205
   def title; 'Dice Game' end
   def difficulty; 15 end
@@ -54,7 +53,7 @@ class Problem_0205
     "%0.7f" % prob.values.reduce( :+ ) 
   end
 
-  def solution; 0.5731441 end
+  def solution; 'MC41NzMxNDQx' end
   def best_time; 0.07074 end
   def effort; 35 end
   

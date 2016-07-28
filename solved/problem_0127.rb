@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 142.6s (1/18/15, #3433)
 class Problem_0127
   def title; 'abc-hits' end
   def difficulty; 50 end
@@ -47,7 +46,7 @@ class Problem_0127
     sum
   end
 
-  def solution; 18_407_904 end
+  def solution; 'MTg0MDc5MDQ=' end
   def best_time; 142.6 end
   def effort; 40 end
   
@@ -55,5 +54,7 @@ class Problem_0127
   def ordinality; 3_433 end
   def population; 455_090 end
   
-  def refs; ["http://en.wikipedia.org/wiki/Abc_conjecture"] end
+  def refs
+    ['http://en.wikipedia.org/wiki/Abc_conjecture']
+  end
 end

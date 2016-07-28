@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.04348s (3/11/13, #~20996)
 class Problem_0049
   def title; 'Prime permutations' end
   def difficulty; 5 end
@@ -21,7 +20,7 @@ class Problem_0049
   def solve
     P.each do |p|
       m = P.select {|q| q[1] == p[1]}.map {|q| q[0]}
-      next if 3 > m.length || "1478" == p[1]
+      next if 3 > m.length || '1478' == p[1]
 
       0.upto( m.length - 1 ).each do |j|
         arr = []
@@ -35,8 +34,8 @@ class Problem_0049
     end
   end
 
-  def solution; 296_962_999_629 end
-  def best_time; 0.02520 end
+  def solution; 'Mjk2OTYyOTk5NjI5' end
+  def best_time; 0.02477 end
   def effort; 25 end
   
   def completed_on; '2013-03-11' end

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.08340s (4/6/13, #~10434)
 class Problem_0061
   def title; 'Cyclical figurate numbers' end
   def difficulty; 20 end
@@ -61,8 +60,8 @@ class Problem_0061
     @match
   end
 
-  def solution; 28_684 end
-  def best_time; 0.06811 end
+  def solution; 'Mjg2ODQ=' end
+  def best_time; 0.05469 end
   def effort; 40 end
   
   def completed_on; '2013-04-06' end
@@ -70,12 +69,12 @@ class Problem_0061
   def population; 293_287 end
   
   def refs
-    ["http://oeis.org/A000217",
-     "http://oeis.org/A000290",
-     "http://oeis.org/A000326",
-     "http://oeis.org/A000384",
-     "http://oeis.org/A000566",
-     "http://oeis.org/A000567"
+    ['http://oeis.org/A000217',
+     'http://oeis.org/A000290',
+     'http://oeis.org/A000326',
+     'http://oeis.org/A000384',
+     'http://oeis.org/A000566',
+     'http://oeis.org/A000567'
     ]
   end
 end

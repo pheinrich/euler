@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 5.435s (1/9/14, #20668)
 class Problem_0092
   def title; 'Square digit chains' end
   def difficulty; 5 end
@@ -49,8 +48,8 @@ class Problem_0092
     (sum.inject( :+ ) - n + 1) / 88
   end
 
-  def solution; 8_581_146 end
-  def best_time; 5.435 end
+  def solution; 'ODU4MTE0Ng==' end
+  def best_time; 4.565 end
   def effort; 20 end
   
   def completed_on; '2014-01-09' end

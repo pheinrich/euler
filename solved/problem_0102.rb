@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.003856s (1/12/14, #10992)
 class Problem_0102
   def title; 'Triangle containment' end
   def difficulty; 15 end
@@ -53,8 +52,8 @@ class Problem_0102
     tris.each_slice( 2 ).each_slice( 3 ).count {|tri| 0 != winding( tri )}
   end
 
-  def solution; 228 end
-  def best_time; 0.003856 end
+  def solution; 'MjI4' end
+  def best_time; 0.002387 end
   def effort; 20 end
   
   def completed_on; '2014-01-12' end

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 18.12s (7/27/16, #3757) 
 class Problem_0133
   def title; 'Repunit nonfactors' end
   def difficulty; 50 end
@@ -66,8 +65,8 @@ class Problem_0133
     p.reduce( :+ )
   end
 
-  def solution; 453_647_705 end
-  def best_time; 17.80 end
+  def solution; 'NDUzNjQ3NzA1' end
+  def best_time; 15.66 end
   def effort; 15 end
 
   def completed_on; '2016-07-27' end
@@ -75,6 +74,6 @@ class Problem_0133
   def population; 581_299 end
 
   def refs
-    ["http://oeis.org/A178070"]
+    ['http://oeis.org/A178070']
   end
 end

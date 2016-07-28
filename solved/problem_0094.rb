@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 38.37s (2/12/14, #5799)
 class Problem_0094
   def title; 'Almost equilateral triangles' end
   def difficulty; 35 end
@@ -69,7 +68,7 @@ class Problem_0094
     sum
   end
 
-  def solution; 518_408_346 end
+  def solution; 'NTE4NDA4MzQ2' end
   def best_time; 38.37 end
   def effort; 35 end
 

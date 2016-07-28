@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 7.234s (2/15/13, #~33914)
 class Problem_0035
   def title; 'Circular primes' end
   def difficulty; 5 end
@@ -34,7 +33,7 @@ class Problem_0035
     total
   end
 
-  def solution; 55 end
+  def solution; 'NTU=' end
   def best_time; 4.673 end
   def effort; 5 end
 

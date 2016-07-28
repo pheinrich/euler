@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.02057s (1/9/14, #10791)
 class Problem_0089
   def title; 'Roman numerals' end
   def difficulty; 20 end
@@ -42,8 +41,8 @@ class Problem_0089
     t.inject( :+ )
   end
 
-  def solution; 743 end
-  def best_time; 0.02057 end
+  def solution; 'NzQz' end
+  def best_time; 0.01167 end
   def effort; 15 end
 
   def completed_on; '2014-01-09' end

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.0001690s (2/5/13, #~52918)
 class Problem_0018
   def title; 'Maximum path sum I' end
   def difficulty; 5 end
@@ -42,7 +41,7 @@ class Problem_0018
     N.tree_sum
   end
 
-  def solution; 1_074 end
+  def solution; 'MTA3NA==' end
   def best_time; 0.00008297 end
   def effort; 10 end
 

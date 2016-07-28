@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.0003641s (12/12/13, #~14097)
 class Problem_0065
   def title; 'Convergents of e' end
   def difficulty; 15 end
@@ -83,7 +82,7 @@ class Problem_0065
     e.convergent( n - 1 ).numerator.sum_digits
   end
 
-  def solution; 272 end
+  def solution; 'Mjcy' end
   def best_time; 0.0001793 end
   def effort; 20 end
   
@@ -91,5 +90,7 @@ class Problem_0065
   def ordinality; 14_097 end
   def population; 355_328 end
 
-  def refs; ["https://en.wikipedia.org/wiki/Generalized_continued_fraction"] end
+  def refs
+    ['https://en.wikipedia.org/wiki/Generalized_continued_fraction']
+  end
 end

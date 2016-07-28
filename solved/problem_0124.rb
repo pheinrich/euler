@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 0.4321s (1/18/15, #8527)
 class Problem_0124
   def title; 'Ordered radicals' end
   def difficulty; 25 end
@@ -33,7 +32,7 @@ class Problem_0124
     (n + 1).radical_sieve.map.with_index {|x, i| [x, i]}.sort[k][1]
   end
 
-  def solution; 21_417 end
+  def solution; 'MjE0MTc=' end
   def best_time; 0.4321 end
   def effort; 25 end
   
