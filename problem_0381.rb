@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 
 class Problem_0381
   def title; '(prime-k) factorial' end
 
@@ -15,14 +14,16 @@ class Problem_0381
   #
   # Find ∑S(p) for 5 ≤ p < 10^8.
 
-  def refs; [] end
+  def solve( n = 100_000_000 )
+  end
+
   def solution; end
   def best_time; end
+  def effort; end
 
   def completed_on; '2015-??-??' end
   def ordinality; end
-  def percentile; end
+  def population; end
 
-  def solve( n = 100_000_000 )
-  end
+  def refs; [] end
 end

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 
 class Problem_0347
   def title; 'Largest integer divisible by two primes' end
 
@@ -18,14 +17,16 @@ class Problem_0347
   #
   # Find S(10 000 000).
 
-  def refs; [] end
+  def solve( n = 10_000_000 )
+  end
+
   def solution; end
   def best_time; end
+  def effort; end
 
   def completed_on; '2015-??-??' end
   def ordinality; end
-  def percentile; end
+  def population; end
 
-  def solve( n = 10_000_000 )
-  end
+  def refs; [] end
 end

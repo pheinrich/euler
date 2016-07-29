@@ -82,7 +82,7 @@ class Problem_0387
   
   def completed_on; '2015-03-15' end
   def ordinality; 1_183 end
-  def percentile; 498_888 end
+  def population; 498_888 end
   
   def refs
     ['http://en.wikipedia.org/wiki/Harshad_number',

@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 
 class Problem_0346
   def title; 'Strong Repunits' end
 
@@ -16,14 +15,16 @@ class Problem_0346
   #
   # Find the sum of all strong repunits below 10^12.
 
-  def refs; [] end
+  def solve( n = 1_000_000_000_000 )
+  end
+
   def solution; end
   def best_time; end
+  def effort; end
 
   def completed_on; '2015-??-??' end
   def ordinality; end
-  def percentile; end
+  def population; end
 
-  def solve( n = 1_000_000_000_000 )
-  end
+  def refs; [] end
 end

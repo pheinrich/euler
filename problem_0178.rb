@@ -1,6 +1,5 @@
 require 'projectEuler'
 
-# 
 class Problem_0178
   def title; 'Step Numbers' end
 
@@ -13,14 +12,16 @@ class Problem_0178
   #
   # How many pandigital step numbers less than 10^40 are there?
 
-  def refs; [] end
+  def solve( n = 40 )
+  end
+
   def solution; end
   def best_time; end
+  def effort; end
 
   def completed_on; '2015-01-21' end
   def ordinality; end
-  def percentile; end
+  def population; end
 
-  def solve( n = 40 )
-  end
+  def refs; [] end
 end

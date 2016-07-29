@@ -48,7 +48,7 @@ class Problem_0357
   
   def completed_on; '2015-03-13' end
   def ordinality; 2_807 end
-  def percentile; 498_501 end
+  def population; 498_501 end
 
   def refs
     ['https://oeis.org/A080715',
