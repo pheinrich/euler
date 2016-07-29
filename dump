@@ -1,12 +1,33 @@
 #!/bin/bash
+FIRST="$1"
+LAST="$2"
+
+if [ "$FIRST" = "--help" ]; then
+  echo "Usage:  dump [first] [last]"
+  exit
+elif [ "$FIRST" = "" ]; then
+  FIRST=1
+  LAST=566
+elif [ "$LAST" = "" ]; then
+  LAST=$FIRST
+fi
 
 ruby -I. -Isolved <<EOF
-  for i in [*1..566]
+  puts "Problem,Title,Difficulty,Solution,Obfuscated,Best Time,Effort,Completed On,Ordinality,Population,Percentile,References"
+
+  $FIRST.upto( $LAST ) do |i|
     begin
       require "problem_%04d" % i
+
       problem = Object::const_get( "Problem_%04d" % i ).new
-      puts "#{i}, #{problem.completed_on}, #{problem.population}"
-    rescue LoadError, NoMethodError
+      percentile = "%0.6f" % [100 * (1.0 - problem.ordinality.to_f / problem.population)]
+      
+      print "#{i},\"#{problem.title}\",#{problem.difficulty},#{problem.solution.unpack( 'm0' )[0]},#{problem.solution},"
+      print "#{problem.best_time},#{problem.effort},#{problem.completed_on},#{problem.ordinality},#{problem.population},#{percentile},"
+      problem.refs.each {|ref| print "#{ref} "} unless problem.refs.empty?
+
+      puts
+    rescue LoadError, NoMethodError, TypeError
     end
   end
 EOF
