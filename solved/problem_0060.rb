@@ -14,7 +14,6 @@ class Problem_0060
   # concatenate to produce another prime.
 
   POWER = 8
-  P = (10**POWER).prime_sieve
 
   def check( hash, array, n, result )
     return true if 0 == n
@@ -30,12 +29,14 @@ class Problem_0060
   end
 
   def solve( n = 5 )
+    primes = (10**POWER).prime_sieve
     h = {}
-    P[0..-2].each_with_index do |p, i|
+
+    primes[0..-2].each_with_index do |p, i|
       h[p] = []
       pl = 1 + Math.log10( p ).to_i
 
-      P[i+1..-1].each do |q|
+      primes[i+1..-1].each do |q|
         ql = 1 + Math.log10( q ).to_i
         break if POWER < pl + ql
 
