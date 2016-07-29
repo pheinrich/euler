@@ -17,7 +17,7 @@ class Problem_0020
 
   def solution; 'NjQ4' end
   def best_time; 0.0001712 end
-  def effort; end
+  def effort; 0 end
 
   def completed_on; '2013-02-01' end
   def ordinality; 76_316 end
