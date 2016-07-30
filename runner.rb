@@ -2,7 +2,7 @@ require 'projectEuler'
 
 $LOAD_PATH.unshift File.expand_path( './../solved', __FILE__ )
 
-for i in [*1..566]
+for i in [555]
   begin
     require "problem_%04d" % i
  
