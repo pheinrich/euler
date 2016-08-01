@@ -45,9 +45,13 @@ class Problem_0555
     #   lower bound is m - s + 1                      <==    s > m - n
     #
     #   (m % (k - cs + s) - n % (k - cs + s)) % (k - cs + s) = m + k - cs - n
-    #     ==> k - cs + s > (m % (k - cs + s) - n % (k - cs + s)) % (k - cs + s)
-    
-    
+    #   m - n = X(k - cs + s) + m + k - cs - n        when   s > m - n
+    #   0 = X(k - cs + s) + k - cs
+    #   0 = Xk - Xcs + Xs + k - cs
+    #   0 = k(X + 1) - cs(X + 1) + Xs
+    #   Xs = (cs - k)(X + 1)
+    #   Xs/(X + 1) = cs - k
+    #   X/(X + 1) = c - k/s
   end
 
   def ff( m = 100, k = 11, s = 10 )
@@ -56,22 +60,36 @@ class Problem_0555
 
   def sf( m = 100, k = 11, s = 10 )
     ret = ff( m, k, s ).reduce( :+ ) || 0
-#    puts "ff( #{m}, #{k}, #{s} ) = #{ret}"
     ret
   end
 
   def ss( p, m )
     sum = 0
-    (2..p).each do |k|
-      (1...k).each do |s|
-        (m-s+1..m).each do |n|
-          sum += n if n == m + k - 2*s - ((m - n) % (k - s))
-        end
+    dk, ds = 2, 1
+
+    (4..p).step( 2 ) do |low|
+      s = low - 2
+      gcd = 2
+
+      (low..p).step( dk ) do |k|
+        x = m - s + 1
+        sum += gcd*x + gcd*(gcd - 1)/2
+
+        gcd += 1
+        s += ds
       end
+
+      dk += 1
+      ds += 1      
     end
+
+    (2..p).each do |k|
+      sum += m - k + 2
+    end
+
     sum
   end
-
+  
   def solve( p = 1_000_000, m = 1_000_000 )
     # From Knuth, below, we can simplify the generalized recurrence relation
     # above to M_m,k,s(n) = n > m ? n - s : M_m,k,s(n + k - s), provided that
@@ -81,20 +99,21 @@ class Problem_0555
     # in closed form:
     #
     #   M_m,k,s(n) = n > m ? n - s : m + k - s - ((m - n) % (k - s))
-    ss(1000,1000)
+    ss( p, m )
   end
 
-  def solution; end
-  def best_time; end
-  def effort; end
+  def solution; 208_517_717_451_208_352 end
+  def best_time; 2.051 end
+  def effort; 30 end
 
-  def completed_on; '20??-??-??' end
-  def ordinality; end
-  def population; end
+  def completed_on; '2016-08-01' end
+  def ordinality; 300 end
+  def population; 618_352 end
 
   def refs
     ['https://en.wikipedia.org/wiki/McCarthy_91_function',
      'http://oeis.org/A103847',
-     'http://arxiv.org/pdf/cs/9301113.pdf']
+     'http://arxiv.org/pdf/cs/9301113.pdf',
+     'http://oeis.org/A003989']
   end
 end
