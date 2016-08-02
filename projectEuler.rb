@@ -475,15 +475,15 @@ class Integer
     s, d = s + 1, d >> 1 while 0 == d & 1 && s < 32
 
     aToPower = witness.modular_power( d, self )
-    return true if 1 == aToPower
+    return false if 1 == aToPower
 
     (0...s-1).each do |i|
-      return true if self - 1 == aToPower
+      return false if self - 1 == aToPower
       aToPower = aToPower.modular_power( 2, self )
     end
 
-    return true if self - 1 == aToPower
-    false
+    return false if self - 1 == aToPower
+    true
   end
 
   def prime2?
@@ -947,15 +947,18 @@ class Numeric
   #
   # Problems:  48, 97, 129
   def modular_power( e, m )
-    result = 1;
+    result = 1
+    base = self
 
-    31.downto( 0 ).each do |i|
-      result = (result * result) % m
-      result = (result * self) % m if 0 != (e & (1 << i))
+    while 0 < e
+      result = (result * base) % m if 1 == (e & 1)
+      base = (base * base) % m
+      e >>= 1;
     end
 
     result
   end
+
 end
 
 class String
