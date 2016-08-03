@@ -27,18 +27,18 @@ class Problem_0026
     # Divide 1 by every number up to n, recording the length of repeating
     # digits that repeat.
     lens = (2...n).map do |i|
-      d = []
+      d = {}
       r = 1
 
       # Do long division, stopping only if the decimal terminates or we see
       # a remainder we've seen before (indicating the beginning of a cycle).
       while true
         r = 10 * (r % i)
-        break if 0 == r || d.include?( r )
+        break if 0 == r || d[r]
 
         # No cycle, but it didn't terminate.  Add the remainder and calculate
         # a new one.
-        d << r
+        d[r] = true
         r = r % i
       end
 
@@ -51,7 +51,7 @@ class Problem_0026
   end
 
   def solution; 'OTgz' end
-  def best_time; 0.5241 end
+  def best_time; 0.02908 end
   def effort; 10 end
   
   def completed_on; '2013-02-07' end
