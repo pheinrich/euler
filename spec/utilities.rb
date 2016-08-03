@@ -264,6 +264,21 @@ describe Integer do
     end
   end
 
+  describe "#miller_rabin?" do
+    it "users the Miller-Rabin algorithm to detect extremely large prime numbers" do
+      expect( 2 ).to be_miller_rabin
+      expect( 97366669 ).to be_miller_rabin
+      
+      expect( 0 ).to_not be_miller_rabin
+      expect( 1 ).to_not be_miller_rabin
+      expect( 7777774 ).to_not be_miller_rabin
+      
+      expect( 9872309847083741 ).to be_miller_rabin
+      expect( 7678791342036449 ).to be_miller_rabin
+      expect( 153575819161937637963551 ).to_not be_miller_rabin
+    end
+  end
+
   describe "#coprime?" do
     it "returns true if a number is coprime with another" do
       expect( 5 ).to be_coprime( 2 )

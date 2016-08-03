@@ -455,7 +455,8 @@ class Integer
   # Problems:  7, 27, 35, 37, 41, 46, 58, 60, 111, 118, 127
   def prime?
     return true if 2 == self
-    return false if 2 > self || 0 == self % 2
+    return false if 1 == self || 0 == self & 1
+    return false if 3 < self && 1 != self % 6 && 5 != self % 6
 
     i = 3
     max = Math.sqrt( self ).to_i
@@ -470,29 +471,29 @@ class Integer
     true
   end
 
-  def miller_rabin?( witness )
-    s, d = 0, self - 1
-    s, d = s + 1, d >> 1 while 0 == d & 1 && s < 32
-
-    aToPower = witness.modular_power( d, self )
-    return false if 1 == aToPower
-
-    (0...s-1).each do |i|
-      return false if self - 1 == aToPower
-      aToPower = aToPower.modular_power( 2, self )
-    end
-
-    return false if self - 1 == aToPower
-    true
-  end
-
-  def prime2?
+  # https://dzone.com/articles/miller-rabin-prime-test-ruby
+  def miller_rabin?
     return true if 2 == self
-    return false if 2 > self || 0 == self % 2
-    return true if self.miller_rabin?( 2 ) &&
-                   (self <= 7 || self.miller_rabin?( 7 )) &&
-                   (self <= 61 || self.miller_rabin?( 61 ))
-    false
+    return false if 1 == self || 0 == self & 1
+    return false if 3 < self && 1 != self % 6 && 5 != self % 6
+    
+    d = self - 1
+    d >>= 1 while 0 == d & 1
+    
+    20.times do
+      a = 1 + rand( self - 2 )
+      t = d
+      y = a.modular_power( t, self )
+      
+      while t != self - 1 && 1 != y && y != self - 1
+        y = (y * y) % self
+        t <<= 1
+      end
+      
+      return false if y != self - 1 && 0 == 1 & t
+    end
+    
+    true
   end
 
   # Determine if this number is coprime with another.
