@@ -960,6 +960,20 @@ class Numeric
     result
   end
 
+  # Perform tetration over a modulus, returning b^(b^(b^(... b^e))) % m, where
+  # the base is raised to itself e times. The base cannot exceed 32 bits.
+  #
+  # http://www.nerdparadise.com/forum/openmic/5415/
+  # Problems:  188
+  def modular_tetrate( e, m )
+    raise ArgumentError, "base and exponent must be coprime" unless self.coprime?( m )
+
+    tot = m.totient
+    base = self
+
+    (e - 2).times {base = self.modular_power( base, tot )}
+    self.modular_power( base,  m )
+  end
 end
 
 class String
