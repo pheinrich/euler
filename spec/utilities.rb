@@ -548,6 +548,15 @@ describe Numeric do
       expect( 99152.modular_power( 9923, 19982 ) ).to eq( 3698 )
     end
   end
+  
+  describe "#modular_tetrate" do
+    it "performs tetration over a modulus" do
+      expect { 100.modular_tetrate( 10, 34 ) }.to raise_error( ArgumentError )
+      expect( 3.modular_tetrate( 5, 1000 ) ).to eq( 387 )
+      expect( 5.modular_tetrate( 3, 763 ) ).to eq( 689 )
+      expect( 1777.modular_tetrate( 1855, 100_000_000 ) ).to eq( 95_962_097 )
+    end
+  end
 end
 
 describe String do
