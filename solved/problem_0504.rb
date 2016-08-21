@@ -36,29 +36,33 @@ class Problem_0504
     # candidate quadrilaterals from the problem statement, which will be
     # given by I = Area - B/2 + 1.
     count = 0
+    square, s, ds = {}, 1, 3
 
-    hash, s, ds = {}, 1, 3
+    # Create a hash of all the square values we may conceivably encounter, for
+    # quick comparison.
     until s > 2*m*m
-      hash[s] = true
+      square[s] = true
       s += ds
       ds += 2
     end
- 
+
+    # Brute-force search all possible quadrilaterals. There is 4-way symmetry
+    # that I'm not exploiting here, but I'll leave that for another day. 
     (1..m).each do |a|
       (1..m).each do |b|
         (1..m).each do |c|
           (1..m).each do |d|
-            i = interior( a, b, c, d )
-            count += 1 if hash.has_key?( i )
+            count += 1 if square[ interior( a, b, c, d ) ]
           end
         end
       end
     end
+
     count
   end
 
   def solution; 'Njk0Njg3' end
-  def best_time; 63.63 end
+  def best_time; 63.20 end
   def effort; 10 end
 
   def completed_on; '2016-08-20' end
