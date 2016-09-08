@@ -55,7 +55,7 @@ class Problem_0346
     total
   end
 
-  def solution; '336108797689259276' end
+  def solution; 'MzM2MTA4Nzk3Njg5MjU5Mjc2' end
   def best_time; 0.1034 end
   def effort; 15 end
 

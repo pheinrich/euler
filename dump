@@ -22,7 +22,7 @@ ruby -I. -Isolved <<EOF
       problem = Object::const_get( "Problem_%04d" % i ).new
       percentile = "%0.6f" % [100 * (1.0 - problem.ordinality.to_f / problem.population)]
       
-      print "#{i},\"#{problem.title}\",#{problem.difficulty},#{problem.solution.unpack( 'm0' )[0]},#{problem.solution},"
+      print "#{i},\"#{problem.title.gsub( '"', '""' )}\",#{problem.difficulty},#{problem.solution.unpack( 'm0' )[0]},#{problem.solution},"
       print "#{problem.best_time},#{problem.effort},#{problem.completed_on},#{problem.ordinality},#{problem.population},#{percentile},"
       problem.refs.each {|ref| print "#{ref} "} unless problem.refs.empty?
 
