@@ -816,7 +816,9 @@ class Integer
   #
   # Problems:  16, 20, 56, 65
   def sum_digits( base = 10 )
-    self.to_s( base ).split( "" ).inject( 0 ) {|sum, n| sum + n.to_i}
+    n, sum = self.abs, 0
+    sum, n = sum + n % base, n = n / base while 0 < n
+    sum
   end
 
   # Return the length the Collatz sequence associated with a number.

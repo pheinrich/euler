@@ -408,10 +408,13 @@ describe Integer do
     it "adds the decimal digits representing a number" do
       expect( 0.sum_digits ).to eq( 0 )
       expect( 987654.sum_digits ).to eq( 39 )
+      expect( -77239.sum_digits ).to eq( 28 )
 
       # Check some other bases.
       expect( 66272.sum_digits( 8 ) ).to eq( 10 )
       expect( 99182267.sum_digits( 4 ) ).to eq( 26 )
+      expect( 330913.sum_digits( 12 ) ).to eq( 22 )
+      expect( 6546349002.sum_digits( 19 ) ).to eq( 66 )
     end
   end
 
