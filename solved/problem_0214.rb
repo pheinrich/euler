@@ -2,7 +2,7 @@ require 'projectEuler'
 
 class Problem_0214
   def title; 'Totient Chains' end
-  def difficulty; 214 end
+  def difficulty; 40 end
 
   # Let φ be Euler's totient function, i.e. for a natural number n, φ(n) is
   # the number of k, 1 ≤ k ≤ n, for which gcd(k,n) = 1.
