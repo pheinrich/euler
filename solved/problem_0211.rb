@@ -36,7 +36,7 @@ class Problem_0211
     sums.each_with_index.reduce( 0 ) {|acc, (j, i)| acc + (Math.sqrt( j ).to_i**2 == j ? i : 0)}
   end
 
-  def solution; 1_922_364_685 end
+  def solution; 'MTkyMjM2NDY4NQ==' end
   def best_time; 181.9 end
   def effort; 20 end
 
