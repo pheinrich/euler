@@ -37,7 +37,7 @@ class Problem_0103
   # Starting from an initial array not necessarily minimized (may not be an
   # optimal special sum set), increment terms until a minimum sum is found.
   def optimize( arr )
-    minSum, minSet = Fixnum::MAX, nil
+    minSum, minSet = Integer::FIXMAX, nil
     n = arr.size
     polys = []
 

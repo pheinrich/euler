@@ -182,14 +182,12 @@ class Array
   end
 end
 
-class Fixnum
+class Integer
   # Ruby uses one bit for sign and one bit to identify integer values (as
   # opposed to pointers to objects). 
-  MAX = (1 << (0.size << 3) - 2) - 1
-  MIN = -(1 << (0.size << 3) - 2)
-end
+  FIXMAX = (1 << (0.size << 3) - 2) - 1
+  FIXMIN = -(1 << (0.size << 3) - 2)
 
-class Integer
   # Returns the next larger integer having the same number of set bits.
   #
   # http://hackersdelight.org/hdcodetxt/snoob.c.txt
