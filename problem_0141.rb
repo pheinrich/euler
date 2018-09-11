@@ -18,34 +18,20 @@ class Problem_0141
   #
   # Find the sum of all progressive perfect squares below one trillion (10^12).
 
-  def progressive?( n, cubes )
-    e = 1
-
-    while n > e * (e + 1)
-      f = Rational( n - e, e*e )
-      break if cubes[f.numerator] && cubes[f.denominator]
-      e += 1
-    end
-
-    if n > e * (e + 1)
-      puts "#{n} --> r = #{e}: #{n.prime_factors.inspect} ... #{e.prime_factors.inspect}"
-      return true
-    end
-
-    false
+  def progressive?( n )
   end
 
-  def solve( n = 100_000_000 ) #n = 1_000_000_000_000 )
-    cubes = {}
-    (1..Math.cbrt( n )).each {|x| cubes[x*x*x] = true}
-
+  def solve( n = 1_000_000_000_000 )
     limit = Math.sqrt( n )
+
+    s = 2
     sq = 4
     delta = 5
     pps = []
 
-    (sq..limit).each do |s|
-      pps << sq if progressive?( sq, cubes )
+    while s < limit
+      pf = s.prime_factors
+
       sq += delta
       delta += 2
     end
