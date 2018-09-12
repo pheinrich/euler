@@ -21,7 +21,7 @@ class Problem_0148
   # Find the number of entries which are not divisible by 7 in the first one
   # billion (10^9) rows of Pascal's triangle.
 
-  def solve( n = 1_0_000_000 )#n = 1_000_000_000 )
+  def solve( n = 1_000_000_000 )
     # Computing the number of non-7-divisible entries for the first 100 rows,
     # we begin to see a simple pattern:
     #
@@ -46,9 +46,6 @@ class Problem_0148
     #    6  12  18  24  30  36  42      9  18  27  36  45  54  63
     #   12  24  36  48  60  72  84     15  30  45  60  75  90 105
     #
-    circbuf = Array.new( n / 7 )
-    head = tail = 0
-
     queue = *(2..7)
     sum = 1 + queue.sum
     n -= 7
@@ -56,11 +53,9 @@ class Problem_0148
     while 0 < n
       step = queue.shift
       count = step
-#      puts "step:#{step}, sum:#{sum}, queue:#{queue.inspect}"
 
       [n, 7].min.times do
         queue << count if n/7 > queue.length
- #       puts count
         sum += count
         count += step
         n -= 1
@@ -70,13 +65,13 @@ class Problem_0148
     sum
   end
 
-  def solution; '' end
-  def best_time; 1 end
-  def effort; 50 end
+  def solution; 'MjEyOTk3MDY1NTMxNDQzMg==' end
+  def best_time; 217.9 end
+  def effort; 20 end
 
-  def completed_on; '20??-??-??' end
-  def ordinality; 1 end
-  def population; 1 end
+  def completed_on; '2018-09-12' end
+  def ordinality; 4_177 end
+  def population; 780_372 end
 
   def refs; [] end
 end
