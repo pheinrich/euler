@@ -7,49 +7,35 @@ class Problem_0142
   # Find the smallest x + y + z with integers x > y > z > 0 such that x + y,
   # x − y, x + z, x − z, y + z, y − z are all perfect squares.
 
-  def match( x, y, z, hash, array )
-    hash.has_key?( array[x] - array[y] ) &&
-    hash.has_key?( array[x] - array[z] ) &&
-    hash.has_key?( array[y] - array[z] ) &&
-    hash.has_key?( x + y + 2 ) && hash.has_key?( x - y )
-  end
+  SQUARES = (1..10_000).map {|i| i*i}
+  sums = {}
+  difs = {}
 
-  def solve( n = 1_000_000 )
-    hash = {}
-    array = []
+  def genx
+    sums = {}
+    difs = {}
 
-    s = 1
-    sq = 1
-    delta = 3
+    (0...(SQUARES.length-1)).each do |i|
+      ((i+1)...SQUARES.length).each do |j|
+        s = SQUARES[j] + SQUARES[i]
+        sums[s] = [] unless sums.has_key?( s )
+        sums[s] << [SQUARES[j], SQUARES[i]]
 
-    while sq < n
-      hash[sq] = s
-      array << sq
-
-      s += 1
-      sq += delta
-      delta += 2
-    end
-
-    x, y, z = 2, 1, 0
-    until match( x, y, z, hash, array )
-      x += 1
-      if x > array.length - 1
-        y += 1
-        if y > array.length - 2
-          z += 1
-          if z > array.length - 3
-            puts "Not found"
-            break
-          end
-          y = z + 1
-        end
-        x = y + 1
+        d = SQUARES[j] - SQUARES[i]
+        difs[d] = [] unless difs.has_key?( d )
+        difs[d] << [SQUARES[j], SQUARES[i]]
       end
     end
 
-    puts "#{x + 1} + #{y + 1} + #{z + 1}"
-    x + y + z + 3
+    sums.select! {|k, v| v.length > 1}
+    difs.select! {|k, v| v.length > 1}
+
+    puts sums.length
+    puts difs.length
+  end
+
+  def solve( n = 1_000_000 )
+    genx
   end
 
   def solution; '' end
@@ -60,5 +46,7 @@ class Problem_0142
   def ordinality; 1 end
   def population; 1 end
 
-  def refs; [] end
+  def refs
+    [ 'https://math.stackexchange.com/a/153684' ]
+  end
 end
