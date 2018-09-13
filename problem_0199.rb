@@ -7,7 +7,7 @@ class Problem_0199
   # Three circles of equal radius are placed inside a larger circle such that
   # each pair of circles is tangent to one another and the inner circles do not
   # overlap. There are four uncovered "gaps" which are to be filled iteratively
-  # with more tangent circles.
+  # with more tangent circles (see diagram).
   #
   # At each iteration, a maximally sized circle is placed in each gap, which
   # creates more gaps for the next iteration. After 3 iterations (pictured),
