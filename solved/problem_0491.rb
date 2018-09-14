@@ -10,9 +10,6 @@ class Problem_0491
   #
   # How many double pandigital numbers are divisible by 11?
 
-  DIGITS = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9]
-  PARTITIONS = {}
-
   # Return unique permutations of the digits provided, taking into account
   # whether or not leading zeros are allowed.
   def count_perms( digits, zeroOk = false )
@@ -31,6 +28,9 @@ class Problem_0491
   end
 
   def solve
+    digits = [0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9]
+    sum, min = digits.sum, digits[0...digits.length/2].sum
+
     # A number can be trivially tested for 11 divisibility by computing two
     # digit sums from alternating digits and subtracting one from the other.
     # If 11 divides the result, it divides the original number.
@@ -42,25 +42,28 @@ class Problem_0491
     # we must first find digit sum pairs in [20, 70] whose difference is
     # divisible by 11. Only alternating digit permutations that sum to these
     # pairs can combine to yield double pandigital numbers divisible by 11.
-    pairs = (20..90).select {|x| 0 == (x - (90 - x)) % 11}
+    pairs = (min..sum-min).select {|x| 0 == (2*x - sum) % 11}
 
     # Now find all ways to linearly combine 10 of the digits above to produce
     # these valid pairs. Using one bit for each digit position, we can advance
     # through all 20-bit numbers with exactly 10 bits set, total the digits
     # corresponding to those bits, and discard combinations that don't sum to
     # valid values.
-    seq = 1023
-    while 1047553 > seq
-      left = DIGITS.select.with_index {|d, i| 0 != seq & (1 << i)}
-      right = DIGITS.select.with_index {|d, i| 0 == seq & (1 << i)}
+    seq = (1 << digits.length / 2) - 1
+    limit = (seq << digits.length / 2) + 1
+    parts = {}
 
-      sum = left.sum
-      if pairs.include?( sum )
+    while seq < limit
+      left = digits.select.with_index {|d, i| 0 != seq & (1 << i)}
+      right = digits.select.with_index {|d, i| 0 == seq & (1 << i)}
+
+      pair = left.sum
+      if pairs.include?( pair )
         # Order the left and right combinations so the smaller sum always
         # appears first. Combine the two and add the result to a hash in order
         # to eliminate duplicates.
-        left, right = right, left if 45 < sum
-        PARTITIONS[[left, right]] = sum
+        left, right = right, left if left.join > right.join
+        parts[[left, right]] = pair
       end
 
       # Move to the next 10-bit number.
@@ -73,26 +76,26 @@ class Problem_0491
     # Multiplying left permutations by right permutations gives the total
     # number of engineered values possible using those collections.
     total = 0
-    PARTITIONS.keys.each do |p|
-      puts "#{p[0].inspect}:#{p[1].inspect} #{count_perms( p[0] ) * count_perms( p[1], true ) + count_perms( p[1] ) * count_perms( p[0], true )}"
-
+    parts.keys.each do |p|
       # Interleave left, then right digits.
       total += count_perms( p[0] ) * count_perms( p[1], true )
 
-      # Interleave right, then left digits.
-      total += count_perms( p[1] ) * count_perms( p[0], true )
+      # Interleave right, then left digits. Do this only if the sets aren't
+      # identical, since switching the interleave order in that case would
+      # result in nothing but duplicate values.
+      total += count_perms( p[1] ) * count_perms( p[0], true ) if p[0] != p[1]
     end
 
     total
   end
 
-  def solution; '' end
-  def best_time; 1 end
+  def solution; 'MTk0NTA1OTg4ODI0MDAw' end
+  def best_time; 1.586 end
   def effort; 20 end
 
-  def completed_on; '20??-??-??' end
-  def ordinality; 1 end
-  def population; 1 end
+  def completed_on; '2018-09-14' end
+  def ordinality; 1_540 end
+  def population; 780_919 end
 
   def refs
     ['https://www.math.hmc.edu/funfacts/ffiles/10013.5.shtml',
