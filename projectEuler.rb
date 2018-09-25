@@ -49,7 +49,7 @@ class Array
   # passed in, this method will initialize it as necessary so it can be
   # reused on subsequent calls.
   #
-  # Problems:  103
+  # Problems:  103, 106
   def dissociated?( polys = nil )
     arr = self.sort
     polys ||= []
@@ -137,7 +137,7 @@ class Array
   # Multiply two polynomials whose coefficients are represented by the entries
   # in two arrays.
   #
-  # Problems:  172
+  # Problems:  172, 203
   def multpoly( poly )
     result = Array.new( self.size + poly.size - 1, 0 )
 
@@ -191,7 +191,7 @@ class Integer
   # Returns the next larger integer having the same number of set bits.
   #
   # http://hackersdelight.org/hdcodetxt/snoob.c.txt
-  # Problems:  106, 111, 121
+  # Problems:  105, 111, 121, 491
   def bitseq
     return 0 if 0 == self 
 
@@ -228,6 +228,8 @@ class Integer
 
   # Calculates a binomial coefficient. This effectively counts the number of
   # k-subsets (k distinct items from a set) possible with n items.
+  #
+  # Problems:  493
   def choose( k )
     return 0 if 0 > k || k > self
     return 1 if 0 == k
@@ -242,6 +244,8 @@ class Integer
 
   # Returns the Hamming weight (the number of set bits) in an integer.
   # The integer should fit in 32 bits.
+  #
+  # Problems:  315
   def hamming
     val = self - ((self >> 1) & 0x55555555)
     val = (val & 0x33333333) + ((val >> 2) & 0x33333333)
@@ -290,7 +294,7 @@ class Integer
 
   # Return a sorted array of divisors.
   #
-  # Problems:  12
+  # Problems:  12, 622
   def factors
     return [0] if 0 == self
 
@@ -305,6 +309,8 @@ class Integer
   # Return the kth term in the Fibonacci sequence. This is an iterative
   # implementation (not recursive) and has been generalized to include terms
   # for negative k.
+  #
+  # Problems:  137, 138, 140, 301
   def fib
     # Do this iteratively instead of recursively to spare the stack.
     curr, succ = 1, 0
@@ -450,10 +456,10 @@ class Integer
 
   # Returns true if a number is prime, otherwise false.
   #
-  # Problems:  7, 27, 35, 37, 41, 46, 58, 60, 111, 118, 127
+  # Problems:  7, 27, 35, 37, 41, 46, 111, 128
   def prime?
     return true if 2 == self
-    return false if 1 == self || 0 == self & 1
+    return false if 0 > self || 1 == self || 0 == self & 1
     return false if 3 < self && 1 != self % 6 && 5 != self % 6
 
     i = 3
@@ -470,9 +476,11 @@ class Integer
   end
 
   # https://dzone.com/articles/miller-rabin-prime-test-ruby
+  #
+  # Problems:  58, 60, 118, 146, 304, 387
   def miller_rabin?
     return true if 2 == self
-    return false if 1 == self || 0 == self & 1
+    return false if 0 > self || 1 == self || 0 == self & 1
     return false if 3 < self && 1 != self % 6 && 5 != self % 6
     
     d = self - 1
@@ -496,7 +504,7 @@ class Integer
 
   # Determine if this number is coprime with another.
   #
-  # Problems:  127
+  # Problems:  127, 129, 130, 139
   def coprime?( number )
     return 1 == gcd( number )
   end
@@ -558,8 +566,9 @@ class Integer
   # Return an array of prime numbers less than the maximum specified.  Use the
   # segmented Sieve of Eratosthenes to generate the array.
   #
-  # Problems:  10, 27, 37, 49, 50, 51, 60, 70, 87, 108, 110, 118, 123, 134,
-  #            187, 234, 243, 357
+  # Problems:  10, 27, 37, 49, 50, 51, 60, 70, 87, 108, 110, 118, 123, 130,
+  #            131, 132, 133, 134, 187, 204, 234, 243, 315, 347, 357, 429,
+  #            500, 518
   def prime_sieve( window = 65535 )
     max = Math.sqrt( self )
     smallPrimes = Array.new( 1 + max ) {|i| i & 1}
@@ -767,7 +776,7 @@ class Integer
   # Return an array of totient values for integers less than or equal to this
   # one.  Use an approach similar to Eratosthenes' Sieve to fill the array.
   #
-  # Problems:  69
+  # Problems:  69, 214
   def totient_sieve
     # Sieve integers up to n similar to Eratosthenes, but instead of elim-
     # nating prime multiples, multiply by the corresponding totient component
@@ -804,7 +813,7 @@ class Integer
 
   # Add a unary factorial (!) function to all integers.
   #
-  # Problems:  15, 20, 34, 53, 74, 121, 
+  # Problems:  15, 20, 34, 53, 74, 121, 491
   def fact
     raise Math::DomainError, 'Factorial non-extendable to negative integers' if 0 > self
     (1..self).reduce( :* ) || 1
@@ -812,7 +821,7 @@ class Integer
 
   # Compute the sum of the decimal digits in this number.
   #
-  # Problems:  16, 20, 56, 65
+  # Problems:  16, 20, 56, 65, 119, 387
   def sum_digits( base = 10 )
     n, sum = self.abs, 0
     sum, n = sum + n % base, n = n / base while 0 < n
@@ -874,11 +883,15 @@ class Integer
 
   # Returns the radical, equivalent to the product of distinct prime factors.
   # By definition, the will be a square-free number.
+  #
+  # Problems:  127
   def rad
     self.prime_factors.uniq.reduce( :* )
   end
 
   # Returns true if no prime factor is repeated.
+  #
+  # Problems:  203
   def square_free?
     self.rad == self
   end
@@ -946,7 +959,7 @@ class Numeric
   # Perform exponentiation over a modulus, returning (b^e) % m. The exponent
   # e must be an integer with no more than 32 bits.
   #
-  # Problems:  48, 97, 129
+  # Problems:  48, 97, 130, 132, 429
   def modular_power( e, m )
     result = 1
     base = self
@@ -1067,6 +1080,7 @@ module ProjectEuler
   # Problems:  81, 82, 83, 107
   class Graph < Hash
     def initialize( rows = nil )
+    
       self.default_proc = proc do |hash, key|
         hash[key] = [] unless hash.has_key?( key )
         hash[key]
@@ -1647,4 +1661,3 @@ module ProjectEuler
     end
   end
 end
-

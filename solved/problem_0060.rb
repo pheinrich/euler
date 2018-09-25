@@ -42,7 +42,7 @@ class Problem_0060
 
         x = p*(10**ql) + q
         y = q*(10**pl) + p
-        next unless x.prime? && y.prime?
+        next unless x.miller_rabin? && y.miller_rabin?
 
         h[p] << q
       end
@@ -54,7 +54,7 @@ class Problem_0060
   end
 
   def solution; 'MjYwMzM=' end
-  def best_time; 184.8 end
+  def best_time; 83.39 end
   def effort; 35 end
   
   def completed_on; '2013-11-25' end

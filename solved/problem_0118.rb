@@ -47,7 +47,7 @@ class Problem_0118
           # and then eliminating 0s and repeated digits.
           (sub - [ch]).permutation( k ).each do |perm|
             p = (perm.join + suf).to_i
-            primes[p] = p if p.prime?
+            primes[p] = p if p.miller_rabin?
           end
         end
       end
@@ -65,7 +65,7 @@ class Problem_0118
   end
 
   def solution; 'NDQ2ODA=' end
-  def best_time; 19.43 end
+  def best_time; 17.34 end
   def effort; 35 end
   
   def completed_on; '2015-01-31' end

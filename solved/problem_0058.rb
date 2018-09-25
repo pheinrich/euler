@@ -33,7 +33,7 @@ class Problem_0058
       len += 2
       start += ds
 
-      4.times {|i| primes += 1 if (start + i*dc).prime?}
+      4.times {|i| primes += 1 if (start + i*dc).miller_rabin?}
 
       ds += 8
       dc += 2

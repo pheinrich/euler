@@ -47,7 +47,7 @@ class Problem_0387
       # truncatable Harshad numbers in a separate list. 
       if 0 == r
         node.add( v )
-        strong << v if q.prime?
+        strong << v if q.miller_rabin?
       end
     end
   end
@@ -69,7 +69,7 @@ class Problem_0387
     strong.each do |s|
       for i in [1, 3, 7, 9]
         p = s*10 + i
-        total += p if p.prime?
+        total += p if p.miller_rabin?
       end
     end
 
@@ -77,7 +77,7 @@ class Problem_0387
   end
 
   def solution; 'Njk2MDY3NTk3MzEzNDY4' end
-  def best_time; 4.343 end
+  def best_time; 0.1501 end
   def effort; 40 end
   
   def completed_on; '2015-03-15' end
