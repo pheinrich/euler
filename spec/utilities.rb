@@ -180,6 +180,18 @@ describe Integer do
     end
   end
 
+  describe "#pisano_period" do
+    it "returns the period with which the Fibonacci sequence mod n repeats" do
+      expect { 0.pisano_period }.to raise_error( ArgumentError )
+      expect( 1.pisano_period ).to eq( 1 )
+      expect( 3.pisano_period ).to eq( 8 )
+      expect( 121.pisano_period ).to eq( 110 )
+      expect( 1_000_000.pisano_period ).to eq( 1_500_000 )
+      expect( 1_000_001.pisano_period ).to eq( 1650 )
+      expect( 1_234_567_891_011.pisano_period ).to eq( 900_788_112 )
+    end
+  end
+
   describe "#harshad?" do
     it "returns true if a number is divisible by the sum of its digits" do
       expect( 195 ).to be_harshad

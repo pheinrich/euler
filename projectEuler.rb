@@ -321,6 +321,31 @@ class Integer
     succ
   end
 
+  # https://en.wikipedia.org/wiki/Pisano_period
+  def pisano_period
+    raise ArgumentError, 'Pisano period only valid for positive, non-zero divisors' if 1 > self
+    return 1 if 1 == self
+
+    if 1_000_000 < self && !self.miller_rabin?
+      # For large n = (p1^e1)(p2^e2)...(pm^em), make use of the fact that the
+      # Pisano period will be the lcm of the Pisano periods of the individual
+      # prime factor powers.
+      f = self.prime_factors
+      f.uniq.map {|i| (i**f.count( i )).pisano_period}.reduce( 1 ) {|acc, i| acc.lcm( i )}
+    else
+      # Otherwise, divide Fibonacci terms until we see successive remainders
+      # of 0 and 1, indicating a sequence is restarting.
+      curr, succ = 0, 1
+      fib = curr + succ
+
+      (0..self*self).each do |i|
+        fib = (curr + succ) % self
+        curr, succ = succ, fib
+        return i + 1 if 0 == curr && 1 == succ
+      end
+    end
+  end
+
   # Returns true if this number is divisible by the sum of its digits.
   def harshad?( base = 10 )
     0 < self && 0 == self % sum_digits( base )
