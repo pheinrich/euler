@@ -306,19 +306,47 @@ class Integer
     arr.sort!
   end
 
-  # Return the kth term in the Fibonacci sequence. This is an iterative
-  # implementation (not recursive) and has been generalized to include terms
+  # Return the kth term in the Fibonacci sequence. This is a fast matrix
+  # exponentiation implementation and has been generalized to include terms
   # for negative k.
   #
+  # https://stackoverflow.com/a/45765630
   # Problems:  137, 138, 140, 301
   def fib
-    # Do this iteratively instead of recursively to spare the stack.
-    curr, succ = 1, 0
-    self.abs.times { curr, succ = succ, curr + succ }
+    return 0 if 0 == self
+
+    bits = self.abs.to_s( 2 ).chars[1..-1]
+    v1, v2, v3 = 1, 1, 0
+
+    bits.each do |c|
+      calc = v2*v2
+      v1, v2, v3 = v1*v1 + calc, (v1+v3)*v2, v3*v3 + calc
+      v1, v2, v3 = v1 + v2, v1, v2 if '1' == c
+    end
 
     # Adjust for negative indices.
-    succ = -succ if 0 > self && self.even?
-    succ
+    v2 = -v2 if 0 > self && self.even?
+    v2
+  end
+
+  # Returns the kth term in the Fibonacci sequence mod some integer value.
+  #
+  # Problems:  304
+  def fibmod( m )
+    return 0 if 0 == self
+
+    bits = self.abs.to_s( 2 ).chars[1..-1]
+    v1, v2, v3 = 1, 1, 0
+
+    bits.each do |c|
+      calc = (v2*v2) % m
+      v1, v2, v3 = (v1*v1 + calc) % m, ((v1+v3)*v2) % m, (v3*v3 + calc) % m
+      v1, v2, v3 = (v1 + v2) % m, v1, v2 if '1' == c
+    end
+
+    # Adjust for negative indices.
+    v2 = -v2 % m if 0 > self && self.even?
+    v2
   end
 
   # https://en.wikipedia.org/wiki/Pisano_period
@@ -338,7 +366,7 @@ class Integer
       curr, succ = 0, 1
       fib = curr + succ
 
-      (0..self*self).each do |i|
+      (0..6*self).each do |i|
         fib = (curr + succ) % self
         curr, succ = succ, fib
         return i + 1 if 0 == curr && 1 == succ

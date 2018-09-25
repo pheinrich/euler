@@ -180,6 +180,16 @@ describe Integer do
     end
   end
 
+  describe "#fibmod" do
+    it "returns the kth term in the Fibonacci series mod n" do
+      expect( 17.fibmod( 13 ) ).to eq( 11 )
+      expect( 2_015.fibmod( 3 ) ).to eq( 1 )
+      expect( 281_621_358_815_590.fibmod( 30_524 ) ).to eq( 11_963 )
+      expect( -77.fibmod( 29 ) ).to eq( 13 )
+      expect( -288.fibmod( 1_009 ) ).to eq( 830 )
+    end
+  end
+
   describe "#pisano_period" do
     it "returns the period with which the Fibonacci sequence mod n repeats" do
       expect { 0.pisano_period }.to raise_error( ArgumentError )
