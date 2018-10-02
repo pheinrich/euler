@@ -679,6 +679,32 @@ class Integer
     primes
   end
 
+  # Return the prime factor powers for all values up to n. That is, factor
+  # k = (p_1^e_1)(p_2^e_2)...(p_m^e_m) <= n and return an array of the p^e
+  # values for each.
+  #
+  # Problem:  407
+  def primefactor_sieve
+    raise ArgumentError, 'cannot sieve factors for 0 or negative numbers' if 1 > self
+
+    s = Array.new( 1 + self ) {Hash.new}
+    s[1][1] = 1
+
+    i = 2
+    while i <= self
+      m = i
+      while m <= self
+        (m..self).step( m ) {|j| s[j].has_key?( i ) ? s[j][i] *= i : s[j][i] = i}
+        m *= i
+      end
+
+      i = 3 if 2 == i
+      i += 2 until i > self || 0 == s[i].length
+    end
+
+    s.map( &:values )
+  end
+
   # Return the sum of prime factors for each number less than n.
   def primefactorsum_sieve
     s = Array.new( self, 0 )
@@ -829,7 +855,7 @@ class Integer
   # Return an array of totient values for integers less than or equal to this
   # one.  Use an approach similar to Eratosthenes' Sieve to fill the array.
   #
-  # Problems:  69, 214
+  # Problems:  69, 214, 407
   def totient_sieve
     # Sieve integers up to n similar to Eratosthenes, but instead of elim-
     # nating prime multiples, multiply by the corresponding totient component
