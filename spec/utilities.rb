@@ -321,6 +321,19 @@ describe Integer do
     end
   end
 
+  describe "#primefactor_sieve" do
+    it "generates an array of arrays of prime factor powers" do
+      expect( 10.primefactor_sieve ).to eq( [[], [1], [2], [3], [4], [5], [2, 3], [7], [8], [9], [2, 5]] )
+      expect( 19_823.primefactor_sieve[-3..-1] ).to eq( [[3, 6607], [2, 11, 17, 53], [43, 461]] )
+      expect( 389.primefactor_sieve.flatten.sum ).to eq( 29_694 )
+      expect( 1_881.primefactor_sieve.select {|pf| 1 == pf.length}.count ).to eq( 320 )
+
+      # Doesn't work for 0 or negative numbers.
+      expect { 0.primefactor_sieve }.to raise_error( ArgumentError )
+      expect { -4.primefactor_sieve }.to raise_error( ArgumentError )
+    end
+  end
+
   describe "#primefactorsum_sieve" do
     it "generates an array of prime factor sums" do
       expect( 10.primefactorsum_sieve ).to eq( [0, 0, 2, 3, 2, 5, 5, 7, 2, 3] )
